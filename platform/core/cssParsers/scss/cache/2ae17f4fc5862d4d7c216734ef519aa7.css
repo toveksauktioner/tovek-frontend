@@ -1,0 +1,12 @@
+/* compiled by scssphp v0.7.5 on Mon, 17 Jun 2019 07:34:42 +0200 (0.005s) */
+
+.view.guestFormLogin { width: 290px }
+.view.guestFormLogin form { margin-bottom: 10px }
+.view.guestFormLogin form .field { margin-bottom: 10px }
+.view.guestFormLogin form .field label { display: block; width: 100% }
+.view.guestFormLogin form .field input { width: 100%; box-sizing: border-box }
+.view.guestFormLogin form .buttons { padding: 6px 0 0 0 }
+.view.guestFormLogin form .buttons button { width: 100%; box-sizing: border-box }
+.view.guestFormLogin .links { text-align: justify }
+.view.guestFormLogin .links a.button { display: inline-block; font-size: 0.8em; width: auto; padding: 0.2em 1.6em }
+.view.guestFormLogin .links:after { content: ""; display: inline-block; width: 100% }

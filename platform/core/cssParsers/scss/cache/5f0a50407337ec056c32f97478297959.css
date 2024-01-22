@@ -1,0 +1,213 @@
+/* compiled by scssphp v0.7.5 on Mon, 02 Sep 2019 14:56:53 +0200 (0.5961s) */
+
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto:300,300i,400,400i,700,700i');
+ /**
+ * Imports
+ */
+ /*!
+ * ArgoLib
+ */
+ /**
+ * Mixins
+ */
+.button--antiman { background: none; border: none; height: 60px }
+
+.button--antiman.button--inverted, 
+.button--antiman.button--inverted-alt { -webkit-transition: color 0.3s; transition: color 0.3s; -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1) }
+
+.button--antiman > span { padding-left: 0.35em }
+
+.button--antiman::before, 
+.button--antiman::after { content: ''; z-index: -1; border-radius: inherit; pointer-events: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; -webkit-backface-visibility: hidden; -webkit-transition: -webkit-transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s; -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1) }
+
+.button--antiman::before { border: 2px solid #37474f; opacity: 0; -webkit-transform: scale3d(1.2, 1.2, 1); transform: scale3d(1.2, 1.2, 1) }
+
+.button--antiman.button--border-thin::before { border-width: 1px }
+
+.button--antiman.button--inverted::before { border-color: #7986cb }
+
+.button--antiman.button--inverted-alt::before { border-color: #3f51b5 }
+
+.button--antiman::after { background: #fff }
+
+.button--antiman.button--inverted::after { background: #7986cb }
+
+.button--antiman.button--inverted-alt::after { background: #3f51b5 }
+
+.button--antiman.button--inverted:hover { color: #7986cb }
+
+.button--antiman.button--inverted-alt:hover { color: #3f51b5 }
+
+.button--antiman:hover::before { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1) }
+
+.button--antiman:hover::after { opacity: 0; -webkit-transform: scale3d(0.8, 0.8, 1); transform: scale3d(0.8, 0.8, 1) }
+
+@font-face { font-family: 'FontAwesome'; src: url("/css/templates/default/library/fontAwesome/fontawesome-webfont.eot?v=4.5.0"); src: url("/css/templates/default/library/fontAwesome/fontawesome-webfont.eot?#iefix&v=4.5.0") format('embedded-opentype'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.woff2?v=4.5.0") format('woff2'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.woff2?v=4.5.0") format('woff'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.ttf?v=4.5.0") format('truetype'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular") format('svg'); font-weight: normal; font-style: normal; }
+ /**
+ * Scss palette file
+ */
+ /**
+ * Palette colors
+ */
+ /**
+ * Default colors
+ */
+ /**
+ * Christmas colors
+ */
+ /**
+ * Color variables
+ */
+ /**
+ * Import extensions
+ */
+ /**
+ *
+ * Scss file for all extensions
+ *
+ */
+.view.invoiceList.invoiceListUnpaid { margin: 0.5em 0 2em 0 }
+.view.invoiceList.invoiceListUnpaid h1 { margin-bottom: 0.3em }
+.view.invoiceList.invoiceListUnpaid .dataTable { width: 100% }
+.view.invoiceList.invoiceListUnpaid .dataTable thead { border: 1px solid #e9e8e8 }
+.view.invoiceList.invoiceListUnpaid .dataTable thead tr th { text-align: left; padding: 0.5em 0 0.5em 0; background: #f4f3f3; vertical-align: middle }
+.view.invoiceList.invoiceListUnpaid .dataTable tbody tr td { height: 1.6em; vertical-align: middle }
+.view.invoiceList.invoiceListUnpaid .dataTable tbody tr:first-child td { padding-top: 0.4em }
+.view.invoiceList.invoiceListPaid { margin-bottom: 0.5em }
+.view.invoiceList.invoiceListPaid h1 { margin-bottom: 0.3em }
+.view.invoiceList.invoiceListPaid .dataTable { width: 100% }
+.view.invoiceList.invoiceListPaid .dataTable thead { border: 1px solid #e9e8e8 }
+.view.invoiceList.invoiceListPaid .dataTable thead tr th { text-align: left; padding: 0.5em 0 0.5em 0; background: #f4f3f3; vertical-align: middle }
+.view.invoiceList.invoiceListPaid .dataTable tbody tr td { height: 1.6em; vertical-align: middle }
+.view.invoiceList.invoiceListPaid .dataTable tbody tr:first-child td { padding-top: 0.4em }
+.view.infoContent::after { clear: both; content: ""; display: table }
+.view.infoContent.infoContent322 h1 { margin-bottom: 0.4em }
+.view.user.signup .information { background: #fd0; padding: 2em 3em; box-sizing: border-box }
+.view.user.signup > .arrow { text-align: center }
+.view.user.signup form { max-width: 30em; margin: 0 auto }
+.view.user.signup form .fieldGroup { border-bottom: 1px solid #999; padding-bottom: 1.5em }
+.view.user.signup form .fieldGroup .field { padding: 0.17em 0 }
+.view.user.signup form .fieldGroup .field label { text-align: right; padding-right: 1em; line-height: 1.9em; position: relative; top: 0.25em }
+.view.user.signup form .fieldGroup .field input { border-radius: 10px; box-shadow: inset 1px 3px 10px #c6c6c6; border: 1px solid #ccc; padding: 0 8px; box-sizing: border-box; line-height: 2.3em; width: 14em }
+.view.user.signup form .fieldGroup .field select { border-radius: 10px; box-shadow: inset 1px 3px 10px #c6c6c6; border: 1px solid #ccc; padding: 0 8px; box-sizing: border-box; height: 2.3em; width: 17em }
+.view.user.signup form .fieldGroup .field.userNewsletterSignup { padding: 0.9em 0 }
+.view.user.signup form .fieldGroup .field.userNewsletterSignup label { line-height: 1.4em; top: 0 }
+.view.user.signup form .fieldGroup .field.userNewsletterSignup input { width: 1em }
+.view.user.signup form .fieldGroup.one .field label { top: 0 }
+.view.user.signup form #registrationAgreement { padding-top: 2.2em }
+.view.user.signup form #registrationAgreement .field .field { position: relative }
+.view.user.signup form #registrationAgreement .field .field label { width: 100%; height: 2.5em; padding-left: 2em }
+.view.user.signup form #registrationAgreement .field .field input { position: absolute; left: 0; top: 0; width: 1.2em }
+.view.user.signup form .formBottom { text-align: center }
+.view.user.signup form .buttons { padding-top: 2em; text-align: center }
+.view.user.signup form .buttons button { border: 1px solid; border-bottom-left-radius: 2em; border-top-left-radius: 2em; border-bottom-right-radius: 2em; border-top-right-radius: 2em; padding: 0.5em 2em; background: #00b943; border-color: #00b943; color: #fff }
+.view.user.popupLogin { display: none }
+.view.user.popupLogin h1 { font-size: 1.2em }
+.view.user.popupLogin form .field { margin: 0.6em 0 }
+.view.user.popupLogin form .field label { display: none }
+.view.user.popupLogin form .field input { padding: 0.25em 0.6em; border: 1px solid #707070; border-bottom-left-radius: 2em; border-top-left-radius: 2em; border-bottom-right-radius: 2em; border-top-right-radius: 2em }
+.view.user.popupLogin form .buttons button { border: 1px solid; border-bottom-left-radius: 2em; border-top-left-radius: 2em; border-bottom-right-radius: 2em; border-top-right-radius: 2em; padding: 0.5em 2em; background: #00b943; border-color: #00b943; color: #fff }
+.view.user.popupLogin .links { padding-top: 1.5em !important }
+.view.user.popupLogin .links a { font-size: 0.8em; opacity: 0.7 }
+.view.user.accountRetrieval { max-width: 42em; margin: 0 auto; padding: 5em 0; text-align: center }
+.view.user.accountRetrieval h1 { margin-bottom: 1em }
+.view.user.accountRetrieval form .field { margin-bottom: 1em }
+.view.user.accountRetrieval form .field label { display: none }
+.view.user.accountRetrieval form .field input { padding: 0.6em; width: 17.3em; box-sizing: border-box; color: #9b9b9b; background: url('/images/templates/tovekClassic/bg-input.png') no-repeat; border: none }
+.view.user.accountRetrieval form .buttons { clear: both; padding-top: 1em }
+.view.user.accountRetrieval form .buttons button { padding: 0.4em 2em; border-radius: 10px; border: 1px solid #cfcfcf; background: #fff; /* Old browsers */ background: -moz-linear-gradient(top, #fff 0%, #ededed 100%, #ededed 102%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, #fff 0%, #ededed 100%, #ededed 102%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to bottom, #fff 0%, #ededed 100%, #ededed 102%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed',GradientType=0); /* IE6-9 */ -webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease; -o-transition: all 0.3s ease; -ms-transition: all 0.3s ease; transition: all 0.3s ease }
+.view.user.accountRetrieval form .buttons button:hover { background: #ededed; /* Old browsers */ background: -moz-linear-gradient(top, #ededed 0%, #fff 99%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, #ededed 0%, #fff 99%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to bottom, #ededed 0%, #fff 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff',GradientType=0); /* IE6-9 */ }
+.view.guestFormLogin { width: 290px; display: none; position: absolute; z-index: 999; top: 5.3em; right: 0; background: #fff; padding: 1em 3em; border: 4px solid #095398; border-top: none; box-shadow: inset 0 1px 3px #959595 }
+.view.guestFormLogin h1 { margin-bottom: 0.8em }
+.view.guestFormLogin form { margin-bottom: 2em }
+.view.guestFormLogin form .field { margin-bottom: 10px }
+.view.guestFormLogin form .field label { display: none }
+.view.guestFormLogin form .field input { width: 100%; padding: 0.25em 0.6em; box-sizing: border-box; border: 1px solid #707070; border-bottom-left-radius: 2em; border-top-left-radius: 2em; border-bottom-right-radius: 2em; border-top-right-radius: 2em }
+.view.guestFormLogin form .buttons { padding: 6px 0 0 0 }
+.view.guestFormLogin form .buttons button { width: 100%; box-sizing: border-box; border: 1px solid; border-bottom-left-radius: 2em; border-top-left-radius: 2em; border-bottom-right-radius: 2em; border-top-right-radius: 2em; padding: 0.5em 2em; background: #00b943; border-color: #00b943; color: #fff }
+.view.guestFormLogin .links { text-align: justify }
+.view.guestFormLogin .links a { background: #00b943; border-color: #00b943; color: #fff }
+.view.guestFormLogin .links a.button { display: inline-block; font-size: 0.8em; width: auto; padding: 0.2em 1.6em }
+.view.guestFormLogin .links:after { content: ""; display: inline-block; width: 100% }
+.view.newsletterSubscriptionGuestForm { margin: 25px auto 50px; max-width: 800px }
+.view.newsletterSubscriptionGuestForm form .field { float: left; width: 80% }
+.view.newsletterSubscriptionGuestForm form .field label { display: none }
+.view.newsletterSubscriptionGuestForm form .field input { width: 98% }
+.view.newsletterSubscriptionGuestForm form .buttons { float: left; width: 20% }
+.view.newsletterSubscriptionGuestForm form .buttons button { width: 100%; height: 34px; position: relative; top: -1px }
+.view.userSignup { /* Form */ /* General */ /* Group 1 */ /* Group 2 */ /* Group 3 */ /* Group 4 */ /* Newsletter signup */ /* Captcha */ /* Registration agreement */ /* Bottom information */ /* Button */ }
+.view.userSignup .information { padding: 20px 50px; background: #fd0 }
+.view.userSignup img.arrow { display: block; margin: 0 auto 20px auto }
+.view.userSignup form#userRegisterForm { max-width: 42em; padding: 20px 0; margin: 0 auto }
+.view.userSignup form#userRegisterForm fieldset { min-width: 504px; padding: 0 0 18px; margin-bottom: 18px; border-bottom: 1px solid #999 }
+.view.userSignup form#userRegisterForm fieldset .field { width: 504px; margin: 10px auto }
+.view.userSignup form#userRegisterForm input[type="text"], 
+.view.userSignup form#userRegisterForm input[type="password"] { width: 277px; height: 41px; padding: 0 8px; font-size: 20px; text-indent: 0; /*background: url('/images/templates/tovekClassic/bg-register-field.png') no-repeat;*/ box-sizing: border-box; border-radius: 10px; box-shadow: inset 0px 3px 10px #c6c6c6; border: none }
+.view.userSignup form#userRegisterForm input[type="checkbox"] { width: 277px; height: 41px; padding: 0 8px; font-size: 20px; text-indent: 0; background: url('/images/templates/tovekClassic/bg-register-field.png') no-repeat; border: none }
+.view.userSignup form#userRegisterForm label { width: 9.7em; line-height: 41px; font-size: 20px; margin-right: 15px }
+.view.userSignup form#userRegisterForm .suffixContent { float: right; font-size: 16px; margin-right: 23%; color: #939393 }
+.view.userSignup form#userRegisterForm .fieldGroup.one .field .formSelectWrapper { width: 278px; height: 50px; position: relative; top: 4px; background: url('/images/templates/tovekClassic/bg-auction-item-sorting.png') no-repeat; overflow-x: hidden }
+.view.userSignup form#userRegisterForm .fieldGroup.one .field label { float: left; font-size: 20px; line-height: 50px; color: #000 }
+.view.userSignup form#userRegisterForm .fieldGroup.one .field select { float: left; width: 295px; height: 40px; padding: 2px 0 0 10px; font-size: 20px; color: #6f6f6f; background: transparent; -webkit-appearance: none; border: none }
+.view.userSignup form#userRegisterForm .fieldGroup.one .field select:hover { cursor: pointer }
+.view.userSignup form#userRegisterForm .fieldGroup.two legend { width: 504px; margin: 0 auto }
+.view.userSignup form#userRegisterForm .fieldGroup.two fieldset { width: 504px; margin: 0 auto; border: none; margin-top: 10px }
+.view.userSignup form#userRegisterForm .fieldGroup.two fieldset legend { width: 175px; margin: 0 }
+.view.userSignup form#userRegisterForm .fieldGroup.two fieldset .field { margin-top: 0 }
+.view.userSignup form#userRegisterForm .fieldGroup.two .field input { width: 20px; height: 26px; float: left }
+.view.userSignup form#userRegisterForm .fieldGroup.two .field .suffixContent { margin-right: 0; margin-left: 10px; line-height: 40px; float: left }
+.view.userSignup form#userRegisterForm .field.userNewsletterSignup input { width: 20px; float: left }
+.view.userSignup form#userRegisterForm .field.userNewsletterSignup .suffixContent { margin-right: 0; margin-left: 10px; line-height: 40px; float: left }
+.view.userSignup #recaptcha_image { max-width: 277px; float: right; margin: 0 22% 10px 0 }
+.view.userSignup #recaptcha_image img { max-width: 277px }
+.view.userSignup .recaptcha_only_if_image { width: 9.7em; line-height: 41px; font-size: 20px; font-weight: 700 }
+.view.userSignup .captchaInfo { clear: both; padding-top: 15px }
+.view.userSignup .captchaInfo .title { float: left; width: 196px; text-align: right; font-size: 20px; font-weight: 700; color: #999 }
+.view.userSignup .captchaInfo .text { float: right; width: 415px; font-size: 16px; padding-top: 8px; line-height: 1.4 }
+.view.userSignup form#userRegisterForm a.customerTerms { font-size: 20px; display: block; text-align: center }
+.view.userSignup form#userRegisterForm #registrationAgreement { position: relative; border-bottom: none; margin-bottom: 0 }
+.view.userSignup form#userRegisterForm #registrationAgreement label { width: 277px; position: relative; left: 210px; margin-right: 0; font-weight: 400; line-height: 1.25; text-align: left }
+.view.userSignup form#userRegisterForm #registrationAgreement input { width: 20px; position: relative; left: -99px; top: -8px }
+.view.userSignup form#userRegisterForm .formBottom { max-width: 639px; padding: 10px 15px; margin: 0 auto 20px auto; text-align: center; /*border: 1px solid #f7c4c4; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px; background: #fff0f0;*/ }
+.view.userSignup form#userRegisterForm p.buttons { text-align: center }
+.view.userSignup form#userRegisterForm button { width: 277px; height: 53px; padding: 10px 0 0 0; font-size: 20px; color: #fff; background: url('/images/templates/tovekClassic/bg-login-button.png') no-repeat; border: none }
+@media (max-width: 640px) {.view.userSignup form#userRegisterForm { width: 100%; padding: 0 1em; text-align: center; box-sizing: border-box }
+
+.view.userSignup form#userRegisterForm fieldset { width: 100%; min-width: auto }
+
+.view.userSignup form#userRegisterForm fieldset .field { width: 100% }
+
+.view.userSignup form#userRegisterForm fieldset .field.userNewsletterSignup { display: flex; flex-direction: column; align-items: center }
+
+.view.userSignup form#userRegisterForm #registrationAgreement label { left: unset; font-size: 16px }
+
+.view.userSignup form#userRegisterForm #registrationAgreement input { position: absolute; left: 50%; bottom: 0 }
+
+.view.userSignup form#userRegisterForm label { width: 100% !important; float: none; clear: both; text-align: center; margin: auto !important }
+
+.view.userSignup form.labelRight label { text-align: center; width: 100% !important }
+
+.view.userSignup form#userRegisterForm .fieldGroup .field label { float: none !important; display: block }
+
+.view.userSignup form#userRegisterForm .fieldGroup .field select { width: 100% !important; float: none !important; clear: both !important }
+
+.view.userSignup form#userRegisterForm input { width: 100% !important; float: none; clear: both }
+
+.view.userSignup form#userRegisterForm input[type="checkbox"] { width: 25px !important; float: none; clear: both }
+
+.view.userSignup form#userRegisterForm .suffixContent { float: none; text-align: center; margin: auto }
+
+.view.userSignup form#userRegisterForm .fieldGroup.two legend { width: 100%; margin: 0 auto }
+
+.view.userSignup form#userRegisterForm .fieldGroup.two label { width: 100%; margin: 0 auto; padding: 0 }
+
+.view.userSignup form#userRegisterForm .fieldGroup.two fieldset { width: 100%; margin: 0 auto; border: none; margin-top: 10px }
+
+.view.userSignup form#userRegisterForm .fieldGroup.two fieldset legend { width: 100%; margin: 0 }
+
+.view.userSignup form#userRegisterForm .fieldGroup.two fieldset .field { margin-top: 0; left: unset; top: unset; overflow: visible }
+
+.view.userSignup form#userRegisterForm .fieldGroup.two .field input { width: 20px; height: 26px; float: none; position: relative }
+
+.view.userSignup form#userRegisterForm .fieldGroup.two .field .suffixContent { margin-right: 0; margin-left: 10px; line-height: 40px; float: left } }
+@media (max-width: 380px) {.view.userSignup .information h1 { font-size: 1.6em } }

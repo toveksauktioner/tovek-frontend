@@ -1,0 +1,39 @@
+.freightTypeFormAdd {
+	form {
+		.field {
+			width: 500px;
+			input#freightTypeTitle {
+				width: 362px;
+				box-sizing: border-box;
+			}
+			textarea#freightTypeDescription {
+				width: 362px;
+				box-sizing: border-box;
+				height: 100px;
+			}
+			.suffixContent {
+				display: block;
+			}
+			&.imageField {
+				.suffixContent {
+					float: right;
+					width: auto;
+					padding: 10px;
+					border: 1px solid #ccc;
+					-webkit-border-radius: 4px;
+					-moz-border-radius: 4px;
+					border-radius: 4px;
+					div {						
+						text-align: center;
+						p {
+							margin-bottom: 0;
+							display: block;
+							border-top: 1px solid #ccc;
+							padding-top: 5px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

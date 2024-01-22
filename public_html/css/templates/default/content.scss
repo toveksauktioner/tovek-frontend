@@ -1,0 +1,127 @@
+@import "bootstrap";
+@import "icons";
+
+.paginationList {
+	@include tool\module\pagination( $brightMode: true );
+}
+
+// Inline searchform
+.searchForm {
+	margin-bottom: 10px;
+
+	.field {
+		float: left;
+		margin-right: 10px;
+		label {
+			display: inline;
+			vertical-align: middle;
+		}
+	}
+
+	fieldset.multiple {
+		float: left;
+		margin-right: 10px;
+		padding: 0;
+		width: 400px;
+		position: relative;
+
+		.field {
+			clear: none !important;
+			float: left !important;
+			margin-top: 5px;
+			label {
+				vertical-align: top;
+			}
+		}
+	}
+
+	p.buttons {
+		width: auto;
+		clear: none;
+		float: left;
+		margin: 0;
+	}
+}
+
+// Form in table
+.inTable .field {
+	position: relative;
+
+	label {
+		position: absolute;
+		top: -1.5em;
+		left: 0;
+		width: 100%;
+		text-indent: -999em;
+	}
+
+	input, select {
+		width: 95%;
+	}
+}
+
+// Notifications
+ul.notification {
+	padding: 5px;
+	list-style: none;
+}
+
+li.notification {
+	color: #000;
+	background: #dedede;
+	border: 1px solid #000;
+	background-image: url('/images/icons/bullet_black.png');
+	background-position: 10px center;
+	background-repeat: no-repeat;
+	margin: 10px 0;
+	padding: 15px 10px 15px 50px;
+
+	&.dataSaved, &.dataDeleted {
+		color: #4F8A10;
+		background-color: #DFF2BF;
+		background-image: url('/images/icons/ok.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #4F8A10;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+	&.dataError {
+		color: #8a0f0f;
+		background-color: #fccac3;
+		background-image: url('/images/icons/exclamation.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #e02727;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+	&.dataInformation {
+		color: #00529B;
+		background-color: #BDE5F8;
+		background-image: url('/images/icons/information.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #00529B;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+	&.dataWarning {
+		color: #9F6000;
+		background-color: #FEEFB3;
+		background-image: url('/images/icons/error.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #9F6000;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+}
+
+.dataTable {
+	//@include tool\layout\responsivTable( $layoutBreakpoint4 );
+}
+
+#localeList {
+	@include tool\module\localeList;
+}

@@ -1,0 +1,27 @@
+.view.news.formAdd {
+	form {
+		.fieldRoutePath {
+			.labelSuffixContent {
+				margin-bottom: .3em;
+			}
+		}
+		input#routePath {
+			padding: 0 0 0 1px;
+			box-sizing: border-box;
+			&.autoFill {
+				border: none;
+				background: none;
+			}
+		}
+		.fieldGroup.layout {
+			.field.boolean {
+				margin-top: 0;
+				margin-left: .7em;
+				input {
+					width: auto;
+					min-width: inherit;
+				}
+			}
+		}
+	}
+}

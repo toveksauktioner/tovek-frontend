@@ -1,0 +1,155 @@
+// .view
+	&.userCustomerAccount {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		flex-flow: column wrap;
+
+		form {
+			display: flex;
+			flex-flow: row wrap;
+
+			fieldset {
+				@include aside-color;
+				padding: 2em;
+				box-sizing: border-box;
+				flex: 1 1 49%;
+
+				.field {
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: -webkit-flex;
+					display: flex;
+					flex-flow: row wrap;
+					margin: .5em 0;
+
+					label {
+						flex: 0 1 30%;
+					}
+
+					input, textarea, select {
+						flex: 1 1 67%;
+
+						&.checkbox {
+							flex: 1 1 10%;
+						}
+					}
+				}
+			}
+
+			.buttons {
+				flex: 0 0 100%;
+			}
+		}
+	}
+
+	&.customerOrderList {
+		table {
+			th, tr, td {
+				padding: 1em;
+			}
+
+			tr:nth-child(even) {
+				background: $aside-color;
+			}
+		}
+	}
+
+	&.customerOrderShow {
+		.orderConfirmation {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			flex-flow: row wrap;
+
+			.marginal {
+				display: flex;
+				flex-flow: row wrap;
+				max-width: 450px;
+
+				dt, dd {
+					flex: 0 1 44%;
+					padding: .5em;
+				}
+
+				dt:nth-of-type(even) {
+					background: $aside-color;
+				}
+
+				dd:nth-of-type(even) {
+					background: $aside-color;
+				}
+			}
+
+			.orderItems {
+				table.dataTable {
+					width: 100%;
+
+					thead {
+						font-size: .8em;
+						font-weight: 300;
+					}
+
+					tr {
+						border-top: 1px solid shade( $baseBackgroundColor, 10% );
+
+						&.toPayCharge {
+							td.productPriceTotal {
+								font-weight: bold;
+							}
+						}
+					}
+
+					th, td {
+						text-align: left;
+						padding: 1em;
+						width: 14%;
+					}
+
+					.icon {
+						text-indent: unset;
+					}
+
+					@include tool\layout\responsivTable( $mobileLarge ); // Mobile version
+
+					@include maxScreen ( $mobileLarge ) {
+						tbody {
+							td {
+								width: 45%;
+							}
+
+							td.productQuantity:before {
+								content: 'Antal:';
+								padding: .5em;
+							}
+
+							td.productTitle:before {
+								content: 'Titel:';
+								padding: .5em;
+							}
+
+							td.productCustomId:before {
+								content: 'Variant:';
+								padding: .5em;
+							}
+							td.productPrice:before {
+								content: 'Pris:';
+								padding: .5em;
+							}
+
+							td.productPriceTotal:before {
+								content: 'Pris total:';
+								padding: .5em;
+							}
+						}
+
+						tfoot {
+							display: none;
+						}
+					}
+				}
+			}
+		}
+	}

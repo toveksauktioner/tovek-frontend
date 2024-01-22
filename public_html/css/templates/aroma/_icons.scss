@@ -1,0 +1,231 @@
+.icon,
+.ui-icon {
+	display: inline-block;
+	@include fontIcon( ' ', before ) {
+		margin-right: .25em;
+	}
+	@include fontIcon( ' ', after ) {
+		margin-left: .25em;
+	}
+
+	&:not(.iconText) > span {
+		display: none;
+	}
+
+	> span {
+		font-size: .9em;
+		margin-right: .25em;
+	}
+
+	&.disabled {
+		opacity: .5;
+	}
+
+	/**
+	 * Icons:
+	 */
+
+	&.iconAdd::before {
+		content: fa-content($fa-var-plus);
+	}
+
+	&.iconAt::before {
+		content: fa-content($fa-var-at);
+	}
+
+	&.iconBarChart::before {
+		content: fa-content($fa-var-chart-bar);
+	}
+
+	&.iconBuilding::before {
+		content: fa-content($fa-var-building);
+	}
+
+	&.iconClock::before {
+		content: fa-content($fa-var-clock);
+	}
+
+	&.iconClone::before {
+		content: fa-content($fa-var-clone);
+	}
+
+	&.iconCss::before {
+		content: fa-content($fa-var-css3);
+	}
+
+	&.iconCubes::before {
+		content: fa-content($fa-var-cubes);
+	}
+
+	&.iconDashboard::before {
+		content: fa-content($fa-var-tachometer-alt);
+	}
+
+	&.iconDbExport::before {
+		content: fa-content($fa-var-upload);
+	}
+
+	&.iconDbImport::before {
+		content: fa-content($fa-var-download);
+	}
+
+	&.iconDelete {
+		color: $negativeColor;
+		&::before {
+			content: fa-content($fa-var-trash);
+		}
+	}
+
+	&.iconDone::before {
+		content: fa-content($fa-var-check);
+	}
+
+	&.iconDownload::before {
+		content: fa-content($fa-var-download);
+	}
+
+	&.iconEnvelope::before {
+		content: fa-content($fa-var-envelope);
+	}
+
+	&.iconHashtag::before {
+		content: fa-content($fa-var-hashtag);
+	}
+
+	&.iconHistory::before {
+		content: fa-content($fa-var-history);
+	}
+
+	&.iconEdit::before {
+		content: fa-content($fa-var-pencil-alt);
+	}
+
+	&.iconExternal::before {
+		content: fa-content($fa-var-external-link-alt);
+	}
+
+	&.iconFreight::before {
+		content: fa-content($fa-var-truck);
+	}
+
+	&.iconFoot::before {
+		content: fa-content($fa-var-paw);
+	}
+
+	&.iconGo::before {
+		content: fa-content($fa-var-caret-right);
+	}
+
+	&.iconGoBack::before {
+		content: fa-content($fa-var-reply);
+	}
+
+	&.iconImage::before {
+		content: fa-content($fa-var-image);
+	}
+
+	&.iconInfo::before {
+		content: fa-content($fa-var-info-circle);
+	}
+
+	&.iconList::before {
+		content: fa-content($fa-var-list);
+	}
+
+	&.iconListAlt::before {
+		content: fa-content($fa-var-list-alt);
+	}
+
+	&.iconLock::before {
+		content: fa-content($fa-var-lock);
+	}
+
+	&.iconMissing::before {
+		content: fa-content($fa-var-exclamation-circle);
+	}
+
+	&.iconMoney::before {
+		content: fa-content($fa-var-coins);
+	}
+
+	&.iconNext::after {
+		content: fa-content($fa-var-chevron-right);
+	}
+
+	&.iconOverlays::before {
+		content: fa-content($fa-var-clone);
+	}
+
+	&.iconPackageLink::before {
+		content: fa-content($fa-var-cubes);
+	}
+
+	&.iconPdf::before {
+		content: fa-content($fa-var-file-pdf);
+	}
+
+	&.iconPrevious::before {
+		content: fa-content($fa-var-chevron-left);
+	}
+
+	&.iconPrint::before {
+		content: fa-content($fa-var-print);
+	}
+
+	&.iconRelation::before {
+		content: fa-content($fa-var-link);
+	}
+
+	&.iconSave::before {
+		content: fa-content($fa-var-save);
+	}
+
+	&.iconSigns::before {
+		content: fa-content($fa-var-map-signs);
+	}
+
+	&.iconSitemap::before {
+		content: fa-content($fa-var-sitemap);
+	}
+
+	&.iconSortAsc::before {
+		content: fa-content($fa-var-sort-amount-down-alt);
+	}
+
+	&.iconSortDesc::before {
+		content: fa-content($fa-var-sort-amount-down);
+	}
+
+	&.iconStar::before {
+		content: fa-content($fa-var-star);
+	}
+
+	&.iconStop::before {
+		content: fa-content($fa-var-stop);
+	}
+
+	&.iconThumbnail::before {
+		content: fa-content($fa-var-file-image);
+	}
+
+	&.iconToggleOff::before {
+		content: fa-content($fa-var-toggle-off);
+	}
+
+	&.iconToggleOn::before {
+		content: fa-content($fa-var-toggle-on);
+	}
+
+	&.iconUser::before {
+		content: fa-content($fa-var-user);
+	}
+
+	&.iconQuestion::before {
+		content: fa-content($fa-var-question);
+	}
+
+	// Jquery UI icons
+	&.ui-icon-arrow-4::before {
+		content: fa-content($fa-var-arrows-alt);
+	}
+}

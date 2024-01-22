@@ -1,0 +1,12 @@
+@mixin tool\geometry\circle( $color: #fff, $size: 1em ) {
+	@include hide-text;
+
+	width: $size;
+	height: $size;
+	margin: 0 $size/2;
+	border-radius: $size;
+	background: $color;
+
+	display: inline-block;
+	cursor: pointer;
+}

@@ -1,0 +1,118 @@
+@mixin tool\module\puffTitleContact() {
+	&.puffList {
+		@include tool\column\floatContainer( $puffSpacing );
+		display: flex;
+		flex-grow: 1;
+		justify-content: center;
+		flex-wrap: wrap;
+
+		.titleContact {
+			@include tool\column\float( 100%, $puffSpacing );
+		}
+
+		.titleContact{
+			margin-top: 1em;
+		}
+
+		@include minScreen( $puffBreakpoint1 ) {
+
+			.titleContact {
+				width: percentage( 1 / $puffImageBackgroundPerRowAtBreakpoint1 );
+				
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(#{$puffImageBackgroundPerRowAtBreakpoint1}n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		@include minScreen( $puffBreakpoint2 ) {
+			.titleContact {
+				width: percentage( 1 / $puffImageBackgroundPerRowAtBreakpoint2 );
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(#{$puffImageBackgroundPerRowAtBreakpoint2}n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		@include minScreen( $puffBreakpoint3 ) {
+			.titleContact {
+
+				// width: percentage( 1 / $puffImageBackgroundPerRowAtBreakpoint3 );
+				width: 25%;
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(#{$puffImageBackgroundPerRowAtBreakpoint3}n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		.titleContact > div {
+			height: 0;
+			padding-top: $puffImageBackgroundHeight;
+			position: relative;
+			transition: all ease-in-out $transitionSpeed;
+		    background-repeat: no-repeat !important;
+		    background-position: center top !important;
+		    background-size: cover !important;
+		    margin-bottom: 10em;
+
+			.description {
+				background: $puffImageBackgroundDescriptionBackground;
+				color: $puffImageBackgroundDescriptionColor;
+				bottom: 0;
+				width: 100%;
+				padding: 1em;
+				padding-bottom: 0;
+				text-align: left;
+				text-transform: uppercase;
+				font-weight: bold;
+				overflow: hidden;
+
+				@include maxScreen (620px){
+					font-size: 0.7em;
+				}
+			}
+			.contactInfo a{
+				color: inherit !important;
+				// padding-right: 40px !important;
+			}
+			.contactInfo{
+				transition: background ease-in-out $transitionSpeed;
+				background-color: none;
+				top: 0;
+				display: block;
+				text-align: left;
+				width: 100%;
+				overflow: hidden;
+				padding: 1em;
+				width: 100%;
+				line-height: 1.3em;
+
+				p:last-of-type:before{
+					// background: url('/images/icons/phone-icon.png') no-repeat left;
+					padding-left: 2.2em;
+					content: '';
+				}
+
+				p:nth-last-of-type(2):before{
+					// background: url('/images/icons/mail-icon.png') no-repeat left;
+					padding-left: 2.2em;
+					content: '';
+				}
+			}
+		}
+	}
+}

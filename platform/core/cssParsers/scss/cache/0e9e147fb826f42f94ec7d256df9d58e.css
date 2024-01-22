@@ -1,0 +1,101 @@
+/* compiled by scssphp v0.7.5 on Sun, 01 Sep 2019 19:00:12 +0200 (0.037s) */
+
+.view.user.signup .information { padding: 20px 50px; background: #fd0 }
+
+.view.user.signup img.arrow { display: block; margin: 0 auto 20px auto; text-align: center }
+
+.view.user.signup p.arrow { text-align: center }
+
+.view.userAgreement.show { padding: 1em 2%; width: 96%; margin: 4em 0 }
+
+.view.userAgreement.show #agreementLangSelect { position: fixed; top: 0; left: 0; width: 100%; text-align: center; background: #dedede }
+
+.view.userAgreement.show #agreementLangSelect a { line-height: 4em; border-radius: 1em; color: #000; font-weight: bold }
+
+.view.userAgreement.show #agreementLangSelect a.selected { text-decoration: underline }
+
+.agreementAcceptButton { position: fixed; bottom: 0; width: 100%; text-align: center; background: #dedede }
+
+.agreementAcceptButton a { line-height: 4em; color: #000; font-weight: bold }
+ /* Form */
+form#userRegisterForm { max-width: 1280px; padding: 20px 0 }
+ /* General */
+form#userRegisterForm fieldset { min-width: 504px; padding: 0 0 18px; margin-bottom: 18px; border-bottom: 1px solid #999 }
+
+form#userRegisterForm fieldset .field { width: 504px; margin: 10px auto }
+
+form#userRegisterForm input[type="text"], 
+form#userRegisterForm input[type="password"] { width: 277px; height: 41px; padding: 0 8px; font-size: 20px; text-indent: 0; /*background: url('/images/templates/tovekClassic/bg-register-field.png') no-repeat;*/ box-sizing: border-box; border-radius: 10px; box-shadow: inset 1px 3px 10px #c6c6c6; -webkit-box-shadow: inset 1px 3px 10px #c6c6c6; border: 1px solid #ccc }
+
+form#userRegisterForm input[type="checkbox"] { width: 277px; height: 41px; padding: 0 8px; font-size: 20px; text-indent: 0; background: url('/images/templates/tovekClassic/bg-register-field.png') no-repeat; border: none }
+
+form#userRegisterForm label { width: 9.7em; line-height: 41px; font-size: 20px; margin-right: 15px }
+
+form#userRegisterForm .suffixContent { float: right; font-size: 16px; margin-right: 23%; color: #939393 }
+ /* Group 1 */
+form#userRegisterForm .fieldGroup.one .field .formSelectWrapper { width: 278px; height: 50px; position: relative; top: 4px; background: url('/images/templates/tovekClassic/bg-auction-item-sorting.png') no-repeat; overflow-x: hidden }
+
+form#userRegisterForm .fieldGroup.one .field label { float: left; font-size: 20px; line-height: 50px; color: #000 }
+
+form#userRegisterForm .fieldGroup.one .field select { float: left; width: 278px; height: 40px; padding: 2px 0 0 10px; font-size: 20px; color: #6f6f6f; background: #fff; border-radius: 0.4em; box-shadow: inset 1px 3px 10px #c6c6c6; -webkit-box-shadow: inset 1px 3px 10px #c6c6c6; border: 1px solid #ccc; /*-webkit-appearance: none;*/ }
+
+form#userRegisterForm .fieldGroup.one .field select:hover { cursor: pointer }
+ /* Group 2 */
+ /* Group 3 */
+ /* Group 4 */
+ /* Newsletter signup */
+form#userRegisterForm .field.userNewsletterSignup input { width: 20px; float: left }
+
+form#userRegisterForm .field.userNewsletterSignup .suffixContent { margin-right: 0; margin-left: 10px; line-height: 40px; float: left }
+ /* Captcha */
+#recaptcha_image { max-width: 277px; float: right; margin: 0 22% 10px 0 }
+
+#recaptcha_image img { max-width: 277px }
+
+.recaptcha_only_if_image { width: 9.7em; line-height: 41px; font-size: 20px; font-weight: 700 }
+
+.captchaInfo { clear: both; padding-top: 15px }
+
+.captchaInfo .title { float: left; width: 196px; text-align: right; font-size: 20px; font-weight: 700; color: #999 }
+
+.captchaInfo .text { float: right; width: 415px; font-size: 16px; padding-top: 8px; line-height: 1.4 }
+ /* Registration agreement */
+form#userRegisterForm a.customerTerms { font-size: 20px; display: block; text-align: center }
+
+form#userRegisterForm #registrationAgreement { position: relative; border-bottom: none; margin-bottom: 0 }
+
+form#userRegisterForm #registrationAgreement label { width: 277px; position: relative; left: 210px; margin-right: 0; font-weight: 400; line-height: 1.25; text-align: left }
+
+form#userRegisterForm #registrationAgreement input { width: 20px; position: relative; left: -99px; top: -8px }
+ /* Bottom information */
+form#userRegisterForm .formBottom { max-width: 639px; padding: 10px 15px; margin: 0 auto 20px auto; text-align: center; /*border: 1px solid #f7c4c4; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px; background: #fff0f0;*/ }
+ /* Button */
+form#userRegisterForm p.buttons { text-align: center }
+
+form#userRegisterForm button { width: 277px; height: 53px; padding: 10px 0 0 0; font-size: 20px; color: #fff; background: url('/images/templates/tovekClassic/bg-login-button.png') no-repeat; border: none }
+
+@media (max-width: 640px) {form#userRegisterForm { width: 100%; padding: 0 1em; text-align: center; box-sizing: border-box }
+
+form#userRegisterForm fieldset { width: 100%; min-width: auto }
+
+form#userRegisterForm fieldset .field { width: 100% }
+
+form#userRegisterForm fieldset .field.userNewsletterSignup { display: flex; flex-direction: column; align-items: center }
+
+form#userRegisterForm #registrationAgreement label { left: unset; font-size: 16px }
+
+form#userRegisterForm #registrationAgreement input { position: absolute; left: 50%; bottom: 0 }
+
+form#userRegisterForm label { width: 100% !important; float: none; clear: both; text-align: center; margin: auto !important }
+
+form.labelRight label { text-align: center; width: 100% !important }
+
+form#userRegisterForm .fieldGroup .field label { float: none !important; display: block }
+
+form#userRegisterForm .fieldGroup .field select { width: 100% !important; float: none !important; clear: both !important }
+
+form#userRegisterForm input { width: 100% !important; float: none; clear: both }
+
+form#userRegisterForm input[type="checkbox"] { width: 25px !important; float: none; clear: both }
+
+form#userRegisterForm .suffixContent { float: none; text-align: center; margin: auto } }

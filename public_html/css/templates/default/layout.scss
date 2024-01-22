@@ -1,0 +1,70 @@
+@import "bootstrap";
+
+/* Footer at bottom by flexbox method */
+@include tool\layout\footerBottomFlex( '#wrapper', 'header', '.layout', 'footer' );
+
+@include tool\module\cookieNotification();
+
+#wrapper {
+	@import "layouts/infoContent";
+
+	> .layout.main {
+		main {
+			max-width: $siteWidth;
+			width: 100%;
+			padding: 0 1em;
+			box-sizing: border-box;
+			margin: auto;
+			
+			.view {
+				&.infoContent {
+					// Generic styles for user content
+					@include clearfix;
+
+					@if $CTA == true { @import "layouts/cta"; }
+					@else { .CTA { display: none; } }
+				}
+				/**
+				 * Module specific css should be placed in /modules and not here
+				 */
+			}
+		}
+	}
+
+	> .layout.misc {
+		max-width: $siteContent;
+		padding: 1em;
+		box-sizing: border-box;
+		margin: auto;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		flex-flow: column wrap;
+		justify-content: space-between;
+
+		@if $asideShow == true { flex-flow: row; }
+		
+		main {
+			flex-basis: 100%;
+
+			@if $asideShow == true { 
+				flex-basis: 70%; 
+				@include maxScreen ( $tablet ) { flex-basis: 100%; }
+			}
+		}
+
+		aside {
+			flex-basis: 25%;
+
+			@if $asideShow == false { display: none; }
+			@if $asidePosition == right { order: 2; }
+
+			@include maxScreen ( $tablet ) { display: none; }
+		}
+	}
+
+	> footer {
+		@import "layouts/footer";
+	}
+}

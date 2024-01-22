@@ -1,0 +1,14 @@
+/* compiled by scssphp v0.7.5 on Wed, 27 Dec 2023 15:40:21 +0100 (0.0037s) */
+
+#navigationContent { display: flex; justify-content: space-between; flex-wrap: wrap }
+#navigationContent > * { flex-grow: 1 }
+@media screen and (min-width: 400px) {#navigationContent #navigationAdd { padding-right: 1.618em } }
+
+#navigationList ul { background: #f5f5f5 }
+#navigationList ul a { float: right }
+#navigationList ul li { padding: 0.1em 0; padding-left: 1em; position: relative; overflow: hidden }
+#navigationList ul li span.icon { position: absolute; top: 0.07em; left: 0.5em }
+#navigationList ul li:hover { background: #fff }
+#navigationList ul li ul li { padding-left: 1.3em }
+#navigationList ul li ul li span.icon { left: 0 }
+#navigationList > ul > li { padding-left: 2em }

@@ -1,0 +1,57 @@
+#navigationContent {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+
+	> * {
+		flex-grow: 1;
+	}
+
+	@media screen and (min-width: 400px) {
+		#navigationAdd {
+			padding-right: 1.618em;
+		}
+	}
+}
+
+#navigationList {
+	ul {
+		background: #f5f5f5;
+
+		a {
+			float: right;
+		}
+
+		li {
+			padding: .1em 0;
+			padding-left: 1em;
+			position: relative;
+			overflow: hidden;
+			
+			span.icon {
+				position: absolute;
+				top: 0.07em;
+				left: 0.5em;
+			}
+			
+			&:hover {
+				background: #fff;
+			}
+			
+			ul {
+				li {
+					padding-left: 1.3em;
+					span.icon {
+						left: 0;
+					}
+				}
+			}
+		}
+	}
+
+	> ul {
+		> li {
+			padding-left: 2em;
+		}
+	}
+}

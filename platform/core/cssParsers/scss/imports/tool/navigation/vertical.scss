@@ -1,0 +1,59 @@
+// Create a vertical list with for expandable sub navigations
+// Apply to ul elements
+@mixin tool\navigation\vertical( $listSpacing: 1em, $prefixSpacing: $baseSpace, $parentPrefix: '▶', $parentPrefixExpanded : '▼', $prefixColor : inherit, $collapseInactive : false ) {
+
+	// List level 1+
+	@include tool\list\toDiv;
+
+	@if $parentPrefix {
+		margin-left: $prefixSpacing;
+	}
+
+	// Level 1+
+	li {
+		position: relative;
+
+		a {
+			display: block;
+			padding-top: $listSpacing;
+			padding-bottom: $listSpacing;
+		}
+
+		// List level 2+
+		ul {
+			font-size: .9em;
+			margin-left: $prefixSpacing;
+
+			&:before {
+				content: $parentPrefix;
+				position: absolute;
+				left: -$prefixSpacing;
+				top: 0;
+				color: $prefixColor;
+			}
+
+			// Level 2+
+			@if ($parentPrefix) {
+				li {
+					display: none;
+				}
+			}
+		}
+
+		// Selected item level 1+
+		&.selected {
+
+			// Sub list to selected
+			> ul {
+				&:before {
+					content: $parentPrefixExpanded;
+				}
+
+				> li {
+					display: block;
+				}
+			}
+		}
+	}
+
+}

@@ -1,0 +1,27 @@
+// #wrapper
+
+	.infoContent100 {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		flex-direction: column;
+
+		.row {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			flex-direction: row;
+			margin: 1.5em 0;
+
+			@include maxScreen ( $mobileLarge ) {
+				flex-direction: column;
+				margin: 0;
+			}
+
+			.column {
+				flex: 1 1 auto;
+			}
+		}
+	}

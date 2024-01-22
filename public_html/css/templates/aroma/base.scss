@@ -1,0 +1,61 @@
+@import "bootstrap";
+@import "reset";
+@import "icons";
+@import "notifications";
+
+* {
+	box-sizing: border-box;
+}
+
+::-moz-selection {
+	color: textColor( $mode: $selectTextMode );
+	background: $selectBackgroundColor;
+}
+
+::selection {
+	color: textColor( $mode: $selectTextMode );
+	background: $selectBackgroundColor;
+}
+
+a,
+button,
+input,
+nav ul li,
+label,
+textarea {
+	transition: color $transitionSpeed, background $transitionSpeed, box-shadow $transitionSpeed, border $transitionSpeed;
+}
+
+nav ul li > a {
+	color: inherit;
+}
+
+span {
+	// Good
+	&.active,
+	&.paid,
+	&.yes,
+	&.finished,
+	&.successful
+	{
+		color: $positiveColor;
+		font-style: italic;
+	}
+	// Bad
+	&.inactive,
+	&.unpaid,
+	&.no,
+	&.unfinished,
+	&.unsuccessful,
+	&.ended
+	{
+		color: $negativeColor;
+		font-style: italic;
+	}
+	// Empty
+	&.empty,
+	&.missing {
+		color: $emptyColor;
+		font-style: italic;
+	}
+}

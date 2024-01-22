@@ -1,0 +1,44 @@
+@mixin tool\module\slideshowImage( $indicatorColor: rgba(127, 127, 127, .5), $indicatorActiveColor: rgba(127, 127, 127, 1), $indicatorSize: 1em ) {
+	max-width: 100%;
+
+	ul {
+		@include tool\list\toDiv;
+
+		li {
+			overflow: hidden;
+			width: 100%;
+
+			> .image {
+				img {
+					display: block;
+				}
+			}
+
+			> .description {
+				padding: 1em 0;
+			}
+
+			// Hide all but first
+			+ li {
+				display: none;
+			}
+		}
+	}
+
+	.cycle-pager {
+
+		text-align: center;
+		margin: $indicatorSize;
+
+		> span {
+			@include tool\geometry\circle( $indicatorColor, $indicatorSize );
+			@include transition( all $transitionLength );
+
+			// Active indicator
+			&:hover,
+			&.cycle-pager-active {
+				background: $indicatorActiveColor;
+			}
+		}
+	}
+}

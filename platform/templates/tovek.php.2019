@@ -1,0 +1,259 @@
+<?php
+
+//$oAuctionEngine = clRegistry::get( 'clAuctionEngine', PATH_MODULE . '/auction/models' );
+//echo '<pre>Test';
+//var_dump( $oAuctionEngine->updateHistory_in_AuctionBid( 345220 ) );
+//die;
+
+//if( !empty($_SERVER['HTTP_X_FORWARDED_FOR']) && $_SERVER['HTTP_X_FORWARDED_FOR'] == "213.88.134.199" ) {
+//	echo '<pre>';
+//	var_dump( SITEDEFCONMODE );
+//	var_dump( DEFCON_LEVEL );
+//	var_dump( get_defined_constants() );
+//	die;
+//}
+
+/**
+ * Central place bid init
+ */
+if( !empty($_POST['frmPlaceBid']) ) {
+	// Determ type
+	$_POST['bidType'] = isset($_POST['submitPost']) ? 'normal' : 'auto';
+
+	$oAuctionEngine = clRegistry::get( 'clAuctionEngine', PATH_MODULE . '/auction/models' );
+	$aResult = $oAuctionEngine->placeBid( $_POST );
+
+	if( $aResult['result'] == 'success' ) {
+		$oNotification->setSessionNotifications( array(
+			'dataSaved' => _( 'The data has been saved' )
+		) );
+	} else {
+		$iCount = 0;
+		foreach( $aResult['error'] as $sError ) {
+			$oNotification->setSessionNotifications( array(
+				'dataError' . $iCount => $sError
+			) );
+			$iCount++;
+		}
+	}
+
+	$oRouter->redirect( $oRouter->sPath );
+}
+
+/**
+ * Locales
+ */
+// $oLocales = clRegistry::get( 'clLocale' );
+// $sLocales = $oLocales->generateLocaleList( $GLOBALS['Locales'] );
+
+/**
+ * Footer and other info blocks
+ */
+$oInfoContent = clRegistry::get( 'clInfoContent', PATH_MODULE . '/infoContent/models' );
+$sFooter = (($aFooter = $oInfoContent->read('contentTextId', 30)) ? $aFooter[0]['contentTextId'] : null );
+$sJavascriptNotice = (($aJavascriptNotice = $oInfoContent->read('contentTextId', 48)) ? $aJavascriptNotice[0]['contentTextId'] : null );
+$sConnectionNotice = (($aConnectionNotice = $oInfoContent->read('contentTextId', 49)) ? $aConnectionNotice[0]['contentTextId'] : null );
+
+/**
+ * Google analytics UA code
+ */
+$oConfig = clRegistry::get( 'clConfig' );
+$sUAcode = (($aData = $oConfig->read('configValue', 'googleAnalyticsCode')) ? current(current( $aData )) : '');
+
+/**
+ * Cookie information
+ */
+$bCookie = (($aData = $oConfig->read('configValue', 'SITE_COOKIE')) ? current(current( $aData )) : '') == 'false' ? false : true;
+
+?><!DOCTYPE html>
+<html class="no-js" lang="<?php echo substr($GLOBALS['Locales'][ $_SESSION['langId'] ], 0, 2) ?>">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0" />
+
+	<!-- Sajt icons -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png" />
+	<link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32" />
+	<link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16" />
+	<link rel="manifest" href="/images/favicons/manifest.json" />
+	<link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+	<link rel="shortcut icon" href="/images/favicons/favicon.ico" />
+	<meta name="msapplication-config" content="/images/favicons/browserconfig.xml" />
+	<meta name="theme-color" content="#ffffff" />
+
+	<!-- Stylesheet -->
+	<link href="/css/index.php?include=templates/tovek/&ver=1" rel="stylesheet" />
+	<link href="/css/index.php?include=templates/tovek/print" rel="stylesheet" media="print" />
+
+	<!-- Common stylesheet for different versions of the site  -->
+	<link href="/css/index.php?include=templates/tovekCommon/&ver=2" rel="stylesheet" />
+
+	<!-- jQuery -->
+	<script src="/js/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/js/jquery/jquery-ui-1.12.1.min.js"></script>
+	<script src="/js/jquery.timer.js"></script>
+
+	<!-- Colorbox -->
+	<link href="/css/jquery.colorbox.css" rel="stylesheet" />
+	<script src="/js/jquery.colorbox2-min.js"></script>
+
+	<!-- JavaScripts -->
+	<script src="/js/modernizr.js"></script>
+	<script src="/js/templates/tovek/dynamic.config.js.php?ver=3"></script>
+	<script src="/js/templates/tovek/functions.js?ver=3"></script>
+	<script src="/js/templates/tovek/dynamic.js.php?ver=3"></script>
+	<script src="/js/templates/tovek/clock.js?ver=3"></script>
+	<script src="/js/templates/tovek/auction.js?ver=6"></script>
+
+	<!-- Shared js -->
+	<script src="/js/templates/tovekCommon/localization.js"></script>
+	<script src="/js/templates/tovekCommon/connectionChecker.js"></script>
+
+	<?php if( !empty($sUAcode) && SITE_RELEASE_MODE === true ) { ?><script>
+		// Google analytics
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', '<?php echo $sUAcode; ?>', 'auto');
+		ga('send', 'pageview');
+	</script><?php } ?>
+
+	<?php echo $sTop; ?>
+</head>
+<body ontouchstart=""<?php echo (!empty($oRouter->sCurrentLayoutBodyClass) ? ' class="' . $oRouter->sCurrentLayoutBodyClass . '"' : ''); ?>>
+	<div id="wrapper">
+		<header>
+			<div class="container">
+				<div id="logo">
+					<a href="/">
+						<img src="/images/templates/tovek/img-logo.png" alt="logo" class="block" />
+					</a>
+				</div>
+				<nav data-title="<?php echo _( 'Menu' ); ?>">
+					<input type="checkbox" name="btnBurger" id="btnBurger" />
+					<label for="btnBurger" class="btnBurger"><span></span></label>
+					<div class="container">
+						<div class="panel">
+							<?php
+								echo $oLayout->renderView( 'user/panel.php' );
+							?>
+						</div>
+						<?php
+							$GLOBALS['viewParams']['navigation']['list.php']['groupKey'] = 'guest';
+							echo $oLayout->renderView( 'navigation/list.php' );
+						?>
+					</div>
+				</nav>
+				<div class="panel">
+					<?php
+						echo $oLayout->renderView( 'user/panel.php' );
+					?>
+				</div>
+			</div>
+			<?php
+				echo $oLayout->renderView( 'user/guestFormLogin.php' );
+			?>
+		</header>
+		<section id="userbar">
+				<?php
+					echo $oLayout->renderView( 'navigation/listCrumbs.php' );
+					echo $oLayout->renderView( 'user/userInfo.php' );
+				?>
+		</section>
+		<section id="notificationRow" class="notificationBar">
+		</section>
+		<section id="newsRow" class="newsBar">
+			<?php
+				echo $oLayout->renderView( 'puff/listNotification.php' );
+			?>
+		</section>
+		<section id="layoutBlocks">
+			<?php
+				echo $oLayout->renderView( 'puff/list.php' );
+			?>
+		</section>
+		<section id="layoutContainer">
+			<?php
+				// Layout with content
+				echo $sContent;
+			?>
+		</section>
+		<footer>
+			<div class="container top">
+				<div class="container">
+					<div class="autoscrollSelection">
+						<input type="checkbox" name="autoscroll" id="autoscroll" />
+						<label for="autoscroll"><span></span><?php echo _( 'Load more automatically' ); ?></label>
+					</div>
+					<?php
+						$GLOBALS['viewParams']['navigation']['list.php']['groupKey'] = 'bottombar';
+						echo $oLayout->renderView( 'navigation/listCustom.php' );
+					?>
+				</div>
+			</div>
+			<div class="container bottom">
+				<div class="container">
+					<?php
+						$GLOBALS['viewParams']['navigation']['list.php']['groupKey'] = 'bottombar';
+						echo $oLayout->renderView( 'navigation/listCustom.php' );
+					?>
+					<?php
+						if( $sFooter !== null) echo $sFooter;
+					?>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<div id="bottomNotification">
+		<div id="javascriptNotice" class="warning"><?php echo $sJavascriptNotice; ?></div>
+		<div id="connectionNotice" class="warning"><?php echo $sConnectionNotice; ?></div>
+		<?php
+			if( $bCookie === true ) echo $oLayout->renderView( 'cookie/showNotification.php' );
+		?>
+	</div>
+
+	<?php echo $sBottom; ?>
+
+	<!-- Update services -->
+	<script>
+		if( (Modernizr.websockets) && (<?php echo ( SERVICE_WEBSOCKET_ENABLED ? 'true' : 'false'); ?>) ) {
+			/* WebSocket is supported and enabled. You can proceed with your code */
+			$.getScript( "/js/services/wsPushService.js", function() {
+				// Loaded
+			} );
+		} else {
+			/* WebSocket is not supported or disabled. You can proceed with your code */
+			$.getScript( "/js/services/ajaxPullService.js", function() {
+				// Loaded
+			} );
+		}
+	</script>
+
+	<!-- ImBox -->
+	<script type="text/javascript">
+		var _sid = '1634';
+	  (function() {
+	    var se = document.createElement('script'); se.type = 'text/javascript'; se.async = true;
+	    se.src = 'https://files.imbox.io/app/dist/initWidget.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(se, s);
+	  })();
+
+		// Extra script for opening FAQ
+		$( document ).on( "click", ".openImboxFaq", function(ev) {
+				ev.preventDefault();
+			_imbox.push( ['openFAQ'] );
+		} );
+		$( document ).on( "click", ".openImboxForm", function(ev) {
+				ev.preventDefault();
+			_imbox.push( ['openForm'] );
+		} );
+	</script>
+	<!-- //ImBox Script -->
+
+	<script src="/js/templates/tovek/scripts.js?ver=2"></script>
+</body>
+</html>

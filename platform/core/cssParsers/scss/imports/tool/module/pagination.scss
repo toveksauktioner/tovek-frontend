@@ -1,0 +1,66 @@
+@mixin tool\module\pagination( $brightMode: true ) {
+
+	@if $brightMode {
+		$borderColor: rgba( 255, 255, 255, .5 );
+		$borderHoverColor: rgba( 255, 255, 255, 1 );
+		$fontColor: rgba( 0, 0, 0, .5 );
+		$fontHoverColor: rgba( 0, 0, 0, 1 );
+		$backgroundColor: rgba( 255, 255, 255, .75 );
+		$backgroundHoverColor: rgba( 255, 255, 255, 1 );
+	}
+	@else {
+		$borderColor: rgba( 0, 0, 0, .5 );
+		$borderHoverColor: rgba( 0, 0, 0, 1 );
+		$fontColor: rgba( 255, 255, 255, .5 );
+		$fontHoverColor: rgba( 255, 255, 255, 1 );
+		$backgroundColor: rgba( 0, 0, 0, .75 );
+		$backgroundHoverColor: rgba( 0, 0, 0, 1 );
+	}
+
+	margin: $baseSpace 0;
+
+	.paginationList {
+		@include tool\list\toDiv;
+		display: inline-block;
+		overflow: hidden;
+		font-size: .8em;
+
+		background: red;
+		display:none;
+		li {
+			float: left;
+			margin-right: $baseSpaceMini;
+
+			a {
+
+				display: block;
+				border: solid 1px $borderColor;
+				border-radius: $borderRadius;
+				color: $fontColor;
+				padding: $baseSpaceSmall;
+				background: $backgroundColor;
+			}
+
+			&:hover,
+			&.active {
+				a {
+					border-color: $borderHoverColor;
+					color: $fontHoverColor;
+					background: $backgroundHoverColor;
+				}
+			}
+
+			&.active,
+			&.previous-off,
+			&.next-off
+			&.next,
+			&.previous {
+				font-weight: bold;
+			}
+		}
+	}
+
+	.entriesTotal {
+		font-size: .8em;
+	}
+}

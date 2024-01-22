@@ -1,0 +1,71 @@
+@import "argonova";
+@import "../templates/aroma/bootstrap";
+
+.view.productSaleStatistics.show {    
+    .tools {
+        .tool {
+            form.inline {
+                .field {
+                    label,
+                    .select {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+    
+    section:not(.tools) {
+        @include clearfix;
+        
+        .col.left {
+            float: left;
+            width: 62%;
+        }
+        .col.right {
+            float: right;
+            width: 34%;
+        }
+        
+        .toplists {
+            clear: both;
+            padding-top: 3em;
+            
+            .list {
+                display: inline-block;
+                width: 32.5%;
+                margin: 0 .3%;
+            }
+        }
+        
+        .dataTable {
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            box-shadow: 0 .1em .2em rgba(0, 0, 0, 0.08);
+            th:first-child,
+            td:first-child {
+                padding-left: 1em;
+            }
+            thead {
+                tr {
+                    background: #ffffff;
+                    th {
+                        line-height: 2em;
+                    }
+                }
+            }            
+            tbody {
+                tr {
+                    background: #f2f2f2;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+

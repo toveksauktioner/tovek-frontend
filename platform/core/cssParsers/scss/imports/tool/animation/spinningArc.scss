@@ -1,0 +1,5 @@
+@mixin tool\animation\spinningArc( $length: 1s, $borderWidth: 1em, $color: #000, $spacing: .5em, $top: true, $bottom: true, $right: false, $left: false ) {
+	@include tool\geometry\arc( $borderWidth: $borderWidth, $color: $color, $spacing: $spacing, $top: $top, $bottom: $bottom, $right: $right, $left: $left );
+	@include animation( rotate $length infinite linear );
+	$includeAtRoot_ToolAnimationRoot: true;
+}

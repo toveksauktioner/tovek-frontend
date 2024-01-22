@@ -1,0 +1,67 @@
+/**
+ * Fallback colors
+ * - tiptool: http://colorhunt.co/
+ */
+$primary-color: #34374c !global;    // Primary color (color)             - Menu background, CTA, product toplist, credits, buttons
+$secondary-color: #2c2e3e !global;  // Hard tinted/shaded color (color)  - Footer, dropdown menu
+$accent-color: #ee2b47 !global;     // Complementary color (color)       - Link color, Link hover color
+$aside-color: #f6f6f6 !global;      // Optional color (color)            - Table row background, fallback footer contact form color, customer account form
+
+@mixin themes() {
+    @if $current_theme == "default" {       // Name of theme
+        $primary-color: #ffffff !global;    // Primary color (color)
+        $secondary-color: #cccccc !global;  // Hard tinted/shaded color (color)
+        $accent-color: #37939b !global;     // Complementary color (color)
+        $aside-color: #fafafa !global;      // Optional color (color)
+    }
+    
+    @if $current_theme == "olympia"{        // Name of theme
+        $primary-color: #34374c !global;    // Primary color (color)
+        $secondary-color: #2c2e3e !global;  // Hard tinted/shaded color (color)
+        $accent-color: #ee2b47 !global;     // Complementary color (color)
+        $aside-color: #f6f6f6 !global;      // Optional color (color)
+    }
+
+    @if $current_theme == "palett" {        // Name of theme
+        $primary-color: #ffffff !global;    // Primary color (color)
+        $secondary-color: #cccccc !global;  // Hard tinted/shaded color (color)
+        $accent-color: #37939b !global;     // Complementary color (color)
+        $aside-color: #fafafa !global;      // Optional color (color)
+    }
+}
+
+@mixin primary-color() {
+    background: $primary-color;
+    @if( lightness($primary-color) < 50 ) {
+        color: lighten( $primary-color, 100% )
+    } @else {
+        color: darken( $primary-color, 100% )
+    }
+}
+
+@mixin secondary-color() {
+    background: $secondary-color;
+    @if( lightness($secondary-color) < 50 ) {
+        color: lighten( $secondary-color, 100% )
+    } @else {
+        color: darken( $secondary-color, 100% )
+    }
+}
+
+@mixin accent-color() {
+    background: $accent-color;
+    @if( lightness($accent-color) < 50 ) {
+        color: lighten( $accent-color, 100% )
+    } @else {
+        color: darken( $accent-color, 100% )
+    }
+}
+
+@mixin aside-color() {
+    background: $aside-color;
+    @if( lightness($aside-color) < 50 ) {
+        color: lighten( $aside-color, 100% )
+    } @else {
+        color: darken( $aside-color, 100% )
+    }
+}

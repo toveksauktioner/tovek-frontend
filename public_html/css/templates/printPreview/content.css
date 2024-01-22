@@ -1,0 +1,229 @@
+/* Content ------------------------------------------------------------------ */
+.section {
+	margin-bottom:20px;
+}
+
+/* Column */
+.col			{ float:left; overflow:hidden; margin:0; }
+.colFirst       { margin-left:0; }
+.colLast        { margin-right:0; }
+
+.colTwo         { width:50%; }
+.colThree       { width:33%; }
+.colFour        { width:25%; }
+
+.col				{ float:left; overflow:hidden; margin:0; }
+.col-first          { margin-left:0; }
+.col-last           { margin-right:0; }
+.col-two            { width:50%; }
+.col-three          { width:33%; }
+.col-four           { width:25%; }
+
+.mceEditor tr:hover td { background:none; }
+
+/* Hide items that should not be printed */
+.no-print {
+	display: none;
+}
+
+
+/* Icons */
+.icon						{ display:inline-block; background:no-repeat 0 50%; vertical-align:text-top; outline:none; overflow:hidden; text-indent:-999em; width:16px; min-height:16px; margin-right: 5px;}
+.iconText					{ text-indent:18px; width:auto; }
+a.iconText:hover				{ text-decoration: underline; }
+/* A */
+.iconAdd					{ background-image:url('/images/icons/add.png'); }
+.iconAccept					{ background-image:url('/images/icons/accept.png'); }
+.iconAcrobat				{ background-image:url('/images/icons/page_white_acrobat.png'); }
+/* B */
+.iconBullet					{ background-image:url('/images/icons/bullet_black.png'); }
+/* C */
+.iconCancel					{ background-image:url('/images/icons/cancel.png'); }
+.iconCalendar				{ background-image:url('/images/icons/calendar.png'); }
+.iconCalendarAdd			{ background-image:url('/images/icons/calendar_add.png'); }
+.iconCalendarDelete			{ background-image:url('/images/icons/calendar_delete.png'); }
+.iconCalendarEdit			{ background-image:url('/images/icons/calendar_edit.png'); }
+.iconCalendarLink			{ background-image:url('/images/icons/calendar_link.png'); }
+.iconCalendarViewDay		{ background-image:url('/images/icons/calendar_view_day.png'); }
+.iconCalendarViewMonth		{ background-image:url('/images/icons/calendar_view_month.png'); }
+.iconCalendarViewWeek		{ background-image:url('/images/icons/calendar_view_week.png'); }
+.iconCss					{ background-image:url('/images/icons/css.png'); }
+.iconCopy					{ background-image:url('/images/icons/copy.png'); }
+/* D */
+.iconDelete					{ background-image:url('/images/icons/delete.png'); }
+.iconDbImport				{ background-image:url('/images/icons/dbImport.gif'); }
+.iconDown					{ background-image:url('/images/icons/arrowDown.gif'); }
+/* E */
+.iconEdit					{ background-image:url('/images/icons/edit.png'); }
+.iconEmail					{ background-image:url('/images/icons/email.png'); }
+.iconEmailAdd				{ background-image:url('/images/icons/email_add.png'); }
+.iconEmailAttach			{ background-image:url('/images/icons/email_attach.png'); }
+.iconEmailDelete			{ background-image:url('/images/icons/email_delete.png'); }
+.iconEmailEdit				{ background-image:url('/images/icons/email_edit.png'); }
+.iconEmailError				{ background-image:url('/images/icons/email_error.png'); }
+.iconEmailGo				{ background-image:url('/images/icons/email_go.png'); }
+.iconEmailLink				{ background-image:url('/images/icons/email_link.png'); }
+.iconEmailOpen				{ background-image:url('/images/icons/email_open.png'); }
+.iconEmailOpenImage			{ background-image:url('/images/icons/email_open_image.png'); }
+.iconError					{ background-image:url('/images/icons/error.png'); }
+.iconExit					{ background-image:url('/images/icons/exit.png'); }
+.iconExclamation			{ background-image:url('/images/icons/exclamation.png'); }
+/* G */
+.iconGoBack					{ background-image:url('/images/icons/arrow_turn_left.png'); }
+/* H */
+.iconHtml					{ background-image:url('/images/icons/html.png'); }
+/* I */
+.iconImage					{ background-image:url('/images/icons/image.png'); }
+.iconInfo					{ background-image:url('/images/icons/information.png'); }
+/* L */
+.iconLink					{ background-image:url('/images/icons/link.png'); }
+.iconLinkAdd				{ background-image:url('/images/icons/link_add.png'); }
+.iconLinkBreak				{ background-image:url('/images/icons/link_break.png'); }
+.iconLock					{ background-image:url('/images/icons/lock.png'); }
+/* M */
+.iconMap					{ background-image:url('/images/icons/map.png'); }
+.iconMapAdd					{ background-image:url('/images/icons/map_add.png'); }
+.iconMapDelete				{ background-image:url('/images/icons/map_delete.png'); }
+.iconMapEdit				{ background-image:url('/images/icons/map_edit.png'); }
+.iconMapGo					{ background-image:url('/images/icons/map_go.png'); }
+.iconMapMagnify				{ background-image:url('/images/icons/map_magnify.png'); }
+/* N */
+.iconNext					{ background-image:url('/images/icons/next.png'); }
+/* O */
+.iconOk						{ background-image:url('/images/icons/ok.png'); }
+.iconOverlays				{ background-image:url('/images/icons/overlays.png'); }
+/* P */
+.iconPackageLink			{ background-image:url('/images/icons/package_link.png'); }
+.iconPdf					{ background-image:url('/images/icons/pdf.png'); }
+.iconPrint					{ background-image:url('/images/icons/printer.png'); }
+.iconPrinter				{ background-image:url('/images/icons/printer.png'); }
+.iconPrevious				{ background-image:url('/images/icons/previous.png'); }
+/* R */
+.iconRelation				{ background-image:url('/images/icons/relation.png'); }
+/* S */
+.iconStar					{ background-image:url('/images/icons/star.png'); }
+/* T */
+.iconTable					{ background-image:url('/images/icons/table.png'); }
+.iconTableLink				{ background-image:url('/images/icons/tableLink.png'); }
+.iconThumbnail				{ background-image:url('/images/icons/thumbnail.png'); }
+/* U */
+.iconUser					{ background-image:url('/images/icons/user.png'); }
+.iconUserAdd				{ background-image:url('/images/icons/user_add.png'); }
+.iconUserComment			{ background-image:url('/images/icons/user_comment.png'); }
+.iconUp						{ background-image:url('/images/icons/arrowUp.gif'); }
+
+/* Inline searchform */
+.searchForm									{ margin-bottom:10px; }
+.searchForm .field							{ float:left; margin-right:10px; }
+.searchForm .field label					{ display:inline; vertical-align: middle; }
+.searchForm fieldset.multiple				{ float: left; margin-right: 10px; padding: 0; width:400px; position: relative; }
+.searchForm fieldset.multiple legend		{ }
+.searchForm fieldset.multiple legend span 	{ }
+.searchForm fieldset.multiple .field		{ clear: none !important; float: left !important; margin-top: 5px; }
+.searchForm fieldset.multiple .field label 	{ vertical-align: top; }
+.searchForm fieldset.multiple .field input 	{ }
+.searchForm p.buttons						{ width:auto; clear:none; float: left; margin: 0; }
+
+/* Tree list */
+.treeList,
+.treeList ul 				{ margin:0; }
+
+/* Form in table */
+.inTable .field				{ position:relative; }
+.inTable .field label		{ position:absolute; top:-1.5em; left:0; width:100%; text-indent:-999em; }
+.inTable .field input,
+.inTable .field select		{ width:95%; }
+
+/* Pagination */
+ul.paginationList			{ border:0; margin:10px 0; padding:0; display:block; clear: both; padding-top: 25px; }
+
+ul.paginationList li		{ border:0; margin:0; padding:0; font-size:11px; list-style:none; float:left; }
+ul.paginationList a			{ border:solid 1px #d2d1d0; margin-right:2px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+ul.paginationList .previous-off,
+ul.paginationList .next-off { color:#666666; display:block; float:left;	font-weight:bold; padding:3px 4px; }
+ul.paginationList .next a,
+ul.paginationList .previous a		{ font-weight:bold; }
+ul.paginationList li.first a,
+ul.paginationList li.last a		{ padding: 2px 4px 3px 4px; }
+ul.paginationList li.active a		{ color:#333; font-weight:bold;	display:block; float:left; padding:3px 6px; }
+ul.paginationList a:link,
+ul.paginationList a:visited 		{ color:#999; display:block; float:left; padding:3px 6px; text-decoration:none; }
+ul.paginationList a:hover			{ border:solid 1px #d2d1d0; color:#000; }
+.entriesTotal						{ clear:both; color:#808080; }
+
+/* Definition lists */
+dl.marginal					{ overflow:hidden; }
+dl.marginal dt				{ width:10em; display: block; float: left; clear: both; }
+dl.marginal dd				{ }
+dl.marginal dd:after 		{ content: "."; visibility: hidden; clear: left; }
+
+textarea.editor		{ height:20em; }
+
+/* Notifications */
+ul.notification		{ padding:5px; list-style: none; }
+	li.notification {
+		color: #000;
+		background: #dedede;
+		border: 1px solid #000;
+		background-image:url('/images/icons/bullet_black.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+	li.notification.dataSaved,
+	li.notification.dataDeleted {
+		color: #4F8A10;
+		background-color: #DFF2BF;
+		background-image:url('/images/icons/ok.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #4F8A10;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+	li.notification.dataError {
+		color: #8a0f0f;
+		background-color: #fccac3;
+		background-image:url('/images/icons/exclamation.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #e02727;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+	li.notification.dataInformation {
+		color: #00529B;
+		background-color: #BDE5F8;
+		background-image:url('/images/icons/information.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #00529B;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+	li.notification.dataWarning {
+		color: #9F6000;
+		background-color: #FEEFB3;
+		background-image:url('/images/icons/error.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #9F6000;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+
+/* clOutputHtmlForm errors */
+div.result.error 				{ border: 1px solid; margin: 10px 0px; padding: 15px 10px 15px 50px; background-repeat: no-repeat; background-position: 10px center; color: #D8000C; background-color: #FFBABA; background-image:url('/images/icons/exclamation.png'); }
+
+#infoContentAdd input.text {width:100% !important;}
+#infoContentAdd .editor{display:block;width:100% !important;padding:0;height:600px !important;}
+
+/* Transition */
+.transitionAll {
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}

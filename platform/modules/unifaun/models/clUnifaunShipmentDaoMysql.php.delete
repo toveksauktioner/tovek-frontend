@@ -1,0 +1,154 @@
+<?php
+
+require_once PATH_CORE . '/clDaoBaseSql.php';
+
+class clUnifaunShipmentDaoMysql extends clDaoBaseSql {
+
+	public function __construct() {
+		$this->aDataDict = array(
+			'entUnifaunShipment' => array(
+				'shipmentId' => array(
+					'type' => 'integer',
+					'autoincrement' => true,
+					'index' => true,
+					'title' => _( 'ID' )
+				),				
+				'shipmentOrderId' => array(
+					'type' => 'string',
+					'index' => true,
+					'title' => _( 'Order ID' )
+				),
+				'shipmentUrl' => array(
+					'type' => 'string',
+					'title' => _( 'URL' )
+				),
+				'shipmentPdfUrl' => array(
+					'type' => 'string',
+					'title' => _( 'PDF URL' )
+				),
+				'shipmentUnifaunId' => array(
+					'type' => 'integer',
+					'title' => _( 'URL' )
+				),
+				'shipmentStatus' => array(
+					'type' => 'string',
+					'title' => _( 'Status' )
+				),
+				'shipmentNumber' => array(
+					'type' => 'integer',
+					'title' => _( 'Shipment number' )
+				),
+				'shipmentReference' => array(
+					'type' => 'string',
+					'title' => _( 'reference' )
+				),
+				'shipmentServiceId' => array(
+					'type' => 'string',
+					'title' => _( 'Service ID' )
+				),
+				'shipmentParcelCount' => array(
+					'type' => 'integer',
+					'title' => _( 'Parcel count' )
+				),			
+				'shipmentSndName' => array(
+					'type' => 'string',
+					'title' => _( 'Snd name' )
+				),
+				'shipmentSndZipcode' => array(
+					'type' => 'string',
+					'title' => _( 'Snd zipcode' )
+				),
+				'shipmentSndCity' => array(
+					'type' => 'string',
+					'title' => _( 'Snd city' )
+				),
+				'shipmentSndCountry' => array(
+					'type' => 'string',
+					'title' => _( 'Snd country' )
+				),
+				'shipmentRcvName' => array(
+					'type' => 'string',
+					'title' => _( 'Rcv name' )
+				),
+				'shipmentRcvZipcode' => array(
+					'type' => 'string',
+					'title' => _( 'Rcv zipcode' )
+				),
+				'shipmentRcvCity' => array(
+					'type' => 'string',
+					'title' => _( 'Rcv city' )
+				),
+				'shipmentRcvCountry' => array(
+					'type' => 'string',
+					'title' => _( 'Rcv country' )
+				),
+				'shipmentShipDate' => array(
+					'type' => 'string',
+					'title' => _( 'Shipping date' )
+				),
+				'shipmentReturnShipment' => array(
+					'type' => 'string',
+					'title' => _( 'Return shipment' )
+				),
+				'shipmentNormalShipment' => array(
+					'type' => 'string',
+					'title' => _( 'Normal shipment' )
+				),
+				'shipmentConsolidated' => array(
+					'type' => 'string',
+					'title' => _( 'Consolidated' )
+				),			
+				// Misc
+				'shipmentCreated' => array(
+					'type' => 'datetime',
+					'title' => _( 'Created' )
+				),
+				'shipmentChanged' => array(
+					'type' => 'datetime',
+					'title' => _( 'Changed' )
+				)
+			)
+		);
+		
+		$this->sPrimaryField = 'shipmentId';
+		$this->sPrimaryEntity = 'entUnifaunShipment';
+		$this->aFieldsDefault = '*';
+
+		$this->init();
+	}
+	
+	public function read( $aParams = array() ) {
+		$aParams += array(
+			'fields' => $this->aFieldsDefault,
+			'shipmentId' => null,
+			'orderId' => null
+		);
+		
+		$aDaoParams = array(
+			'fields' => $aParams['fields']
+		);
+		
+		$aCriterias = array();
+		
+		if( $aParams['shipmentId'] !== null ) {
+			if( is_array($aParams['shipmentId']) ) {
+				$aCriterias[] = 'shipmentId IN(' . implode( ', ', array_map('intval', $aParams['shipmentId']) ) . ')';
+			} else {
+				$aCriterias[] = 'shipmentId = ' . (int) $aParams['shipmentId'];
+			}
+		}
+		
+		if( $aParams['orderId'] !== null ) {
+			if( is_array($aParams['orderId']) ) {
+				$aCriterias[] = 'shipmentOrderId IN(' . implode( ', ', array_map('intval', $aParams['orderId']) ) . ')';
+			} else {
+				$aCriterias[] = 'shipmentOrderId = ' . (int) $aParams['orderId'];
+			}
+		}
+		
+		if( !empty($aCriterias) ) $aDaoParams['criterias'] = implode( ' AND ', $aCriterias );
+		
+		return parent::readData( $aDaoParams );
+	}
+	
+}

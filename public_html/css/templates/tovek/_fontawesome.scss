@@ -1,0 +1,23 @@
+
+// Dependencies
+@import './library/fontAwesome/scss/fontawesome.scss';
+@import './library/fontAwesome/scss/solid.scss';
+@import './library/fontAwesome/scss/regular.scss';
+
+@mixin fontIcon($icon, $position : before) {
+	&::#{$position} {
+    @extend %fa-icon;
+    @extend .fas;
+    content: fa-content($icon);
+		@content;
+	}
+}
+
+@mixin fontIconRegular($icon, $position : before) {
+	&::#{$position} {
+    @extend %fa-icon;
+    @extend .far;
+    content: fa-content($icon);
+		@content;
+	}
+}

@@ -1,0 +1,216 @@
+#wrapper {
+	> header {
+		background: $headerBackgroundColor;
+		box-shadow: 0 .5em .5em rgba(0,0,0,.1);
+		margin-bottom: $sizeSpace;
+
+		.controls,
+		.logo {
+			font-size: 2em;
+		}
+
+		.container {
+			@include clearfix;
+			padding: $sizeSpace;
+			position: relative;
+		}
+
+		.controls {
+			@include clearfix;
+			color: $headerLinkColor;
+			font-weight: 300;
+
+			li {
+				display: block;
+				float: left;
+
+				&:hover {
+					color: $headerLinkHighlight;
+				}
+
+				a {
+					color: inherit;
+					&::before {
+						display: inline-block;
+						vertical-align: middle;
+					}
+				}
+
+				+ li {
+					margin-left: $reverseGoldenRatio;
+				}
+
+				&.seo a {
+					@include fontIcon( $fa-var-exclamation-triangle, before ) {
+						margin-left: 0;
+					}
+				}
+
+				&.frontEnd a {
+					@include fontIcon( $fa-var-play-circle, before ) {
+						margin-left: 0;
+					}
+				}
+
+				&.language {
+					position: relative;
+					a {
+						@include fontIcon( $fa-var-globe, before ) {
+							margin-left: 0;
+						}
+					}
+
+					#languageSelect {
+						@include dialog( $position: top-left );
+						font-size: 1rem;
+					}
+				}
+
+				&.logOut a {
+					@include fontIcon( $fa-var-sign-out-alt, before );
+				}
+
+				&.settings a {
+					@include fontIcon( $fa-var-cog, before );
+				}
+
+				&.username {
+					a {
+						@include fontIcon( $fa-var-user, before );
+					}
+
+					.greeting {
+						display: none;
+					}
+				}
+
+				a,
+				label {
+					> span {
+						display: none; // Hide top span (link text) on small screen. Top span should just act as a text node selector. This will be replaced with icons a little further down below
+					}
+				}
+			}
+
+			ul {
+				&.edit {
+					float: left;
+				}
+
+				&.generic {
+					float: right;
+					margin-left: 1em;
+				}
+			}
+		}
+
+		.help {
+			background: $headerHelpBackgroundColor;
+			position: absolute;
+			top: 100%;
+			right: 0;
+			width: 100%;
+			box-shadow: 0 .2em .2em rgba(0,0,0,.2);
+			text-align: center;
+
+			ul {
+				li {
+					display: block;
+					float: left;
+					position: relative;
+
+					> a,
+					> label {
+						padding: 0.1em 1em;
+						display: block;
+						color: textColor( $type: secondary, $mode: $headerHelpTextMode );
+						font-size: .75em;
+						font-weight: normal;
+
+						&:hover {
+							color: textColor( $mode: $headerHelpTextMode );
+						}
+					}
+				}
+			}
+
+			#navigationSelect {
+				@include dialog( $position: top-right );
+				display: none;
+				text-align: left;
+			}
+		}
+
+		.logo {
+			display: none;
+		}
+
+		@include minScreen( 400px ) {
+			@include clearfix;
+
+			.controls {
+				float: right;
+
+				ul {
+					&.edit {
+						float: left;
+					}
+
+					&.generic {
+						float: right;
+					}
+				}
+			}
+
+			.logo {
+				padding-right: 1em;
+				float: left;
+				display: block;
+				max-width: 60%;
+				img {
+					max-height: 1em;
+				}
+			}
+		}
+
+		@include minScreen( 650px ) {
+			margin-bottom: 0;
+
+			.controls {
+				font-size: $goldenRatio;
+				.edit {
+					a,
+					label {
+						font-size: 1em;
+						> span {
+							display: inline; // Hide top span (link text) on small screen. Top span should just act as a text node selector. This will be replaced with icons a little further down below
+							margin-left: $reverseGoldenRatio;
+							font-size: $reverseGoldenRatio;
+						}
+					}
+				}
+			}
+
+			.help {
+				right: $sizeSpace;
+				width: auto;
+			}
+		}
+
+		@include minScreen( 850px ) {
+			.controls {
+				ul {
+					a,
+					label {
+						font-size: 1em;
+						> span {
+							display: inline; // Hide top span (link text) on small screen. Top span should just act as a text node selector. This will be replaced with icons a little further down below
+							margin-left: $reverseGoldenRatio;
+							font-size: $reverseGoldenRatio;
+						}
+					}
+				}
+			}
+		}
+	}
+}

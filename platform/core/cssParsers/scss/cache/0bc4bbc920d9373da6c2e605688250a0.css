@@ -1,0 +1,7 @@
+/* compiled by scssphp v0.7.5 on Fri, 09 Dec 2022 13:35:26 +0100 (0.0046s) */
+
+.view.auction.tableEdit section .pagination { margin: 0.5em 0 }
+.view.auction.tableEdit section .dataTable thead tr th.auctionId { width: 4em }
+.view.auction.tableEdit section .dataTable thead tr th.auctionType { width: 5em }
+.view.auction.tableEdit section .dataTable thead tr th.auctionStatus { width: 9em }
+.view.auction.tableEdit section .dataTable thead tr th.controls { width: 16em }

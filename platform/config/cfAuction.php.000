@@ -1,0 +1,239 @@
+<?php
+
+require_once PATH_FUNCTION . '/fTime.php';
+
+define( 'AUCTION_DEFAULT_MODE', 'normal' );
+//define( 'AUCTION_PART_SEPARATING_SUM', '20' );  Obsolete. Preserved for backup reasons.
+
+/**
+ * Send auction result to following cell phone numbers:
+ */
+$GLOBALS['auctionResultSms'] = array(
+	'0046703760521',	# Martin
+	'0046703760522',	# Björn
+	//'0046730860481',	# Mikael
+	//'0046708971959'	# Markus
+);
+/** Send auction result to following users if they are connected to the auction: */
+$GLOBALS['auctionResultPartnersToSms'] = array(
+	'andrey',
+  'jacken',
+  'elegant',
+  'Nikon 100',
+  'Havak',
+  'argoPartner'
+);
+
+$GLOBALS['auctionEngineModes'] = array(
+	'normal',
+	'debug',
+	'maintenance'
+);
+
+$GLOBALS['auctionBidStairTariff'] = array(
+	'0' => array(
+		'min' => 1,
+		'max' => 500
+	),
+	'100' => array(
+		'min' => 50,
+		'max' => 1000
+	),
+	'1000' => array(
+		'min' => 100,
+		'max' => 5000
+	),
+	'5000' => array(
+		'min' => 200,
+		'max' => 10000
+	),
+	'10000' => array(
+		'min' => 500,
+		'max' => 50000
+	),
+	'21000' => array(
+		'min' => 1000,
+		'max' => 100000
+	),
+	'200000' => array(
+		'min' => 5000,
+		'max' => 100000
+	),
+	'500000' => array(
+		'min' => 10000,
+		'max' => 500000
+	),
+	'1000000' => array(
+		'min' => 50000,
+		'max' => 2000000
+	)
+);
+
+// A correlation table between the startprice and the fee value (when the feeType is SEK)
+$GLOBALS['auctionImportItemFeeTariff'] = array(
+	'0' => 50,
+	'200' => 100,
+	'500' => 200,
+	'1000' => 350,
+	'3000' => 450,
+	'5000' => 550,
+	'10000' => 850,
+	'20000' => 1250,
+	'25000' => 1750,
+	'30000' => 3000,
+	'40000' => 3500,
+	'50000' => 4500,
+	'75000' => 6000,
+	'100000' => 8000,
+  '200000' => 10000,
+  '500000' => 15000,
+  '750000' => 20000,
+  '1000000' => 25000
+);
+
+// The following is an exclusion from normal tarif on auctions published
+// in the gap between the change.
+// This can be deleted fully after 2019-01-28 when the last of theese auctions has ended
+$GLOBALS['pre2019RunningAuctions'] = array(
+	2012,
+	2017,
+	2018,
+	2020,
+	2021,
+	2026,
+	2027,
+	2028,
+	2032,
+	2033
+);
+$GLOBALS['auctionImportItemFeeTariff']['pre2019'] = array(
+	'0' => 50,
+	'200' => 100,
+	'500' => 200,
+	'1000' => 300,
+	'3000' => 400,
+	'5000' => 500,
+	'10000' => 800,
+	'20000' => 1000,
+	'30000' => 1500,
+	'40000' => 2500,
+	'50000' => 4000,
+	'75000' => 5000,
+	'100000' => 6000,
+  '200000' => 8000,
+  '500000' => 10000,
+  '750000' => 12500,
+  '1000000' => 15000
+);
+// End of temporary tarif exclusion
+
+$GLOBALS['entAuctionToRoute'] = array(
+	'entAuctionToRoute' => array(
+		'relationId' => array(
+			'type' => 'integer',
+			'primary' => true,
+			'autoincrement' => true,
+			'title' => _( 'Relation ID' )
+		),
+		'parentId' => array(
+			'type' => 'integer',
+			'index' => true
+		),
+		'parentType' => array(
+			'type' => 'array',
+			'values' => array(
+				'auction' => _( 'Auction' ),
+				'auctionPart' => _( 'Auction part' ),
+				'auctionItem' => _( 'Auction item' ),
+				'auctionTag' => _( 'Auction tag' )
+			)
+		),
+		'routeId' => array(
+			'type' => 'integer',
+			'index' => true
+		)
+	)
+);
+
+function convertTime( $sTime, $iItemId, $sDisplayType = 'list' ) {
+	$sReturn = '';
+	$sWrapperClass = 'date';
+	$iEndTime = strtotime( $sTime );
+
+	// Time passed
+	if( $iEndTime <= strtotime(date('Y-m-d H:i:s')) ) {
+		$sReturn = '<span data-display-type="' . $sDisplayType . '">' . _( 'Ended item' ) . '</span>';
+		$sWrapperClass = 'ended';
+	}
+
+	// Less then a hour
+	if( empty($sReturn) && 3600 > (strtotime( $sTime ) - strtotime( date('Y-m-d H:i:s') )) ) {
+		$iTimeLeft = (strtotime( $sTime ) - strtotime( date('Y-m-d H:i:s') )) . '000';
+
+		// Less then a hour
+		$sReturn = '<span
+					class="itemTimer"
+					data-item-id="' . $iItemId . '"
+					data-time-left="' . $iTimeLeft . '"
+					data-display-type="' . $sDisplayType . '"></span>';
+
+		$sWrapperClass = 'clock';
+	}
+
+	// Today
+	if( empty($sReturn) && date('n-j', $iEndTime) == date('n-j', time()) ) {
+		$sReturn = '<span data-display-type="' . $sDisplayType . '">' . _( 'Today' ) . ' ' . date( "H:i", $iEndTime ) . '</span>';
+	}
+
+	// Tomorrow
+	if( empty($sReturn) && date('n-j', $iEndTime) == date('n-j', time() + 86400) ) {
+		$sReturn = '<span data-display-type="' . $sDisplayType . '">' . _( 'tomorrow' ) . ' ' . date( "H:i", $iEndTime ) . '</span>';
+	}
+
+	// More than two day's a head
+	if( empty($sReturn) ) {
+		$sReturn = '<span data-display-type="' . $sDisplayType . '">' . formatIntlDate( "d MMM HH:mm", $iEndTime ) . '</span>';
+	}
+
+	return '<div class="endTime itemTimeWrapper ' . $sWrapperClass . '" data-timestamp="' . $iEndTime . '" data-item-id="' . $iItemId . '">' . $sReturn . '</div>';
+}
+
+$GLOBALS['auction']['winnersMessage']['bodyHtml'] = '
+<h2 style="font-style: italic; font-weight: 400; color: #6a6a6a;">Grattis till er vunna auktion på följande objekt:</h2>
+<hr />
+<h1 style="font-size: 35px;">Rop {auctionItemSortNo}: {auctionItemTitle}</h1>
+
+<hr />
+<br />
+
+<h3 style="margin: 0; padding: 0; font-size: 20px;">Ert vinnande bud är bindande.</h3>
+<p style="margin-top: 0; padding-top: 0;">Logga in på <a href="' . (SITE_DEFAULT_PROTOCOL == 'http' ? 'http' : 'https') . '://' . SITE_DOMAIN . '">www.' . SITE_DOMAIN . '</a> och kontrollera dina bud under "<strong>Mina Auktioner</strong>".</p>
+<p><strong>VID EVENTUELLA PROBLEM:</strong> RING 0346-487 70</p>
+
+<h3 style="margin: 0; padding: 0; font-size: 20px;">Notera att:</h3>
+<p style="margin-top: 0; padding-top: 0;">
+	- <span style="text-decoration: underline;">Ni kommer få er faktura skickad till er uppgivna e-mail adress ca 1 timme efter avslutad auktion.</span><br />
+	- <span style="text-decoration: underline;">Frakt av gods såsom, postpaket, företagspaket samt pall kan i vissa fall ombesörjas mot ersättning. Ni kan beställa frakt via hemsidan efter ni erhållit fakturan.</span><br />
+</p>
+
+{itemAddress}
+
+<br /><hr /><br />
+
+<p><strong>Betalning kan göras genom att logga in på hemsidan och trycka på "faktura" efter avslutad auktion.</strong></p>
+
+<br /><hr /><br />
+
+<br />
+<span style="font-size: 17px;"><strong>Med vänliga hälsningar,</strong></span><br />
+<em>Toveks Auktioner AB</em>';
+
+/**
+ * Pagination handling
+ */
+$iAuctionItemPagination = 50; # Default
+// Defcon divider
+// $iAuctionItemPagination = DEFCON_LEVEL * 10;
+// Constant
+define( 'AUCTION_ITEM_PAGINATION', $iAuctionItemPagination );
+define( 'AUCTION_ITEM_SHOW_ALL', true );

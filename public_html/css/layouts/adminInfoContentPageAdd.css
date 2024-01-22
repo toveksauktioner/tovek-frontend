@@ -1,0 +1,29 @@
+.fieldGroup.tools li { margin-bottom: 7px; }
+.fieldGroup.tools li:last-child { margin-bottom: 0; }
+.fieldGroup.tools a::before { margin-right: 7px; }
+
+@media screen and (min-width: 850px) {
+
+	.view.infoContentPageFormAdd form aside {
+		float: left;
+		width: 33.33%;
+		padding-left: 1.618em;
+	}
+
+	.view.infoContentPageFormAdd form section {
+		float: left;
+		width: 66.66%;
+	}
+}
+
+#navigationExplanation {
+	font-size: .8em;
+	text-transform: italic;
+}
+
+.fieldRoutePath .labelSuffixContent { margin-bottom: .3em; }
+input#routePath { padding: 0 0 0 1px; box-sizing: border-box; }
+input#routePath.autoFill { border: none; background: none; }
+
+.field > ul.notification { width: 100%; }
+	.field > ul.notification li { font-size: .85em; padding: .5em 1em !important; margin-top: 1em !important; }

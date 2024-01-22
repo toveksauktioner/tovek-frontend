@@ -1,0 +1,8 @@
+tr.noViews {
+	background: #FEEFB3;
+}
+
+.tools .tool .label { float: left; width: auto; margin: .15em 1em 0 0; }
+.tools .tool .inline { float: left; width: auto; margin: 0; }
+
+.typeLabel td { font-weight: 700; background: #f3f3f3; }

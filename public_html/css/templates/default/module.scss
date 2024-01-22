@@ -1,0 +1,41 @@
+@import "bootstrap";
+
+.view {
+	&.swiper-container {
+		@import "modules/slideshow";
+	}
+
+	&.contact {
+		@import "modules/contact";
+	}
+	
+	&.news {
+		@import "modules/news"
+	}
+
+	&.puffList {
+		@import "modules/puff";
+	}
+
+	&.product {
+		@import "modules/products";
+
+		&.toplist {
+			@import "modules/productTopList";
+		}
+	}
+	
+	@import "modules/references";
+	
+	// Webshop related
+	
+	&.checkoutShow {
+		@import "modules/checkout";
+	}
+
+	&.receiptTable {
+		@import "modules/receipt"
+	}
+
+	@import "modules/customer";
+}

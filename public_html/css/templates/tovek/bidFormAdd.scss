@@ -1,0 +1,184 @@
+@import "bootstrap";
+
+.view.auction {
+  &.bidFormAdd {
+    .currentBid, .currentBidUser {
+      // background: $colorGrayLight;
+      text-align: center;
+      // color: #000;
+      // margin-left: 1%;
+    }
+    .currentBid {
+      padding: 1em 1em 0 1em;
+
+      span.label {
+        color: rgba(0,0,0,.5);
+      }
+      span:not(.label) {
+        line-height: 1.25em;
+      }
+    }
+    .currentBidUser {
+      padding: 0 1em 1em 1em;
+
+      .bidder {
+        display: block;
+        font-weight: bold;
+        color: rgba(0,0,0,.5);
+      }
+      .bidDate {
+        // display: block;
+        display: none;
+        font-weight: normal;
+        color: rgba(0,0,0,.5);
+      }
+    }
+    &.isBidder {
+      .currentBid, .currentBidUser {
+        background: $colorFailure;
+        color: #fff;
+      }
+      .currentBid {
+        span.label {
+          color: rgba(255,255,255,.5);
+        }
+      }
+      .currentBidUser {
+        .bidDate {
+          color: rgba(255,255,255,.5);
+        }
+      }
+    }
+    &.isWinner {
+      .currentBid, .currentBidUser {
+        background: $colorSuccess;
+        color: #fff;
+      }
+      .currentBid {
+        span.label {
+          color: rgba(255,255,255,.5);
+        }
+      }
+      .currentBidUser {
+        .bidDate {
+          color: rgba(255,255,255,.5);
+        }
+      }
+    }
+    &.isEnded {
+      .currentBid, .currentBidUser {
+        background: $colorPrimary;
+        color: #fff;
+      }
+      .currentBid {
+        span.label {
+          color: rgba(255,255,255,.5);
+        }
+      }
+      .currentBidUser {
+        .bidDate {
+          color: rgba(255,255,255,.5);
+        }
+      }
+    }
+
+    .currentAutoBid {
+      margin: 0;
+      padding-left: 1em;
+
+      .label {
+        display: block;
+        line-height: 3em;
+        color: $colorGrayNormal !important;
+        font-weight: normal;
+        font-size: $labelSize;
+        line-height: 1.5em;
+        text-transform: uppercase;
+      }
+    }
+    .bidForm {
+      grid-template-columns: auto auto;
+      grid-row-gap: 0;
+      padding-top: .5em;
+      padding-bottom: .5em;
+      overflow: visible;
+
+      .notification {
+        grid-column: span 2;
+        font-weight: bold;
+        border: none;
+        border-radius: 0;
+
+        &.error, &.success {
+          margin: 1em;
+          padding: .25em 1.5em .5em 1.5em;
+        }
+        &.error {
+          background: $colorFailure;
+          color: #fff;
+        }
+        &.success {
+          background: $colorSuccess;
+          color: #fff;
+        }
+        &:first-child {
+          padding-top: .5em;
+        }
+      }
+      .field {
+        input {
+          background: $white;
+        }
+      }
+      p {
+        &.buttons {
+          text-align: center;
+
+          button {
+            &.submitBid {
+            }
+            &.submitMaxBid {
+              background: $colorSuccess;
+
+              &:hover {
+                background: $colorSuccessLighter;
+              }
+            }
+          }
+        }
+        &.bidHelpButton {
+          // grid-column: span 2;
+          text-align: center;
+          margin: .25em 0;
+        }
+      }
+
+      @media (hover: none) {
+        grid-template-columns: 1fr 1fr;
+
+        .field {
+          grid-column: span 2;
+        }
+        .buttons {
+          grid-column: 1;
+          grid-row: 3;
+          text-align: left !important;
+
+          &:first-of-type {
+            grid-column: 2;
+            text-align: right !important;
+          }
+          button {
+            width: auto;
+            padding: .75em 2em;
+          }
+        }
+        .bidHelpButton {
+          grid-row: 4;
+          grid-column: span 2;
+          padding: 1em 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+@import "../tovek/bootstrap";
+
+.tabs {
+  @extend %siteContainer;
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(6em, 1fr) );
+  // font-size: 1.125rem;
+  font-size: 1em;
+  text-transform: uppercase;
+  padding-bottom: 0.5em;
+  align-items: end;
+
+  .tab {
+    display: inline-block;
+    padding: .5em;
+    cursor: pointer;
+    text-align: center;
+
+    border-bottom: 2px solid transparent;
+
+    &.selected {
+      font-weight: bold;
+      color: $colorPrimary;
+      border-bottom-color: $colorPrimary;
+    }
+    &:hover {
+      background: rgba(0,0,0,0.025);
+    }
+
+    .desktop {
+      @include maxScreen( $layoutBreakpoint5 ) {
+        display: none;
+      }
+    }
+    .counter {
+      background: $colorPrimary;
+      color: #fff;
+      display: inline-block;
+      margin-left: .5em;
+      width: 1.5em;
+      line-height: 1.5em;
+      border-radius: .75em;
+      font-size: .75em;
+      text-align: center;
+      overflow: hidden;
+    }
+  }
+
+  &.smaller {
+    // font-size: 1em;
+    font-size: .875em;
+  }
+  &.narrow {
+    grid-template-columns: repeat( auto-fit, minmax(3em, 1fr) );
+  }
+  &.fullWidth {
+    border-left: 0;
+    border-right: 0;
+    max-width: auto;
+  }
+  &.colored {
+    padding-bottom: 0;
+    grid-gap: .25em;
+
+    .tab {
+      background: $colorGray100;
+      padding-top: .75em;
+      border-top-right-radius: .5em;
+      border-top-left-radius: .5em;
+
+      &.selected {
+        background: $colorPrimary;
+        color: $white;
+        padding-top: 1em;
+
+        .counter {
+          background: $white;
+          color: $colorPrimary;
+        }
+      }
+    }
+    &.gray {
+      .tab {
+        background: $colorGray300;
+        color: $black;
+
+        .counter {
+          background: $colorGrayLight;
+          color: black;
+        }
+        &.selected {
+          background: $colorGray100;
+          border-bottom-color: transparent;
+
+          .counter {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

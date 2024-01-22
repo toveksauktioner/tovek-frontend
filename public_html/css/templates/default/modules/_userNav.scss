@@ -1,0 +1,33 @@
+// .userMeta
+	@if $userMeta == true {
+		ul {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			line-height: $menuHeight - 1;
+
+			li {
+				a{
+					color: #000;
+					font-weight: bolder;
+					font-size: .9em;
+
+					&:hover {
+						color: $accent-color;
+					}
+				}
+
+				&::after {
+					content: '|';
+					margin: 0 .5em;
+				}
+
+				@include maxScreen ( $mobileLarge ) {
+		            &:last-child::after {
+		            	content: '';
+		            }
+		        }
+			}
+		}
+	} @else { display: none; }

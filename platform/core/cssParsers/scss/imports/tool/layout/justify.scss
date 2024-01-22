@@ -1,0 +1,13 @@
+// Justify content
+@mixin tool\layout\justify( $target: '.puff', $width: 100px ) {
+	text-align: justify;
+	#{$target} {
+		display: inline-block;
+		width: $width;						
+	}
+	&:after {
+		content: "";
+		display: inline-block;
+		width: 100%;
+	}	
+}

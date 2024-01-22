@@ -1,0 +1,13 @@
+<?php
+#dynamic Form definitions
+
+// ReCAPTCHA
+define( 'RECAPTCHA_ENABLE', false );  																					// true | false
+define( 'RECAPTCHA_SITE_KEY', '' );   																					// Get the keys from https://www.google.com/recaptcha/admin#list
+define( 'RECAPTCHA_SECRET_KEY', '' ); 																					// Get the keys from https://www.google.com/recaptcha/admin#list
+define( 'RECAPTCHA_VERSION', 'v3' ); 																						// 'invisible' | 'v3'
+define( 'RECAPTCHA_INVISIBLE_METHOD', 'v3Frontend' ); 													// 'invokeChallenge' | 'v3Frontend'
+define( 'RECAPTCHA_API_ENDPOINT', 'https://www.google.com/recaptcha/api' );
+define( 'RECAPTCHA_DEFAULT_ACTION', 'homepage' );																// Introduced in v3 to filter the requests
+define( 'RECAPTCHA_TOKEN_KEY', 'recaptchaToken' );															// v2: 'g-recaptcha-response' | v3: user defined i.e 'recaptchaToken'
+define( 'RECAPTCHA_INVALID_MESSAGE', _('Form verification') );

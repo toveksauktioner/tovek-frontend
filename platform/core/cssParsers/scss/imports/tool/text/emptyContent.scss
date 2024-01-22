@@ -1,0 +1,6 @@
+@mixin tool\text\emptyContent {
+	// Make elements use min-height 1 even if they're empty
+	&:empty:before {
+		content: '\00a0';
+	}
+}

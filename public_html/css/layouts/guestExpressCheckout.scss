@@ -1,0 +1,953 @@
+@import "argonova";
+@import "../templates/default/bootstrap";
+
+/**
+ * Responsive breakpoints
+ */
+@if !variable-exists($layoutBreakpoint1) { $layoutBreakpoint1: 768px; }
+@if !variable-exists($layoutBreakpoint2) { $layoutBreakpoint2: 640px; }
+
+.view.checkoutExpress {
+	@include clearfix;
+	width: 100%;
+	padding: 0 0 45px 0;
+	position: relative;
+	
+	/**
+	 * Generic
+	 */
+	p {
+		margin: 0;
+	}
+	a {
+		text-decoration: none;
+	}
+	input, textarea {
+		border: 1px solid #c0c0c0;
+		padding: 4px 5px;
+		
+	}
+	select {
+		border: 1px solid #c0c0c0;
+		padding: 3px 0;
+	}
+	fieldset {
+		padding: 9px 0 15px 0;
+		border: 1px solid #c0c0c0;
+		border-left: none;
+		border-right: none;
+		border-bottom: none;
+		background: #fff;
+		legend {
+			padding: 0 15px 0 0;
+			position: relative;
+			top: -1px;
+			font-weight: 600;
+		}
+		@include maxScreen( $layoutBreakpoint2 ) {
+			margin-bottom: 1em;
+		}
+	}
+	fieldset.multiple {
+		@include clearfix;
+		padding: 20px 0 30px 0;
+		text-align: justify;
+		.field {
+			clear: none;
+			float: none;
+			display: inline-block;
+			vertical-align: top;			
+			padding: 10px 0;			
+			box-sizing: border-box;
+			background: #f7f7f7;
+			border: 1px solid #ffffff;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+			border-radius: 6px;
+			box-shadow: 0 0 3px #ccc;
+			text-align: center;
+			label {
+				padding: 0;
+				line-height: 3em;
+				img:first-child {
+					display: block;
+					margin: 0 auto;
+				}				
+			}
+			input,
+			select {
+				position: relative;
+				left: 0;
+				top: 0;
+				padding: 0;
+				display: block;
+				margin: 0 auto;
+			}			
+			&:hover {
+				background: #f1f1f1;
+			}
+		}
+		&.checkoutCountrySelect {			
+			.field {
+				width: 9%;
+				min-width: 80px;
+				min-height: 95px;
+				select {
+					width: 63px;
+				}
+				&:last-child {
+					width: 21%;
+				}
+				@include maxScreen( $layoutBreakpoint2 ) {
+					width: 46%;
+					margin-bottom: 25px;
+					&:last-child {
+						width: 100%;
+					}
+				}
+			}
+		}
+		&.orderPayment {
+			label {
+				.logo {
+					display: inline-block;
+					min-height: 66px;
+					line-height: 66px;
+					text-align: center;
+					* {
+						display: inline !important;
+						vertical-align: middle !important;
+					}
+					@include clearfix;
+				}
+				.title {
+					display: block;
+					line-height: normal;
+					font-size: 1.2em;
+				}
+				.price {
+					font-size: 0.9em;
+				}
+			}
+			.field {
+				width: 28%;
+				min-height: 141px;
+				@include maxScreen( $layoutBreakpoint2 ) {
+					width: 100%;
+					margin: 0;
+				}
+			}
+		}
+		&.orderFreight {			
+			label {
+				.logo {
+					display: inline-block;
+					min-height: 66px;
+					line-height: 66px;
+					text-align: center;
+					* {
+						display: inline !important;
+						vertical-align: middle !important;
+					}
+					@include clearfix;
+				}
+				.title {
+					display: block;
+					line-height: normal;
+					font-size: 1.2em;
+				}
+				.price {
+					font-size: 0.9em;
+				}
+			}
+			.field {
+				width: 28%;
+				min-height: 141px;
+				@include maxScreen( $layoutBreakpoint2 ) {
+					width: 100%;
+					margin: 0;
+				}
+			}
+		}
+		&:after {
+			content: "";
+			display: inline-block;
+			width: 100%;
+		}		
+	}
+	button,
+	.button {		
+		height: 27px;		
+		font-weight: 700;
+		border: 1px solid #333;
+		border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+	}
+	.button {
+		line-height: 27px;
+	}
+	
+	/**
+	 * Generic for checkout form
+	 */
+	.checkoutForm {			
+		img.descriptionToggle {
+			opacity: 0.5;
+			cursor: pointer;
+			width: 14px;
+			&:hover {
+				opacity: 1;
+			}
+		}
+		.paymentForm {
+			display: none !important;
+			margin-bottom: 15px;
+			.field {				
+				margin: 0 20px 10px 20px;
+				label {
+					position: relative;
+					div.description {
+						display: none;
+						position: absolute;
+						top: -16%;
+						left: 100%;
+						width: 230px;						
+						padding: 7px 20px 7px 50px;
+						font-size: 0.775em;
+						color: #00529B;
+						background-color: #BDE5F8;
+						background-image:url('/images/icons/information.png');
+						background-position: 10px center;
+						background-repeat: no-repeat;
+						border: 1px solid #00529B;
+						border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+					}
+				}
+			}
+			.field:last-child {
+				margin-bottom: 0;
+			}
+		}
+		.freightForm {
+			margin-bottom: 10px;
+			.field {				
+				margin: 0 20px 10px 20px;
+				label {
+					position: relative;
+					div.description {
+						display: none;
+						position: absolute;
+						top: -16%;
+						left: 100%;
+						width: 230px;						
+						padding: 7px 20px 7px 50px;
+						font-size: 0.775em;
+						color: #00529B;
+						background-color: #BDE5F8;
+						background-image:url('/images/icons/information.png');
+						background-position: 10px center;
+						background-repeat: no-repeat;
+						border: 1px solid #00529B;
+						border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+					}
+				}
+			}
+			.field:last-child {
+				margin-bottom: 0;
+			}
+		}
+		.customerAccount {
+			@include clearfix;
+			margin-bottom: 10px;
+			/*div.information {
+				font-size: 0.875em;
+				padding: 5px 10px;
+				margin-bottom: 5px;
+				border: 1px solid #c0c0c0;
+				border-radius: 3px; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+			}*/
+			div.links {
+				@include clearfix;
+				a {
+					float: left;
+					width: 44%;
+					box-sizing: border-box;
+					padding: 0;
+					text-align: center;				
+				}
+				span {
+					float: left;
+					width: 9%;
+					margin: 0 1%;
+					box-sizing: border-box;
+					padding: 2px 0;
+					background: #f7f7f7;
+					border: 1px solid #ffffff;
+					-webkit-border-radius: 6px;
+					-moz-border-radius: 6px;
+					border-radius: 6px;
+					box-shadow: 0 0 3px #ccc;
+					border-left: none;
+					border-right: none;
+					text-align: center;
+				}
+				@include maxScreen( $layoutBreakpoint2 ) {
+					a, span {
+						float: none;
+						display: block;
+						width: 100%;
+						margin: 0;
+					}
+				}
+			}			
+			button {
+				padding: 0 16px;
+			}
+			.accountLogin {
+				.field {
+					float: left;
+					width: 49%;
+					margin-bottom: 10px;
+					
+					input {
+						width: 100%;
+						box-sizing: border-box;
+					}
+					
+					&:nth-child(2) {
+						margin-right: 2%;
+					}
+				}				
+				.buttons {
+					clear: both;
+					button:first-child {
+						margin-bottom: 10px;
+					}
+				}
+			}
+			.accountForm {
+				@include clearfix;
+				.field {
+					float: left;
+					width: 50%;
+					margin: 0 20px;
+					position: relative;
+					label {
+						padding-left: 22px;
+					}
+					input {
+						position: absolute;
+						left: 0;
+						top: 0.10em;
+					}
+					span {
+						p {
+							margin: 0;
+							font-size: 0.875em;
+						}
+					}
+				}
+				.buttons {
+					display: block;
+					float: left;
+					width: 40%;
+					button:first-child {
+						margin-bottom: 10px;
+					}
+				}
+				@include maxScreen( $layoutBreakpoint2 ) {
+					.field {
+						float: none;
+						width: 100%;
+						margin: 0 0 13px 0;
+					}
+					.buttons {
+						float: none;
+						width: 100%;
+					}
+				}
+			}
+		}		
+		.orderForm {
+			.orderPaymentInfo {
+				float: left;
+				width: 48%;
+				margin-bottom: 0;
+				border-bottom: none;
+				padding-bottom: 11px;
+				.field {
+					margin: 0 20px 4px 20px;
+					label {
+						display: block;
+					}
+					input {
+						width: 100%;
+						box-sizing: border-box;
+					}
+					select {
+						width: 100%;
+						box-sizing: border-box;
+					}
+				}			
+			}
+			.orderDeliveryInfo {
+				float: right;
+				width: 48%;
+				margin-bottom: 0;
+				border-bottom: none;
+				padding-bottom: 11px;
+				.field {
+					margin: 0 20px 4px 20px;
+					label {
+						display: block;
+					}
+					input {
+						width: 100%;
+						box-sizing: border-box;
+					}
+					select {
+						width: 100%;
+						box-sizing: border-box;
+					}
+				}
+				.orderDeliverySame {
+					position: relative;
+					label {
+						padding-left: 18px;
+						cursor: pointer;
+						width: auto;
+					}
+					input {
+						position: absolute;
+						left: -5px;
+						top: 0.10em;
+						width: auto;
+					}
+				}
+			}
+			.orderAdditional {
+				clear: both;
+				margin-bottom: 15px;
+				padding-top: 12px;
+				.field {
+					margin: 0 20px;
+					label {
+						display: block;
+					}
+					textarea {
+						width: 100%;			
+						box-sizing: border-box;
+					}
+					@include maxScreen( $layoutBreakpoint2 ) {
+						margin: 0;
+					}
+				}
+			}
+			.orderTerms {
+				margin-bottom: 15px;
+				.field {
+					margin: 0 20px;
+					position: relative;
+					label {
+						padding-left: 22px;
+					}
+					input {
+						position: absolute;
+						left: 0;
+						top: 0.10em;
+					}
+					span {
+						p {
+							margin: 0;
+							font-size: 0.875em;
+						}
+					}
+					@include maxScreen( $layoutBreakpoint2 ) {
+						margin: 0;
+					}
+				}
+			}
+			.buttons {
+				button {
+					height: 30px;
+					padding: 0 35px;
+				}
+			}
+			@include maxScreen( $layoutBreakpoint2 ) {
+				.orderPaymentInfo,
+				.orderDeliveryInfo {
+					float: none;
+					width: 100%;
+					.field {
+						margin: 0 0 4px 0;
+					}
+				}
+			}
+		}
+		.emptyCart {
+			@include clearfix;
+			padding-top: 20px;
+			img {
+				float: left;
+				padding-right: 10px;
+				border-right: 1px solid #ebebeb;
+			}
+			p {
+				float: left;
+				font-size: 38px;
+				color: #CBCBCB;
+				margin-top: 65px;
+				margin-left: 20px;
+				line-height: 1.2em;
+			}
+		}		
+		.orderPaymentForm {
+			border-top: 1px solid #c0c0c0;
+			padding: 20px 50px;
+		}
+		.orderFreePaymentForm {
+			border-top: 1px solid #c0c0c0;
+			padding: 20px 50px;
+			text-align: center;
+			margin-bottom: 1em; 
+			
+			.container {
+				display: inline-block;
+				vertical-align: top;			
+				padding: 10px 20px;			
+				box-sizing: border-box;
+				background: #f7f7f7;
+				border: 1px solid #ffffff;
+				-webkit-border-radius: 6px;
+				-moz-border-radius: 6px;
+				border-radius: 6px;
+				box-shadow: 0 0 3px #ccc;
+				text-align: center;
+			}
+		}
+	}
+	
+	/**
+	 * Order summary
+	 */
+	.orderSummary {
+		margin: 30px 20px 10px 20px;
+		padding: 5px 15px;
+		box-sizing: border-box;
+		background: #f7f7f7;
+		border: 1px solid #ffffff;
+		-webkit-border-radius: 6px;
+		-moz-border-radius: 6px;
+		border-radius: 6px;
+		box-shadow: 0 0 3px #ccc;
+		.dataTable {
+			width: 100%;
+			font-size: 0.75em;
+			thead {
+				tr {
+					.productControls,
+					.productUnitPrice,
+					.productPriceWithDiscount
+					{
+						display: none;
+					}
+					th {
+						text-align: left;
+						padding-bottom: 3px;
+						font-size: 1.025em;
+						border-bottom: 1px solid #c0c0c0;
+						&:nth-child(2) {
+							padding-left: 1em;
+						}
+					}
+				}
+			}
+			tbody {
+				tr {
+					.productControls,
+					.productUnitPrice,
+					.productPriceWithDiscount
+					{
+						display: none;
+					}
+					.productQuantity {
+						a {
+							display: none;
+						}
+					}
+					td {
+						.empty {
+							font-style: italic;
+							color: #b1b1b1;
+						}
+						&:nth-child(2) {
+							padding-left: 1em;
+						}
+					}
+				}
+			}
+			tfoot {
+				tr {
+					.productControls,
+					.productUnitPrice,
+					.productPriceWithDiscount
+					{
+						display: none;
+					}
+					&.toPayCharge {
+						background: #eeeeee;
+						td {
+							font-weight: 700;
+							font-size: 1.1em;
+						}
+					}
+					&:first-child {
+						td {
+							border-top: 1px solid #c0c0c0;
+						}
+					}
+					td:nth-child(2) {
+						padding-left: 1em;
+					}
+				}
+			}
+			@include maxScreen( $layoutBreakpoint2 ) {
+				display: none;
+			}
+		}
+		.alternativeCartDisplay {
+			display: none;
+			
+			// Generic
+			dl {
+				dt {
+					display: inline-block;
+					width: 50%;
+					vertical-align: top;
+					&.quantity {
+						vertical-align: inherit;
+					}
+					h4 {
+						margin-bottom: 0;
+					}
+					&.toPay {
+						border-top: 1px solid #c0c0c0;
+					}
+				}
+				dd {
+					display: inline-block;
+					width: 40%;
+					.empty {
+						font-style: italic;
+						color: #b1b1b1;
+					}
+					&.toPay {
+						border-top: 1px solid #c0c0c0;
+					}
+				}				
+			}
+			
+			ul {
+				li {
+					padding: 7px 16px;
+					font-size: 0.8em;
+					line-height: 1.4em;
+					background: #fff;
+					border: 1px solid #f1f1f1;
+					-webkit-border-radius: 6px;
+					-moz-border-radius: 6px;
+					border-radius: 6px;
+					box-shadow: 0 0 3px #ccc;
+					margin-bottom: 10px;
+					dt.quantity,
+					dd.quantity {
+						display: none;
+					}
+				}
+			}
+			
+			@include maxScreen( $layoutBreakpoint2 ) {
+				display: block;
+			}
+			
+		}
+		@include maxScreen( $layoutBreakpoint2 ) {
+			margin: 30px 0px 10px 0px;
+		}
+	}
+	
+	.checkoutForm {
+		width: 100%;
+	}
+	
+	/**
+	 * div misc
+	 */
+	.misc {
+		float: none;
+		width: 100%;
+		padding-top: 9px;
+		span.vatLabel {
+			display: block;
+			font-size: 0.7em;
+			color: #a2a2a2;
+		}
+		.checkoutProducts {
+			margin-bottom: 30px;
+			border: 1px solid #c0c0c0;
+			border-left: none;
+			border-right: none;
+			background: #fff;
+			padding: 15px;
+			table.dataTable {
+				width: 100%;
+				font-size: 1em;
+				thead {
+					tr {
+						th {
+							text-align: left;
+							padding-bottom: 3px;
+							font-size: 1.025em;
+							border-bottom: 1px solid #c0c0c0;
+							&:last-child {
+								text-align: right;
+							}
+							
+							&.productControls {
+								display: none !important;
+							}
+						}
+					}
+				}
+				tbody {
+					tr {
+						td {
+							padding: 3px 0;
+							font-size: 0.775em;
+							input {
+								width: 40px;
+								padding: 0;
+								text-align: center;
+							}
+							&:last-child {
+								text-align: right;
+							}
+							.empty {
+								font-style: italic;
+								color: #b1b1b1;
+							}
+						}
+						td.productControls {
+							display: none !important;
+							//a {
+							//	position: relative;
+							//	top: -3px;
+							//}
+						}
+						td.productTitle {
+							padding-top: 4px;
+							span.discount {
+								display: block;
+							}
+						}
+						td.productQuantity {
+							padding-top: 4px;						
+							> a {
+								display: none !important;
+								font-size: 2em;
+								text-decoration: none;
+								position: relative;
+								top: 0.12em;
+							}
+							//> span {
+							//	position: relative;
+							//	top: 0;
+							//	display: inline-block;
+							//	height: 16px;
+							//	line-height: 16px;
+							//	border: 1px solid #ccc;
+							//	border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px;
+							//	border-top: none;
+							//	border-bottom: none;
+							//	padding: 0 3px;
+							//	margin-left: 3px;
+							//	background: #f9f9f9;
+							//}
+							> a:first-child {								
+								top: 0.1em;
+							}
+						}							
+					}
+				}
+				tfoot {				
+					tr:nth-child(1) {				
+						td {						
+							padding-top: 8px;
+							border-top: 1px solid #c0c0c0;
+						}
+					}
+					tr {
+						td {
+							font-size: 0.775em;
+							&:last-child {
+								text-align: right;
+							}
+						}
+						td.productControls {
+							display: none !important;
+						}
+						td.productQuantity {
+							text-align: right;
+						}
+					}
+					tr.toPayCharge {
+						td {
+							padding-top: 8px;
+							font-size: 0.875em;
+							font-weight: 700;
+						}
+					}
+				}
+				@include maxScreen( $layoutBreakpoint2 ) {
+					display: none;
+				}
+			}
+			.alternativeCartDisplay {
+				display: none;
+				
+				// Generic
+				dl {
+					dt {
+						display: inline-block;
+						width: 50%;
+						vertical-align: top;
+						&.quantity {
+							vertical-align: inherit;
+						}
+						h4 {
+							margin-bottom: 0;
+						}
+					}
+					dd {
+						display: inline-block;
+						width: 40%;
+						.empty {
+							font-style: italic;
+							color: #b1b1b1;
+						}
+					}
+				}
+				
+				ul {						
+					li {
+						padding: 7px 16px;
+						font-size: 0.8em;
+						line-height: 1.4em;
+						background: #f7f7f7;
+						border: 1px solid #ffffff;
+						-webkit-border-radius: 6px;
+						-moz-border-radius: 6px;
+						border-radius: 6px;
+						box-shadow: 0 0 3px #ccc;
+						margin-bottom: 10px;
+						dd.quantity {
+							padding-top: 4px;						
+							> a {
+								font-size: 2em;
+								text-decoration: none;
+								position: relative;
+								top: 0.12em;
+							}
+							> span {
+								position: relative;
+								top: 0;
+								display: inline-block;
+								height: 16px;
+								line-height: 16px;
+								border: 1px solid #ccc;
+								border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px;
+								border-top: none;
+								border-bottom: none;
+								padding: 0 3px;
+								margin-left: 3px;
+								background: #f9f9f9;
+							}
+							> a:first-child {								
+								top: 0.1em;
+							}
+						}
+					}
+				}
+				
+				@include maxScreen( $layoutBreakpoint2 ) {
+					display: block;
+				}
+				
+			}
+			.buttons {
+				@include clearfix;
+				
+				.button {
+					display: inline-block;
+					width: 260px;					
+					margin: 10px 0 0 0;
+					padding: 0;
+					
+					&:first-child {
+						float: left;
+					}
+					
+					&:last-child {
+						float: right;
+					}
+					
+					@include maxScreen( $layoutBreakpoint2 ) {
+						width: 100%;
+					}
+				}
+			}
+			
+			@include maxScreen( $layoutBreakpoint2 ) {
+				padding: 15px 0;
+			}
+		}
+		.discountForm {
+			display: none;
+			@include clearfix;
+			.field {
+				float: left;
+				margin: 0 0 10px 0;
+				label {
+					display: none;
+				}
+				input {						
+					width: 150px;
+					height: 27px;
+					border-right: none;
+					border-color: #333;
+					border-radius: 3px 0 0 3px; -webkit-border-radius: 3px 0 0 3px; -moz-border-radius: 3px 0 0 3px;
+				}
+				&.text {
+					width: 150px;
+					height: 27px;
+					padding: 0.12em 1em;						
+					border: 1px solid #333;
+					border-right: none;
+					border-radius: 3px 0 0 3px; -webkit-border-radius: 3px 0 0 3px; -moz-border-radius: 3px 0 0 3px;
+					box-sizing: border-box;
+					box-shadow: 0 0.1em 0.1em rgba(0, 0, 0, .1);
+				}
+				p {
+					font-size: 0.875em;
+				}
+			}
+			.buttons {
+				float: left;
+				button {
+					padding: 0 1.4em;
+					border-left: none;					
+					border-radius: 0 3px 3px 0; -webkit-border-radius: 0 3px 3px 0; -moz-border-radius: 0 3px 3px 0;
+				}
+			}
+		}
+	}
+}

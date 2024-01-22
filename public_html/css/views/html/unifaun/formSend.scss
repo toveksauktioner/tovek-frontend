@@ -1,0 +1,38 @@
+.view {
+	&.unifaun {
+		&.formSend {
+			display: grid;
+			grid-template-columns: 49% auto 49%;
+
+			h1 {
+				grid-column: span 3;
+			}
+			section {
+				grid-column: span 3;
+
+				&.col-50 {
+					grid-column: span 1;
+
+					&:nth-child(even) {
+						grid-column: 1;
+					}
+					&:nth-child(odd) {
+						grid-column: 3;
+					}
+				}
+
+				p.firstInGroup {
+					margin-top: 0.5em;
+				}
+				p.lastInGroup {
+					margin-bottom: 0.5em;
+				}
+			}
+			form {
+				label {
+					display: none;
+				}
+			}
+		}
+	}
+}

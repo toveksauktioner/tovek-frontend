@@ -1,0 +1,63 @@
+/* compiled by scssphp v0.7.5 on Sun, 01 Sep 2019 19:00:15 +0200 (0.0409s) */
+
+.view { /* Freight Request Form */ /* Unifaun Form */ }
+.view.invoiceList.invoiceListUnpaid .dataTable { width: 100% }
+.view.popupLogin { padding: 1em 1.85em; display: none }
+.view.popupLogin form { margin: 17px 0 0 0 }
+.view.popupLogin form .buttons { text-align: left !important; padding: 0.5em 0 }
+.view.popupLogin form .buttons button { padding: 0.3em 1em }
+.view.popupLogin .links { padding-top: 0.85em }
+.view.popupLogin .links a:first-child { margin-right: 2.1em }
+.view.auction.bidFormAdd .message { padding: 1.2em 1.85em 0 1.85em }
+.view.userHomepage { margin: 0 50px; padding: 30px 0 15px 0 }
+.view.userItemFavList { margin: 30px 50px 0 50px; padding: 15px 0 5px 0; border-top: 6px double #f1efef }
+.view.userItemBidList { margin: 0 50px 0 50px; padding: 15px 0 5px 0; border-top: 6px double #f1efef }
+.view.userWonItemList { margin: 0 50px 0 50px; padding: 15px 0 5px 0; border-top: 6px double #f1efef }
+.view.userWonItemList div.wonBid.message { margin: 0 50px 50px 50px; padding: 15px 0; text-align: center; border-bottom: 6px double #f1efef }
+.view.userWonItemList div.wonBid.message p { font-style: italic; color: #b0b0b0 }
+.view.invoiceList { margin: 30px }
+.view.invoiceList .dataTable th.invoiceTotalAmount { text-align: right }
+.view.invoiceList .dataTable th.invoiceRemainingAmount { text-align: right }
+.view.invoiceList .dataTable td.invoiceTotalAmount { text-align: right }
+.view.invoiceList .dataTable td.invoiceRemainingAmount { text-align: right }
+.view.invoiceList .dataTable .invoiceFreightRequest { text-align: right }
+.view.invoiceList .dataTable td.invoiceControls { text-align: center }
+.view.invoiceList .dataTable td.invoiceControls.select { text-align: left !important }
+.view.invoiceList .dataTable td.invoiceControls .freightRequestBtn { cursor: pointer }
+.view.invoiceList .dataTable .paymentMethodRow td { background: #e5e5e5; padding: 0.2em; font-size: 0.9em }
+.view #showInvoice { display: none; position: fixed; top: 0; left: 0; bottom: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); text-align: center; overflow: auto; padding: 60px 0; z-index: 1 }
+.view #freightRequest { display: none; position: absolute; top: 0; left: 0; width: 100%; padding: 0; z-index: 999 }
+.view #freightRequest #freightRequestContent { width: 50%; min-width: 540px; padding: 30px 50px; margin: 0 auto; background: #fff; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5) }
+.view #freightRequest #freightRequestContent .auctionPartInfo { font-size: 0.875em; background: #e6e6e6; padding: 0.5em 1em; margin-bottom: 2em }
+.view #freightRequest #freightRequestContent .auctionPartInfo .auctionParts { margin-left: 3em }
+.view #freightRequest #freightRequestContent .auctionPartInfo .auctionParts li .date { display: inline-block; width: 6.25em; font-weight: bold }
+.view #freightRequest #freightRequestContent ul.invoiceList { list-style: none; margin-top: 2em }
+.view #freightRequest #freightRequestContent ul.invoiceList li { position: relative }
+.view #freightRequest #freightRequestContent ul.invoiceList li .checkbox { position: absolute; top: 0; left: 0 }
+.view #freightRequest #freightRequestContent ul.invoiceList li .checkbox input { width: 2em; height: 2em; color: green }
+.view #freightRequest #freightRequestContent ul.invoiceList li .content { margin-left: 3em }
+.view #freightRequest #freightRequestContent ul.invoiceList h3 { font-size: 1.25em }
+.view #freightRequest #freightRequestContent ul.invoiceList ul.invoiceLineList { list-style: none; border-top: 1px solid #dedede; margin-bottom: 20px }
+.view #freightRequest #freightRequestContent ul.invoiceList ul.invoiceLineList li { border-bottom: 1px solid #dedede }
+.view #freightRequest #freightRequestContent ul.invoiceList ul.invoiceLineList li span.invoiceLineQuantity { display: inline-block; padding-right: 5px; width: 50px; text-align: right }
+.view #freightRequest #freightRequestContent ul.invoiceList ul.invoiceLineList li span.invoiceLineTitle { font-weight: bold }
+.view #freightRequest #freightRequestContent textarea { width: 97%; height: 150px; padding: 0 8px; font-size: 20px; border: none; border-radius: 10px; box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.35); background: #f1f1f1 }
+.view #freightRequest #freightRequestContent .freightCostDetails { padding: 5px 10px; background: #dedede }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestMessage { padding-bottom: 10px }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestParcel { font-size: 1.25em; float: left; clear: left; font-weight: 600 }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestCost { font-size: 1.25em; font-weight: 800; float: right; clear: right }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestVatLabel { font-size: 1.25em; float: left; clear: left; font-weight: 400; text-align: right; width: 70% }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestCostVat { font-size: 1.25em; font-weight: 400; float: right; clear: right }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestTotalLabel { font-size: 1.25em; float: left; clear: left; font-weight: 600; text-align: right; width: 70% }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestCostTotal { font-size: 1.25em; font-weight: 800; float: right; clear: right }
+.view #freightRequest #freightRequestContent .buttons { text-align: center }
+.view #freightRequest #freightRequestContent .buttons button { width: 175px; height: 53px; padding: 10px 0 0 0; font-size: 20px; color: #fff; background: url('/images/templates/tovek2014/bg-register-button.png') no-repeat; border: none }
+.view #freightRequest #freightRequestContent .buttons button#closeFreightRequest { height: 43px; margin-top: 12px; padding: 0; background: #999 }
+.view #freightRequest #freightRequestContent .buttons button#declineFreightRequest { height: 43px; margin-top: 12px; padding: 0; background: #9b0004 }
+.view #freightRequest #freightRequestContent .buttons button#acceptFreightRequest { height: 43px; margin-top: 12px; padding: 0; background: #00539b }
+.view #freightRequest #freightRequestContent .unifaunFormAdd.view { display: none; padding-top: 20px }
+.view #freightRequest #freightRequestContent .unifaunFormAdd h1 { display: none }
+.view #freightRequest #freightRequestContent .unifaunFormAdd button { height: 43px; margin-top: 12px; padding: 0; background: #549b00 }
+.view #freightRequest #freightRequestContent .unifaunFormAdd label { width: 30%; padding-right: 5% }
+.view #freightRequest #freightRequestContent .unifaunFormAdd input.text, 
+.view #freightRequest #freightRequestContent .unifaunFormAdd textarea { width: 65%; max-width: 270px; border: none; border-radius: 5px; box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.35); background: #f1f1f1; text-indent: 10px }

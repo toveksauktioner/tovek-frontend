@@ -1,0 +1,68 @@
+@import "../tovek/bootstrap";
+
+.gridTable {
+  article {
+    &:hover {
+      background: $colorMarkup;
+    }
+  }
+  .dataRow {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(1em, 1fr) );
+    grid-gap: .25em;
+    padding: 0 .5em;
+
+    .dataCell {
+      padding: .25em 0;
+
+      &:first-child {
+        grid-column: 1/span 1;
+      }
+    }
+  }
+  header {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 3em;
+    background: $white;
+    border-bottom: 1px solid $colorGray200;
+    font-weight: bold;
+    padding: .5em 0 .25em 0;
+
+    .dataRow {
+      .dataCell {
+        font-size: .75em;
+        text-transform: uppercase;
+
+      }
+    }
+  }
+  .body {
+    .dataRow {
+      &:hover {
+        background: $colorMarkup;
+      }
+    }
+  }
+  footer {
+    border-top: 2px solid $colorGray200;
+    font-weight: bold;
+  }
+  &.headerZero {
+    header {
+      top: 0;
+    }
+  }
+  &.transparent {
+    color: $black;
+
+    header {
+      background: transparent;
+    }
+  }
+  &.nonSticky {
+    header {
+      position: initial;
+    }
+  }
+}

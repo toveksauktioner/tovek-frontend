@@ -1,0 +1,68 @@
+@import "bootstrap";
+
+.gridTable {
+  background: white;
+  padding: 0 1em;
+
+  .dataRow {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(1em, 1fr) );
+    grid-gap: .25em;
+
+    .dataCell {
+      padding: .65em 0;
+
+      &:first-child {
+        grid-column: 1 / span 1;
+      }
+      &.controls {
+        padding: .4em 0;
+      }
+    }
+  }
+  header {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: $headerHeight;
+    background: inherit;
+    border-bottom: 1px solid $colorGray;
+    font-weight: bold;
+    padding: 1em 0 .5em 0;
+
+    .dataRow {
+      .dataCell {
+        font-size: .75em;
+        text-transform: uppercase;
+
+      }
+    }
+  }
+  .body {
+    article, .dataRow {
+      &:hover {
+        background: $colorBrightSun;
+      }
+    }
+  }
+  footer {
+    border-top: 2px solid $colorGray;
+    font-weight: bold;
+  }
+
+  &.expandable {
+    .dataRow {
+      &:not(.expanded) {
+        .dataCell {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+  &.headerZero {
+    header {
+      top: 0;
+    }
+  }
+}

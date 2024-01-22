@@ -1,0 +1,48 @@
+@mixin tool\module\localeList() {
+	li {
+		text-indent: -9999em;
+		list-style-type: none;
+		display: inline-block;
+		float: left;
+		margin-left: 5px;
+
+		a {
+			display: block;
+			width: 24px;
+			height: 24px;
+			outline: none;
+		}
+
+		&.sv_SE a {
+			background: transparent url("/images/locales/24/se.png") no-repeat;
+		}
+
+		&.en_GB a {
+			background: transparent url("/images/locales/24/gb.png") no-repeat;
+		}
+
+		&.da_DK a {
+			background: transparent url("/images/locales/24/dk.png") no-repeat;
+		}
+
+		&.fr_FR a {
+			background: transparent url("/images/locales/24/fr.png") no-repeat;
+		}
+
+		&.fi_FI a {
+			background: transparent url("/images/locales/24/fi.png") no-repeat;
+		}
+
+		&.en_US a {
+			background: transparent url("/images/locales/24/us.png") no-repeat;
+		}
+
+		&.no_NO a {
+			background: transparent url("/images/locales/24/no.png") no-repeat;
+		}
+
+		&.de_DE a {
+			background: transparent url("/images/locales/24/de.png") no-repeat;
+		}
+	}
+}

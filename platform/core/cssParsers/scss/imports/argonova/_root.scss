@@ -1,0 +1,6 @@
+// Root mixin triggers
+$includeAtRoot_ToolAnimationRoot: false !default;
+
+@if( $includeAtRoot_ToolAnimationRoot ) {
+	@include tool\animation\rotate;
+}

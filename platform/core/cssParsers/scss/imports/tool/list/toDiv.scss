@@ -1,0 +1,10 @@
+// Clean up everything and make all ul, ol and li behave like normal block element (like a normal div)
+@mixin tool\list\toDiv() {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		padding: 0;
+	}
+}

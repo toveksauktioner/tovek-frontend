@@ -1,0 +1,38 @@
+<?php
+
+require_once PATH_CORE . '/clModuleBase.php';
+require_once PATH_MODULE . '/unifaun/config/cfUnifaun.php';
+
+class clUnifaunShipment extends clModuleBase {
+	
+	public function __construct() {
+		$this->sModuleName = 'UnifaunShipment';
+		$this->sModulePrefix = 'unifaunShipment';
+		
+		$this->oDao = clRegistry::get( 'clUnifaunShipmentDao' . DAO_TYPE_DEFAULT_ENGINE, PATH_MODULE . '/unifaun/models' );
+		$this->initBase();
+	}
+	
+	public function create( $aData ) {
+		$this->oAcl->hasAccess( 'write' . $this->sModuleName );
+		$aParams['groupKey'] = 'create' . $this->sModuleName;		
+		
+		if( $this->oDao->createData($aData, $aParams) ) {
+			return $this->oDao->oDb->lastId();
+		}
+		return false;
+	}
+	
+	public function readByOrder( $iOrderId, $aFields = array() ) {
+		$this->oAcl->hasAccess( 'read' . $this->sModuleName );
+		if( empty($iOrderId) ) return false;
+		
+		$aParams = array(
+			'fields' => $aFields,
+			'orderId' => $iOrderId
+		);
+		
+		return $this->oDao->read( $aParams );
+	}
+	
+}

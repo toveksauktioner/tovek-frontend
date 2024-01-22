@@ -1,0 +1,155 @@
+/**
+ * Global reset
+ */
+@import "tool/output/reset";
+
+@import "bootstrap";
+
+$hrColor: $baseBlockColor !default;
+$baseBackground: $baseBackgroundColor !default;
+
+a {
+	color: $linkColor;
+	text-decoration: none;
+	transition: all ease .3s;
+
+	&:hover {
+		color: $linkHoverColor;
+	}
+	
+	&[href^="tel"] {
+		color: inherit; /* Inherit text color of parent element. */
+		text-decoration: none; /* Remove underline. */
+		/* Additional css `propery: value;` pairs here */
+	}
+}
+
+body {
+	@if $baseCustomFontFamily != false {
+		font-family: $baseCustomFontFamily;
+	} @else {
+		font-family: $baseFontFamily;
+	}
+	font-weight: $baseFontWeight;
+	line-height: $baseLineHeight;
+	color: inherit;
+	font-size: inherit;
+	background: none;
+}
+
+@include tool\text\headings {
+	margin: $headingMargin;
+	line-height: $headingLineHeight;
+	font-family: $headingFontFamily;
+};
+
+h1 {
+	font-size: $h1FontSize;
+	color: $headingColor;
+	@if $h1Uppercase == true { text-transform: uppercase; }
+	@include maxScreen ( $mobileLarge ) {
+		font-size: calc(#{$h1FontSize} * 0.8);
+	}
+}
+
+h2 {
+	font-size: $h2FontSize;
+	color: $headingColor;
+	@if $h2Uppercase == true { text-transform: uppercase; }
+	@include maxScreen ( $mobileLarge ) {
+		font-size: calc(#{$h2FontSize} * 0.8);
+	}
+}
+
+h3 {
+	font-size: $h3FontSize;
+	color: $headingColor;
+	@if $h3Uppercase == true { text-transform: uppercase; }
+	@include maxScreen ( $mobileLarge ) {
+		font-size: calc(#{$h3FontSize} * 0.8);
+	}
+}
+
+h4 {
+	font-size: $h4FontSize;
+	color: $headingColor;
+	@if $h4Uppercase == true { text-transform: uppercase; }
+	@include maxScreen ( $mobileLarge ) {
+		font-size: calc(#{$h4FontSize} * 0.8);
+	}
+}
+
+h5 {
+	font-size: $h5FontSize;
+	color: $headingColor;
+	@if $h5Uppercase == true { text-transform: uppercase; }
+	@include maxScreen ( $mobileLarge ) {
+		font-size: calc(#{$h5FontSize} * 0.8);
+	}
+}
+
+h6 {
+	font-size: $h6FontSize;
+	color: $headingColor;
+	@if $h6Uppercase == true { text-transform: uppercase; }
+	@include maxScreen ( $mobileLarge ) {
+		font-size: calc(#{$h6FontSize} * 0.8);
+	}
+}
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a,
+a h1, a h2, a h3, a h4, a h5, a h6{
+	color: $baseTextColor;
+	transition: all ease $transitionLength;
+
+	&:hover {
+		color: $accent-color;
+	}
+}
+
+html {
+	overflow-x: hidden;
+	color: $baseTextColor;
+	line-height: $baseLineHeight;
+	background: $baseBackground;
+	font-size: $baseFontSize;
+}
+
+hr {
+	color: $hrColor;
+	background: $hrColor;
+	clear: both;
+}
+
+img {
+	max-width: 100%; // Fluid width
+	height: auto; // Make sure the height stays within the proportions
+}
+
+nav {
+
+	// Make navigation lists act like blocks
+	ol,
+	ul {
+		@include tool\list\toDiv;
+	}
+}
+
+li,
+ol,
+ul {
+	list-style: inherit;
+	list-style-position:inside;
+	padding-left: 0;
+}
+
+p{
+	margin-bottom: goldenRatio($baseFontSize, -1);
+}
+
+th,
+td {
+	vertical-align:top;
+	font-family: inherit;
+	font-size: inherit;
+}

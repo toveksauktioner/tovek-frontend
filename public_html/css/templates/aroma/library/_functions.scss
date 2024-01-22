@@ -1,0 +1,47 @@
+// Return black or white depending on the percieved base color
+@function contrastColor( $color, $dark: #000, $light: #fff ) {
+	@if $color == null {
+		@return null;
+	}
+	@else {
+		$color-brightness: brightness($color);
+		$dark-text-brightness: brightness($dark);
+		$light-text-brightness: brightness($light);
+		@return if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness), $light, $dark);
+	}
+}
+
+// Add percentage of white to a color
+@function tint($color, $percent){
+	@return mix(white, $color, $percent);
+}
+
+// Add percentage of black to a color
+@function shade($color, $percent){
+	@return mix(black, $color, $percent);
+}
+
+// Contrast colors based on https://www.google.com/design/spec/style/color.html
+@function textColor( $type : null, $mode: dark ) {
+	@if ( $mode == dark ) {
+		@if ($type == null or $type == primary ) {
+			@return rgba( 0,0,0, .87 );
+		} @else if ( $type == secondary ) {
+			@return rgba( 0,0,0, .54 );
+		} @else if ( $type == hint ) {
+			@return rgba( 0,0,0, .38 );
+		} @else if ( $type == divider ) {
+			@return rgba( 0,0,0, .12 );
+		}
+	} @else {
+		@if ($type == null or $type == primary ) {
+			@return #fff;
+		} @else if ( $type == secondary ) {
+			@return rgba( 255,255,255, .7 );
+		} @else if ( $type == hint ) {
+			@return rgba( 255,255,255, .3 );
+		} @else if ( $type == divider ) {
+			@return rgba( 255,255,255, .12 );
+		}
+	}
+}

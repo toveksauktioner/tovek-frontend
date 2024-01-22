@@ -1,0 +1,14 @@
+{
+    "autoload": {
+        "psr-0": {
+            "tovekPushNotification": "app/"
+        }
+    },
+    "require": {
+        "cboden/ratchet": "^0.4.1",
+        "aws/aws-sdk-php": "^3.202",
+        "mpdf/mpdf": "^8.0",
+        "phpmailer/phpmailer": "^6.5",
+        "sveaekonomi/checkout": "^1.4"
+    }
+}

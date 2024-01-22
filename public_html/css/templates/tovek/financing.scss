@@ -1,0 +1,124 @@
+@import "../tovek/bootstrap";
+@import "../tovek/extensions";
+
+
+.view {
+  &.infoContent {
+    &.infoContent414 {
+      max-width: auto;
+      padding: 0;
+    }
+  }
+  &.payment {
+    &.wasakreditCheckoutInit {
+      @extend %siteContainer;
+      padding: 2em 0;
+
+      .requestForm {
+        form {
+          .buttons {
+            text-align: center;
+            width: 8em;
+          }
+        }
+      }
+    }
+  }
+  &.financing {
+    &.wasakreditUserItemNotice {
+      .container {
+        display: grid;
+        grid-template-columns: auto 7em;
+        background: $white;
+        border-radius: $borderRadius;
+
+        .info {
+          grid-column: span 2;
+          border-bottom: 1px solid $colorGrayLight;
+          text-align: center;
+
+          img {
+            width: 100%;
+            max-width: 11em;
+            height: auto;
+          }
+        }
+        .wasakreditMonthlyCost {
+          text-align: center;
+          line-height: 3em;
+
+          span {
+            font-size: 1.25em;
+            font-weight: bold;
+          }
+        }
+        .applicationButton {
+          font-size: .875em;
+          padding: .5em .25em;
+          text-align: right;
+
+          a {
+            @extend %commonButton;
+          }
+        }
+        .financingText {
+          grid-column: span 2;
+          padding: .5em;
+        }
+        .financingInfo {
+          grid-column: span 2;
+          display: grid;
+          grid-template-columns: 4em auto;
+          padding: 0 .5em .5em .5em;
+
+          h4 {
+            font-size: .75em;
+            text-transform: uppercase;
+            padding-top: .25em;
+            font-weight: normal;
+          }
+          .value, .status {
+            font-weight: bold;
+
+            &.created {
+              color: $colorAccent;
+            }
+            &.initialized {
+              color: $colorLighter;
+            }
+            &.pending {
+              color: $colorPrimary;
+            }
+            &.ready_to_ship {
+              color: $colorSuccessLighter;
+            }
+            &.shipped {
+              color: $colorSuccess;
+            }
+            &.completed {
+              color: $colorSuccess;
+            }
+            &.canceled {
+              color: $colorFailure;
+            }
+          }
+        }
+      }
+    }
+    &.userTableEdit {
+      padding-bottom: $baseSpace;
+
+      .gridTable {
+        .dataRow {
+          grid-template-columns: auto 13em 5em 7em 7em 10em;
+
+          .dataCell {
+            &.financingControls {
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+}

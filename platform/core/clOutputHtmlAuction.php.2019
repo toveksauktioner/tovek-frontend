@@ -1,0 +1,775 @@
+<?php
+
+require_once PATH_FUNCTION . '/fOutputHtml.php';
+require_once PATH_FUNCTION . '/fMoney.php';
+
+class clOutputHtmlAuction {
+
+	private $aDataDict = array();
+	private $aAuctionData = array();
+	private $aItemData = array();
+
+	private $sListKey;
+	private $sViewFile;
+
+	private $sTitle;
+
+	private $iEntries;
+	private $iEntriesSequence;
+	private $iEntriesTotal;
+	private $iEntriesShown;
+	private $bListAll;
+
+	public $sActiveViewMode;
+	public $sActiveSortType;
+
+	private $oImage;
+
+	public function __construct( $aParams = array(), $aDataDict = array() ) {
+		$this->init( $aParams, $aDataDict );
+	}
+
+	public function init( $aParams = array(), $aDataDict = array()  ) {
+		if( !empty($aDataDict) ) {
+			$this->aDataDict = $aDataDict;
+		} else {
+			$oAuctionEngine = clRegistry::get( 'clAuctionEngine', PATH_MODULE . '/auction/models' );
+			$oAuctionItemDao = $oAuctionEngine->getDao( 'AuctionItem' );
+			$this->aDataDict = $oAuctionItemDao->getDataDict();
+
+			// Read favorites
+			if( empty($oAuctionEngine->aUserFavoriteItems) && !empty($_SESSION['userId']) ) {
+				$aUserFavoriteItems = $oAuctionEngine->readFavoritesByUser_in_AuctionItem( $_SESSION['userId'] );
+				if( !empty($aUserFavoriteItems) ) {
+					$oAuctionEngine->aUserFavoriteItems = arrayToSingle( $aUserFavoriteItems, 'itemId', 'itemId' );
+				}
+			}
+		}
+
+		// Image module
+		$this->oImage = clRegistry::get( 'clImage', PATH_MODULE . '/image/models' );
+
+		$this->setParams( $aParams );
+	}
+
+	public function setParams( $aParams ) {
+		// Viewmode
+		$this->aViewModes = array(
+			//'detailed',
+			'mixed',
+			//'square'
+		);
+
+		// Viewmode selection
+		if( !empty($_GET['viewmode']) ) {
+			$this->sActiveViewMode = $_GET['viewmode'];
+		} elseif( !empty($_SESSION['listViewMode']) ) {
+			$this->sActiveViewMode = $_SESSION['listViewMode'];
+		} else {
+			$this->sActiveViewMode = !empty($aParams['viewmode']) ? $aParams['viewmode'] : null;
+		}
+
+		// Sorting
+		$this->aSortTypes = array(
+			'itemNo' => _( 'After item number' ),
+			'endTime' => _( 'After end time' ),
+			//'alphabetically' => _( 'After alphabetically' ),
+			'ended' => _( 'Show ended items' )
+		);
+		if( !empty($_GET['sortBy']) ) {
+			$this->sActiveSortType = $_GET['sortBy'];
+		} else {
+			$this->sActiveSortType = !empty($aParams['sortType']) ? $aParams['sortType'] : null;
+		}
+
+		$this->sListKey = !empty($aParams['listKey']) ? $aParams['listKey'] : null;
+		$this->sViewFile = !empty($aParams['viewFile']) ? $aParams['viewFile'] : null;
+		$this->sTitle = !empty($aParams['title']) ? $aParams['title'] : null;
+		$this->bNextAuctionButton = isset($aParams['nextAuctionButton']) ? $aParams['nextAuctionButton'] : true;
+		$this->aSearchForm = !empty($aParams['searchForm']) ? $aParams['searchForm'] : null;
+
+		// Entries
+		$this->iEntriesShown = 0;
+		$this->iEntries = AUCTION_ITEM_PAGINATION; # !empty($aParams['entries']) ? $aParams['entries'] : null;
+		$this->iEntriesSequence = !empty($aParams['entriesSequence']) ? $aParams['entriesSequence'] : 1;
+		if( $this->iEntriesSequence !== null ) {
+			$this->iEntriesTotal = $this->iEntries * $this->iEntriesSequence;
+		} else {
+			$this->iEntriesTotal = $this->iEntries;
+		}
+
+		// List all
+		$this->bListAll = false;
+		if( DEFCON_LEVEL >= 5 && isset($aParams['listAll']) && $aParams['listAll'] ) {
+			$this->iEntriesTotal = null;
+			$this->bListAll = true;
+		}
+
+		// Image params
+		$this->oImage->setParams( array('parentType' => 'AuctionItem') );
+		$this->oImage->oDao->aSorting = array(
+			'imageSort' => 'ASC',
+			'imageCreated' => 'ASC'
+		);
+		$this->oImage->oDao->setEntries( 1 );
+
+		// Cookie data
+		if( !empty($_COOKIE['AuctionItemLists']) ) {
+			$aCookieData = json_decode( $_COOKIE['AuctionItemLists'], true );
+			$oRouter = clRegistry::get( 'clRouter' );
+			if( array_key_exists($this->sListKey, $aCookieData) && urldecode($oRouter->sRefererRoute) != $oRouter->sPath && $oRouter->sPath == $aCookieData[ $this->sListKey ]['routePath'] ) {
+				$this->sActiveViewMode = $aCookieData[ $this->sListKey ]['viewmode'];
+				$this->iEntries = !empty($aCookieData[ $this->sListKey ]['entries']) ? $aCookieData[ $this->sListKey ]['entries'] : $this->iEntries;
+				$this->iEntriesSequence = $aCookieData[ $this->sListKey ]['entriesSequence'];
+				$this->iEntriesTotal = $this->iEntries * $this->iEntriesSequence;
+			}
+		}
+	}
+
+	public function addAuctionData( $aAuctionData ) {
+		$this->aAuctionData = $aAuctionData;
+	}
+
+	public function addItemData( $aItemData ) {
+		$this->aItemData = $aItemData;
+	}
+
+	public function createSortTypeList( $aSortTypes = array() ) {
+		if( in_array($this->sListKey, array('userBidItems','favItems','wonItems')) ) return '';
+
+		if( empty($aSortTypes) ) $aSortTypes = $this->aSortTypes;
+		$oRouter = clRegistry::get( 'clRouter' );
+
+		if( !empty($_GET['sortBy']) ) {
+			$aSortTypes2 = array( $_GET['sortBy'] => $aSortTypes[ $_GET['sortBy'] ] );
+			foreach( $aSortTypes as $sType => $sTypeLabel ) {
+				if( $sType == $_GET['sortBy'] ) continue;
+				$aSortTypes2[ $sType ] = $sTypeLabel;
+			}
+			$aSortTypes = $aSortTypes2;
+		}
+
+		$sActiveSort = _( 'Sort by' );
+		$sSortTypeList = '';
+		foreach( $aSortTypes as $sType => $sTypeLabel ) {
+			$aClass = array();
+
+			if( $sType == $this->sActiveSortType ) {
+				$aClass[] = 'active';
+				$sActiveSort = $sTypeLabel;
+			}
+
+			//$sSortTypeList .= '
+			//	<li' . (!empty($aClass) ? ' class="' . implode(' ', $aClass) . '"' : '') . '>
+			//		<a class="ajax"
+			//			href="' . $oRouter->sPath . '?sortBy=' . $sType . '"
+			//			data-ajax-href="' . $oRouter->sPath . '?ajax=true&view=' . $this->sViewFile . '&listKey=' . $this->sListKey . '&entriesSequence=' . $this->iEntriesSequence . '&viewmode=' . $this->sActiveViewMode . '&sortBy=' . $sType . '&routePath=' . $oRouter->sPath . '"
+			//			data-ajax-targetClass=".listWrapper"
+			//			data-ajax-targetid="#' . $this->sListKey . '"
+			//		>' . $sTypeLabel . '</a>
+			//	</li>';
+
+			$sSortTypeList .= '
+				<li' . (!empty($aClass) ? ' class="' . implode(' ', $aClass) . '"' : '') . '>
+					<a class="ajax" href="?ajax=true&view=' . $this->sViewFile . '&listKey=' . $this->sListKey . '&entriesSequence=' . $this->iEntriesSequence . '&viewmode=' . $this->sActiveViewMode . '&sortBy=' . $sType . '">' . $sTypeLabel . '</a>
+				</li>';
+		}
+		return '
+			<div class="sorting">
+				<div class="selector">
+					<span class="label">' . $sActiveSort . '</span>
+					<div class="optionsContainer">
+						<ul class="options">
+							' . $sSortTypeList . '
+						</ul>
+					</div>
+				</div>
+			</div>';
+		// &#8897; &#x022C1; &xvee; &Vee; &bigvee;
+	}
+
+	public function generateFavoriteLink( $iItemId, $sRoute = null ) {
+		$oAuctionEngine = clRegistry::get( 'clAuctionEngine', PATH_MODULE . '/auction/models' );
+
+		if( !empty($_SESSION['userId']) ) {
+			$sStatus = 'true';
+			if( !empty($oAuctionEngine->aUserFavoriteItems) && in_array($iItemId, $oAuctionEngine->aUserFavoriteItems) ) {
+				$sStatus = 'false';
+			}
+			$sRoute = "?ajax=true&status=" . $sStatus . "&event=favoriteItem&favoriteItem=" . $iItemId;
+			$sClass = "ajax favLink";
+		} else {
+			$oRouter = clRegistry::get( 'clRouter' );
+			if( empty($sRoute) ) $sRoute = $oRouter->getPath( 'guestUserSignup' );
+			$sClass = "ajax favLink";
+		}
+
+		if( !empty($oAuctionEngine->aUserFavoriteItems) && !empty($oAuctionEngine->aUserFavoriteItems[ $iItemId ]) ) {
+			return '
+				<a class="' . $sClass . '" data-status="true" href="' . $sRoute . '">
+					<img src="/images/templates/tovekClassic/icon-fav-list.png" alt="" />
+				</a>';
+		} else {
+			return '
+				<a class="' . $sClass . '" data-status="false" href="' . $sRoute . '">
+					<img src="/images/templates/tovekClassic/icon-fav-grey-list.png" alt="" />
+				</a>';
+		}
+	}
+
+	public function createMixedList() {
+		$sItemEntry = '';
+		$sItemList = '';
+		$iTime = time();
+
+		$oRouter = clRegistry::get( 'clRouter' );
+		$sSignupUrl = $sRoute = $oRouter->getPath( 'userLogin' );
+
+		$iCount = 0;
+		foreach( $this->aItemData as $aEntry ) {
+			// Continue if past in time
+			//if( time() > strtotime($aEntry['itemEndTime']) ) continue;
+			$iTimeSinceEnded = $iTime - strtotime( $aEntry['itemEndTime'] );
+
+			/**
+			 * Cancelled item
+			 */
+			$bCancelled = false;
+			if( $aEntry['itemMinBid'] == 0 && $aEntry['itemMarketValue'] == 0 ) {
+				$bCancelled = true;
+			}
+
+			if( $this->iEntriesTotal !== null && $iCount >= $this->iEntriesTotal ) break;
+
+			$aClass = array( 'itemEntry' );
+
+			//if( $iCount % 2 == 0 ) $aClass[] = 'odd';
+			//if( $iCount % 4 == 0 ) $aClass[] = 'fourth';
+			if( !empty($aEntry['partStatus']) && $aEntry['partStatus'] == 'halted' ) $aClass[] = 'halted';
+			if( $aEntry['itemStatus'] == 'ended' ) $aClass[] = 'ended';
+
+			// Development
+			#if( empty($aEntry['bidValue']) ) $aEntry['bidValue'] = '0';
+
+			// Image data
+			$this->oImage->oDao->switchToSecondary();
+			$aImageData = array();
+		 	if( ($iTimeSinceEnded < 2592000) || empty($aEntry['itemVehicleArchiveImageId']) ) {
+		 		$aImageData = $this->oImage->readByParent( $aEntry['itemId'], array(
+		 			'imageId',
+		 			'imageFileExtension',
+		 			'imageParentId'
+		 		) );
+		 	} else if( !empty($aEntry['itemVehicleArchiveImageId']) ) {
+		 		$aImageData = $this->oImage->read( array(
+		 			'imageId',
+		 			'imageFileExtension',
+		 			'imageParentId'
+		 		), $aEntry['itemVehicleArchiveImageId'] );
+		 	}
+			$this->oImage->oDao->switchToPrimary();
+
+			/**
+			 * Image
+			 */
+			$sImage = '
+				 <picture>
+					<source media="(min-width: 650px)" srcset="/images/templates/tovek/no-item-image_400x300.png">
+					<source media="(min-width: 465px)" srcset="/images/templates/tovek/no-item-image_400x300.png">
+					<img src="/images/templates/tovek/no-item-image_400x300.png" alt="no-image" />
+				</picture>';
+			if( !empty($aImageData) && ($aEntry['itemMinBid'] > 0) ) {
+				// Note: if the item min bid is 0 the item is cancelled and shall not show any images.
+
+				$aImage = current($aImageData);
+
+				if( !empty($aEntry['auctionType']) && $aEntry['auctionType'] == 'live' ) {
+					$sImage = '<img src="/images/templates/tovekClassic/icon-live-yellow-imageicon.png" alt="" class="liveicon" />';
+
+				} elseif( file_exists(PATH_PUBLIC . '/images/custom/AuctionItem/' . $aImage['imageId'] . '.' . $aImage['imageFileExtension']) ) {
+					$sImage = '
+						<picture>
+							<source media="(min-width: 650px)" srcset="/images/custom/AuctionItem/tn/small' . $aImage['imageId'] . '.' . $aImage['imageFileExtension'] . '">
+							<source media="(min-width: 465px)" srcset="/images/custom/AuctionItem/tn/medium' . $aImage['imageId'] . '.' . $aImage['imageFileExtension'] . '">
+							<img src="/images/custom/AuctionItem/tn/small' . $aImage['imageId'] . '.' . $aImage['imageFileExtension'] . '" alt="" />
+						</picture>';
+
+				}
+
+			} elseif( empty($aImageData) && !empty($aEntry['auctionOldAuctionId']) && !empty($aEntry['itemOldItemId']) && ($aEntry['itemMinBid'] > 0) ) {
+				// Note: if the item min bid is 0 the item is cancelled and shall not show any images.
+
+				$sOldDir = PATH_PUBLIC . '/images/oldAuctions/' . $aEntry['auctionOldAuctionId'] . '/' . $aEntry['itemOldItemId'];
+				if( is_dir($sOldDir) ) {
+					$aOldImages = scandir( $sOldDir );
+
+					if( $aOldImages !== false ) {
+						unset( $aOldImages[0], $aOldImages[1] );
+
+						$aOldImageGrouped = array();
+						foreach( $aOldImages as $sFile ) {
+							if( substr($sFile, 0, 6) == 'medium' ) {
+								$sOldImageDir = '/images/oldAuctions/' . $aEntry['auctionOldAuctionId'] . '/' . $aEntry['itemOldItemId'];
+
+								$sImage = '
+									' . ($aEntry['auctionType'] == 'live' ? '
+										<img src="/images/templates/tovekClassic/icon-live-yellow-imageicon.png" alt="" class="liveicon" />
+									' : '') . '
+									<img style="max-height: 210px;" src="' . $sOldImageDir . '/' . $sFile . '" alt="" />';
+
+								break;
+							}
+						}
+					}
+				}
+			}
+
+			/**
+			 * Bid value
+			 */
+			if( !in_array($this->sListKey, array('itemListArchived','wonItems')) ) {
+				$fBidValue = !empty($aEntry['bidValue']) ? $aEntry['bidValue'] : $aEntry['itemMinBid'];
+				$sCurrentBid = '';
+				$sCurrentBidTime = !empty($aEntry['bidCreated']) ? $aEntry['bidCreated'] : ''; // 'Lagt 30 jan 2019';
+				if( !empty($aEntry['auctionType']) && $aEntry['auctionType'] != 'live' ) {
+					$sCurrentBid = '<span class="itemCurrentBid itemCurrentBid' . $aEntry['itemId'] . '" data-item-id="' . $aEntry['itemId'] . '">' . (empty($fBidValue) || $fBidValue == '0' ? _( 'Expires' ) : '') . '</span>';
+					if( !empty($fBidValue) || $fBidValue != '0' ) {
+						$sCurrentBidTime = '<span class="itemCurrentBidTime' . $aEntry['itemId'] . '"></span>';
+					}
+				}
+				$sNextBidValue = '';
+			} else {
+				$fBidValue = !empty($aEntry['bidValue']) ? $aEntry['bidValue'] : $aEntry['itemMinBid'];
+				$sCurrentBid = '<span class="itemCurrentBid itemCurrentBid' . $aEntry['itemId'] . '" data-item-id="' . $aEntry['itemId'] . '">' . calculatePrice( $fBidValue, array('profile' => 'human') ) . '</span>';
+			}
+
+			/**
+			 * Handling of shown bid price
+			 */
+			if( !empty($this->aAuctionData[ $aEntry['itemAuctionId'] ]) ) {
+				$sAuctionTitle = $this->aAuctionData[ $aEntry['itemAuctionId'] ]['auctionTitle'];
+			} elseif( !empty($aEntry['auctionTitle']) ) {
+				$sAuctionTitle = $aEntry['auctionTitle'];
+			} else {
+				$sAuctionTitle = '';
+			}
+
+			// Registration plate is not included in title after 30 days
+			$sRegNo = '';
+			if( !empty($aEntry['itemRegistrationPlate']) && ($iTimeSinceEnded < 2592000) ) {
+				$sRegNo = ' [' . $aEntry['itemRegistrationPlate'] . ']';
+			}
+
+			/**
+			 * Bid form
+			 */
+			$sBidForm = '';
+			$sBidHistory = '';
+			//$oLayout = clRegistry::get( 'clLayoutHtml' );
+			//$GLOBALS['viewParams']['auction']['bidFormAdd.php']['item'] = $aEntry;
+			//$GLOBALS['viewParams']['auction']['bidList.php']['item'] = $aEntry;
+			//$sBidForm = $oLayout->renderView( 'auction/bidFormAdd.php' );
+			//$sBidHistory = $oLayout->renderView( 'auction/bidList.php' );
+
+			/**
+			 * Google maps address
+			 */
+			$oBackEnd = clRegistry::get( 'clBackEnd', PATH_MODULE . '/backEnd/models' );
+			$oBackEnd->setSource( 'entAuctionAddress', 'addressId' );
+			$oBackEnd->oDao->setCriterias( array(
+				'partAuctionId' => array(
+					'fields' => 'addressPartId',
+					'value' => $aEntry['itemPartId']
+				)
+			) );
+			$aAddress = current( $oBackEnd->read() );
+			$sMapUrl = '';
+			if( !empty($aAddress) ) {
+				/**
+				 * Google maps link
+				 */
+				$sMapUrl = 'https://www.google.se/maps/place/';
+				if( !empty(trim($aAddress['addressAddress'])) ) {
+					$sMapUrl .= preg_replace( '/\s+/', '+', $aAddress['addressAddress'] );
+				} elseif( !empty(trim($aAddress['addressTitle'])) ) {
+					$sMapUrl .= preg_replace( '/\s+/', '+', $aAddress['addressTitle'] );
+				}
+			}
+
+			$sTitle = '
+				<h3>
+					<span class="bidNo">' . _( 'Call' ) . ' ' . $aEntry['itemSortNo'] . '</span>
+					' . ( !in_array($this->sListKey, array('itemListArchived','wonItems')) ? '
+					<span class="title"><a href="' . $aEntry['routePath'] . '">' . $aEntry['itemTitle'] . $sRegNo . '</a></span>
+					' : '
+					<span class="title"><a href="/klassiskt/rop?itemId=' . $aEntry['itemId'] . '">' . $aEntry['itemTitle'] . $sRegNo . '</a></span>
+					' ) . '
+				</h3>';
+			$sMobilTitle = '
+				<h3 class="mobileTitle">
+					<span class="bidNo">' . _( 'Call' ) . ' ' . $aEntry['itemSortNo'] . '</span>
+					<span class="title"><a href="' . $aEntry['routePath'] . '">' . $aEntry['itemTitle'] . $sRegNo . '</a></span>
+				</h3>';
+			if( $bCancelled == true ) {
+				$sTitle = '
+					<h3>
+						<span class="bidNo">' . _( 'Call' ) . ' ' . $aEntry['itemSortNo'] . '</span>
+						<span class="title">' . $aEntry['itemTitle'] . $sRegNo . '</span>
+					</h3>';
+				$sMobilTitle = '
+					<h3 class="mobileTitle">
+						<span class="bidNo">' . _( 'Call' ) . ' ' . $aEntry['itemSortNo'] . '</span>
+						<span class="title">' . $aEntry['itemTitle'] . $sRegNo . '</span>
+					</h3>';
+			}
+
+			if( in_array($this->sListKey, array('itemListArchived','wonItems')) ) {
+				$aEntry['routePath'] = '/klassiskt/rop?itemId=' . $aEntry['itemId'] . '';
+			}
+
+			$sItemEntry = '
+				<div class="closeLink">
+					<a href="#" class="close">X</a>
+				</div>
+				<div class="infoPopup" id="infoPopup' . $aEntry['itemId'] . '">
+					<div class="topbar">
+						<div class="itemNav">
+							<span class="up">&#8793;</span>
+							<span class="down">&#8794;</span>
+						</div>
+						<div class="moreLink">
+							' . ( $bCancelled == false ? '
+								' . ( !in_array($this->sListKey, array('itemListArchived','wonItems')) ? '
+									<a href="' . $aEntry['routePath'] . '">' . _( 'Open in new window/tab' ) . '</a>
+								' : '<a href="/klassiskt/rop?itemId=' . $aEntry['itemId'] . '">' . _( 'Open in new window/tab' ) . '</a>' ) . '
+							' : '' ) . '
+						</div>
+						<div class="closeLink">
+							<a href="#" class="close">X</a>
+						</div>
+					</div>
+					<div class="container"></div>
+				</div>
+				<div class="imageContainer">
+					' . $sMobilTitle . '
+					<p class="image">
+						<a href="' . $aEntry['routePath'] . '" class="ajax" data-item-id="' . $aEntry['itemId'] . '">
+							' . $sImage . '
+						</a>
+					</p>
+				</div>
+				<div class="information">
+					' . $sTitle . '
+					' . (!empty($sMapUrl) ? '
+					<p class="location">' . $aEntry['itemLocation'] . ' (<a href="' . $sMapUrl . '" class="itemMap" data-item-id="' . $aEntry['itemId'] . '">' . _( 'show on map' ) . '</a>)</p>
+					' : '') . '
+					<ul class="data">
+						<li><strong>' . _( 'Ends' ) . ':</strong> <span>' . convertTime( $aEntry['itemEndTime'], $aEntry['itemId'] ) . '</span></li>
+						<li><strong>' . _( 'Bid' ) . ':</strong> <span>' . $sCurrentBid . '</span></li>
+						<li><strong>' . _( 'Vat' ) . ':</strong> <span>' . $aEntry['itemVatValue'] . '%</span></li>
+						' . ($bCancelled == false ? '
+						<li><strong>' . _( 'Calling fee' ) . ':</strong> <span>' . calculatePrice( $aEntry['itemFeeValue'], array('profile' => 'human') ) . '</span> exkl. moms</li>
+						' : '') . '
+					</ul>
+					<div class="links">
+						<div class="moreLink">
+							<a href="' . $aEntry['routePath'] . '" class="button info" data-item-id="' . $aEntry['itemId'] . '">' . _( 'Show all information' ) . '</a>
+						</div>
+						' . ( $bCancelled == false ? '
+						<div class="bidLink">
+							' . ( !in_array($this->sListKey, array('itemListArchived','wonItems')) ? '
+							<a href="#" class="button submit" data-item-id="' . $aEntry['itemId'] . '">' . _( 'Place a bid' ) . '</a>
+							' : '' ) . '
+							<div class="bidPopup ' . (!empty($_SESSION['userId']) ? 'user' : 'guest') . '">
+								<div class="container" data-item-id="' . $aEntry['itemId'] . '">
+									<a href="#" class="close">X</a>
+									<p class="item"><span>' . _( 'Call' ) . ' ' . $aEntry['itemSortNo'] . '</span> ' . $aEntry['itemTitle'] . $sRegNo . '</p>
+									' . /*<p class="bid">' . _( 'Bid' ) . ' ' . $sCurrentBid . '</p>
+									<p class="time">' . $sCurrentBidTime . '</p> */ '
+									' . $sBidForm . '
+								</div>
+							</div>
+						</div>
+						' : '' ) . '
+					</div>
+				</div>
+				<div class="itemFavorite">
+					' . ( $bCancelled == false ? $this->generateFavoriteLink( $aEntry['itemId'], $sSignupUrl ) : '' ) . '
+				</div>
+				<div class="bottomBar">
+					<div class="itemFavorite">
+						' . ( $bCancelled == false ? $this->generateFavoriteLink( $aEntry['itemId'], $sSignupUrl ) : '' ) . '
+					</div>
+					<div class="moreLink">
+						<a href="' . $aEntry['routePath'] . '" class="button info">' . _( 'All info' ) . '</a>
+					</div>
+					' . ( $bCancelled == false ? '
+					<div class="bidLink">
+						' . ( !in_array($this->sListKey, array('itemListArchived','wonItems')) ? '
+						<a href="#" class="button submit">' . _( 'Place bid' ) . '</a>
+						' : '' ) . '
+						<div class="bidPopup ' . (!empty($_SESSION['userId']) ? 'user' : 'guest') . '">
+							<div class="container" data-item-id="' . $aEntry['itemId'] . '">
+								<a href="#" class="close">X</a>
+								<p class="item"><span>' . _( 'Call' ) . ' ' . $aEntry['itemSortNo'] . '</span> ' . $aEntry['itemTitle'] . $sRegNo . '</p>
+								' . /*<p class="bid">' . _( 'Bid' ) . ' ' . $sCurrentBid . '</p>
+								<p class="time">' . $sCurrentBidTime . '</p> */ '
+								' . $sBidForm . '
+							</div>
+						</div>
+					</div>
+					' : '' ) . '
+				</div>';
+
+			if( $this->sListKey != 'ajax' ) {
+				$sItemList .= '
+					<li' . (!empty($aClass) ? ' class="' . implode(' ', $aClass) . '"' : '' ) . ' id="itemEntry' . $aEntry['itemId'] . '" data-item-id="' . $aEntry['itemId'] . '">
+						' . $sItemEntry . '
+					</li>';
+			} else {
+				$sItemList .= $sItemEntry;
+			}
+
+			++$iCount;
+		}
+
+		$this->iEntriesShown = $iCount;
+
+		return $sItemList;
+	}
+
+	public function createList( $sType ) {
+		if( $sType == 'mixed' ) {
+			return '
+				<ul class="items mixed">
+					' . $this->createMixedList() . '
+				</ul>';
+		}
+		return false;
+	}
+
+	public function createPaginationBar() {
+		$oRouter = clRegistry::get( 'clRouter' );
+
+		$iEntriesTotal = count( $this->aItemData );
+
+		if( $this->iEntriesSequence === null ) {
+			$iEntriesSequence = 2;
+			$iEntriesShown = $this->iEntries;
+		} else {
+			$iEntriesSequence = $this->iEntriesSequence + 1;
+			$iEntriesShown = $this->iEntries * $this->iEntriesSequence;
+		}
+		if( $iEntriesTotal <= $this->iEntries ) {
+			$iEntriesShown = $iEntriesTotal;
+		}
+
+		if( !empty($this->aItemData) ) {
+			$aFirstItem = current( $this->aItemData );
+			$iAuctionId = $aFirstItem['itemAuctionId'];
+			$iPartId = $aFirstItem['itemPartId'];
+		}
+
+		$sMoreLink = '';
+
+		if( $iEntriesTotal > $this->iEntries ) {
+			$sMoreLink = '
+				<a class="ajax transitionAll"
+					href="' . $oRouter->sPath . '?listKey=' . $this->sListKey . '&entriesSequence=' . $iEntriesSequence . (!empty($iAuctionId) ? '&auctionId=' . $iAuctionId : '') . (!empty($iPartId) ? '&partId=' . $iPartId : '') . '"
+					data-ajax-href="' . $oRouter->sPath . '?ajax=true&view=' . $this->sViewFile . '&listKey=' . $this->sListKey . '&sortBy=' . $this->sActiveSortType . '&entriesSequence=' . $iEntriesSequence . '&viewmode=' . $this->sActiveViewMode . '&routePath=' . $oRouter->sPath . (!empty($iAuctionId) ? '&auctionId=' . $iAuctionId : '') . (!empty($iPartId) ? '&partId=' . $iPartId : '') . '"
+					data-ajax-targetClass=".listWrapper"
+					data-ajax-targetid="#' . $this->sListKey . '"
+				>' . sprintf( _( 'Show next %s' ), $this->iEntries ) . '</a>';
+
+			if( DEFCON_LEVEL >= 5 && AUCTION_ITEM_SHOW_ALL === true ) {
+				// Show all button
+				$sMoreLink .= '
+				<a class="ajax transitionAll"
+					href="' . $oRouter->sPath . '?listKey=' . $this->sListKey . '&entriesSequence=' . $iEntriesSequence . (!empty($iAuctionId) ? '&auctionId=' . $iAuctionId : '') . (!empty($iPartId) ? '&partId=' . $iPartId : '') . '&listAll=1"
+					data-ajax-href="/?ajax=true&view=' . $this->sViewFile . '&listKey=' . $this->sListKey . '&sortBy=' . $this->sActiveSortType . '&entriesSequence=' . $iEntriesSequence . '&listAll=1&viewmode=' . $this->sActiveViewMode . '&routePath=' . $oRouter->sPath . (!empty($iAuctionId) ? '&auctionId=' . $iAuctionId : '') . (!empty($iPartId) ? '&partId=' . $iPartId : '') . '"
+					data-ajax-targetClass=".listWrapper"
+					data-ajax-targetid="#' . $this->sListKey . '"
+				>' . _( 'Visa alla' ) . '</a>';
+			}
+
+			if( ($iEntriesShown >= $iEntriesTotal) || ($this->iEntriesTotal == null) ) {
+				$iEntriesShown = $iEntriesTotal;
+				$sMoreLink = '
+					<a class="ajax transitionAll"
+					href="' . $oRouter->sPath . '?listKey=' . $this->sListKey . '&entriesSequence=' . $iEntriesSequence . (!empty($iAuctionId) ? '&auctionId=' . $iAuctionId : '') . (!empty($iPartId) ? '&partId=' . $iPartId : '') . '"
+					data-ajax-href="' . $oRouter->sPath . '?ajax=true&view=' . $this->sViewFile . '&listKey=' . $this->sListKey . '&sortBy=' . $this->sActiveSortType . '&entriesSequence=1&viewmode=' . $this->sActiveViewMode . '&routePath=' . $oRouter->sPath . (!empty($iAuctionId) ? '&auctionId=' . $iAuctionId : '') . (!empty($iPartId) ? '&partId=' . $iPartId : '') . '"
+					data-ajax-targetClass=".listWrapper"
+					data-ajax-targetid="#' . $this->sListKey . '"
+				>' . _( 'Hide again' ) . '</a>';
+			}
+		}
+
+		if( ($iEntriesShown >= $iEntriesTotal) && ($this->bNextAuctionButton === true) ) {
+			$aCurrentItem = current( $this->aItemData );
+			$sMoreLink .= '
+				<a class="nextButton" id="nextAuctionBtn" href="#" data-auction-part-id="' . $aCurrentItem['itemPartId'] . '">' . _( 'Next auction' ) . '<img src="/images/templates/tovekClassic/icon-blue-arrow-right.png"></a>';
+		}
+
+		return '
+			<div class="paginationBar">
+				<div class="counter">
+					<span>' . sprintf( _( 'Show %s of %s items' ), $iEntriesShown, $iEntriesTotal ) . '</span>
+				</div>
+				<div class="moreButton">
+					' . $sMoreLink . '
+				</div>
+				<div class="toTop">
+					<a href="' . $oRouter->sPath . '#listTop">' . _( 'To topp' ) . ' <img src="/images/templates/tovekClassic/icon-black-arrow.png" alt="" /></a>
+				</div>
+			</div>';
+	}
+
+	public function createSearchForm( $sMethod = 'GET' ) {
+		if( empty($this->aSearchForm) ) return;
+
+		$sFields = '';
+		foreach( $this->aSearchForm as $sSearchField ) {
+			$sFields .= '
+				<div class="field text search">
+					<input type="text" name="' . $sSearchField . '" class="text" placeholder="' . _( 'Rop-nr.' ) . '">
+				</div>';
+		}
+
+		$sHidden = '';
+		if( $sMethod == 'GET' )
+		foreach( $_GET as $key => $value ) {
+			if( in_array($key, $this->aSearchForm) ) {
+				unset( $_GET[$key] );
+			} else {
+				$sHidden .= '
+					<input type="hidden" name="' . $key . '" value="' . $value . '" />';
+			}
+		}
+
+		$sAction = '';
+		if( $sMethod != 'GET' ) {
+			$sAction = '?' . http_build_query( $_GET );
+		}
+
+		return '
+			<form ' . ( !empty($sAction) ? 'action="' . $sAction . '"' : '' ) . ' method="' . $sMethod . '" class="itemNoSearch">
+				' . $sFields . '
+				' . ( !empty($sHidden) ? '<div class="hidden">' . $sHidden . '</div>' : '' ) . '
+				<p class="buttons">
+					<button type="submit" class="rounded"><i class="fas fa-search"></i></button>
+				</p>
+			</form>';
+	}
+
+	public function renderToolbar() {
+		return '
+			<h2><a id="listTop"></a>' . $this->sTitle . '</h2>
+			<div class="toolbar">
+				<div class="tool">
+				' . $this->createSortTypeList() . '
+				</div>
+				<div class="tool">
+				' . $this->createSearchForm() . '
+				</div>
+				<div class="tool">
+					<span>' . sprintf( _( 'Show %s of %s items' ), $this->iEntriesShown, count( $this->aItemData ) ) . '</span>
+				</div>
+			</div>';
+	}
+
+	public function renderListContent() {
+		$this->updateCookie();
+
+		$sContent = '';
+		//if( $this->sActiveViewMode == 'detailed' ) $sContent = $this->createTable();
+		if( $this->sActiveViewMode == 'mixed' ) $sContent = $this->createList( 'mixed' );
+		//if( $this->sActiveViewMode == 'square' ) $sContent = $this->createList( 'square' );
+
+		return '
+			' . $sContent . '
+			<span class="clear"></span>
+			' . $this->createPaginationBar();
+	}
+
+	public function renderList() {
+		$this->updateCookie();
+
+		$sContent = '';
+		if( !empty($this->aItemData) ) {
+			//if( $this->sActiveViewMode == 'detailed' ) $sContent = $this->createTable();
+			if( $this->sActiveViewMode == 'mixed' ) $sContent = $this->createList( 'mixed' );
+			//if( $this->sActiveViewMode == 'square' ) $sContent = $this->createList( 'square' );
+		} else {
+			$sContent = '<em>' . _( 'No auction items to show' ) . '</em>';
+		}
+
+		return '
+			<div class="listWrapper" id="' . $this->sListKey . '">
+				' . $sContent . '
+				<span class="clear"></span>
+				' . $this->createPaginationBar() . '
+			</div>';
+	}
+
+	public function render() {
+		$this->updateCookie();
+		$sList = $this->renderList();
+		$sToolbar = $this->renderToolbar();
+
+		return
+			$sToolbar .
+			$sList;
+	}
+
+	public function updateCookie() {
+		$aNewCookieEntry = array();
+
+		$aSkipLists = array(
+			'wonItems',
+			'favItems',
+			'userBidItems'
+		);
+
+		if( in_array($this->sListKey, $aSkipLists) ) {
+			return true;
+		}
+
+		/*** Ajax fix for Internt Explorer ***/
+		$oRouter = clRegistry::get( 'clRouter' );
+		$sPath = $oRouter->sPath;
+		$sPath = str_replace( '%C3%A5', 'å', $sPath );
+		$sPath = str_replace( '%C3%A4', 'ä', $sPath );
+		$sPath = str_replace( '%C3%B6', 'ö', $sPath );
+
+		$aNewCookieEntry = array(
+			'listKey' => $this->sListKey,
+			'viewFile' => $this->sViewFile,
+			'title' => $this->sTitle,
+			'viewmode' => $this->sActiveViewMode,
+			'sortType' => $this->sActiveSortType,
+			'entries' => $this->iEntries,
+			'entriesTotal' => count($this->aItemData),
+			'entriesSequence' => !empty($this->iEntriesSequence) ? $this->iEntriesSequence : $this->iEntriesSequence,
+			'routePath' => $sPath
+		);
+
+		// List all
+		if( $this->bListAll == true ) {
+			$aNewCookieEntry['entriesSequence'] = ceil( $aNewCookieEntry['entriesTotal'] / $this->iEntries );
+		}
+
+		if( !empty($_COOKIE['AuctionItemLists']) ) {
+			$aCookieData = json_decode( $_COOKIE['AuctionItemLists'], true );
+			foreach( $aSkipLists as $sList ) {
+				unset( $aCookieData[$sList] );
+			}
+			$aCookieData[$this->sListKey] = $aNewCookieEntry;
+		} else {
+			$aCookieData[$this->sListKey] = $aNewCookieEntry;
+		}
+
+		//setcookie( 'AuctionItemLists', json_encode($aCookieData), time()+3600*26, '/' );
+		setcookie( 'AuctionItemLists', json_encode($aCookieData), time()+3600, '/' );
+	}
+
+}

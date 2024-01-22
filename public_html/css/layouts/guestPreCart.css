@@ -1,0 +1,19 @@
+.view.formLoginOrSignup { margin: 40px 60px; }
+	/*** Wrappers ***/
+	.view.formLoginOrSignup .col.colTwo.colFirst { width: 42%; padding: 5px 0; }
+	.view.formLoginOrSignup .col.colTwo.colLast { width: 53%; padding: 60px 0 60px 4.5%; border-left: 1px solid #000; }
+	
+	/*** Login ***/
+	/*.customerFormLogin {}*/
+		.customerFormLogin h1 { margin-bottom: 10px; }
+		/*.customerFormLogin form.vertical {}*/
+			.customerFormLogin form.vertical p.buttons { padding: 10px 0; }
+				/*.customerFormLogin form.vertical button {}*/
+	
+	/*** Shop method ***/
+	/*.shopMethod {}*/
+		.shopMethod p { margin: 0; padding: 0; }
+			.shopMethod p strong { display: block; margin: 12px 0 6px 0; }
+	
+	/*** Signup form ***/
+	/*.formSignup {}*/

@@ -1,0 +1,64 @@
+html { height: 100%; }
+body { height: 100%; background: /*url('/images/templates/printPreview/bg-body.png') no-repeat center top*/ #0a5599; }
+h1 { line-height: 1em; }
+p { margin-bottom: 0; }
+
+ul.informationTable { list-style: none; }
+
+div#wrapper { width: 912px; margin: 20px auto; background: #fff; box-shadow: 5px 5px 30px #000; }
+	div#topbar { height: 35px; padding: 10px 10px; border: 1px solid #cfcfcf; background: url('/images/templates/printPreview/bg-topbar.png') repeat-x; }
+		div#topbar p { text-align: center; line-height: 39px; color: #00539b; }
+		div#topbar ul { list-style: none; text-align: center; }
+			div#topbar ul li { display: inline-block; height: 35px; }
+				div#topbar ul li img { position: relative; top: 2.5px; }
+				div#topbar ul li a { position: relative; top: -5px; }
+				div#topbar ul li a:hover { text-decoration: underline; }
+
+	div#header { height: 78px; padding: 0.5cm 1.5cm; }
+		div#logo { float: left; padding-top: 3px; }
+		div#addressInfo { float: right; font-size: 13px; }
+			div#addressInfo p { margin: 0; padding: 0; line-height: 15px; }
+				div#addressInfo span { display: inline-block; width: 100px; text-align: right; margin-right: 10px; font-weight: 700; }
+
+	div#content { padding: 0.5cm 0; margin: 0 1.5cm; border-top: 1px solid #efefef; border-bottom: 1px solid #efefef; }
+		div#itemWrapper {}
+			div#itemControls { padding-bottom: 5px; font-size: 14px; }
+				div#itemControls ul { list-style: none; text-align: center; }
+					div#itemControls ul li { display: inline-block; }
+					div#itemControls ul li.location { margin-right: 5px; }
+						div#itemControls ul li.location a { display: block; padding: 1px 5px; border: 1px solid #eaeaea; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px; background: #eaeaea; color: #000; }
+						div#itemControls ul li.location a:hover,
+						div#itemControls ul li.location a.active
+						{ background: url('/images/templates/printPreview/bg-print-location-link.png') repeat-x; border-color: #0a3172; color: #fff; }
+			div#itemContainer {}
+				div#itemContainer p { text-align: center; color: #868686; }
+				div#itemContainer table.dataTable { }
+					div#itemContainer table.dataTable thead { }
+						div#itemContainer table.dataTable thead tr { }
+							div#itemContainer table.dataTable thead tr th { background: url('/images/templates/printPreview/bg-print-thead.png') repeat-x; color: #fff; }
+							div#itemContainer table.dataTable thead tr th.itemSortNo { border-top-left-radius: 4px; }
+							div#itemContainer table.dataTable thead tr th.itemLocation { border-top-right-radius: 4px; }
+					div#itemContainer table.dataTable tbody { }
+						div#itemContainer table.dataTable tbody tr { }
+							div#itemContainer table.dataTable tbody tr td.odd { background-color: #f5f5f5; }
+							div#itemContainer table.dataTable tbody tr td.itemVat { white-space: nowrap; font-size: 0.75em; vertical-align: middle; }
+
+		div#mapWrapper { padding-top: 20px; }
+			div#mapControls { padding-bottom: 5px; font-size: 14px; }
+				div#mapControls ul { list-style: none; text-align: center; }
+					div#mapControls ul li { display: inline-block; }
+					div#mapControls ul li.location { margin-right: 5px; }
+						div#mapControls ul li.location a { display: block; padding: 1px 5px; border: 1px solid #eaeaea; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px; background: #eaeaea; color: #000; }
+						div#mapControls ul li.location a:hover,
+						div#mapControls ul li.location a.active
+						{ background: url('/images/templates/printPreview/bg-print-location-link.png') repeat-x; border-color: #0a3172; color: #fff; }
+			div#mapContainer { padding: 1px; border: 1px solid #d3d3d3; background: #d3d3d3; }
+        div#mapContainer .directionForm { text-align: center; padding: 3px 0 5px 0; }
+          div#mapContainer .directionForm input[type="button"] { padding: 0 5px; }
+        div#mapContainer #mapCanvas { width: 100%; height: 500px; }
+        div#mapContainer #directionsPanel { width: 100%; }
+          div#mapContainer #directionsPanel .adp-directions { width: 100%; background: #fff; }
+
+	div#footer { padding: 0.3cm 0 1cm 0; margin: 0 1.5cm; font-size: 11px; height: 16px; }
+		div#name { float: left; }
+		div#date { float: right; }

@@ -1,0 +1,205 @@
+@import "bootstrap";
+
+.view.help {
+  &.list {
+    display: grid;
+    grid-template-columns: 22em auto;
+    grid-gap: 2em;
+
+    .form {
+      grid-column: span 2;
+      display: grid;
+      grid-template-columns: auto fit-content(100%);
+      grid-gap: 2em;
+      background: $colorGray100;
+      padding: 1em;
+      margin: 2em 0;
+
+      form {
+        width: 100%;
+        max-width: initial;
+
+        .field {
+          margin-bottom: 0 !important;
+
+          input.text {
+            background: $white;
+          }
+        }
+      }
+      #helpContactButton {
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
+    }
+    .categories {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 2em 9em 9em 9em;
+      grid-column-gap: 1em;
+
+      h3 {
+        grid-column: span 3;
+      }
+      a {
+        overflow: hidden;
+        text-transform: uppercase;
+        padding: .5em 0;
+        height: 9em;
+        font-size: .875em;
+
+        &.header {
+          grid-column: span 3;
+          height: auto;
+        }
+        &:not(.header) {
+          text-align: center;
+
+          i {
+            position: relative;
+            width: 6em;
+            height: 0;
+            padding-bottom: 6em;
+            border-radius: 50%;
+            color: $white;
+            background: $colorPrimary;
+            display: block;
+            margin: .5em auto;
+
+            &:before {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 2em;
+            }
+          }
+
+          &.selected, &:hover {
+            i {
+              background: $colorLighter;
+            }
+          }
+          &.hover {
+            color: $colorLighter;
+          }
+        }
+      }
+    }
+    .topics {
+      padding: 2em 0 4em 0;
+
+      .topicsContainer {
+        article {
+          margin: .5em 0;
+          border-radius: $borderRadius;
+
+          > a {
+            font-size: 1.25em;
+
+            i {
+              width: 2rem;
+              text-align: center;
+
+              &.open {
+                display: none;
+              }
+            }
+          }
+          .description {
+            display: none;
+            padding: 0 2rem;
+          }
+
+          &.open {
+            background: $colorGray100;
+            padding: 1em 0;
+
+            > a {
+              i.closed {
+                display: none;
+              }
+              i.open {
+                display: inline-block;
+              }
+            }
+            .description {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+
+    @include minScreen( $layoutBreakpoint4 ) {
+      .categories {
+        a {
+          &.header {
+            i {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    @include maxScreen( $layoutBreakpoint4 ) {
+      display: initial;
+
+      .form {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-gap: 0;
+        padding-bottom: .25em;
+
+        > a {
+          background: transparent;
+        }
+      }
+      .categories {
+        grid-template-rows: auto;
+
+        &.open {
+          a.header {
+            i.closed {
+              display: none;
+            }
+          }
+        }
+        &.closed {
+          a.header {
+            i.open {
+              display: none;
+            }
+          }
+          a:not(.header, .selected) {
+            display: none;
+          }
+          a.selected {
+            grid-column: span 3;
+            display: grid;
+            grid-template-columns: fit-content(100%) auto;
+            text-align: left;
+            grid-gap: .5em;
+            height: auto;
+            line-height: 3.5em;
+            padding: 0;
+            background: $colorLighter;
+            color: $white;
+            border-radius: $borderRadius;
+            margin-top: 2em;
+
+            i {
+              font-size: .75em;
+              width: 4em;
+              padding-bottom: 4em;
+              margin: .325em;
+              background: $white;
+              color: $colorLighter;
+            }
+          }
+        }
+      }
+    }
+  }
+}

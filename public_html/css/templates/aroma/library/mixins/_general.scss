@@ -1,0 +1,188 @@
+@mixin block {
+	@include clearfix;
+	background: $blockBackgroundColor;
+	color: textColor( $mode: $blockTextMode );
+	box-shadow: 0 .05em .1em rgba(0,0,0,.4);
+	margin-top: $sizeSpace;
+	margin-bottom: $sizeSpace;
+	padding: 1em;
+	overflow: auto;
+
+	@include minScreen( 650px ) {
+		padding: $sizeSpace;
+	}
+}
+
+@mixin clearfix {
+	&::before,
+	&::after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+}
+
+@mixin dialog( $background: #fff, $position: top-right ) {
+	background: $background;
+	box-shadow: 0 .4em 1em rgba(0,0,0,.4);
+	padding: 1em;
+	font-size: 1rem;
+	color: textColor( $mode: dark );
+	z-index: 5;
+	position: absolute;
+	margin: 0;
+
+	@if $position == top-right {
+		top: 100%;
+		right: -.5em;
+		margin-top: .5em;
+
+		&::before {
+			@include triangle( 1em, $background, up);
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: 100%;
+			right: 1em;
+		}
+	}
+	@else if $position == top-left {
+		top: 100%;
+		left: -.5em;
+		margin-top: .5em;
+
+		&::before {
+			@include triangle( 1em, $background, up);
+			content: '';
+			display: block;
+			position: absolute;
+			bottom: 100%;
+			left: 1em;
+		}
+	}
+}
+
+@mixin hideTextNode( $psuedoColor, $psuedoSize ) {
+	font-size: 1px;
+	color: transparent;
+	letter-spacing: -1px;
+
+	&::after,
+	&::before,
+	> * {
+		font-size: $psuedoSize * 16px; // Fallback
+		font-size: $psuedoSize;
+		letter-spacing: normal;
+		color: $psuedoColor;
+	}
+}
+
+@mixin siteContainer() {
+	@include clearfix;
+	margin: 0 auto;
+	max-width: $sizeSiteWidth;
+}
+
+@mixin triangle($size, $triangleColor, $direction) {
+	// Triangle
+	height: 0;
+	width: 0;
+
+	$width	: nth($size, 1);
+	$height	: nth($size, length($size));
+
+	$foreground-color: nth($triangleColor, 1);
+	$background-color: transparent;
+
+	@if ($direction == up) or ($direction == down) or ($direction == right) or ($direction == left) {
+
+		$width: $width / 2;
+		$height: if(length($size) > 1, $height, $height/2);
+
+		@if $direction == up {
+			border-left		: $width solid $background-color;
+			border-right	: $width solid $background-color;
+			border-bottom	: $height solid $foreground-color;
+
+		} @else if $direction == right {
+			border-top		: $width solid $background-color;
+			border-bottom	: $width solid $background-color;
+			border-left		: $height solid $foreground-color;
+
+		} @else if $direction == down {
+			border-left		: $width solid $background-color;
+			border-right	: $width solid $background-color;
+			border-top		: $height solid $foreground-color;
+
+		} @else if $direction == left {
+			border-top		: $width solid $background-color;
+			border-bottom	: $width solid $background-color;
+			border-right	: $height solid $foreground-color;
+		}
+	}
+
+	@else if ($direction == up-right) or ($direction == up-left) {
+		border-top: $height solid $foreground-color;
+
+		@if $direction == up-right {
+			border-left:  $width solid $background-color;
+
+		} @else if $direction == up-left {
+			border-right: $width solid $background-color;
+		}
+	}
+
+	@else if ($direction == down-right) or ($direction == down-left) {
+		border-bottom: $height solid $foreground-color;
+
+		@if $direction == down-right {
+			border-left:  $width solid $background-color;
+
+		} @else if $direction == down-left {
+			border-right: $width solid $background-color;
+		}
+	}
+
+	@else if ($direction == inset-up) {
+		border-width: $height $width;
+		border-style: solid;
+		border-color: $background-color $background-color $foreground-color;
+	}
+
+	@else if ($direction == inset-down) {
+		border-width: $height $width;
+		border-style: solid;
+		border-color: $foreground-color $background-color $background-color;
+	}
+
+	@else if ($direction == inset-right) {
+		border-width: $width $height;
+		border-style: solid;
+		border-color: $background-color $background-color $background-color $foreground-color;
+	}
+
+	@else if ($direction == inset-left) {
+		border-width: $width $height;
+		border-style: solid;
+		border-color: $background-color $foreground-color $background-color $background-color;
+	}
+}
+
+@mixin verticalAlign {
+	// Internet Explorer 10
+	display			:-ms-flexbox;
+	-ms-flex-align	:center;
+
+	// Firefox
+	display:-moz-box;
+	-moz-box-align:center;
+
+	// Safari, Opera, and Chrome
+	display:-webkit-box;
+	-webkit-box-align:center;
+
+	// W3C
+	display:box;
+	box-align:center;
+
+}

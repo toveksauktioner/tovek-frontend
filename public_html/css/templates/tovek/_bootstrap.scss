@@ -1,0 +1,107 @@
+/**
+ * Imports
+ */
+@import 'argonova';
+@import 'fontawesome';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap');
+
+// General
+$siteWidth: 101.25rem;
+
+// Base typography
+$baseFontFamily: 'Open Sans', sans-serif;
+$baseFontSize: 1em;
+$baseFontWeight: 400;
+$baseLineHeight: 1.2;
+
+// Responsive breakpoints
+$layoutBreakpoint1: $siteWidth;
+$layoutBreakpoint1B: 1520px;
+$layoutBreakpoint2: 1280px;
+$layoutBreakpoint3: 960px;
+$layoutBreakpoint4: 768px;
+$layoutBreakpoint5: 640px;
+$layoutBreakpoint6: 480px;
+$layoutBreakpointNavigation: 1068px; // 880px
+$layoutHeightBreakpoint1: 800px;
+
+// Sizes
+$baseSpace: 2rem; // goldenRatio(1rem, 1);
+$baseSpaceSmall: 1rem;
+$baseSpaceMini: .5rem; // goldenRatio( 1rem, -1 );
+$borderRadius: .25em;
+$baseZIndex: 0;
+$labelSize: .75em;
+$userBarHeight: 3rem;
+$bottomBarHeight: 3em;
+$menuWidth: 16rem;
+$footerHeight: 40rem;
+
+// Headings
+$h1FontSize: 2em;
+$h2FontSize: 1.5em;
+$h3FontSize: 1.17em;
+$h4FontSize: 1em;
+$h5FontSize: 0.83em;
+$h6FontSize: 0.75em;
+$headingFontFamily: inherit;
+$headingLineHeight: inherit;
+$headingMargin: 0;
+
+// Animations
+$transitionLength: .2s;
+
+// Shadows
+$baseBoxShadow: 0 $baseSpaceMini $baseSpaceMini rgba( 0, 0, 0, .25 );
+
+// Slideshow
+$slideshowGradient: false;
+$slideshowGradientColor: #fff;
+
+// Colors
+$white: #ffffff;
+$black: #000000;
+$rgbRed: #dd3333;
+$rgbGreen: #4F9B29;
+$rgbBlue: #0033ff;
+$colorGray100: rgba(0,0,0,.1);
+$colorGray200: rgba(0,0,0,.2);
+$colorGray300: rgba(0,0,0,.3);
+$colorGray400: rgba(0,0,0,.4);
+$colorGray500: rgba(0,0,0,.5);
+$colorGray600: rgba(0,0,0,.6);
+$colorGray700: rgba(0,0,0,.7);
+$colorGray800: rgba(0,0,0,.8);
+$colorGray900: rgba(0,0,0,.9);
+$colorGrayLight: #f0f0f0;
+$colorGrayNormal: #cccccc;
+$colorGrayDark: #b3b3b3;
+
+$backgroundColor: #eee;
+$colorPrimary: #0a5599;
+$colorDarker: #073968;
+$colorLighter: #0e74d3;
+$colorAccent: #fd0;
+$colorAccentLighter: #f7e672;
+$colorAccentDarker: #e9bf00;
+$colorSuccess: $rgbGreen;
+$colorSuccessLighter: #5db530;
+$colorFailure: $rgbRed;
+$colorFailureLighter: #f71b1b;
+$colorMarkup: $colorAccentLighter;
+
+$baseTextColor: $colorGray900;
+$linkColor: $colorPrimary;
+$linkHoverColor: $colorLighter;
+
+
+$menuColor: $colorGray800;
+$menuBackground: $colorGrayLight;
+
+// Transitions
+$transitionFast: .1s;
+
+/**
+ * Import extensions
+ */
+@import "extensions";

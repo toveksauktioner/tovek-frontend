@@ -1,0 +1,39 @@
+// Common classes
+.accessibility {
+	position:absolute;
+	top:-999em;
+	left:-999em;
+}
+
+.clearfix {
+	@include clearfix;
+}
+
+.hide {
+	display: none;
+}
+
+img.block {
+	display: block;
+}
+
+.noindent {
+	margin:0;
+}
+
+.nomargin {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.noborder {
+	border: 0 !important;
+}
+
+.plain {
+	list-style: none;
+}
+
+.replace {
+	@include hide-text;
+}

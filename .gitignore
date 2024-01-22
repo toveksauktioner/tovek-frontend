@@ -1,0 +1,11 @@
+cf*.php
+public_html/images/user/
+public_html/images/custom/
+public_html/files/
+**/logs
+*.old/
+*.old
+*.bak/
+*.bak
+*.del/
+*.del

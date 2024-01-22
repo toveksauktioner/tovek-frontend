@@ -1,0 +1,122 @@
+/* compiled by scssphp v0.7.5 on Tue, 17 Sep 2019 10:56:06 +0200 (0.1272s) */
+
+.view { /* Freight Request Form */ /* Unifaun Form */ }
+.view.invoiceList.invoiceListUnpaid .dataTable { width: 100% }
+.view.popupLogin { padding: 1em 1.85em; display: none }
+.view.popupLogin form { margin: 17px 0 0 0 }
+.view.popupLogin form .buttons { text-align: left !important; padding: 0.5em 0 }
+.view.popupLogin form .buttons button { padding: 0.3em 1em }
+.view.popupLogin .links { padding-top: 0.85em }
+.view.popupLogin .links a:first-child { margin-right: 2.1em }
+.view.auction.bidFormAdd .message { padding: 1.2em 1.85em 0 1.85em }
+.view.userHomepage { margin: 0 50px; padding: 30px 0 15px 0 }
+.view.userItemFavList { margin: 30px 50px 0 50px; padding: 15px 0 5px 0; border-top: 6px double #f1efef }
+.view.userItemBidList { margin: 0 50px 0 50px; padding: 15px 0 5px 0; border-top: 6px double #f1efef }
+.view.userWonItemList { margin: 0 50px 0 50px; padding: 15px 0 5px 0; border-top: 6px double #f1efef }
+.view.userWonItemList div.wonBid.message { margin: 0 50px 50px 50px; padding: 15px 0; text-align: center; border-bottom: 6px double #f1efef }
+.view.userWonItemList div.wonBid.message p { font-style: italic; color: #b0b0b0 }
+.view.invoiceList { margin: 30px }
+.view.invoiceList .dataTable th.invoiceTotalAmount { text-align: right }
+.view.invoiceList .dataTable th.invoiceRemainingAmount { text-align: right }
+.view.invoiceList .dataTable td.invoiceTotalAmount { text-align: right }
+.view.invoiceList .dataTable td.invoiceRemainingAmount { text-align: right }
+.view.invoiceList .dataTable .invoiceFreightRequest { text-align: right }
+.view.invoiceList .dataTable td.invoiceControls { text-align: center }
+.view.invoiceList .dataTable td.invoiceControls.select { text-align: left !important }
+.view.invoiceList .dataTable td.invoiceControls .freightRequestBtn { cursor: pointer }
+.view.invoiceList .dataTable .paymentMethodRow td { background: #e5e5e5; padding: 0.2em; font-size: 0.9em }
+.view#freightRequest { display: none; position: absolute; top: 0; left: 0; width: 100%; padding: 0; z-index: 999 }
+.view#freightRequest #freightRequestContent { width: 50%; min-width: 540px; padding: 30px 50px; margin: 0 auto; background: #fff; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5) }
+.view #freightRequest #freightRequestContent .auctionPartInfo { font-size: 0.875em; background: #e6e6e6; padding: 0.5em 1em; margin-bottom: 2em }
+.view #freightRequest #freightRequestContent .auctionPartInfo .auctionParts { margin-left: 3em }
+.view #freightRequest #freightRequestContent .auctionPartInfo .auctionParts li .date { display: inline-block; width: 6.25em; font-weight: bold }
+.view #freightRequest #freightRequestContent ul.invoiceList { list-style: none; margin-top: 2em }
+.view #freightRequest #freightRequestContent ul.invoiceList li { position: relative }
+.view #freightRequest #freightRequestContent ul.invoiceList li .checkbox { position: absolute; top: 0; left: 0 }
+.view #freightRequest #freightRequestContent ul.invoiceList li .checkbox input { width: 2em; height: 2em; color: green }
+.view #freightRequest #freightRequestContent ul.invoiceList li .content { margin-left: 3em }
+.view #freightRequest #freightRequestContent ul.invoiceList h3 { font-size: 1.25em }
+.view #freightRequest #freightRequestContent ul.invoiceList ul.invoiceLineList { list-style: none; border-top: 1px solid #dedede; margin-bottom: 20px }
+.view #freightRequest #freightRequestContent ul.invoiceList ul.invoiceLineList li { border-bottom: 1px solid #dedede }
+.view #freightRequest #freightRequestContent ul.invoiceList ul.invoiceLineList li span.invoiceLineQuantity { display: inline-block; padding-right: 5px; width: 50px; text-align: right }
+.view #freightRequest #freightRequestContent ul.invoiceList ul.invoiceLineList li span.invoiceLineTitle { font-weight: bold }
+.view #freightRequest #freightRequestContent textarea { width: 97%; height: 150px; padding: 0 8px; font-size: 20px; border: none; border-radius: 10px; box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.35); background: #f1f1f1 }
+.view #freightRequest #freightRequestContent .freightCostDetails { padding: 5px 10px; background: #dedede }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestMessage { padding-bottom: 10px }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestParcel { font-size: 1.25em; float: left; clear: left; font-weight: 600 }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestCost { font-size: 1.25em; font-weight: 800; float: right; clear: right }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestVatLabel { font-size: 1.25em; float: left; clear: left; font-weight: 400; text-align: right; width: 70% }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestCostVat { font-size: 1.25em; font-weight: 400; float: right; clear: right }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestTotalLabel { font-size: 1.25em; float: left; clear: left; font-weight: 600; text-align: right; width: 70% }
+.view #freightRequest #freightRequestContent .freightCostDetails .freightRequestCostTotal { font-size: 1.25em; font-weight: 800; float: right; clear: right }
+.view #freightRequest #freightRequestContent .buttons { text-align: center }
+.view #freightRequest #freightRequestContent .buttons button { width: 175px; height: 53px; padding: 10px 0 0 0; font-size: 20px; color: #fff; background: url('/images/templates/tovek2014/bg-register-button.png') no-repeat; border: none }
+.view #freightRequest #freightRequestContent .buttons button#closeFreightRequest { height: 43px; margin-top: 12px; padding: 0; background: #999 }
+.view #freightRequest #freightRequestContent .buttons button#declineFreightRequest { height: 43px; margin-top: 12px; padding: 0; background: #9b0004 }
+.view #freightRequest #freightRequestContent .buttons button#acceptFreightRequest { height: 43px; margin-top: 12px; padding: 0; background: #00539b }
+.view #freightRequest #freightRequestContent .unifaunFormAdd.view { display: none; padding-top: 20px }
+.view #freightRequest #freightRequestContent .unifaunFormAdd h1 { display: none }
+.view #freightRequest #freightRequestContent .unifaunFormAdd button { height: 43px; margin-top: 12px; padding: 0; background: #549b00 }
+.view #freightRequest #freightRequestContent .unifaunFormAdd label { width: 30%; padding-right: 5% }
+.view #freightRequest #freightRequestContent .unifaunFormAdd input.text, 
+.view #freightRequest #freightRequestContent .unifaunFormAdd textarea { width: 65%; max-width: 270px; border: none; border-radius: 5px; box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.35); background: #f1f1f1; text-indent: 10px }
+.view#showInvoice { display: none; position: fixed; top: 0; left: 0; bottom: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); text-align: center; overflow: auto; padding: 60px 0; z-index: 1 }
+.view#showInvoice .invoiceControls { padding: 0 0 30px 30px }
+.view#showInvoice section.invoice { background: #fff; width: 188mm; height: 272mm; font-size: 0.8em }
+.view#showInvoice section.invoice.preview { box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); padding: 12.5mm 11mm; margin-top: 5px; font-size: 1em }
+.view#showInvoice section.invoice.popup { font-size: 0.875em; margin: 0 auto }
+.view#showInvoice section.invoice p { margin: 0; line-height: normal }
+.view#showInvoice section.invoice .dataTable th { font-size: 0.875em }
+.view#showInvoice section.invoice header { height: 45mm; background: none; position: relative }
+.view#showInvoice section.invoice header .logo { width: 46%; float: left }
+.view#showInvoice section.invoice header .logo img { width: 100% }
+.view#showInvoice section.invoice header .invoiceBaseInfo { width: 46%; float: right }
+.view#showInvoice section.invoice header .invoiceBaseInfo .dataTable .invoiceNo { text-align: center }
+.view#showInvoice section.invoice header .invoiceBaseInfo .dataTable .customerNo { text-align: center }
+.view#showInvoice section.invoice header .invoiceBaseInfo .dataTable td { font-size: 0.875em }
+.view#showInvoice section.invoice header .invoiceBaseInfo .invoiceAddress { padding-left: 10%; text-transform: uppercase; font-size: 14px }
+.view#showInvoice section.invoice.popup header .invoiceBaseInfo .invoiceAddress { font-size: 0.875em; text-align: left }
+.view#showInvoice section.invoice .content { height: 165mm; clear: both }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable { margin-bottom: 5mm }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable th { background: #b4c7d6 }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable .ourRef { width: 65% }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable .terms { width: 35% }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable td.terms { padding: 1em 0; font-size: 0.875em }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable .lineTitle { width: 50% }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable .lineQty { width: 5%; text-align: center }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable .lineFee { width: 10%; white-space: nowrap; padding-left: 1em }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable .linePrice { width: 10%; white-space: nowrap; padding-left: 1em }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable .lineAmount { width: 10%; white-space: nowrap; padding-left: 1em }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable .lineVat { width: 5%; white-space: nowrap; padding-left: 1em; text-align: center; font-size: 0.75em }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable th.lineFee { text-align: center }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable td.lineFee { text-align: right }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable th.linePrice { text-align: center }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable td.linePrice { text-align: right }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable th.lineAmount { text-align: center }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable td.lineAmount { text-align: right }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable tfoot td { background: #eaeaea }
+.view#showInvoice section.invoice .content .invoiceDetails .dataTable tfoot tr:first-child td { border-top: 1px solid #dedede }
+.view#showInvoice section.invoice .content .invoiceReminderTable { font-size: 0.875em; border-collapse: collapse }
+.view#showInvoice section.invoice .content .invoiceReminderTable thead th { background: #b4c7d6 }
+.view#showInvoice section.invoice .content .invoiceReminderTable tbody td.DueDate { text-align: center }
+.view#showInvoice section.invoice .content .invoiceReminderTable tbody td.DaysLate { text-align: center }
+.view#showInvoice section.invoice .content .invoiceReminderTable tbody td.TotalAmount { text-align: right }
+.view#showInvoice section.invoice .content .invoiceReminderTable tbody td.PayedAmount { text-align: right }
+.view#showInvoice section.invoice .content .invoiceReminderTable tbody td.RemindersCount { text-align: center }
+.view#showInvoice section.invoice .content .invoiceReminderTable tbody td.remainingAmount { text-align: right }
+.view#showInvoice section.invoice .content .invoiceReminderTable tfoot td { background: #eaeaea }
+.view#showInvoice section.invoice .content .invoiceReminderTable tfoot tr.sumRow td { font-weight: bold }
+.view#showInvoice section.invoice .contentSummary { height: 40mm }
+.view#showInvoice section.invoice .contentSummary .invoiceVatTable { width: 46%; float: left }
+.view#showInvoice section.invoice .contentSummary .invoiceVatTable .dataTable { margin-bottom: 0 }
+.view#showInvoice section.invoice .contentSummary .invoiceVatTable .dataTable td { font-size: 0.875em }
+.view#showInvoice section.invoice .contentSummary .invoiceVatTable .info { padding-bottom: 5mm; font-size: 12px }
+.view#showInvoice section.invoice .contentSummary .toPayOrReceive { text-align: right; font-size: 20px; font-weight: bold; padding-bottom: 0.5em; float: right }
+.view#showInvoice section.invoice .contentSummary .toPayOrReceive span.label { padding-right: 2em }
+.view#showInvoice section.invoice .contentSummary .invoicePaymentTerms { width: 46%; text-align: right; float: right; font-size: 12px }
+.view#showInvoice section.invoice .contentSummary .invoicePaymentTerms .dueDate { font-weight: bold }
+.view#showInvoice section.invoice .contentSummary .contentSum { height: 19mm }
+.view#showInvoice section.invoice footer { clear: both; border-top: 1px solid #999; padding: 3mm 1%; margin: 0; background: none; height: auto }
+.view#showInvoice section.invoice footer table { font-size: 0.65em }
+.view#showInvoice section.invoice.preview footer table { font-size: 0.875em }
+.view#showInvoice section.invoice footer table td { text-align: left; vertical-align: top }

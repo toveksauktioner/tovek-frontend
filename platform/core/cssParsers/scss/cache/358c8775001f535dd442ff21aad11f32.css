@@ -1,0 +1,8 @@
+/* compiled by scssphp v0.7.5 on Wed, 29 Dec 2021 15:34:19 +0100 (0.0031s) */
+
+#main .view.dashboard { float: left; width: 49% }
+#main .view.dashboard h3 { font-weight: 400 }
+#main .view.dashboard section { margin-top: 0; font-size: 0.8em }
+#main .view.dashboard:nth-child(2n) { margin-right: 1.5% }
+#main .view.dashboard.staticHeader { float: none; width: 100% }
+#main .view.dashboard.staticHeader .icon::before { position: relative; top: -1px }

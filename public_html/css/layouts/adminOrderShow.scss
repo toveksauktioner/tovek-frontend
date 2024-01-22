@@ -1,0 +1,91 @@
+@import "argonova";
+
+.view {
+	&.orderFormShow {
+		min-width: 100%;
+		text-align: justify;
+		
+		// Generic
+		dl {
+			@include clearfix;
+			dt {
+				display: inline-block;
+				clear: both;
+				float: left;
+				width: 12em;
+			}
+			dd {
+				display: inline-block;
+				float: left;
+			}
+		}		
+		label {
+			width: 12em !important;
+		}
+		
+		.orderInformation {
+			float: left;
+			width: 48%;
+			text-align: left;
+		}
+		.orderEdit {
+			float: right;
+			width: 48%;
+			text-align: left;			
+		}
+		.orderBillingAddress {
+			clear: both;
+			float: left;
+			width: 48%;
+			text-align: left;
+		}
+		.orderDeliveryAddress {
+			float: right;
+			width: 48%;
+			text-align: left;
+		}
+		.orderItems {
+			clear: both;
+			width: 100%;
+			text-align: left;			
+		}
+		.orderMessage {
+			display: inline-block;
+			width: 32%;
+			text-align: left;
+			vertical-align: top;
+		}
+		.orderHistory {
+			display: inline-block;
+			width: 32%;
+			text-align: left;
+			vertical-align: top;
+			ul {
+				li {
+					margin-bottom: 10px;
+					border-bottom: 1px solid #c9c9c9;
+					.meta {
+						border-bottom: 1px solid #d4d4d4;
+						font-size: 0.85em;
+					}
+					.message {
+						font-size: 0.75em;
+						line-height: 1.3em;
+						padding: 5px 0;
+					}
+				}
+			}
+		}
+		.customerComment {
+			display: inline-block;
+			width: 32%;
+			text-align: left;
+			vertical-align: top;
+		}
+		&:after {
+			content: '';
+			display: inline-block;
+			width: 100%;
+		}
+	}
+}

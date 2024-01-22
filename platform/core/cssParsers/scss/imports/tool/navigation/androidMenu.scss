@@ -1,0 +1,124 @@
+//
+// Navigation and menu icon, with transformation
+//
+// @include maxScreen( 700px ) {
+// 		@include tool\navigation\androidMenu( $menuColor: #ffffff, $menuBackground: #243c93 );
+// 	}
+//
+// <nav data-title="<?php echo _('Menu'); ?>">
+// <input type="checkbox" name="navToggle" id="navToggle" />
+// <label for="navToggle" class="navToggle"><span></span></label>
+// <ul class="navMain"></ul>
+//
+@mixin tool\navigation\androidMenu( $menuColor: #000000, $menuBackground: #ffffff ) {
+	> input#navToggle {
+		&:checked {
+			& ~ label.navToggle {
+				&:before {
+					display: block !important;
+					position: relative;
+					left: -155px;
+					top: -9px;
+				}
+				span {
+					background-color: transparent;
+					&:before,
+					&:after {
+						top: 0;
+					}
+					&:before {
+						transform: rotate(45deg);
+					}
+					&:after {
+						transform: rotate(-45deg);
+					}
+				}
+			}
+			& ~ ul.navMain {
+				display: block !important;
+				margin-right: 0;
+			}
+		}
+		> label.navToggle {
+			display: block !important;
+			width: 51px;
+			height: 45px;
+			position: relative;
+			z-index: 888;
+			text-shadow: 0 2px 6px $menuColor;
+		}
+	}
+
+	> label.navToggle {
+		display: block !important;
+		width: 51px;
+		height: 45px;
+		position: relative;
+		z-index: 888;
+		text-shadow: 0 2px 6px $menuColor;
+		&:before {
+			display: none;
+			content: 'Meny ';
+			font-size: 3em;
+			color: $menuColor;
+			text-transform: uppercase;
+		}
+		span,
+		span:before,
+		span:after {
+			cursor: pointer;
+			border-radius: 1px;
+			height: 10px;
+			width: 51px;
+			background: $menuColor;
+			position: absolute;
+			display: block;
+			content: '';
+			transition: all 300ms ease-in-out;
+		}
+		span {
+			top: 15px;
+			&:before {
+				top: -15px;
+			}
+			&:after {
+				bottom: -15px;
+			}
+		}
+	}
+
+	> ul.navMain {
+		display: block;
+		width: 42%;
+		min-width: 275px;
+		height: 1000%;
+		margin-right: -340px;
+		margin-top: 0;
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 777;
+		padding-top: 120px;
+		background: $menuBackground;
+		box-shadow: 0 0px 6px #404040;
+		> li {
+			display: block;
+			margin: 0;
+			height: auto;
+			line-height: 2.5em;
+			padding: 0 10%;
+			border-top: 1px solid #969696;
+			> ul {
+				position: relative;
+				top: 0;
+				left: 25px;
+				margin-bottom: 8px;
+				> li {
+					display: block;
+				}
+			}
+		}
+		@include transition( margin-right 0.3s ease-in-out );
+		-webkit-backface-visibility: hidden;
+	}
+}

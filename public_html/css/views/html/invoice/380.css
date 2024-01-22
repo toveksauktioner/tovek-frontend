@@ -1,0 +1,85 @@
+.invoiceDataTable	{
+  width:100%;
+  line-height:1.85em;
+  border-radius: 4px;
+  background: #ffffff;
+  border-color: #dedede;
+  border-spacing: 0;
+  border-style: solid;
+  border-width: 1px;
+  border-collapse: collapse;
+}
+.invoiceDataTable thead { padding:0.5em; }
+.invoiceDataTable tbody { padding:0.5em; }
+.invoiceDataTable tfoot { padding:0.5em; }
+.invoiceDataTable th { font-weight:bold; padding:0 .5em; }
+.invoiceDataTable td { text-align: left; padding:0 .5em; }
+.invoiceDataTable th { text-align: left; }
+.invoiceDataTable th a,
+.invoiceDataTable td a { color: #000; }
+.invoiceDataTable img { display: block; padding: 3px 0; }
+.invoiceDataTable tfoot td 		{ background:#f0f0f0; }
+
+    header.invoiceHeader { height: 45mm; }
+      header.invoiceHeader .logo { width: 46%; float: left; }
+        header.invoiceHeader .logo img { width: 100%; }
+      header.invoiceHeader .invoiceBaseInfo { width: 48%; float: right; }
+        header.invoiceHeader .invoiceBaseInfo .invoiceDataTable { font-size: 0.875em; margin: 0; }
+          header.invoiceHeader .invoiceBaseInfo .invoiceDataTable th { background: #EAEAEA; }
+      header.invoiceHeader .invoiceBaseInfo .invoiceAddress { /*padding: 10% 2% 5% 2%;*/ padding: 20% 2% 5% 10%; text-transform: uppercase; font-size: 14px; text-align: left; }
+        header.invoiceHeader .invoiceBaseInfo .invoiceAddress p { margin: 0; line-height: 1.25; }
+      header.invoiceHeader .qr { width: 10%; float:left; }
+        header.invoiceHeader .qr img { width: 100%; }
+
+  footer.invoiceFooter { clear: both; border-top: 1px solid #999; margin: 0; background: none; height: auto; }
+    footer.invoiceFooter table { font-size: 0.875em; }
+        footer.invoiceFooter table td { text-align: left; vertical-align: top; padding: 0 1%; }
+
+    section.invoice {  background: #fff; }
+    section.invoice.popup { font-size: 0.875em; margin: 0 auto; }
+        section.invoice .dataTable {}
+            section.invoice .dataTable th { font-size: 0.875em; }
+        section.invoice .content { clear: both; }
+            section.invoice .content .invoiceDetails {}
+                section.invoice .content .invoiceDetails .dataTable { margin-bottom: 5mm; }
+                    section.invoice .content .invoiceDetails .dataTable th { background: #B4C7D6; }
+                    section.invoice .content .invoiceDetails .dataTable .ourRef { width: 65%; }
+                    section.invoice .content .invoiceDetails .dataTable .terms { width: 35%; padding:0.5em; }
+                    section.invoice .content .invoiceDetails .dataTable td.terms { font-size: 0.875em; line-height: 1.25; }
+                    section.invoice .content .invoiceDetails .dataTable .lineTitle { /*width: 46%;*/ }
+                    section.invoice .content .invoiceDetails .dataTable .lineQty { /*width: 5%;*/ text-align: center; }
+                    section.invoice .content .invoiceDetails .dataTable .lineFee { /*width: 12%;*/ white-space: nowrap; padding-left: 1em; }
+                    section.invoice .content .invoiceDetails .dataTable .linePrice { /*width: 15%;*/ white-space: nowrap; padding-left: 1em; }
+                    section.invoice .content .invoiceDetails .dataTable .lineAmount { /*width: 18%;*/ white-space: nowrap; padding-left: 1em; }
+                    section.invoice .content .invoiceDetails .dataTable .lineVat { /*width: 8%;*/ white-space: nowrap; padding-left: 1em; text-align: center; font-size: 0.75em; }
+                    section.invoice .content .invoiceDetails .dataTable th.lineFee { text-align: right; }
+                    section.invoice .content .invoiceDetails .dataTable td.lineFee { text-align: right; }
+                    section.invoice .content .invoiceDetails .dataTable th.linePrice { text-align: right; }
+                    section.invoice .content .invoiceDetails .dataTable td.linePrice { text-align: right; }
+                    section.invoice .content .invoiceDetails .dataTable th.lineAmount { text-align: right;  }
+                    section.invoice .content .invoiceDetails .dataTable td.lineAmount { text-align: right; }
+                    section.invoice .content .invoiceDetails .dataTable tfoot td { background: #eaeaea; padding: 0 .5em; }
+                    section.invoice .content .invoiceDetails .dataTable tfoot tr:first-child td { border-top: 1px solid #dedede; }
+            section.invoice .content .invoiceReminderTable { font-size: 0.875em; border-collapse: collapse; }
+                section.invoice .content .invoiceReminderTable thead { }
+                    section.invoice .content .invoiceReminderTable thead th { background: #B4C7D6; }
+                section.invoice .content .invoiceReminderTable tbody { }
+                    section.invoice .content .invoiceReminderTable tbody td.DueDate { text-align: center; }
+                    section.invoice .content .invoiceReminderTable tbody td.DaysLate { text-align: center; }
+                    section.invoice .content .invoiceReminderTable tbody td.TotalAmount { text-align: right; }
+                    section.invoice .content .invoiceReminderTable tbody td.PayedAmount { text-align: right; }
+                    section.invoice .content .invoiceReminderTable tbody td.RemindersCount { text-align: center; }
+                    section.invoice .content .invoiceReminderTable tbody td.remainingAmount { text-align: right; }
+                section.invoice .content .invoiceReminderTable tfoot { }
+                    section.invoice .content .invoiceReminderTable tfoot td { background: #eaeaea; }
+                    section.invoice .content .invoiceReminderTable tfoot tr.sumRow td { font-weight: bold; }
+        section.invoice .contentSummary { height: 40mm; }
+            section.invoice .contentSummary .invoiceVatTable { width: 46%; float: left; }
+                section.invoice .contentSummary .invoiceVatTable .dataTable { margin-bottom: 0; }
+                    section.invoice .contentSummary .invoiceVatTable .dataTable td { font-size: 0.875em; }
+                section.invoice .contentSummary .invoiceVatTable .info { padding-bottom: 5mm; font-size: 12px; }
+            section.invoice .contentSummary .toPayOrReceive { text-align: right; font-size: 20px; font-weight: bold; padding-bottom: 0.5em; float: right; }
+                section.invoice .contentSummary .toPayOrReceive span.label { padding-right: 2em;  }
+            section.invoice .contentSummary .invoicePaymentTerms { width: 46%; text-align: right; float: right; font-size: 12px; }
+                section.invoice .contentSummary .invoicePaymentTerms .dueDate { font-weight: bold; }
+            section.invoice .contentSummary .contentSum { height: 19mm; }

@@ -1,0 +1,285 @@
+/* compiled by scssphp v0.7.5 on Wed, 11 Sep 2019 15:34:28 +0200 (0.145s) */
+
+@font-face { font-family: 'FontAwesome'; src: url('/css/templates/aroma/library/fontAwesome/fontawesome-webfont.eot?v=4.5.0'); src: url('/css/templates/aroma/library/fontAwesome/fontawesome-webfont.eot?#iefix&v=4.5.0') format('embedded-opentype'), url('/css/templates/aroma/library/fontAwesome/fontawesome-webfont.woff2?v=4.5.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.5.0') format('woff'), url('/css/templates/aroma/library/fontAwesome/fontawesome-webfont.ttf?v=4.5.0') format('truetype'), url('/css/templates/aroma/library/fontAwesome/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular') format('svg'); font-weight: normal; font-style: normal; }
+
+.icon::before, 
+.ui-icon::before, 
+.icon::after, 
+.ui-icon::after, 
+ul.notification li::before, 
+.result::before { font: normal normal normal 1em/1 'FontAwesome'; speak: none; text-rendering: auto; text-transform: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale }
+
+html, 
+body, 
+div, 
+span, 
+applet, 
+object, 
+iframe, 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+p, 
+blockquote, 
+pre, 
+a, 
+abbr, 
+acronym, 
+address, 
+big, 
+cite, 
+code, 
+del, 
+dfn, 
+em, 
+img, 
+ins, 
+kbd, 
+q, 
+s, 
+samp, 
+small, 
+strike, 
+strong, 
+sub, 
+sup, 
+tt, 
+var, 
+b, 
+u, 
+i, 
+center, 
+dl, 
+dt, 
+dd, 
+ol, 
+ul, 
+li, 
+fieldset, 
+form, 
+label, 
+legend, 
+table, 
+caption, 
+tbody, 
+tfoot, 
+thead, 
+tr, 
+th, 
+td, 
+article, 
+aside, 
+canvas, 
+details, 
+embed, 
+figure, 
+figcaption, 
+footer, 
+header, 
+hgroup, 
+menu, 
+nav, 
+output, 
+ruby, 
+section, 
+summary, 
+time, 
+mark, 
+audio, 
+video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline }
+
+article, 
+aside, 
+details, 
+figcaption, 
+figure, 
+footer, 
+header, 
+hgroup, 
+menu, 
+nav, 
+section { display: block }
+
+body { line-height: 1 }
+
+ol, 
+ul { list-style: none }
+
+blockquote, 
+q { quotes: none }
+
+blockquote:before, 
+blockquote:after { content: ""; content: none }
+
+q:before, 
+q:after { content: ""; content: none }
+
+table { border-collapse: collapse; border-spacing: 0 }
+
+.icon, 
+.ui-icon { display: inline-block; /**
+ * Icons:
+ */ }
+.icon::before, 
+.ui-icon::before { content: ' '; margin-right: 0.25em }
+.icon::after, 
+.ui-icon::after { content: ' '; margin-left: 0.25em }
+.icon:not(.iconText) > span, 
+.ui-icon:not(.iconText) > span { display: none }
+.icon > span, 
+.ui-icon > span { font-size: 0.9em; margin-right: 0.25em }
+.icon.disabled, 
+.ui-icon.disabled { opacity: 0.5 }
+.icon.iconAdd::before, 
+.ui-icon.iconAdd::before { content: "\f067" }
+.icon.iconAt::before, 
+.ui-icon.iconAt::before { content: "\f1fa" }
+.icon.iconBarChart::before, 
+.ui-icon.iconBarChart::before { content: "\f080" }
+.icon.iconBuilding::before, 
+.ui-icon.iconBuilding::before { content: "\f0f7" }
+.icon.iconClock::before, 
+.ui-icon.iconClock::before { content: "\f017" }
+.icon.iconClone::before, 
+.ui-icon.iconClone::before { content: "\f24d" }
+.icon.iconCss::before, 
+.ui-icon.iconCss::before { content: "\f13c" }
+.icon.iconCubes::before, 
+.ui-icon.iconCubes::before { content: "\f1b3" }
+.icon.iconDashboard::before, 
+.ui-icon.iconDashboard::before { content: "\f0e4" }
+.icon.iconDbExport::before, 
+.ui-icon.iconDbExport::before { content: "\f093" }
+.icon.iconDbImport::before, 
+.ui-icon.iconDbImport::before { content: "\f019" }
+.icon.iconDelete, 
+.ui-icon.iconDelete { color: #ed413d }
+.icon.iconDelete::before, 
+.ui-icon.iconDelete::before { content: "\f1f8" }
+.icon.iconDone::before, 
+.ui-icon.iconDone::before { content: "\f00c" }
+.icon.iconDownload::before, 
+.ui-icon.iconDownload::before { content: "\f019" }
+.icon.iconEnvelope::before, 
+.ui-icon.iconEnvelope::before { content: "\f0e0" }
+.icon.iconHashtag::before, 
+.ui-icon.iconHashtag::before { content: "\f292" }
+.icon.iconHistory::before, 
+.ui-icon.iconHistory::before { content: "\f1da" }
+.icon.iconEdit::before, 
+.ui-icon.iconEdit::before { content: "\f040" }
+.icon.iconExternal::before, 
+.ui-icon.iconExternal::before { content: "\f08e" }
+.icon.iconFreight::before, 
+.ui-icon.iconFreight::before { content: "\f0d1" }
+.icon.iconFoot::before, 
+.ui-icon.iconFoot::before { content: "\f1b0" }
+.icon.iconGo::before, 
+.ui-icon.iconGo::before { content: "\f0da" }
+.icon.iconGoBack::before, 
+.ui-icon.iconGoBack::before { content: "\f112" }
+.icon.iconImage::before, 
+.ui-icon.iconImage::before { content: "\f03e" }
+.icon.iconInfo::before, 
+.ui-icon.iconInfo::before { content: "\f05a" }
+.icon.iconList::before, 
+.ui-icon.iconList::before { content: "\f03a" }
+.icon.iconListAlt::before, 
+.ui-icon.iconListAlt::before { content: "\f022" }
+.icon.iconLock::before, 
+.ui-icon.iconLock::before { content: "\f023" }
+.icon.iconMissing::before, 
+.ui-icon.iconMissing::before { content: "\f06a" }
+.icon.iconMoney::before, 
+.ui-icon.iconMoney::before { content: "\f0d6" }
+.icon.iconNext::after, 
+.ui-icon.iconNext::after { content: "\f054" }
+.icon.iconOverlays::before, 
+.ui-icon.iconOverlays::before { content: "\f24d" }
+.icon.iconPackageLink::before, 
+.ui-icon.iconPackageLink::before { content: "\f1b3" }
+.icon.iconPdf::before, 
+.ui-icon.iconPdf::before { content: "\f1c1" }
+.icon.iconPrevious::before, 
+.ui-icon.iconPrevious::before { content: "\f053" }
+.icon.iconPrint::before, 
+.ui-icon.iconPrint::before { content: "\f02f" }
+.icon.iconRelation::before, 
+.ui-icon.iconRelation::before { content: "\f0c1" }
+.icon.iconSave::before, 
+.ui-icon.iconSave::before { content: "\f0c7" }
+.icon.iconSigns::before, 
+.ui-icon.iconSigns::before { content: "\f277" }
+.icon.iconSitemap::before, 
+.ui-icon.iconSitemap::before { content: "\f0e8" }
+.icon.iconSortAsc::before, 
+.ui-icon.iconSortAsc::before { content: "\f160" }
+.icon.iconSortDesc::before, 
+.ui-icon.iconSortDesc::before { content: "\f161" }
+.icon.iconStar::before, 
+.ui-icon.iconStar::before { content: "\f005" }
+.icon.iconStop::before, 
+.ui-icon.iconStop::before { content: "\f04d" }
+.icon.iconThumbnail::before, 
+.ui-icon.iconThumbnail::before { content: "\f1c5" }
+.icon.iconToggleOff::before, 
+.ui-icon.iconToggleOff::before { content: "\f204" }
+.icon.iconToggleOn::before, 
+.ui-icon.iconToggleOn::before { content: "\f205" }
+.icon.iconUser::before, 
+.ui-icon.iconUser::before { content: "\f007" }
+.icon.iconQuestion::before, 
+.ui-icon.iconQuestion::before { content: "\f128" }
+.icon.ui-icon-arrow-4::before, 
+.ui-icon.ui-icon-arrow-4::before { content: "\f047" }
+
+ul.notification li, 
+.result { width: 100%; margin: 1.618em 0; padding: 1em; color: #fff; box-shadow: 0 0.1em 0.1em rgba(0, 0, 0, .5); background: #ffd740; color: rgba(0, 0, 0, .87); font-weight: normal }
+ul.notification li::before, 
+.result::before { content: "\f0a1" ' '; float: right; font-size: 1.618em }
+ul.notification li.dataSaved, 
+.result.dataSaved { background: #00b233; color: #fff }
+ul.notification li.dataSaved::before, 
+.result.dataSaved::before { content: "\f00c" }
+ul.notification li.error, 
+.result.error, 
+ul.notification li.dataError, 
+.result.dataError { background: #ed413d; color: #fff }
+ul.notification li.error::before, 
+.result.error::before, 
+ul.notification li.dataError::before, 
+.result.dataError::before { content: "\f071" }
+ul.notification li label, 
+.result label { margin: 0 }
+
+* { box-sizing: border-box }
+
+::-moz-selection { color: #fff; background: #ed413d }
+
+::selection { color: #fff; background: #ed413d }
+
+a, 
+button, 
+input, 
+nav ul li, 
+label, 
+textarea { transition: color 0.3s, background 0.3s, box-shadow 0.3s, border 0.3s }
+
+nav ul li > a { color: inherit }
+
+span.active, 
+span.paid, 
+span.yes, 
+span.finished, 
+span.successful { color: #00b233; font-style: italic }
+span.inactive, 
+span.unpaid, 
+span.no, 
+span.unfinished, 
+span.unsuccessful, 
+span.ended { color: #ed413d; font-style: italic }
+span.empty, 
+span.missing { color: #c8c8c8; font-style: italic }

@@ -1,0 +1,148 @@
+@import "argonova";
+
+.view.userCustomerAccount {
+	@include clearfix;
+	position: relative;
+	
+	.information {
+		@include clearfix;
+		padding-bottom: 0.7em;
+		margin-bottom: 1.5em;
+		border-bottom: 1px solid #ccc;
+		
+		p {
+			&:first-child {
+				float: left;
+				width: 40%;
+			}
+			&:last-child {
+				float: right;
+				width: 40%;
+				text-align: right;
+			}
+		}
+	}
+	
+	label {
+		display: none;
+	}
+	
+	input, textarea {
+		width: 100%;		
+		padding: 4px 5px;
+		box-sizing: border-box;
+		border: 1px solid #c0c0c0;
+	}
+	
+	select {
+		width: 100%;
+		padding: 3px 0;
+		box-sizing: border-box;
+		border: 1px solid #c0c0c0;
+	}
+	
+	fieldset {
+		margin: 0;
+		padding: 6px 6px 6px 0;		
+		box-sizing: border-box;
+		border: 1px solid #c0c0c0;
+		border-left: none;
+		border-right: none;
+		border-bottom: none;
+		
+		legend {
+			padding: 0 15px 0 0;
+			position: relative;
+			top: -1px;
+			font-weight: 600;
+		}		
+		
+		.field {
+			margin-bottom: 5px;
+		}
+		
+		&.generic {			
+			display: inline-block;
+			width: 31%;
+			margin-right: 3%;
+			vertical-align: top;
+		}		
+		&.payment {
+			display: inline-block;
+			width: 31%;
+			margin-right: 3%;
+			vertical-align: top;
+			
+			.field {
+				&.orderPaymentSame {
+					display: block !important;
+					position: relative;
+					margin: 2px 0 8px 0;
+					label {
+						display: block;
+						padding-left: 23px; 
+					}
+					input {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: auto;
+						height: 100%;
+						margin: 0;
+						padding: 0;
+					}
+				}
+			}
+		}
+		&.delivery {
+			display: inline-block;
+			width: 31%;
+			margin-right: 0;
+			vertical-align: top;
+			
+			.field {
+				&.orderDeliverySame {
+					display: block !important;
+					position: relative;
+					margin: 2px 0 8px 0;
+					label {
+						display: block;
+						padding-left: 23px; 
+					}
+					input {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: auto;
+						height: 100%;
+						margin: 0;
+						padding: 0;
+					}
+				}
+			}
+		}
+		&.account {
+			display: inline-block;
+			width: 31%;
+			margin-right: 3%;
+			vertical-align: top;
+		}
+		
+		@include maxScreen( $layoutBreakpoint2 ) {
+			margin-bottom: 1em;
+		}
+	}
+	
+	.buttons {
+		@include clearfix;
+		display: block;
+		padding-top: 1.5em;
+		margin-top: 1em;
+		border-top: 1px solid #ccc;
+		
+		button {
+			width: 100%;
+		}
+	}
+	
+}

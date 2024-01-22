@@ -1,0 +1,248 @@
+<?php
+
+/**
+ * Unifaun - REST API
+ *
+ * - Documentation: https://www.unifaunonline.se/rs-docs/
+ * - Support: support@unifaun.se, 031-7253550
+ *
+ * Test-konto @ Unifaun Online:
+ * Developer ID: 0020012982
+ * Unifaun ID: VTW77JWUHBO7PCOJ
+ * Unifaun Secret: 5SZGI7PG3T2MZQZV3A4GWA45
+ *
+ * https://api.unifaun.com/rs-extapi/v1/shipments/5638037/pdfs/23514197
+ * https://api.unifaun.com/ufoweb-prod-201705080928/rs-extapi/v1/shipments/5638037/pdfs
+ */
+
+define( 'UNIFAUN_ID', 'VTW77JWUHBO7PCOJ' );
+define( 'UNIFAUN_SECRET_ID', '5SZGI7PG3T2MZQZV3A4GWA45' );
+define( 'UNIFAUN_COMBINED_ID', sprintf( '%s-%s', UNIFAUN_ID, UNIFAUN_SECRET_ID ) );
+define( 'UNIFAUN_DEVELOPER_ID', '0020012982' );
+
+define( 'UNIFAUN_USER_ID', '0020012982' );
+define( 'UNIFAUN_PASSWORD', '2982mnvndudufh' );
+
+define( 'UNIFAUN_API_TYPE', 'rest' ); # rest | soap | xml-postning (only rest is supported at this point)
+define( 'UNIFAUN_API_ENDPOINT', 'https://api.unifaun.com/rs-extapi/v1' );
+
+/**
+ * Debug & error
+ */
+define( 'UNIFAUN_DEBUG', true );
+define( 'UNIFAUN_LOGGING', true );
+define( 'UNIFAUN_ERROR_NOTIFY', false );
+define( 'UNIFAUN_ERROR_EMAIL', 'kod@argonova.se' );
+
+/**
+ * Default partner and service
+ */
+define( 'UNIFAUN_DEFAULT_PARTNER', 38 ); # PostNord Sverige AB
+define( 'UNIFAUN_DEFAULT_SERVICE', 144 ); # PostNord Parcel
+
+/**
+ * Sender
+ */
+define( 'UNIFAUN_SENDER_EMAIL', SITE_DEFAULT_MAIL_TO );
+$GLOBALS['UNIFAUN_DEFAULT_SENDER'] = array(
+	'phone' => '', # ex. +467...
+	'email' => UNIFAUN_SENDER_EMAIL,
+	'quickId' => '1',
+	'zipcode' => '', # ex. 12345
+	'name' => '', # Companyname
+	'address1' => '', # ex. GATA 2 B (caps)
+	'country' => 'SE',
+	'city' => '' # ex. STAD (caps)
+);
+$GLOBALS['UNIFAUN_DEFAULT_SENDER_REFERENCE'] = SITE_TITLE;
+
+/**
+ * PDF settings
+ */
+$GLOBALS['UNIFAUN_DEFAULT_PDF_SETTINGS'] = array(
+    'target4XOffset' => 0,
+    'target2YOffset' => 0,
+    'target1Media' => 'laser-ste',
+    'target1YOffset' => 0,
+    'target3YOffset' => 0,
+    'target2Media' => 'laser-a4',
+    'target4YOffset' => 0,
+    'target4Media' => null,
+    'target3XOffset' => 0,
+    'target3Media' => null,
+    'target1XOffset' => 0,
+    'target2XOffset' => 0
+);
+
+$GLOBALS['UNIFAUN_SINGLE_PARCEL_SERVICES'] = array(
+	'BEXPD',
+	'BREKD',
+	'BREKI',
+	'BVAL',
+	'EMSD2',
+	'EMSP2',
+	'P34',
+	'PAF',
+	'PBM',
+	'PUA',
+	'PUE',
+	'P91',
+	'BHP',
+	'DAXPD',
+	'APC',
+	'APCS',
+	'APCR',
+	'ASPO',
+	'ASPOR',
+	'ASPOC'
+);
+
+
+$GLOBALS['UNIFAUN_SERVICE_MANDATORY'] = array(
+	'BCS' => array(
+		'shipment.parcels' => array(
+			'scope' => 'multi',
+			'action' => 'verify',
+			'fields' => array(
+				'packageCode' => array(
+					'type' => 'fixedValue',
+					'value' => 'PK'
+				)
+			)
+		)
+	),
+	'BDI' => array(
+		'shipment.parcels' => array(
+			'scope' => 'multi',
+			'action' => 'verify',
+			'fields' => array(
+				'packageCode' => array(
+					'type' => 'fixedValue',
+					'value' => 'PK'
+				)
+			)
+		)
+	),
+	'BPHDP' => array(
+		'shipment.parcels' => array(
+			'scope' => 'multi',
+			'action' => 'verify',
+			'fields' => array(
+				'packageCode' => array(
+					'type' => 'fixedValue',
+					'value' => 'PK'
+				)
+			)
+		)
+	),
+	'BPHDAP' => array(
+		'shipment.parcels' => array(
+			'scope' => 'multi',
+			'action' => 'verify',
+			'fields' => array(
+				'packageCode' => array(
+					'type' => 'fixedValue',
+					'value' => 'PK'
+				)
+			)
+		)
+	),
+	'BPHKAP' => array(
+		'shipment.parcels' => array(
+			'scope' => 'multi',
+			'action' => 'verify',
+			'fields' => array(
+				'packageCode' => array(
+					'type' => 'fixedValue',
+					'value' => 'PK'
+				)
+			)
+		)
+	),
+	'BHP' => array(
+		'shipment.parcels' => array(
+			'scope' => 'multi',
+			'action' => 'verify',
+			'fields' => array(
+				'packageCode' => array(
+					'type' => 'fixedValue',
+					'value' => 'PK'
+				)
+			)
+		)
+	),
+	'BPOSG' => array(
+		'shipment.parcels' => array(
+			'scope' => 'multi',
+			'action' => 'verify',
+			'fields' => array(
+				'packageCode' => array(
+					'type' => 'fixedValue',
+					'value' => 'PK'
+				)
+			)
+		)
+	),
+	'BCF' => array(
+		'shipment.parcels' => array(
+			'scope' => 'multi',
+			'action' => 'verify',
+			'fields' => array(
+				'packageCode' => array(
+					'type' => 'fixedValue',
+					'value' => 'PK'
+				)
+			)
+		)
+	),
+	'BEXPD' => array(
+		'shipment.service' => array(
+			'scope' => 'single',
+			'action' => 'verify',
+			'fields' => array(
+				'paymentMethodType' => array(
+					'type' => 'fixedValue',
+					'value' => ''
+				)
+			)
+		)
+	),
+	'BREKD' => array(
+		'shipment.service' => array(
+			'scope' => 'single',
+			'action' => 'verify',
+			'fields' => array(
+				'paymentMethodType' => array(
+					'type' => 'fixedValue',
+					'value' => ''
+				)
+			)
+		)
+	),
+	'BVAL' => array(
+		'shipment.service' => array(
+			'scope' => 'single',
+			'action' => 'verify',
+			'fields' => array(
+				'paymentMethodType' => array(
+					'type' => 'fixedValue',
+					'value' => ''
+				)
+			)
+		)
+	)
+);
+
+$GLOBALS['UNIFAUN_SERVICE_ADDONS'] = array(
+	'BPOSG' => array(
+		'NOT' => array(
+			'reference' => 'orderDeliveryName',
+			'text4' => 'orderEmail'
+		)
+	),
+	'PAF' => array(
+		'COD' => array(
+			'amount' => 'orderTotal'
+		)
+	)
+);

@@ -1,0 +1,19 @@
+@mixin tool\navigation\crumbs( $separator: '»', $spacing: $baseSpaceSmall) {
+	li,
+	ul {
+		list-style: none; padding-left: 0; margin: 0; display: inline-block;
+	}
+
+	li {
+		&:after {
+			content: $separator;
+			margin: 0 $spacing;
+		}
+
+		&:last-child {
+			&:after {
+				display: none;
+			}
+		}
+	}
+}

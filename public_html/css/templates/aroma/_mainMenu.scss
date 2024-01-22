@@ -1,0 +1,390 @@
+%hideSpanOnSmallScreen {
+	> span {
+		display: none;
+		margin-left: .5em;
+	}
+
+	@include minScreen( 650px ) {
+		> span {
+			display: inline-block;
+		}
+	}
+}
+
+#mainMenu {
+
+	li {
+		position: relative;
+
+		&[data-navigationId="155"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-gavel, before );
+		}
+
+		&[data-navigationId="154"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-users, before );
+		}
+
+		&[data-navigationId="153"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-list-ol, before );
+		}
+
+		&[data-navigationId="152"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-list-ol, before );
+		}
+
+		&[data-navigationId="151"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-list-ol, before );
+		}
+
+		&[data-navigationId="149"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-list-ol, before );
+		}
+
+		&[data-navigationId="134"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-list-ol, before );
+		}
+
+		&[data-navigationId="13"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIconRegular( $fa-var-bell, before );
+		}
+
+		&[data-navigationId="119"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-list-ol, before );
+		}
+
+		&[data-navigationId="120"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-paw, before );
+		}
+
+		&[data-navigationId="121"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-envelope, before );
+		}
+
+		&[data-navigationId="126"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIconRegular( $fa-var-file-excel, before );
+		}
+
+		&[data-navigationId="35"] > a,
+		&[data-navigationId="52"] > a,
+		&[data-navigationId="55"] > a,
+		&[data-navigationId="106"] > a,
+		&[data-navigationId="107"] > a,
+		&[data-navigationId="108"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-list, before );
+		}
+
+		&[data-navigationId="49"] > a,
+		&[data-navigationId="132"] > a,
+		&[data-navigationId="159"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIconRegular( $fa-var-image, before );
+		}
+
+		&[data-navigationId="16"] > a,
+		&[data-navigationId="50"] > a,
+		&[data-navigationId="56"] > a,
+		&[data-navigationId="100"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-plus, before );
+		}
+
+		&[data-navigationId="34"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-chart-line, before );
+		}
+
+		&[data-navigationId="43"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIconRegular( $fa-var-save, before );
+		}
+
+		&[data-navigationId="19"] > a,
+		&[data-navigationId="24"] > a,
+		&[data-navigationId="53"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-pencil-alt, before );
+		}
+
+		&[data-navigationId="10"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-coins, before );
+		}
+
+		&[data-navigationId="40"] > a,
+		&[data-navigationId="130"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-truck, before );
+		}
+
+		&[data-navigationId="26"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-ticket-alt, before );
+		}
+
+		&[data-navigationId="15"] > a,
+		&[data-navigationId="99"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-map-signs, before );
+		}
+
+		&[data-navigationId="14"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-cube, before );
+		}
+
+		&[data-navigationId="21"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-cubes, before );
+		}
+
+		&[data-navigationId="104"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-tachometer-alt, before );
+		}
+
+		&[data-navigationId="109"] > a,
+		&[data-navigationId="129"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-shopping-cart, before );
+		}
+
+		&[data-navigationId="5"] > a,
+		&[data-navigationId="25"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-compass, before );
+		}
+
+		&[data-navigationId="4"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-th-large, before );
+		}
+
+		&[data-navigationId="3"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-file, before );
+		}
+
+		&[data-navigationId="2"] > a,
+		&[data-navigationId="114"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-users, before );
+		}
+
+		&[data-navigationId="1"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-key, before );
+		}
+
+		&[data-navigationId="28"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-wrench, before );
+		}
+
+		&[data-navigationId="103"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIconRegular( $fa-var-image, before );
+		}
+
+		&[data-navigationId="0"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-bars, before );
+		}
+
+		&[data-navigationId="12"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-shopping-basket, before );
+		}
+
+		&[data-navigationId="11"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-gift, before );
+		}
+
+		&[data-navigationId="7"] > a,
+		&[data-navigationId="131"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-coins, before );
+		}
+
+		&[data-navigationId="8"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-users, before );
+		}
+
+		&[data-navigationId="9"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-book, before );
+		}
+
+		&[data-navigationId="22"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-sticky-note, before );
+		}
+
+		&[data-navigationId="48"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-youtube, before );
+		}
+
+		&[data-navigationId="51"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIconRegular( $fa-var-newspaper, before );
+		}
+
+		&[data-navigationId="54"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-th, before );
+		}
+
+		&[data-navigationId="98"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-question, before );
+		}
+
+		&[data-navigationId="156"] > a {
+			@extend %hideSpanOnSmallScreen;
+			@include fontIcon( $fa-var-th-large, before );
+		}
+
+		a {
+			display: block;
+			max-width: 13.65em;
+			padding: .5em 1.6em; // padding: .5em 0;
+			box-sizing: border-box;
+			color: $asideLinkColor;
+			word-break: break-word; // Non standard for webkit
+			word-wrap: break-word;
+
+			-webkit-hyphens: auto;
+			-moz-hyphens: auto;
+			hyphens: auto;
+
+			&::before {
+				font-size: 1em !important;
+				vertical-align: middle;
+				position: relative;
+				top: -0.08em;
+			}
+		}
+
+		&.selected,
+		&.active,
+		&:hover {
+			> a {
+				color: $asideLinkHighlight;
+			}
+		}
+	}
+
+	> ul {
+		li {
+			&.active,
+			&.selected {
+				> ul {
+					display: block;
+					background: #3c3c3c;
+					padding: .5em .8em;
+				}
+			}
+		}
+
+		ul {
+			border-left: $sizeDivider solid textColor( $type: divider, $mode: $asideTextMode );
+			max-width: none;
+			padding-left: 1em;
+			margin-bottom: .5em;
+			display: none;
+			font-size: .9em;
+
+			a {
+				text-align: left;
+			}
+		}
+
+		> li {
+			&.active,
+			&.selected {
+				> a {
+					position: relative;
+					background: #ef4036;
+					box-shadow: .1em 0 .1em #ef4036;
+					span {
+						&:after {
+							content: '';
+							display: block;
+							position: absolute;
+							bottom: -.6em;
+							right: -.2em;
+							z-index: -1;
+							width: .7em;
+							height: .89em;
+							background: #ab150e;
+							box-shadow: .09em 0 .09em #ef4036;
+							-webkit-transform: rotate( 35deg );
+							-moz-transform: rotate( 35deg );
+							transform: rotate( 35deg );
+						}
+					}
+					&:after {
+						content: '';
+						display: block;
+						position: absolute;
+						top: 0;
+						right: -.361em;
+						z-index: 999;
+						width: .35em;
+						height: 100%;
+						background: #ef4036;
+						box-shadow: .1em 0 .1em #ef4036;
+					}
+				}
+			}
+		}
+	}
+
+	.dropdown,
+	.foldup {
+		display: none;
+	}
+
+	@include minScreen( 400px ) {
+		a {
+			padding: $reverseGoldenRatio 0;
+			&::before {
+				font-size: $goldenRatio !important;
+			}
+		}
+	}
+
+	@include minScreen( 650px ) {
+		a {
+			text-align: left;
+
+			&::before {
+				font-size: 1em !important;
+				width: 1.5em;
+				display: inline-block;
+				text-align: center;
+			}
+		}
+
+		> ul {
+			ul {
+				position: static;
+			}
+		}
+	}
+}

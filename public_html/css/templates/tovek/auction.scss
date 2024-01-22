@@ -1,0 +1,2507 @@
+@import "bootstrap";
+
+$itemImageWidth: 15em;
+$itemImageRatio: 100%;
+
+.view.auction {
+    /**
+     * Generic
+     */
+     .itemTimeWrapper {
+       color: white;
+
+       span {
+         @include fontIconRegular( $fa-var-clock, 'before' ) {
+           padding-right: .5em;
+         }
+
+         display: inline-block;
+         background: $colorGray300;
+         padding: 0 .5em;
+         line-height: 1.5em;
+         font-weight: bold;
+         border-radius: $borderRadius;
+
+         &.itemTimer {
+           &.red {
+             background: $colorFailure;
+           }
+         }
+       }
+     }
+    .toolbar {
+        @extend %siteContainer;
+        padding: .25em 0;
+        display: grid;
+        grid-template-columns: fit-content(100%) auto fit-content(100%) 2.5em 2.5em;
+        grid-gap: 0 .25em;
+        background: $colorGrayNormal;
+        position: sticky;
+        top: 3.0625em;
+        z-index: 10;
+        width: 100%;
+        transform: translateX(-$baseSpace);
+        color: $colorGray700;
+
+        .tool {
+          &.filter {
+            grid-column: span 2;
+
+            .filterOption {
+              padding-right: 1em;
+            }
+          }
+          &.additionalFilter {
+            grid-column: span 5;
+            margin-top: .25em;
+
+            .filterGroup {
+              background: $colorGray200;
+              border-radius: $borderRadius;
+              display: grid;
+              height: calc(2.5rem - 2px);
+              padding: 1px;
+
+              .title {
+                font-size: .875em;
+                text-transform: uppercase;
+                padding: 0 1em;
+                color: white;
+
+                i.fas {
+                  width: auto;
+                  background: transparent;
+                }
+              }
+              .filterOption {
+                background: $colorGrayNormal;
+                display: inline-block;
+                height: inherit;
+                padding: 0 .5em;
+
+                &:last-child {
+                  border-top-right-radius: $borderRadius;
+                  border-bottom-right-radius: $borderRadius;
+                  padding-right: 1em;
+                }
+              }
+            }
+          }
+          i.fas {
+            display: inline-block;
+            font-size: 1em;
+            font-weight: bold;
+            color: $white;
+            cursor: pointer;
+            border: 0;
+            background: $colorPrimary;
+            border-radius: $borderRadius;
+            text-align: center;
+            padding: 0;
+            width: 2.5rem;
+            line-height: 2.5rem;
+
+            -webkit-transition-property: padding margin;
+            -webkit-transition-duration: $transitionFast;
+            transition-property: padding margin;
+            transition-duration: $transitionFast;
+
+            &:hover,
+            &:focus,
+            &.selected {
+              background: $colorLighter;
+              // padding: .25em;
+              // margin: 0;
+            }
+          }
+          i.fa-pause {
+            transform: rotate(90deg);
+          }
+          form {
+            grid-template-columns: auto 2.5em !important;
+            margin-right: 1em;
+
+            .field {
+              input {
+                background: $white;
+                height: 2.5rem;
+                line-height: 2.5rem;
+              }
+
+              &:before {
+                height: 2.5rem;
+              }
+            }
+          }
+          input[type="checkbox"] {
+            position: relative;
+            top: -.125rem;
+            height: 1.25rem;
+            width: 1.25rem;
+          }
+          label {
+            text-transform: uppercase;
+            font-size: .875em;
+            line-height: 2.5rem;
+          }
+
+          .sorting {
+              position: relative;
+              cursor: pointer;
+              width: 11em;
+
+                  .label {
+                      position: relative;
+                      top: .25em;
+                      display: inline-block;
+                      line-height: 1.25em;
+                      padding: .25em .25em .25em 2em;
+                      background: $colorPrimary;
+                      color: $white;
+                      border-radius: $borderRadius;
+                      width: 8.75em;
+
+                      i {
+                        position: absolute;
+                        top: -.25em;
+
+                        &.icon {
+                          left: 0;
+                        }
+                        &.arrow {
+                          right: 0;
+                        }
+                      }
+                  }
+
+                  .optionsContainer {
+                      opacity: 0;
+                      position: absolute;
+                      z-index: 888;
+                      top: calc(100% + .25em);
+                      overflow: hidden;
+                      background: rgba( 255, 255, 255, .9 );
+                      padding: 0 .5em 0 2em;
+                      border-bottom-left-radius: $borderRadius;
+                      border-bottom-right-radius: $borderRadius;
+                      width: 8.5em;
+
+                      ul.options {
+                          list-style: none;
+                          li {
+                              padding-bottom: .3em;
+                              a {
+                                  color: $colorPrimary;
+                                  opacity: .7;
+                                  &:hover {
+                                      opacity: 1;
+                                  }
+                              }
+                          }
+                      }
+
+                      @include transition( all 0.2s ease-in-out );
+                      -webkit-backface-visibility: hidden;
+                  }
+
+                  &:hover .optionsContainer {
+                      opacity: 1;
+                      -webkit-touch-callout: none;
+                      -webkit-user-select: none;
+                  }
+
+                  @include maxScreen( $layoutBreakpoint5 ) {
+                    width: auto;
+
+                    .label {
+                      width: auto;
+                      padding: 0;
+                      position: static;
+                      background: none;
+
+                      i.fas {
+                        position: static;
+                      }
+                      span{
+                        display: none;
+                      }
+                    }
+                    .optionsContainer {
+                      top: calc( 100% - .5em );
+                      border-radius: $borderRadius;
+                      width: auto;
+                      padding: 0 .5em;
+
+                      ul {
+                        li {
+                          white-space: nowrap;
+                        }
+                      }
+                    }
+                  }
+
+                }
+            }
+
+            @include maxScreen( $layoutBreakpoint2 ) {
+              transform: translateX(-$baseSpaceSmall);
+            }
+
+            @include maxScreen( $layoutBreakpoint4 ) {
+              transform: translateX(-$baseSpaceMini);
+            }
+
+            @include minScreen( $layoutBreakpoint4 ) {
+              .tool {
+                &.filter {
+                  grid-column: auto;
+                }
+                &.additionalFilter {
+                  grid-column: 2;
+                  grid-row: 1;
+                  margin-top: 0;
+                }
+              }
+            }
+    }
+    .emptyResult {
+      padding: 2em;
+    }
+    a.showHideView {
+      position: relative;
+      top: 1em;
+    }
+
+    &.list {
+      padding: 1em 0;
+      transition: height $transitionLength;
+
+      .buttons {
+        text-align: center;
+        padding: 1em 0;
+        position: relative;
+        z-index: 1;
+
+        button {
+          @extend %commonButton;
+          line-height: 2em;
+          background: $colorDarker;
+        }
+      }
+      .currentAuction {
+        .currentContainer {
+          @extend %siteContainer;
+          padding-top: .5em;
+          display: grid;
+          grid-template-columns: 30% auto;
+          grid-gap: 2em;
+
+          .video {
+            grid-column: span 2;
+
+            .videoContainer {
+              position: relative;
+              width: 100%;
+              padding-bottom: 56.25%;
+
+              iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+              }
+            }
+          }
+          .imageGallery {
+            grid-column: span 2;
+
+            ul.images {
+              display: grid;
+              grid-template-columns: repeat( 4, 1fr );
+              grid-gap: $baseSpaceMini;
+              list-style: none;
+              padding: 0;
+              margin: 0;
+
+              li {
+                position: relative;
+                height: 0;
+                padding-bottom: 100%;
+                overflow: hidden;
+
+                img {
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate( -50%, -50% );
+                }
+              }
+            }
+          }
+          .image {
+            height: 0;
+            padding-bottom: 60%;
+            background-size: cover;
+            background-position: center center;
+            border-radius: .25em;
+          }
+          .information {
+            position: relative;
+            padding-bottom: 1.5em;
+
+            h1 {
+              // color: $colorAccent;
+
+              span {
+                // color: $white;
+                display: block;
+                font-weight: normal;
+                font-size: .75em;
+              }
+            }
+            .meta {
+              display: grid;
+              grid-template-columns: auto auto;
+              grid-gap: .5em;
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+
+              .date {
+                text-align: right;
+              }
+            }
+          }
+
+          @include maxScreen( $layoutBreakpoint2 ) {
+            .image {
+              padding-bottom: 80%;
+            }
+          }
+          @include maxScreen( $layoutBreakpoint5 ) {
+            grid-template-columns: auto;
+
+            .image {
+              padding-bottom: 50%;
+            }
+          }
+          @include maxScreen( $layoutBreakpoint6 ) {
+            .image {
+              display: none;
+            }
+          }
+        }
+      }
+      .auctionType {}
+      .auctions {
+        color: #fff;
+        background: $colorPrimary;
+        outline: 2em solid $colorPrimary;
+
+        .container {
+          position: relative;
+          padding-top: .5em;
+
+
+          > h2 {
+            width: 100%;
+            text-align: center;
+            padding: 1em 0 1em;
+          }
+          .innerContainer {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+            article {
+              position: relative;
+              // z-index: 777;
+              padding: .75em;
+              border-radius: .25em;
+
+              &.new {
+                .image {
+                  outline: .25em $colorAccent solid;
+                  position: relative;
+                  border-top-left-radius: .25em;
+                  border-top-right-radius: .25em;
+
+                  &:before {
+                    content: 'Ny auktion';
+                    background: $colorAccent;
+                    color: $colorGray600;
+                    font-weight: bold;
+                    font-size: .875em;
+                    text-transform: uppercase;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 10;
+                    padding: .25em .75em;
+                  }
+                }
+              }
+              .image {
+                height: 0;
+                padding-bottom: 80%;
+                overflow: hidden;
+
+                a {
+                  position: relative;
+                  display: block;
+                  width: 100%;
+                  height: 0;
+                  padding-bottom: 80%;
+                  background-size: cover;
+                  background-position: center center;
+                  border-top-left-radius: .25em;
+                  border-top-right-radius: .25em;
+                }
+
+                .slideshow {
+                  position: relative;
+
+                  a {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: -1;
+                  }
+                  a.current {
+                    z-index: 2;
+                  }
+                  a.next {
+                    z-index: 1;
+                  }
+                }
+              }
+              .information {
+                padding-bottom: .75em;
+                position: relative;
+                z-index: 10;
+
+                .meta {
+                  font-size: .875em;
+                  display: grid;
+                  grid-template-columns: auto 7em;
+                  padding: .5em 0 .25em 0;
+                  position: absolute;
+                  top: -2.5em;
+                  padding: .5em;
+                  width: calc( 100% - 1em );
+                  background: $colorGray400;
+
+                  i {
+                    width: 1.5em;
+                  }
+                  .location {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  }
+                  .date {
+                    white-space: nowrap;
+                    text-align: right;
+                  }
+                }
+                a {
+                  color: #fff;
+
+                  h2 {
+                    font-size: 1.125em;
+                    margin: .25em 0;
+                    color: $colorAccent;
+                  }
+                  h3 {
+                    font-size: 1em;
+                    font-weight: normal;
+                    text-decoration: none;
+                  }
+                }
+              }
+
+              &:nth-of-type(1n+13) {
+                display: none;
+              }
+              @include max-screen-height( $layoutHeightBreakpoint1 ) {
+                &:nth-of-type(1n+7) {
+                  display: none;
+                }
+              }
+              &:hover, &.selected {
+                background: $colorLighter;
+              }
+            }
+
+            @include maxScreen( $layoutBreakpoint1B ) {
+              grid-template-columns: 1fr 1fr 1fr 1fr;
+
+              article {
+                &:nth-of-type(1n+11) {
+                  display: none;
+                }
+              }
+            }
+            @include maxScreenWidthHeight( $layoutBreakpoint1B, $layoutHeightBreakpoint1 ) {
+              article {
+                &:nth-of-type(1n+6) {
+                  display: none;
+                }
+              }
+            }
+            @include maxScreen( $layoutBreakpoint2 ) {
+              grid-template-columns: 1fr 1fr 1fr;
+
+              article {
+                &:nth-of-type(1n+9) {
+                  display: none;
+                }
+              }
+            }
+            @include maxScreenWidthHeight( $layoutBreakpoint2, $layoutHeightBreakpoint1 ) {
+              article {
+                &:nth-of-type(1n+5) {
+                  display: none;
+                }
+              }
+            }
+            @include maxScreen( $layoutBreakpoint3 ) {
+              grid-template-columns: 1fr 1fr;
+
+              article {
+                &:nth-of-type(1n+7) {
+                  display: none;
+                }
+              }
+            }
+            @include maxScreenWidthHeight( $layoutBreakpoint3, $layoutHeightBreakpoint1 ) {
+              article {
+                &:nth-of-type(1n+4) {
+                  display: none;
+                }
+              }
+            }
+            @include maxScreen( $layoutBreakpoint5 ) {
+              grid-template-columns: 1fr;
+
+              article {
+                &:nth-of-type(1n+5) {
+                  display: none;
+                }
+              }
+            }
+            @include maxScreenWidthHeight( $layoutBreakpoint5, $layoutHeightBreakpoint1 ) {
+              article {
+                &:nth-of-type(1n+3) {
+                  display: none;
+                }
+              }
+            }
+            // @include maxScreen( $layoutBreakpoint6 ) {
+            //   grid-template-columns: 1fr;
+            //
+            //   article {
+            //     border-bottom: 1px solid $colorLighter;
+            //     padding-bottom: .75em;
+            //     margin-top: .25em;
+            //
+            //     &:nth-of-type(1n+5) {
+            //       display: none;
+            //     }
+            //     .image {
+            //       a {
+            //         padding-bottom: 0;
+            //         height: auto;
+            //         background: transparent !important;
+            //
+            //         .meta {
+            //           position: static;
+            //           border-radius: .25em;
+            //           background:  transparent;
+            //
+            //           .location {
+            //             float: left;
+            //           }
+            //           .date {
+            //             float: right;
+            //           }
+            //         }
+            //       }
+            //     }
+            //     .information {
+            //       clear: both;
+            //     }
+            //   }
+            // }
+          }
+        }
+
+        &.showAll {
+          .container {
+            .innerContainer {
+              article {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+
+    }
+
+    &.searchForm {
+      // Same as layoutblock > topblock > intermediate
+      position: relative;
+      background: $colorAccent;
+      padding: 2em 1em 1em 1em;
+      margin-bottom: 2em;
+
+      &:after {
+        content:'';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-top: solid 1.5em $colorAccent;
+        border-left: solid 1.5em transparent;
+        border-right: solid 1.5em transparent;
+      }
+
+      input {
+        background: $white;
+      }
+
+      @include maxScreen( $layoutBreakpoint5 ) {
+        width: calc(100% + #{$baseSpace} + #{$baseSpace} - 2em);
+        transform: translateX( -$baseSpace );
+      }
+    }
+
+    &.searchList {
+        h1 {
+            margin-bottom: .5em;
+        }
+        > .archiveSearch {
+            label {
+                position: relative;
+                top: .15em;
+            }
+        }
+    }
+
+    &.itemList {
+        padding: 1em 0;
+        .listWrapper {
+
+            > ul.items {
+                list-style: none;
+
+                > li {
+                    position: relative;
+                    padding: 0;
+
+                    // General children settings
+                    .title {
+                      h3 {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        text-decoration: none;
+                      }
+                    }
+                    .placeBid {
+                      text-align: center;
+                    }
+                    .favLinkContainer {
+                      color: $colorGray300;
+
+                      &.selected {
+                        color: $colorAccent;
+                      }
+                    }
+
+                    // Tags (generic for any place within the listed item)
+                    .tag {
+                      color: $colorGray200;
+                      display: inline-block;
+                      // width: 100%;
+                      font-size: .875em;
+                      text-transform: uppercase;
+                      font-weight: bold;
+                      // text-align: left;
+                      position: relative;
+                      padding-left: 1.75em;
+
+                      i {
+                        font-size: 1.5em;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translateY(-50%);
+                      }
+                      &.winner {
+                        color: $colorSuccess;
+                      }
+                      &.leader {
+                        color: $colorSuccess;
+                      }
+                      &.outbidded {
+                        color: $colorFailure;
+                      }
+                    }
+
+                    .listType {
+                      display: grid;
+
+                      &.listCompact {
+                        grid-template-columns: 1.25em auto 12em 10em 8em 8em;
+                        grid-gap: .5em;
+                        padding: .25em;
+
+                        > div {
+                          line-height: 2.5em;
+                          white-space: nowrap;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+
+                          &.endTime, &.currentBid {
+                            text-align: right;
+                          }
+                          &.currentBid {
+                            .bidder {
+                              display: none;
+                            }
+                          }
+                        }
+
+                        @include maxScreen( $layoutBreakpoint3 ) {
+                          grid-template-columns: 1.25em auto 10em 8em 8em;
+                          grid-gap: .5em;
+
+                          > div {
+                            line-height: inherit;
+                          }
+                          .favorite {}
+                          .title {
+                            grid-column: span 3;
+
+                            h3 {
+                              font-size: 1em;
+                            }
+                          }
+                          .location {
+                            grid-row: 2;
+                            grid-column: span 2;
+
+                            .itemLocation {
+                              a {
+                                i {
+                                  padding: 0 .5em 0 .25em;
+                                }
+                              }
+                            }
+                          }
+                          .endTime {
+                            grid-row: 2;
+                            font-size: .875em;
+                          }
+                          .currentBid {
+                            grid-row: 2;
+                          }
+                          .placeBid {
+                            grid-row: span 2;
+                            grid-column: 5;
+                            line-height: 3rem;
+                          }
+                        }
+
+                        @include maxScreen( $layoutBreakpoint6 ) {
+                          grid-template-columns: 1.25em auto 10em;
+                          grid-gap: .5em;
+                          padding: .5em;
+
+                          > div {
+                            line-height: inherit;
+                          }
+                          .favorite {
+                            grid-row: 2;
+                          }
+                          .title {
+                            grid-column: span 3;
+
+                            h3 {
+                              font-size: 1em;
+                            }
+                          }
+                          .location {
+                            font-size: .875em;
+                            grid-column: auto;
+                          }
+                        }
+                      }
+                      &.listNormal {
+                        grid-template-columns: $itemImageWidth auto 10em;
+                        grid-gap: 1em;
+                        padding: $baseSpace;
+                        background: $white;
+                        height: auto; // For information block to be able to be sticky
+
+                        .imageContainer {
+                          .image {
+                            max-width: $itemImageWidth;
+                            margin: 0 auto;
+                            position: relative;
+                            height: 0;
+                            padding-bottom: $itemImageRatio;
+
+                            picture {
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            display: block;
+                            background: $colorGray100;
+
+                              img {
+                                width: 100%;
+                                height: 100%;
+                                object-fit: contain;
+                              }
+                            }
+                            a {
+                              position: absolute;
+                              left: 50%;
+                              transform: translateX( -50% );
+                              bottom: .5em;
+                              white-space: nowrap;
+                            }
+                          }
+                        }
+                        .information {
+                            position: relative;
+                            width: 100%;
+                            font-size: 100%;
+                            box-sizing: border-box;
+
+                            .title {
+                              position: relative;
+                              padding: .5em 0 .5em 2em;
+
+                              .favLinkContainer {
+                                position: absolute;
+                                left: .5em;
+                                top: .6em;
+                                display: inline-block;
+                              }
+                              h3 {
+                                display: inline-block;
+                              }
+                            }
+                            ul.data {
+                                margin: $baseSpaceMini;
+                                display: grid;
+                                grid-template-columns: repeat(4, fit-content(100%));
+                                grid-gap: $baseSpaceMini $baseSpace;
+
+                                li {
+                                    padding: .1em 0;
+                                    strong {
+                                      display: block;
+                                      font-size: .675em;
+                                      text-transform: uppercase;
+                                    }
+
+                                    .bidder {
+                                      // display: none;
+                                      .bidder {
+                                        font-size: .875em;
+                                        font-weight: bold;
+                                      }
+                                      .bidDate {
+                                        display: none;
+                                      }
+                                    }
+                                    .itemLocation {
+                                      display: inline-block;
+                                    }
+                                }
+                            }
+                            .links {
+                                position:absolute;
+                                bottom: 0;
+                                width: 100%;
+                                text-align: center;
+
+                                .moreLink {
+                                    display: inline-block;
+                                }
+                                .bidLink {
+                                    display: inline-block;
+                                    position: relative;
+                                    > a {
+                                        position: relative;
+                                        z-index: 1;
+                                    }
+                                    .bidPopup {
+                                        display: none;
+                                        position: absolute;
+                                        z-index: 2;
+                                        top: -10em;
+                                        right: 11.5em;
+                                        width: 22.8em;
+                                        box-shadow: 0 0 3em #4b4b4b;
+                                        .container {
+                                            width: 100%;
+                                            padding: 2.5em 2.5em;
+                                            box-sizing: border-box;
+                                            background: #fff;
+                                            position: relative;
+                                            z-index: 2;
+                                            text-align: center;
+
+                                            .endedMessage {
+                                                padding: 2.5em 0 1.5em 0 !important;
+                                                font-style: italic;
+                                            }
+
+                                            a.close {
+                                                position: absolute;
+                                                top: 0;
+                                                right: 0;
+                                                background: #000;
+                                                color: #fff;
+                                                display: block;
+                                                padding: .15em .5em .2em .5em;
+                                                font-size: 1.4em;
+                                            }
+
+                                            p {
+                                                &.item {
+                                                    font-size: .8em;
+                                                    font-weight: 700;
+                                                    margin-bottom: .5em;
+                                                    span {
+                                                        font-weight: 400;
+                                                    }
+                                                }
+                                                &.bid {
+                                                    font-size: 1em;
+                                                    font-weight: 700;
+                                                }
+                                                &.time {
+                                                    font-size: .8em;
+                                                    font-weight: 400;
+                                                }
+                                                &.message {
+                                                    padding-top: 1em;
+                                                }
+                                            }
+
+                                            .bidFormAdd {
+                                                form {
+                                                    text-align: left;
+                                                    margin-bottom: 0;
+                                                    padding-bottom: 0;
+                                                }
+                                            }
+                                        }
+
+                                        &:after {
+                                            content: " ";
+                                            display: block;
+                                            width: 3em;
+                                            height: 3em;
+                                            background: #fff;
+                                            position: absolute;
+                                            right: -1.4em;
+                                            top: 9.7em;
+                                            z-index: 1;
+                                            box-shadow: 0 0 3em #4b4b4b;
+                                            @include transform( scale(0.9) rotate(-45deg) );
+                                        }
+
+                                        &.guest {
+                                            top: -5em;
+                                            &:after {
+                                                top: 4.8em;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        .itemEssentials {
+                          text-align: center;
+
+                          .container {
+                            > div {
+                              line-height: 2.5em;
+
+                              &.currentBid {
+                                .bidder {
+                                  display: none;
+                                }
+                              }
+                            }
+                          }
+                        }
+
+                        @include maxScreen( $layoutBreakpoint2 ) {
+                          padding: $baseSpaceSmall;
+                        }
+
+                        @include maxScreen( $layoutBreakpoint3 ) {
+                          grid-template-columns: $itemImageWidth auto 10em;
+
+                          .information {
+                            ul.data {
+                              grid-template-columns: repeat(2, 1fr);
+                            }
+                          }
+                        }
+
+                        @include maxScreen( $layoutBreakpoint4 ) {
+                          grid-template-columns: $itemImageWidth auto;
+                          padding: $baseSpaceMini;
+
+                          .imageContainer {
+                            grid-row: span 2;
+
+                            .image {
+                              max-width: initial;
+                            }
+                          }
+                          .information {
+                            grid-row: 2;
+                            grid-column: 2;
+
+                            .links {
+                              display: none;
+                            }
+                          }
+                          .itemEssentials {
+                            .container {
+                              display: grid;
+                              grid-template-columns: auto 7em;
+                              grid-gap: .25em;
+                              margin-top: 1em;
+
+                              > div {
+                                line-height: initial;
+                              }
+                              .placeBid {
+                                grid-row: span 2;
+                                grid-column: 2;
+                                text-align: right;
+                              }
+                              .currentBid {
+                                text-align: left;
+                                font-size: .875em;
+                              }
+                              .endTime {
+                                grid-row: 1;
+                                text-align: left;
+                              }
+                            }
+                          }
+                        }
+                        @include maxScreen( $layoutBreakpoint6 ) {
+                          grid-template-columns: 1fr;
+                          grid-gap: 0;
+
+                          .imageContainer {
+                            .image {
+                              max-width: initial;
+                              padding-bottom: 0;
+                              height: auto;
+
+                              picture {
+                                position: initial;
+                                height: auto;
+
+                                img {
+                                  display: block;
+                                  object-fit: initial;
+                                }
+                              }
+                            }
+                          }
+                          .information {
+                            grid-row: 3;
+                            grid-column: auto;
+                            background: $white;
+                            padding-top: $baseSpaceMini;
+
+                            .links {
+                              display: none;
+                            }
+                          }
+                          .itemEssentials {
+                            .container {
+                              grid-template-columns: auto auto;
+                            }
+                          }
+                        }
+                      }
+                    }
+
+                    .infoPopup {
+                      grid-column: span 2;
+
+                      .container {
+                        .itemShow {
+                          .bidContainer {
+                            .bidFormAdd {
+                              h2 {
+                                display: none;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+
+                    &:hover {
+                      background: $colorAccentLighter;
+                    }
+
+                    &.show {
+                      // outline: $colorAccentLighter 2em solid;
+                      box-shadow: 0 0 2em $colorGray300;
+                      border-radius: calc( #{$borderRadius} * 2 );
+                      margin: 3em 0;
+                      border-bottom: 0;
+                      position: relative;
+                      // left: -$baseSpace;
+                      // width: calc( 100% + #{$baseSpace} + #{$baseSpace} );
+
+                      .listType {
+                        &.listCompact {
+                          background: $white;
+                          border-radius: $borderRadius;
+                        }
+
+                        .placeBid {
+                          .button {
+                            background: $white;
+                            color: $colorSuccess;
+                          }
+                        }
+                      }
+                    }
+
+                    &.ended, &.cancelled {
+                      display: none;
+                    }
+                    &.hideFromSearch {
+                      display: none;
+                    }
+
+                    @include transition( box-shadow 0.3s ease-in-out );
+                    -webkit-backface-visibility: hidden;
+                }
+            }
+            .paginationBar {
+              position: relative;
+              margin-top: 2rem;
+              padding: .5em;
+              font-size: .875em;
+              background: $colorGray100;
+              border-radius: $baseSpaceMini;
+              text-align: center;
+
+              h4 {
+                text-transform: uppercase;
+                // padding-left: .25em;
+              }
+              .pages {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, 3em);
+                justify-content: center;
+
+                &.auction {
+                  grid-template-columns: repeat(auto-fit, 6em);
+                }
+                a {
+                  display: inline-block;
+                  text-align: center;
+                  padding: .5em .25em;
+                  margin: .125em;
+                  border-radius: $borderRadius;
+                  background: $white;
+                  border: 1px solid transparent;
+
+                  &:hover {
+                    background: $colorLighter;
+                    color: $white;
+                  }
+                  &.ended {
+                    background: transparent;
+                    color: $colorGray500;
+                    border: 1px solid $colorGray100;
+                  }
+                  &.current {
+                    background: $colorPrimary;
+                    color: $white;
+                    border-right: none;
+                  }
+                  &.ended.current {
+                    background: $colorGray500;
+                    color: $white;
+                  }
+                }
+              }
+              .toTop {
+                position: absolute;
+                right: 0;
+                top: -1.5rem;
+                font-size: .875em;
+              }
+              .auctionNav {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 1em;
+                padding-top: 2em;
+                text-transform: uppercase;
+
+                .previous, .next {
+                  strong {
+                    font-weight: 100;
+                    font-size: .875em;
+                    padding: 0 2rem;
+                  }
+                  a {
+                    display: grid;
+                    grid-gap: 1rem;
+
+                    .text {
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+                    }
+                  }
+                }
+                .previous {
+                  text-align: left;
+
+                  a {
+                    grid-template-columns: 1rem auto;
+                  }
+                }
+                .next {
+                  text-align: right;
+
+                  a {
+                    grid-template-columns: auto 1rem;
+                  }
+                }
+              }
+            }
+
+            &.normal {
+              > ul {
+                > li {
+                  box-shadow: 0 0 1em $colorGray200;
+                  border-radius: $borderRadius;
+                  margin-top: $baseSpace;
+
+                  .listType {
+                    &.listCompact {
+                      display: none;
+                    }
+                  }
+
+                  // @include maxScreen( $layoutBreakpoint2 ) {
+                  //   margin-top: $baseSpaceSmall;
+                  }
+                  @include maxScreen( $layoutBreakpoint6 ) {
+                    // display: grid;
+                    // grid-template-columns: 1fr 1fr;
+                    // grid-column-gap: $baseSpaceMini;
+
+                    > li {
+                      // &.show {
+                      //   grid-column: span 2;
+                      // }
+                      .listNormal {
+                        .itemEssentials {
+                          .container {
+                            .placeBid {
+                              grid-column: span 2 !important;
+                              grid-row: 2 !important;
+                              text-align: center;
+                              padding-top: 1em;
+
+                              .links {
+                                .moreLink {
+                                  > a {
+                                    width: 100%;
+                                    padding: .5em 0;
+                                    margin: 0;
+                                  }
+                                }
+                              }
+                            }
+                            .currentBid {
+                              grid-row: 1;
+                              grid-column: 2;
+                              text-align: right !important;
+                            }
+                          }
+                        }
+                      }
+                      &:not(.show) {
+                        .listNormal {
+                          height: 100%;
+                          grid-template-rows: 1fr auto auto;
+
+                          .information {
+                            .title {
+                              h3 {
+                                font-size: 1em;
+                              }
+                            }
+                          }
+                        }
+                      }
+                      &.show {
+                        .listNormal {
+                          .itemEssentials {
+                            .container {
+                              .placeBid {
+                                display: none;
+                              }
+                            }
+                          }
+                        }
+                      }
+
+                      .infoPopup.show {
+                        border: $baseSpaceMini $white solid;
+
+                        .container {
+                          .itemShow {
+                            .bidContainer {
+                              .bidFormAdd {
+                                .currentBid {
+                                  display: grid;
+                                  grid-template-columns: 7em auto;
+                                  padding: 0.5rem;
+                                  font-weight: 700;
+                                  font-size: 1.3em;
+
+                                  span {
+                                    &.label {
+                                      font-size: 0.75rem;
+                                      text-transform: uppercase;
+                                      text-align: left;
+                                      font-weight: normal;
+                                    }
+                                    &:not(.label) {
+                                      font-size: 1.5rem;
+                                      text-align: right;
+                                    }
+                                  }
+                                }
+                                .currentBidUser {
+                                  padding: 0 0.5rem;
+                                  height: 0;
+                                  position: relative;
+                                  top: -1.75em;
+                                  background: transparent;
+                                  text-align: left;
+
+                                  .bidder {
+                                    color: $white;
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            &.compact {
+              > ul {
+                > li {
+                  border-bottom: 1px solid $colorGray100;
+
+                  .listType {
+                    &.listNormal {
+                      display: none;
+                    }
+                  }
+                }
+              }
+            }
+
+            &.showEnded {
+              .items {
+                .ended:not(.cancelled) {
+                  display: block !important;
+
+                  .listType {
+                    .placeBid {
+                      .links {
+                        .moreLink {
+                          .button {
+                            background: $colorGray500;
+                            color: $white;
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            @include maxScreen( $layoutBreakpoint3 ) {
+              border-left: $baseSpaceSmall solid transparent;
+              border-right: $baseSpaceSmall solid transparent;
+            }
+        }
+
+        &.itemListArchived {
+          .listType {
+            &.listCompact {
+              .placeBid {
+                display: none !important;
+              }
+
+              @include minScreen( $layoutBreakpoint3 ) {
+                grid-template-columns: 1.25em auto 12em 10em 8em !important;
+              }
+              @include screen( $layoutBreakpoint6 + 1, $layoutBreakpoint3 ) {
+                grid-template-columns: 1.25em auto 10em 8em !important;
+              }
+            }
+          }
+        }
+    }
+
+    &.ajax.itemShow {
+        .bidContainer {
+            background: $colorGrayLight;
+            border-radius: $borderRadius;
+            padding: $baseSpace;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 1em;
+
+            .view {
+              h3 {
+                font-size: 1em;
+                margin-bottom: .5em;
+                text-decoration: underline;
+              }
+              &.bidList {
+                .marginal {
+                  display: none;
+                }
+                ul {
+                  li:nth-child(n+4) { 
+                    display: none;  
+                  }
+                }
+              }
+              &.bidFormAdd {
+                .message {
+                  padding: 1em 0 1.5em 0;
+
+                  &.center {
+                    text-align: center;
+                  }
+                }
+                input {
+                  background: $white;
+                }
+              }
+            }
+
+            @include maxScreen( $layoutBreakpoint2 ) {
+              padding: $baseSpaceSmall;
+            }
+
+            @include maxScreen( $layoutBreakpoint3 ) {
+              grid-template-columns: 1fr 1fr;
+
+              .view {
+                &.bidList {
+                }
+                &.bidFormAdd {
+                  grid-row: span 2;
+                }
+                &.financing {
+                  grid-row: 2;
+                }
+              }
+            }
+
+            @include maxScreen( $layoutBreakpoint4 ) {
+              padding: $baseSpaceMini;
+            }
+
+            @include maxScreen( $layoutBreakpoint5 ) {
+              grid-template-columns: 1fr;
+
+              .view {
+                &.bidList {
+                  grid-column: 1;
+                  grid-row: 3;
+                }
+                &.bidFormAdd {
+                  grid-column: 1;
+                  grid-row: 1;
+                }
+                &.financing {
+                  grid-column: 1;
+                  grid-row: 2;
+                }
+              }
+            }
+        }
+        .relationContainer {
+            position: relative;
+            position: relative;
+            overflow-y: scroll;
+        }
+    }
+
+    &.ajax.itemShowImages {
+      h2 {
+        font-size: 1em;
+
+        .bidNo {
+          font-weight: normal;
+        }
+      }
+      .mediaContainer {
+        .tabContainer {
+          background: $colorGray100;
+          padding: $baseSpaceMini;
+          border-radius: $borderRadius;
+          margin-bottom: $baseSpace;
+
+          &.images {}
+          &.video {
+            display: none;
+            padding-bottom: 1.75em;
+
+            .videoContainer {
+              position: relative;
+              width: 100%;
+              padding-bottom: 56.25%;
+
+              iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+              }
+            }
+          }
+          &.description {
+            display: none;
+            padding: $baseSpace;
+
+            .vehicleInfo {
+              padding: .5em;
+              display: grid;
+              grid-template-columns: 10em auto 10em auto;
+              grid-gap: .5em;
+              background: $colorGray100;
+
+              .title {
+                font-weight: bold;
+              }
+
+              @include maxScreen( $layoutBreakpoint3 ) {
+                grid-template-columns: 10em auto;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.bidListAll,
+    &.bidList {
+
+        span.empty {
+            display: block;
+            margin-bottom: 10px;
+            padding-left: 33px;
+            font-style: italic;
+            color: #999;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 1em;
+
+            li {
+                margin: .5em 0;
+                display: grid;
+                grid-template-columns: 1.25em auto 10em;
+                grid-gap: .125em .5em;
+                border-radius: $borderRadius;
+
+                .label {
+                  grid-row: span 2;
+                  background: $colorGray500;
+                  color: $white;
+                  border-top-left-radius: $borderRadius;
+                  border-bottom-left-radius: $borderRadius;
+
+                  &:before {
+                    position: relative;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                  }
+                }
+                .user {
+                  font-weight: 700;
+                  font-size: .875em;
+                }
+                .value {
+                  grid-row: span 2;
+                  font-size: 1.25em;
+                  font-weight: 700;
+                  line-height: 2rem;
+                  text-align: center;
+                }
+                .time {
+                  font-size: .875em;
+
+                  time {
+                    color: $colorGray800;
+                  }
+                }
+                a {
+                    display: block;
+                    padding-left: 33px;
+                    margin-bottom: 10px;
+                    font-weight: 700;
+                }
+
+                &.auto {
+                  .label {
+                    @include fontIcon( $fa-var-font );
+                  }
+                }
+                &.autoCreated {
+                  opacity: .3;
+                }
+                &.winner {
+                  .label {
+                    background: $black;
+                    // @include fontIcon( $fa-var-trophy );
+                  }
+                }
+                &.noBids {
+                  opacity: .8;
+                }
+                &:hover {
+                  background: $white;
+                }
+
+                @include screen( $layoutBreakpoint5, $layoutBreakpoint4 ) {
+                  .user {
+                    grid-column: span 2;
+                  }
+                  .value {
+                    grid-row: 2;
+                    grid-column: 3;
+                    line-height: 1em;
+                  }
+                  .time {
+                    grid-row: 2;
+                    grid-column: 2;
+                  }
+               }
+               @include maxScreen( $layoutBreakpoint6 ) {
+                 .user {
+                   grid-column: span 2;
+                 }
+                 .value {
+                   grid-row: 2;
+                   grid-column: 3;
+                   line-height: 1em;
+                 }
+                 .time {
+                   grid-row: 2;
+                   grid-column: 2;
+                 }
+               }
+            }
+        }
+
+        > p {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 1.1em;
+        }
+
+        > dl {
+            font-size: 90%;
+            line-height: 1.4em;
+            color: #000;
+            margin-top: $baseSpaceSmall;
+            @include clearfix;
+            dt {
+                clear: left;
+                float: left;
+                width: 10em;
+                font-weight: 700;
+            }
+            dd {
+                float: left;
+                width: auto;
+            }
+        }
+    }
+
+    // &.bidSpeedForm {
+    //     > p.message {
+    //         text-align: center;
+    //         &.endedMessage {
+    //             padding-top: 2em;
+    //             font-size: 1.3em;
+    //             letter-spacing: .1em;
+    //         }
+    //     }
+    //     .notification {
+    //         border: 1px solid;
+    //         font-size: 90%;
+    //         padding: .5em 0;
+    //         text-align: center;
+    //         margin-bottom: .5em;
+    //         @include border-left-radius( 1em );
+    //         @include border-right-radius( 1em );
+    //         &.error {
+    //             border-color: #ed413d;
+    //             background: #f59e9c;
+    //             color: #ff0000;
+    //         }
+    //         &.success {
+    //             border-color: #42ec3e;
+    //             background: #a6f49d;
+    //             color: #33ff00;
+    //         }
+    //     }
+    //     .bidForm {
+    //         padding-top: 1em;
+    //         .field {
+    //             &.freeBid {
+    //                 .container.top {
+    //                     position: relative;
+    //                     max-width: 14.2em;
+    //                     margin: 1em auto 0 auto;
+    //
+    //                     > label {
+    //                         padding-left: 1.5em;
+    //                     }
+    //                     > input {
+    //                         position: absolute;
+    //                         top: 0;
+    //                         left: 0;
+    //                     }
+    //
+    //                     .container.bottom {
+    //                         display: none;
+    //                         padding-top: .7em;
+    //                         > label {
+    //                             display: inline-block;
+    //                             margin-bottom: .3em;
+    //                             position: relative;
+    //                             top: .1em;
+    //                         }
+    //                         > input {
+    //                             display: inline-block;
+    //                             max-width: 9.4em;
+    //                             text-align: center;
+    //                             border: 1px solid #ccc;
+    //                             -webkit-border-radius: 1em;
+    //                                -moz-border-radius: 1em;
+    //                                     border-radius: 1em;
+    //                         }
+    //                     }
+    //                 }
+    //                 #freeBidSelect:checked ~ .container {
+    //                     display: block;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+    &.bidFormAdd {
+        position: relative;
+        .bidHelp {
+            display: none;
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            min-height: 150px;
+            padding: 20px;
+            border: 2px solid #C8E1F9;
+            background: #fff;
+            border-radius: 6px;
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .currentBid {
+            font-weight: 700;
+            font-size: 1.3em;
+            color: #000;
+            padding-top: .5em;
+            span {
+                font-size: 1.2em;
+
+                &.label {
+                    display: block;
+                    font-size: .7em;
+                }
+            }
+        }
+        .currentBidUser {
+            color: #fe1d1d;
+            font-weight: 700;
+            font-size: 90%;
+            padding-bottom: .5em;
+        }
+        .loginButton {
+          text-align: center;
+        }
+        > p.message {
+            &.endedMessage {
+                padding: 1em 0;
+                font-size: 1.3em;
+                letter-spacing: .1em;
+            }
+        }
+        .notification {
+            border: 1px solid;
+            font-size: 90%;
+            text-align: center;
+            @include border-left-radius( 1em );
+            @include border-right-radius( 1em );
+
+            &.error, &.success {
+              padding: .5em 0;
+              margin-bottom: .5em;
+            }
+            &.error {
+                border-color: #ed413d;
+                background: #f59e9c;
+                color: #ff0000;
+            }
+            &.success {
+                border-color: #42ec3e;
+                background: #a6f49d;
+                color: #33ff00;
+            }
+        }
+        .currentAutoBid {
+            padding: .75em 0 0 0;
+            a {
+                font-size: .75em;
+            }
+        }
+    }
+
+    &.itemShow.display {
+      .topbar {
+        @extend %fullScreenWidth;
+        position: sticky;
+        top: 3.0625em; // Userbar height
+        background: $backgroundColor;
+        z-index: 10;
+        line-height: 3em;
+        border-bottom: 1px solid $colorGrayNormal;
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-gap: .25em;
+
+        h1 {
+          font-size: $h3FontSize;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          a {
+            font-size: 1.25em;
+            position: relative;
+            top: .1em;
+            padding-right: .25em;
+          }
+
+          &:hover {
+            white-space: normal;
+            overflow: auto;
+            line-height: 1.25em;
+            margin: .75em 0 $baseSpaceMini 0;
+          }
+        }
+
+        .itemNav {
+          text-align: right;
+
+          a.button {
+            padding: .25em 1em;
+
+            &:hover {
+              padding-left: 1.25em;
+              padding-right: 1.25em;
+            }
+          }
+        }
+      }
+      > .container {
+        display: grid;
+        grid-template-columns: 1fr 20em;
+        grid-gap: $baseSpace;
+
+        .itemInformation {
+          padding: $baseSpace;
+          background: $white;
+
+          .mediaContainer {
+            .tabContainer {
+              background: $colorGray100;
+              padding: $baseSpaceMini;
+              border-radius: $borderRadius;
+              margin-bottom: $baseSpace;
+
+              &.images {}
+              &.video {
+                display: none;
+                padding-bottom: 1.75em;
+
+                .videoContainer {
+                  position: relative;
+                  width: 100%;
+                  padding-bottom: 56.25%;
+
+                  iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: 0;
+                  }
+                }
+              }
+            }
+          }
+          .information {
+            p {
+              margin: .25em 0 1.75em 0;
+            }
+            .vehicleInfo {
+              padding: .5em;
+              display: grid;
+              grid-template-columns: 10em auto 10em auto;
+              grid-gap: .5em;
+              background: $colorGray100;
+
+              .title {
+                font-weight: bold;
+              }
+
+              @include maxScreen( $layoutBreakpoint3 ) {
+                grid-template-columns: 10em auto;
+              }
+            }
+            .moreInfo {
+              padding-bottom: 1.75em;
+
+              p {
+                margin: .25em 0 0 0;
+              }
+            }
+            .auctionInfo {
+              ul.informationTable {
+                // background: $colorGray100;
+                // padding: $baseSpaceSmall $baseSpace;
+
+                li {
+                  display: grid;
+                  grid-template-columns: 0 1fr;
+                  grid-gap: $baseSpaceMini 0;
+                  padding: $baseSpaceSmall;
+                  background: $colorGray100;
+                  border-bottom: 1px solid $white;
+                  border-top: 1px solid $white;
+                  border-radius: $borderRadius;
+
+                  input.toggleInformation {
+                    display: none;
+
+                    &:checked {
+                      & ~ .information {
+                        display: initial;
+                      }
+                      & ~ label {
+                        .toggleArrow {
+                          .fold {
+                            display: initial;
+                          }
+                          .unfold {
+                            display: none;
+                          }
+                        }
+                      }
+                    }
+                  }
+                  i {
+                    font-size: 1.5rem;
+                    line-height: $baseSpace;
+                    color: $colorLighter;
+                  }
+                  label {
+                    display: grid;
+                    grid-template-columns: auto 1em;
+                    font-size: $h3FontSize;
+                    text-transform: uppercase;
+                    line-height: $baseSpace;
+                    font-weight: bold;
+                    padding-left: 2.5rem;
+                    
+                    .toggleArrow {
+                      line-height: 1em;
+                      
+                      .fold {
+                        display: none;
+                      }
+                    }
+                  }
+                  .information {
+                    display: none;
+                    grid-column: span 2;
+                    // border-top: 1px solid $colorGray500;
+                    position: relative;
+                    padding-bottom: $baseSpace;
+
+                    h4 {
+                      text-transform: uppercase;
+                    }
+                    .helpButton {
+                      display: inline;
+                      position: absolute;
+                      bottom: 0;
+                      right: 0;
+                    }
+                    p, h4, .blockPart {
+                      margin: $baseSpaceMini 0;
+                    }
+                    .blockPart {
+                      display: grid;
+                      grid-template-columns: $baseSpace auto;
+
+                      i {
+                        font-size: 1.125rem;
+                        text-align: center;
+                        color: $colorGray300;
+                      }
+                      p {
+                        margin: 0;
+                      }
+                    }
+                  }
+                }
+              }
+              .button {
+                display: block;
+                margin-top: $baseSpaceSmall
+              }
+            }
+          }
+        }
+        .bidContainer {
+          position: sticky;
+          top: 6.0625em;
+          height: calc( 100vh - 6.6025em );
+          overflow: auto;
+          // padding-bottom: $baseSpace;
+
+          .itemEndTime {
+            position: absolute;
+            top: .25em;
+            right: .25em;
+            margin-top: 1em;
+            z-index: 500;
+            font-size: .875em;
+          }
+          .bidFormAdd {
+            position: sticky;
+            top: 0;
+            z-index: 9;
+            background: $backgroundColor;
+            padding-top: $baseSpace;
+
+            h2 {
+              display: none;
+            }
+            .bidForm {
+              div.notification {
+                &.error, &.success {
+                  margin: 0 0 .5em 0;
+                }
+              }
+              .currentAutoBid {
+                // grid-column: span 2;
+                padding: 0;
+                display: grid;
+                // grid-template-columns: 9em auto 4em;
+                grid-template-columns: auto 4em;
+                // grid-gap: .5em;
+                grid-column-gap: .5em;
+                line-height: 1.5em;
+
+                .label {
+                  // padding-left: .5em;
+                  grid-column: span 2;
+                  color: $black !important;
+                }
+                .value {
+                  color: $black;
+                  font-weight: bold;
+                  // text-align: right;
+                }
+              }
+              .bidHelpButton {
+                grid-column: span 2;
+                margin: 0;
+                line-height: 4em;
+              }
+            }
+          }
+          h3 {
+            margin: 2em 0 .5em 0;
+          }
+          .bidListAll {
+            padding-bottom: $bottomBarHeight;
+          }
+        }
+      }
+
+      @include minScreen( $layoutBreakpoint1B ) {
+        > .container {
+          .itemInformation {
+            .imageContainer {
+              .imageList {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+              }
+            }
+          }
+        }
+      }
+      @include maxScreen( $layoutBreakpoint2 ) {
+        > .container {
+          grid-gap: $baseSpaceSmall;
+
+          .itemInformation {
+            padding: $baseSpaceSmall;
+
+            .imageContainer {
+              grid-template-columns: 1fr 1fr;
+            }
+          }
+          .bidContainer {
+            padding-bottom: $baseSpaceSmall;
+
+            .bidFormAdd {
+              padding-top: $baseSpaceSmall;
+            }
+          }
+        }
+      }
+      @include maxScreen( $layoutBreakpoint3 ) {
+        > .container {
+          .itemInformation {
+            .imageContainer {
+              .imageList {
+                grid-template-columns: 1fr 1fr 1fr;
+
+                li {
+                  &.firstImage {
+                    grid-column: span 3;
+                    grid-row: 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      @include maxScreen( $layoutBreakpoint4 ) {
+        > .container {
+          grid-gap: $baseSpaceMini;
+
+          .itemInformation {
+            padding: $baseSpaceMini;
+          }
+          .bidContainer {
+            padding-bottom: $baseSpaceMini;
+
+            .bidFormAdd {
+              padding-top: $baseSpaceMini;
+            }
+          }
+        }
+      }
+      @include maxScreen( $layoutBreakpoint5 ) {
+        .topbar {
+          position: static;
+
+          h1 {
+            white-space: normal;
+            overflow: auto;
+            line-height: 1.25em;
+            margin: $baseSpaceMini 0;
+          }
+          .itemNav {
+            display: none;
+          }
+        }
+        > .container {
+          grid-template-columns: 1fr;
+
+          .itemInformation {
+            .imageContainer {
+              grid-template-columns: 1fr 1fr;
+            }
+          }
+          .bidContainer {
+            position: static;
+
+            .currentBid {
+              display: grid;
+              grid-template-columns: 7em auto;
+              padding: $baseSpaceMini;
+
+              span {
+                &.label {
+                  font-size: .75rem;
+                  text-transform: uppercase;
+                  text-align: left;
+                  font-weight: normal;
+                }
+                &:not(.label) {
+                  font-size: 1.5rem;
+                  text-align: right;
+                }
+              }
+            }
+            .currentBidUser {
+              padding: 0 $baseSpaceMini;
+              height: 0;
+              position: relative;
+              top: -1.75em;
+              background: transparent;
+              text-align: left;
+
+              .bidder {
+                color: $white;
+              }
+              .bidDate {
+                display: none;
+              }
+            }
+            .itemEndTime {
+              position: fixed;
+              top: auto;
+              bottom: 1em;
+              right: auto;
+              // left: 50%;
+              // transform: translateX(-50%);
+            }
+            .bidFormAdd {
+              position: fixed;
+              bottom: 0;
+              top: auto;
+              left: 0;
+              z-index: 9;
+              width: calc(100% - 1em);
+              padding: $baseSpaceMini $baseSpaceMini $bottomBarHeight $baseSpaceMini;
+              background: $backgroundColor;
+              // padding-bottom: $baseSpace;
+              border-top: 1px solid $colorGrayNormal;
+
+              h2 {
+                display: block;
+                font-size: 1em;
+                padding-bottom: .25em;
+              }
+              .bidHelpButton {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+      @include maxScreen( $layoutBreakpoint6 ) {
+        > .container {
+          .itemInformation {
+            .imageContainer {
+              .imageList {
+                grid-template-columns: 1fr 1fr 1fr;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.userHomepage {
+        padding-top: 1em;
+        padding-bottom: 2em;
+        > h1 {
+            margin-bottom: .2em;
+        }
+        .wonBid.message {
+
+        }
+    }
+
+    &.userItemFavList {
+		margin: 30px 0 0 0;
+		padding: 15px 0 5px 0;
+		border-top: 6px double #f1efef;
+	}
+
+	&.userItemBidList {
+		margin: 0 0 0 0;
+		padding: 2em 0 2em 0;
+		border-top: 6px double #f1efef;
+	}
+
+	&.userWonItemList {
+		margin: 0;
+		padding: 2em 0 2em 0;
+		border-top: 6px double #f1efef;
+
+		.wonBid.message {
+			margin: 0 0 50px 0;
+			padding: 15px 0;
+			text-align: center;
+			border-bottom: 6px double #f1efef;
+
+			p {
+				font-style: italic;
+				color: #b0b0b0;
+			}
+		}
+	}
+
+    &.userItemFavList,
+	&.userItemBidList,
+	&.userWonItemList {
+        .listWrapper {
+            > em {
+                display: inline-block;
+                margin-bottom: 1.6em;
+            }
+            > .paginationBar {
+                .toTop {
+                    padding-top: 1em;
+                }
+            }
+        }
+    }
+
+    &.listArchivedAuctions {
+        padding: 30px 0;
+
+        .dateSelector { text-align: center; padding-bottom: 10px; font-size: 0.875em; }
+        .dateSelector a { width: 7.5%; display: inline-block; background: #dedede; padding: 0 0.25; line-height: 2em; color: #000; text-align: center; }
+        .dateSelector a.selected { background: #0a5599; color: #fff; }
+        .dateSelector span { width: 7.5%; display: inline-block; background: #dedede; padding: 0 0.25; line-height: 2em; color: #999; text-align: center; }
+
+        .tabs.years, .tabs.months { margin-bottom: 1em; }
+
+        table.auctionList { width: 100%; border-collapse: separate; border-spacing: 0 4px; }
+        /* Table head */
+        table.auctionList thead {}
+            table.auctionList thead tr {}
+                table.auctionList thead tr th { text-align: left; height: 36px; vertical-align: middle; text-transform: uppercase; font-size: 1.125em; }
+                    table.auctionList thead tr th a { color: #999; }
+                    table.auctionList thead tr th a:hover { color: #00539b; }
+                    table.auctionList thead tr th img { float: left; margin-right: 4px; }
+                table.auctionList thead tr th.auctionTitle { width: 47%; padding-left: 1%; }
+                table.auctionList thead tr th.partTitle { width: 25%; }
+                table.auctionList thead tr th.auctionLocation { width: 16%; }
+                table.auctionList thead tr th.partAuctionStart { width: 12%; }
+
+        /* Table body */
+        table.auctionList tbody {}
+            table.auctionList tbody tr { cursor: pointer; position: relative; background: #f4f3f3; }
+            table.auctionList tbody tr.odd { background: #f8f8f8; }
+                table.auctionList tbody tr td { padding: 0.5em 0; vertical-align: middle; border-bottom: 1px solid #fff; }
+                    table.auctionList tbody tr td img { display: block; float: left; margin-right: 4px; }
+                table.auctionList tbody tr td.auctionTitle { padding: 0 3% 0 1%; }
+                    table.auctionList tbody tr td.auctionTitle a { font-weight: 600; color: #000; }
+                    table.auctionList tbody tr td.auctionTitle a:hover { color: #00539b; }
+                table.auctionList tbody tr td.partTitle {}
+                table.auctionList tbody tr td.auctionLocation {}
+                table.auctionList tbody tr td.partAuctionStart {}
+            table.auctionList tbody tr {
+                transition: all 0.5s linear;
+                -webkit-transition: all 0.5s linear;
+                -o-transition: all 0.5s linear;
+                -ms-transition: all 0.5s linear;
+                -kthtml-transition: all 0.5s linear;
+            }
+
+        .pagination {
+            /* Pagination */
+            ul.paginationList			{ border:0; margin:10px 0; padding:0; display:block; clear: both; padding-top: 25px; }
+
+            ul.paginationList li		{ border:0; margin:0; padding:0; font-size:11px; list-style:none; float:left; }
+            ul.paginationList a			{ border:solid 1px #d2d1d0; margin-right:2px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+            ul.paginationList .previous-off,
+            ul.paginationList .next-off { color:#666666; display:block; float:left;	font-weight:bold; padding:3px 4px; }
+            ul.paginationList .next a,
+            ul.paginationList .previous a		{ font-weight:bold; }
+            ul.paginationList li.first a,
+            ul.paginationList li.last a		{ padding: 2px 4px 3px 4px; }
+            ul.paginationList li.active a		{ color:#333; font-weight:bold;	display:block; float:left; padding:3px 6px; }
+            ul.paginationList a:link,
+            ul.paginationList a:visited 		{ color:#999; display:block; float:left; padding:3px 6px; text-decoration:none; }
+            ul.paginationList a:hover			{ border:solid 1px #d2d1d0; color:#000; }
+            .entriesTotal						{ clear:both; color:#808080; }
+        }
+    }
+}
+
+.financingContainer { display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(255,255,255,0.5); z-index: 999; color: #fff; overflow: auto; }
+    .financingContainer .view.itemFinancing { position: relative; width: 470px; padding: 15px 60px; max-width: 100%; margin: 200px auto 0 auto; background: #3693d4 url('/images/templates/tovekClassic/finance-form-arrow.png') no-repeat 215px 200px; box-shadow: 0 0 30px rgba(0,0,0,0.25); }
+        .financingContainer .view.itemFinancing .closePopup { position: absolute; right: 0px; top: -16px; padding: 8px; font-weight: bold; cursor: pointer; }
+        .financingContainer .view.itemFinancing h1 { font-size: 1.5em; line-height: 1em; }
+        .financingContainer .view.itemFinancing h2 { font-size: 0.875em; line-height: 1em; margin: 1em 0; }
+        .financingContainer .view.itemFinancing p { font-size: 0.875em; line-height: 1.25em; max-width: 180px; }
+        .financingContainer .view.itemFinancing .form { width: 185px; padding: 0 10px 15px 10px; background: #23638e; }
+            .financingContainer .view.itemFinancing .form .result { padding: 5px; background-image: none; }
+                .financingContainer .view.itemFinancing .form .result ol {  }
+                    .financingContainer .view.itemFinancing .form .result ol li { line-height: 1.25em; font-size: 0.75em; }
+                        .financingContainer .view.itemFinancing .form .result ol li label { font-size: 1em; }
+            .financingContainer .view.itemFinancing .form h2 { font-weight: normal; }
+            .financingContainer .view.itemFinancing .form p { font-size: 0.625em; }
+            .financingContainer .view.itemFinancing .form form { padding-top: 15px; }
+                .financingContainer .view.itemFinancing .form form label { font-size: 0.625em; }
+                .financingContainer .view.itemFinancing .form form input.text { width: 183px; height: 20px; border: 1px solid #81adc3; line-height: 20px; padding: 0 5px; }
+                .financingContainer .view.itemFinancing .form form .buttons { max-width: 100%; padding-top: 15px; }
+                    .financingContainer .view.itemFinancing .form form button { background: #f09233; color: #fff; border: 1px solid #cc8829; text-transform: uppercase; font-weight: bold; font-family: 'Open sans', sans-serif; font-size: 1.125em; text-align: center; width: 195px; padding: 5px 0; }
+        .financingContainer .view.itemFinancing .foot { font-size: 0.625em; line-height: 1em; padding-top: 15px; }

@@ -1,0 +1,129 @@
+@mixin tool\navigation\responsive\horizontal( $breakPoint: 650px, $centered: false, $backgroundColor : #fff, $linkColor: #000, $linkHoverColor: #000, $spacing: 1.618em ) {
+
+	background: $backgroundColor;
+
+	// Menu shortcut
+	&::before {
+		display: block;
+		content: $menuTitle;
+		padding: $spacing;
+		color: $linkColor;
+		cursor: pointer;
+	}
+
+	// Top list (hidden)
+	& > ul {
+		list-style: none;
+		overflow: hidden;
+		max-height: 0;
+	}
+
+	// Make top list visible on hover
+	&:active,
+	&:hover {
+		& > ul {
+			max-height: 999em;
+		}
+	}
+
+	ul {
+		list-style: none;
+
+		a {
+			// All links in menu
+			display: block;
+			white-space: nowrap;
+			color: $linkColor;
+		}
+
+		li {
+			padding: $spacing/2 $spacing;
+			> a:hover,
+			&.selected > a {
+					color: $linkHoverColor;
+			}
+		}
+
+		// Sub lists
+		ul {
+			padding-left: $spacing;
+		}
+	}
+
+	@include minScreen( $breakPoint ) {
+		// Regular menu
+
+		&::before {
+			// Hide the menu icon/text
+			display: none;
+		}
+
+		// Top level
+		& > ul {
+			// Make the menu visible
+			max-height: 999em;
+			overflow: visible;
+
+			@if $centered {
+				display: table;
+				text-align: center;
+			} @else {
+				display: block; // Align left/right menu
+			}
+
+			& > li {
+				// Top level items
+				display: table-cell; // Use this to break wrap inside menu items
+				vertical-align: middle;
+				margin: 0;
+				padding: $spacing $spacing/2;
+
+				& > a {
+					letter-spacing: 0;
+					white-space: normal;
+					vertical-align: middle;
+				}
+			}
+		}
+
+		ul {
+			li {
+				padding: $spacing $spacing/2;
+				position: relative;
+
+				&:hover {
+					> ul {
+						// Display sub lists on hover
+						max-height: 999em;
+					}
+				}
+			}
+
+			// Sub lists
+			ul {
+				position: absolute;
+				z-index: 101; // Make sure it fits on top of the slidshow
+				left: 0;
+				top: 100%;
+				padding: 0;
+				background: $backgroundColor;
+
+				// Hide
+				max-height: 0;
+				overflow: hidden;
+
+				li {
+					margin-left: 0;
+
+					ul {
+						// Sub-sub lists
+						left: 100%;
+						top: 0;
+						margin-top: 0;
+					}
+				}
+			}
+		}
+	}
+
+}

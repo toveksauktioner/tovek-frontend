@@ -1,0 +1,68 @@
+// nav:not(#userMetaNav) - only above $tablet width
+// Requires to be enabled in scripts.js
+
+	// Override default
+	ul.navMain {
+		li {
+			position: unset!important;
+
+			.megamenu, ul {
+				ul {
+					display: block;
+				}
+			}
+		}
+	}
+
+	.megamenu {
+		display: none;
+	}
+
+	li.open .megamenu {
+		width: 90%;
+		position: absolute;
+		top: 100%;
+		display: block;
+		height: 100%;
+		left: 0;
+		right: 0;
+		margin: auto;
+		z-index: 203;
+		@include clearfix;
+
+		> ul {
+			display: flex !important;
+			flex-flow: row wrap;
+			justify-content: center;
+			padding: 2em;
+			box-sizing: border-box; 
+			@include primary-color;
+
+			@if $menuBackgroundColor == false { background: $baseBackgroundColor; }
+
+			> li {
+				font-weight: 600;
+				padding: 0 1em;
+
+				a:hover {
+					opacity: .6;
+				}
+
+				.dropdown {
+					display: none;
+				}
+
+				ul {
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: -webkit-flex;
+					display: flex;
+					flex-flow: column wrap;
+
+					li {
+						font-weight: 300;
+					}
+				}
+			}
+		}
+	}

@@ -1,0 +1,72 @@
+// .receiptTable
+	
+	.logo {
+		display: none;
+	}
+
+	.orderSummary {
+		dl {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			flex-flow: row wrap;
+
+			dt {
+				flex: 0 1 30%;
+				font-weight: bolder;
+			}
+
+			dd {
+				flex: 0 1 50%;
+			}
+
+			@include maxScreen ( $mobileLarge ) {
+				flex-flow: column wrap;
+
+				dt {
+					flex: 0 1 100%;
+					font-weight: bolder;
+				}
+
+				dd {
+					flex: 0 1 100%;
+				}
+			}
+		}
+	}
+
+	.orderItems {
+		table {
+			th, td {
+				text-align: left;
+			}
+		}
+	}
+
+	.additionalInformation {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		flex-flow: row wrap;
+		
+		table {
+			dl {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+				flex-flow: row wrap;
+
+				dt {
+					flex: 0 1 30%;
+					font-weight: bolder;
+				}
+
+				dd {
+					flex: 0 1 50%;
+				}
+			}
+		}
+	}

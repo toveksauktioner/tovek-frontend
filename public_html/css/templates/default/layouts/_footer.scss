@@ -1,0 +1,82 @@
+// footer
+	max-width: $siteWidth;
+	width: 100%;
+	padding: 0 1em;
+	box-sizing: border-box;
+	margin: auto;
+	margin-top: 2em;
+
+	@if $footerBackgroundColor == false { 
+		border-top: 1px solid shade($baseBackgroundColor, 10%); 
+		padding-top: 2em;
+		margin-top: 2em;
+	}
+
+	// User content
+	.footerContentWrapper{
+		@if $footerBackgroundColor == true{
+			@include fullWidth;
+			@include secondary-color;
+			padding-top: 2em;
+			padding-bottom: 2em;
+		}
+		
+		.footerContactForm {
+			@if $footerContactFormShow == false { display: none; }
+			
+			.contact {
+				background: url($footerContactFormBackground) no-repeat $aside-color;
+				background-size: cover;
+				padding: 1em;
+				margin-top: 2em;
+				box-sizing: border-box;
+				text-align: center;
+
+				.field {
+					label {
+						display: none;
+					}
+
+					input {
+						flex: 0 1 70%;
+						margin: auto;
+					}
+				}
+			}
+		}
+		.view.infoContent {
+			@include clearfix;
+			max-width: $siteWidth;
+			width: 100%;
+			padding: 0 1em;
+			box-sizing: border-box;
+			margin: auto;
+		}
+	}
+
+	// Creator
+	.creditsWrapper{
+		@if $footerBackgroundColor == true { 
+			@include primary-color; 
+			@include fullWidth; 
+		}
+
+		.credits {
+			max-width: $siteWidth;
+			width: 100%;
+			box-sizing: border-box;
+			margin: auto;
+			font-size: .8em;
+			opacity: .8;
+			padding: 2em 1em 1em;
+
+			@if $footerBackgroundColor == false { 
+				border-top: 1px solid shade($baseBackgroundColor, 10%); 
+				margin-top: 2em;
+			}
+
+			a {
+				color: inherit;
+			}
+		}
+	}

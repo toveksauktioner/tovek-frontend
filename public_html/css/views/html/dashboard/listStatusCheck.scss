@@ -1,0 +1,25 @@
+.view {
+	&.listStatusCheck {	
+		dl {
+			dt {
+				clear: left;
+				float: left;
+				width: 16em;
+			}
+			dd {
+				float: left;
+				width: 11em;
+				
+				span {
+					&.online {
+						color: #00b233;
+					}
+					&.error {
+						font-weight: 700;
+						color: #e80000;
+					}
+				}
+			}
+		}
+	}
+}

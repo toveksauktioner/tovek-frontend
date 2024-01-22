@@ -1,0 +1,109 @@
+/* compiled by scssphp v0.7.5 on Mon, 16 Sep 2019 14:05:18 +0200 (0.3087s) */
+
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto:300,300i,400,400i,700,700i');
+ /**
+ * Imports
+ */
+ /*!
+ * ArgoLib
+ */
+ /**
+ * Mixins
+ */
+.button--antiman { background: none; border: none; height: 60px }
+
+.button--antiman.button--inverted, 
+.button--antiman.button--inverted-alt { -webkit-transition: color 0.3s; transition: color 0.3s; -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1) }
+
+.button--antiman > span { padding-left: 0.35em }
+
+.button--antiman::before, 
+.button--antiman::after { content: ''; z-index: -1; border-radius: inherit; pointer-events: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; -webkit-backface-visibility: hidden; -webkit-transition: -webkit-transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s; -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1) }
+
+.button--antiman::before { border: 2px solid #37474f; opacity: 0; -webkit-transform: scale3d(1.2, 1.2, 1); transform: scale3d(1.2, 1.2, 1) }
+
+.button--antiman.button--border-thin::before { border-width: 1px }
+
+.button--antiman.button--inverted::before { border-color: #7986cb }
+
+.button--antiman.button--inverted-alt::before { border-color: #3f51b5 }
+
+.button--antiman::after { background: #fff }
+
+.button--antiman.button--inverted::after { background: #7986cb }
+
+.button--antiman.button--inverted-alt::after { background: #3f51b5 }
+
+.button--antiman.button--inverted:hover { color: #7986cb }
+
+.button--antiman.button--inverted-alt:hover { color: #3f51b5 }
+
+.button--antiman:hover::before { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1) }
+
+.button--antiman:hover::after { opacity: 0; -webkit-transform: scale3d(0.8, 0.8, 1); transform: scale3d(0.8, 0.8, 1) }
+
+@font-face { font-family: 'FontAwesome'; src: url("/css/templates/default/library/fontAwesome/fontawesome-webfont.eot?v=4.5.0"); src: url("/css/templates/default/library/fontAwesome/fontawesome-webfont.eot?#iefix&v=4.5.0") format('embedded-opentype'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.woff2?v=4.5.0") format('woff2'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.woff2?v=4.5.0") format('woff'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.ttf?v=4.5.0") format('truetype'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular") format('svg'); font-weight: normal; font-style: normal; }
+ /**
+ * Scss palette file
+ */
+ /**
+ * Palette colors
+ */
+ /**
+ * Default colors
+ */
+ /**
+ * Christmas colors
+ */
+ /**
+ * Color variables
+ */
+ /**
+ * Import extensions
+ */
+ /**
+ *
+ * Scss file for all extensions
+ *
+ */
+button { padding: 0; overflow: visible; cursor: pointer; font-family: 'Open Sans', Roboto, sans-serif }
+button.submit { background: #00b943; color: #fff; border: 1px solid #00b943; border-bottom-left-radius: 2em; border-top-left-radius: 2em; border-bottom-right-radius: 2em; border-top-right-radius: 2em; padding: 0.5em 1em; box-sizing: border-box }
+button.submit.leading { background: #e9e8e8; color: #00b943; border: 1px solid #e9e8e8 }
+
+fieldset { border: 0; margin-bottom: 1.25em; padding: 0; padding-top: 0.5em }
+fieldset.multiple { border: 0; margin: 0; padding: 0 }
+fieldset.multiple .field { float: left; clear: left; position: relative }
+fieldset.multiple label { padding-left: 1.25em; font-weight: normal }
+fieldset.multiple input { position: absolute; top: 0.5em; left: 0 }
+
+input.radio { border: 0; background: none }
+input.text, 
+input.secret { padding: 0.25em 0.3em; font-family: 'Open Sans', Roboto, sans-serif; font-size: inherit }
+
+textarea { width: 250px; overflow: auto; padding: 0.25em 0.3em; font-family: 'Open Sans', Roboto, sans-serif; font-size: inherit; box-sizing: border-box }
+
+[placeholder]::-webkit-input-placeholder { color: #999 }
+[placeholder]:-moz-placeholder { color: #999 }
+[placeholder]::-moz-placeholder { color: #999 }
+[placeholder]:-ms-input-placeholder { color: #999 }
+
+label { font-weight: bold; cursor: pointer }
+
+legend { font-size: 18px; font-weight: bold; line-height: 1 }
+
+form { display: block }
+form::after { clear: both; content: ""; display: table }
+form .buttons { overflow: hidden; margin-bottom: 0 }
+form .error { color: #ffbaba }
+form .error input { border-color: #ffbaba }
+form .errorField input, 
+form .errorField select, 
+form .errorField textarea { background: #ffbaba }
+form .field { .line-height: 2 }
+form.marginal label { width: 11.5em; float: left }
+form.marginal .field { margin-bottom: 0.25em; height: 100%; overflow: hidden }
+form.marginal .multiple { margin-bottom: -2em }
+form.marginal .multiple label { width: auto; float: none }
+form.marginal .multiple .field { margin-bottom: 0; position: relative; top: -2em; left: 11.5em }
+form.marginal .result label { width: auto; float: none; font-weight: normal }
+form.marginal .result.error { border: 1px solid; margin: 10px 0px; padding: 15px 10px 15px 50px; background-repeat: no-repeat; background-position: 10px center; color: #d8000c; background-color: #ffbaba; background-image: url('/images/icons/exclamation.png') }

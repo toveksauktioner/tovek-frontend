@@ -1,0 +1,82 @@
+.view.order.stockPickingList {
+    .tools {
+        .tool {
+            form.inline {
+                .field {
+                    label,
+                    .select {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+    
+    > hr {
+        margin: 1em 0 !important;
+    }
+    
+    .dataTable {
+        th:first-child,
+        td:first-child {
+            padding-left: 1em;
+        }
+        thead {
+            tr {
+                th {
+                    line-height: 2em;
+                }
+            }
+        }            
+        tbody {
+            tr.title {
+                background: #f2f2f2;
+                td {
+                    span {
+                        opacity: .6;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media print {
+    html {
+        background: transparent !important;
+    }
+    #wrapper {
+        header,
+        > .container aside,
+        footer {
+            display: none !important;
+        }
+        
+        > .container #content {
+            padding: 0;
+        }
+    }
+    .view.order.stockPickingList {
+        .tools,
+        hr,
+        > a {
+            display: none !important;
+        }
+        
+        > section {
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        
+        .dataTable {
+            display: table !important;
+            
+            th,
+            td {
+                padding: .5em 0;
+            }
+        }
+    }
+}

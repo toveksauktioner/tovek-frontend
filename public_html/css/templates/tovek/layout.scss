@@ -1,0 +1,213 @@
+@import "bootstrap";
+@import "navigation";
+
+/* Footer at bottom by flexbox method */
+//@include tool\layout\footerBottomFlex( '#wrapper', 'header', '#layoutContainer', 'footer' );
+
+
+#wrapper {
+	/*overflow: hidden;*/
+	position: relative;
+	padding-bottom: $footerHeight;
+	min-height: calc( 100vh - #{$footerHeight} );
+
+	> header {
+		max-height: 5.3em;
+		background: $colorPrimary;
+
+		> .container {
+			@extend %siteContainer;
+			display: grid;
+			grid-template-columns: 1fr;
+
+			#logo {
+				padding-top: 1em;
+				}
+
+				// NAV is styled in _navigation
+
+				@include minScreen( $layoutBreakpoint3 ) {
+					grid-template-columns: 12rem auto;
+				}
+			}
+		}
+
+	> #notificationRow {
+		display: none;
+		background: #f4f3f3;
+		z-index: 999;
+
+		.notification {
+			@extend %siteContainer;
+			position: relative;
+			line-height: 3em;
+			text-align: center;
+			border-bottom: 2px solid $white;
+			font-size: .75em;
+			a {
+				color: $colorPrimary;
+				font-weight: 700;
+				font-style: italic;
+				opacity: .5;
+			}
+			span.close {
+				position: absolute;
+				right: 0;
+				top: 0;
+				color: $colorPrimary;
+				font-weight: 700;
+				cursor: pointer;
+			}
+			&:last-child {
+				border-bottom: none;
+			}
+		}
+
+		&.sticky {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			box-shadow: 0 0 .2em #cecece;
+			border-bottom: 1px solid $white;
+		}
+
+		&.sticky + .notification {
+			padding-top: 102px;
+		}
+	}
+
+	> #layoutContainer {
+
+		> .layout {
+			&.main {
+				padding: 1em 0;
+
+				> main {
+						@extend %siteContainer;
+				}
+			}
+			&.misc {
+				padding: 1em 0;
+				@extend %siteContainer;
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-gap: 1em;
+
+				@include minScreen( $layoutBreakpoint4 ) {
+					grid-template-columns: 1fr 1fr;
+
+					nav.submenu {
+						grid-column: span 2;
+
+						.navMain {
+							width: calc( 100% - #{$baseSpace} - #{$baseSpace} );
+						}
+					}
+				}
+			}
+			&.miscOpposite {
+				padding: 1em 0;
+				@extend %siteContainer;
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-gap: 1em;
+
+				@include minScreen( $layoutBreakpoint4 ) {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+			.innerContainer {
+				@extend %siteContainer;
+			}
+		}
+	}
+
+	> footer {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: $footerHeight;
+		overflow: auto;
+
+		> .container {
+			@extend %siteContainer;
+			display: grid;
+			grid-template-columns: 2fr 1fr 2fr;
+			grid-gap: 2em;
+			padding: 4em;
+			border: none;
+			border-top: .25em solid $colorPrimary;
+
+				div {
+					color: $colorGray600;
+
+					h3 {
+						display: block;
+				    text-transform: uppercase;
+				    font-size: .875em;
+						text-decoration: none;
+						line-height: 2em;
+						border-bottom: 2px solid $colorGray200;
+					}
+					&.info {
+
+					}
+					&.contact {
+						p {
+							a {
+								display: grid;
+								grid-template-columns: 2em auto;
+
+								i {
+									text-align: center;
+								}
+							}
+						}
+					}
+					&.services {
+						a {
+							display: grid;
+							grid-template-columns: 40% 60%;
+							grid-gap: 1em;
+							grid-auto-rows: fit-content(100%);
+							background: $colorGray100;
+							border-radius: .5em;
+							padding: .5em;
+							margin-top: 1em;
+
+							img {
+								width: 100%;
+								height: auto;
+							}
+							span {
+								display: grid;
+								align-items: center;
+								font-size: .875em;
+								color: $colorGray600;
+							}
+						}
+					}
+				}
+
+				@include maxScreen( $layoutBreakpoint3 ) {
+					grid-template-columns: 1fr 2fr;
+
+					div {
+						&.info {
+							grid-column: span 2;
+						}
+					}
+				}
+
+				@include maxScreen( $layoutBreakpoint5 ) {
+					grid-template-columns: 1fr;
+
+					div {
+						&.info {
+							grid-column: initial;
+					}
+				}
+			}
+		}
+	}
+}

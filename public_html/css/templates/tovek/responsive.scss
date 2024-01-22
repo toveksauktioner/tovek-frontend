@@ -1,0 +1,28 @@
+@import "bootstrap";
+
+.responsive {
+  @include minScreen( $layoutBreakpoint4 ) {
+    &:not(.desktop) {
+      display: none;
+    }
+    &.desktop {
+      display: initial;
+    }
+  }
+  @include maxScreen( $layoutBreakpoint4 ) {
+    &:not(.tablet) {
+      display: none;
+    }
+    &.tablet {
+      display: initial;
+    }
+  }
+  @include maxScreen( $layoutBreakpoint6 ) {
+    &:not(.mobile) {
+      display: none;
+    }
+    &.mobile {
+      display: initial;
+    }
+  }
+}

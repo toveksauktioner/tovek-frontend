@@ -1,0 +1,52 @@
+@import "../tovek/bootstrap";
+
+#bottomNotification {
+  font-size: 1.125em;
+
+  > div {
+    position: fixed;
+    bottom: 0;
+    background: $colorGrayLight;
+    color: $colorGrayDark;
+    padding: 0 1em;
+    z-index: 100;
+    width: calc( 100vw - 2em );
+    height: $bottomBarHeight;
+
+    .container {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+
+      p {
+        margin: 0;
+      }
+    }
+
+    &.warning {
+      background: #222;
+      color: #eee;
+    }
+
+    &#cookieNotification {
+      z-index: 700;
+
+      p:first-child {
+        padding-top: 0;
+      }
+    }
+    &#javascriptNotice {
+      z-index: 800;
+      display: none;
+    }
+    &#connectionNotice {
+      z-index: 900;
+      display: none;
+    }
+  }
+
+  @include maxScreen( $layoutBreakpoint5 ) {
+    font-size: 1em;
+  }
+
+}

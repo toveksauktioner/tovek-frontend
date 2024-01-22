@@ -1,0 +1,163 @@
+header {
+  nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: $menuBackground;
+    width: $menuWidth;
+
+    a {
+      color: $menuColor;
+      display: block;
+      text-align: left;
+      line-height: 2em;
+      padding: 0 1em;
+
+      &:hover {
+        background: $colorLighter;
+        color: $menuBackground;
+      }
+    }
+
+    label.btnBurger {
+      display: block;
+      line-height: 5.25rem;
+      font-size: 2.5em;
+      padding: 0 1rem;
+      background: transparent;
+      width: calc( #{$menuWidth} - 2rem );
+      text-align: right;
+    }
+    #btnBurger {
+      display: none;
+
+    	&:checked {
+    		& ~ label.btnBurger {
+          position: fixed;
+          right: 0;
+          z-index: 999;
+          color: $menuColor;
+          background: $menuBackground;
+          text-align: left;
+          box-shadow: -.25em 1em 1em rgba(0,0,0,.2);
+        }
+    		& ~ div.container {
+          display: block;
+          box-shadow: -.25em 1em 1em rgba(0,0,0,.2);
+        }
+      }
+    }
+    .container {
+      display: none;
+      background: $menuBackground;
+      position: fixed;
+      right: 0;
+      z-index: 999;
+      height: calc(100% - 5.25rem);
+      top: 5.25rem;
+      overflow: auto;
+      width: $menuWidth;
+
+      ul.navMain {
+        > li {
+          padding-top: 1em;
+
+          > a {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: .875em;
+
+            > i {
+              width: 1.5em;
+            }
+          }
+          ul {
+            padding-left: 1.25em;
+          }
+        }
+      }
+    }
+
+
+    @include minScreen( $layoutBreakpoint3 ) {
+      position: static;
+      top: auto;
+      right: auto;
+      width: auto;
+
+      a {
+        color: $menuBackground;
+        display: block;
+        text-align: left;
+        line-height: 2em;
+        padding: 0 1em;
+      }
+      label.btnBurger {
+        display: none;
+      }
+      .container {
+        display: block;
+        background: transparent;
+        position: static;
+        right: auto;
+        top: auto;
+        height: auto;
+        width: auto;
+        overflow: visible;
+
+        ul.navMain {
+          > li {
+            float: left;
+            padding-top: 0;
+            margin-top: 3rem;
+            position: relative;
+
+            ul {
+              display: none;
+              position: absolute;
+              z-index: 999;
+              top: 2.25rem;
+              left: 0;
+              padding-left: 0;
+              padding-bottom: 1rem;
+              background: $menuBackground;
+              border-radius: .25em;
+              border-top-left-radius: 0;
+              min-width: calc( #{$menuWidth} / 1.5 );
+              box-shadow: 0 .25em 1em rgba(0,0,0,.2);
+
+              li {
+                a {
+                  color: $menuColor;
+
+                  &:hover {
+                    color: $menuBackground;
+                  }
+                }
+              }
+            }
+            > a {
+              padding-bottom: .65em;
+              border-top-left-radius: .25em;
+              border-top-right-radius: .25em;
+
+              > i {
+                display: none;
+              }
+            }
+
+            &:hover {
+              > a {
+                background: $colorLighter;
+                color: $menuBackground;
+              }
+              ul {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

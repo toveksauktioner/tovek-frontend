@@ -1,0 +1,6 @@
+// Shorthand for background-with-css2-fallback( linear-gradient(...) )
+@mixin tool\background\gradient( $color1, $color2, $degrees: null ) {
+	background: mix( $color1, $color2 ); // Gradient fallback
+	@include linear-gradient( $degrees, $color1, $color2 ); // IE gradient
+	@include background-image( linear-gradient( $degrees, $color1, $color2)); // CSS3 Gradient
+}

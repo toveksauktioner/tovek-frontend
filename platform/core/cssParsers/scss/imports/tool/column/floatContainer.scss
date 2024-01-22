@@ -1,0 +1,10 @@
+@mixin tool\column\floatContainer( $spacing: 1em, $floatLeft: true ) {
+	@include clearfix;
+	width: auto;
+
+	@if $floatLeft {
+		margin-left: -$spacing;
+	} @else {
+		margin-right: -$spacing;
+	}
+}

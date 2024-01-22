@@ -1,0 +1,38 @@
+/**
+ * Apply directly to html
+ */
+@mixin tool\layout\footerBottomFlex( $wrapper : '#wrapper', $header : 'header', $main : 'main', $footer : 'footer' ) {
+	html {
+		height: 100%;		
+	}
+	
+	body {
+		min-height: 100%;
+		height: 100%;		
+	}
+	
+	& #{$wrapper} {		
+		min-height: 100%;
+		height: 100vh;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-ms-flex-direction: column;
+		-webkit-flex-direction: column;
+		flex-direction: column;
+	}
+	
+	& #{$header} {
+		flex-shrink: 0;
+	}
+	
+	& #{$main} {		
+		-webkit-flex: 1 0 auto; /* Safari 6.1+ */
+		-ms-flex: 1 0 auto; /* IE 10 */
+		flex: 1 0 auto;
+	}
+	
+	& #{$footer} {
+		flex-shrink: 0;
+	}
+}

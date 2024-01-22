@@ -1,0 +1,5 @@
+.view.freightTypeFormAdd { }	
+	.view.freightTypeFormAdd form .field input#freightTypeTitle { width: 500px; }
+	.view.freightTypeFormAdd form .field textarea#freightTypeDescription { width: 496px; height: 100px;}
+	.view.freightTypeFormAdd form .field .freightCountries { height: 140px; }
+	span.suffixContent { color: #585858; }

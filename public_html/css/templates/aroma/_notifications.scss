@@ -1,0 +1,40 @@
+// Notifications, errors, etc.
+ul.notification li,
+.result {
+	width: 100%;
+	margin: $sizeSpace 0;
+	padding: 1em;
+	color: #fff;
+	box-shadow: 0 .1em .1em rgba(0,0,0,.5);
+	background: $colorBrightSun;
+	color: textColor( $mode: dark );
+	font-weight: normal;
+
+	@include fontIcon( $fa-var-bullhorn ' ', before ) {
+		float: right;
+		font-size: $goldenRatio;
+	}
+
+	&.dataSaved {
+		background: $positiveColor;
+		color: textColor( $mode: light );
+
+		&::before {
+			content: $fa-var-check;
+		}
+	}
+
+	&.error,
+	&.dataError {
+		background: $negativeColor;
+		color: textColor( $mode: light );
+
+		&::before {
+			content: $fa-var-exclamation-triangle;
+		}
+	}
+
+	label {
+		margin: 0;
+	}
+}

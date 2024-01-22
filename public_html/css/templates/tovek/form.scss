@@ -1,0 +1,557 @@
+@import "bootstrap";
+
+// General
+$inputHeight: 3em;
+$textareaHeight: 12em;
+$inputIndent: 2em;
+$basicSpace: .25em;
+
+.formMessageSent {
+  font-size: 2em;
+  text-align: center;
+  padding: 2em;
+
+  i {
+    color: $colorSuccess;
+    font-size: 3em;
+    padding-bottom: .25em;
+  }
+  .title {
+    font-weight: bold;
+  }
+}
+
+form.newForm, .formStructure {
+	display: block;
+  color: $colorGrayDark;
+
+  .result {
+    padding: $inputIndent;
+
+    ol {
+      list-style: none;
+
+      li {
+        position: relative;
+        padding: .25em 0 .25em 1em;
+
+        &:before {
+          position: absolute;
+          left: 0;
+          content: '*';
+          background: $colorFailure;
+        }
+      }
+    }
+    &.error {
+      color: $colorFailure;
+    }
+  }
+
+  .field {
+    position: relative;
+    margin-bottom: 1em !important;
+
+    label {
+      position: absolute;
+      left: 3rem;
+      display: block;
+      color: $colorLighter;
+      font-weight: normal;
+      font-size: $labelSize;
+      line-height: calc( #{$inputHeight} / 2 );
+      text-transform: uppercase;
+    }
+    input, select {
+		  font-family: $baseFontFamily;
+      outline: 0;
+      width: 100%;
+      font-size: 1em;
+      background: $colorGrayLight;
+      border: none;
+      line-height: $inputHeight;
+      height: $inputHeight;
+      text-indent: $inputHeight;
+      padding: 0;
+      border-radius: $borderRadius;
+    }
+    textarea {
+		  font-family: $baseFontFamily;
+    	overflow: auto;
+      width: 100%;
+      border: none;
+      border-radius: $borderRadius;
+      height: $textareaHeight;
+      padding: 1em $inputHeight;
+      box-sizing: border-box;
+      font-size: inherit;
+    }
+    .suffixContent,
+    .errMsg {
+      position: absolute;
+      top: 0;
+      right: 1em;
+      line-height: calc( #{$inputHeight} / 2 );
+      font-size: $labelSize;
+
+      @include maxScreen( $layoutBreakpoint6 ) {
+        top: auto;
+        bottom: -1.5em;
+      }
+    }
+
+    &:before {
+      position: absolute;
+      // top: calc(#{$labelSize} * 1.5);
+      left: 0;
+      line-height: $inputHeight !important;
+      background: $colorGrayNormal;
+      color: #fff;
+      text-align: center;
+      border-top-left-radius: $borderRadius;
+      border-bottom-left-radius: $borderRadius;
+    }
+    &:not(.noicon) {
+      @include fontIcon( $fa-var-font, 'before' ) {
+        width: $inputIndent;
+      }
+    }
+    &.noicon {
+      label {
+        left: 1.25rem;
+      }
+      &:before {
+        content: '\00a0';
+        width: calc(#{$inputIndent} / 4);
+      }
+      input, select {
+        text-indent: 1.25em;
+      }
+    }
+    &.array {
+      @include fontIcon( $fa-var-list, 'before' ) {}
+    }
+    &.password {
+      @include fontIcon( $fa-var-key, 'before' ) {}
+    }
+    &.number {
+      @include fontIcon( $fa-var-th, 'before' ) {}
+    }
+    &.bid {
+      @include fontIcon( $fa-var-gavel, 'before' ) {}
+    }
+    &.search {
+      @include fontIcon( $fa-var-search, 'before' ) {}
+    }
+    &.email {
+      @include fontIcon( $fa-var-envelope, 'before' ) {}
+    }
+    &.phone {
+      @include fontIcon( $fa-var-mobile-alt, 'before' ) {}
+    }
+    &.image {
+      @include fontIcon( $fa-var-images, 'before' ) {}
+    }
+
+    &:focus-within {
+      &:before {
+        background: $colorLighter;
+      }
+      &:not(.error, .errorField) {
+        label {
+          color: $colorLighter;
+        }
+        input, select {
+          border-bottom-color: $colorLighter;
+        }
+      }
+    }
+    &.approved {
+      &:before {
+        background: $colorSuccess;
+      }
+      label, .suffixContent {
+        color: $colorSuccess;
+      }
+      input, select {
+        border-bottom-color: $colorSuccess;
+      }
+    }
+    &.warning {
+      &:before {
+        background: $colorAccentDarker;
+      }
+      label, .suffixContent {
+        color: $colorAccentDarker;
+      }
+      input, select {
+        border-bottom-color: $colorAccentDarker;
+      }
+    }
+    &.error, &.errorField {
+      &:before {
+        background: $colorFailure;
+      }
+      label, .suffixContent, .errMsg {
+        color: $colorFailure;
+      }
+      input, select {
+        border-bottom-color: $colorFailure;
+      }
+    }
+
+    &:not(:focus-within) {
+      label {
+        color: $colorGray400 !important;
+        top: .5em;
+      }
+      input, select {
+        padding-top: .5em;
+        line-height: calc( #{$inputHeight} - .5em );
+      }
+      input {
+        height: calc( #{$inputHeight} - .5em );
+      }
+      .suffixContent, .errMsg {
+        @include minScreen( $layoutBreakpoint6 ) {
+          top: .5em;
+        }
+      }
+    }
+
+    &.editor {
+      &:before {
+        height: $textareaHeight;
+      }
+    }
+
+    &.checkbox, &.checkboxSet, &.radioSet {
+      display: grid;
+      grid-template-columns: fit-content(100%) auto;
+      grid-gap: .5em;
+
+      &:before, .field:before {
+        display: none;
+      }
+      label {
+        font-size: 1em;
+        line-height: initial;
+        text-transform: initial;
+        position: static;
+        padding-top: .5em;
+        grid-column: 2;
+      }
+      input {
+        width: calc( #{$inputHeight} / 3 * 2 );
+        line-height: calc( #{$inputHeight} - .5em );
+        height: calc( #{$inputHeight} - .5em );
+        padding-top: 0;
+        margin: 0;
+        grid-column: 1;
+        grid-row: 1;
+      }
+    }
+
+    &.upload {
+      height: $inputHeight;
+
+      label {
+        outline: 0;
+        width: 30%;
+        font-size: 1em;
+        background: $colorGrayLight;
+        border: none;
+        line-height: $inputHeight;
+        height: $inputHeight;
+        text-indent: $inputHeight;
+        padding: 0;
+        position: static;
+        float: left;
+      }
+      input {
+        width: 70%;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        text-indent: 0;
+        float: right;
+        height: $inputHeight;
+        line-height: $inputHeight;
+        padding-top: 0;
+      }
+    }
+
+    &.disabled {
+      opacity: .5;
+
+      select {
+        opacity: 1;
+      }
+    }
+  }
+
+  fieldset {
+  	margin-bottom: $baseSpaceSmall;
+  	padding-top: $baseSpaceMini;
+
+    &.fieldGroup {
+      legend {
+        text-transform: uppercase;
+        font-size: .875em;
+        font-weight: bold;
+        padding-bottom: $basicSpace;
+        color: $colorPrimary
+      }
+      .prefixContent {
+        padding-bottom: $basicSpace;
+      }
+      &:focus-within {
+        legend {
+          color: $colorLighter;
+          border-bottom: 1px solid;
+        }
+      }
+      &.horizontal {
+        .field {
+          float: left;
+          padding-right: 2em;
+        }
+      }
+    }
+    &.multiple {
+      padding-bottom: 4em;
+
+      .field {
+        display: grid;
+        padding: $baseSpaceSmall $baseSpace 0 $baseSpace;
+        grid-template-columns: 1.25em auto;
+        grid-gap: $baseSpace;
+        float: none;
+        position: relative;
+        top: 0;
+        left: 0;
+        clear: none;
+        margin-bottom: 0 !important;
+
+        label {
+          grid-column: 2;
+          text-align: left;
+          padding-left: 0;
+          line-height: initial;
+        }
+        input {
+          grid-column: 1;
+          grid-row: 1;
+          position: static;
+          height: 1.5em;
+          width: 1.5em;
+        }
+      }
+      &.yesno {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        legend {
+          grid-column: span 2;
+        }
+      }
+    }
+    .prefixContent {
+      color: $colorGray600;
+      font-size: .875em;
+    }
+  }
+
+  .field, fieldset {
+    &.column {
+      float: left;
+      width: 49%;
+      margin-right: 1%;
+      clear: none;
+
+      &.first {
+        clear: left;
+      }
+      &.right {
+        margin-left: 1%;
+        margin-right: 0;
+        clear: right;
+      }
+      &.column-33 {
+        width: 32.333%;
+      }
+      &.column-40 {
+        width: 39%;
+      }
+      &.column-60 {
+        width: 59%;
+      }
+      &.column-25 {
+        width: 24%;
+      }
+      &.column-12 {
+        width: 11.5%;
+      }
+      &.column-75 {
+        width: 74%;
+      }
+    }
+  }
+
+  .buttons {
+    text-align: center;
+    overflow: visible;
+    outline: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+
+    button {
+      @extend %commonButton;
+    }
+  }
+
+  &.oneLiner {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
+    grid-gap: 1em;
+
+    .hidden {
+      display: none;
+    }
+    .buttons {
+      text-align: right;
+      // padding-top: calc( #{$labelSize} * 1.5 );
+    }
+  }
+  &.noButton {
+    .buttons {
+      display: none;
+    }
+  }
+  &.noLabel {
+    .field {
+      &:before, &:after {
+        top: 0;
+      }
+      label {
+        display: none;
+      }
+    }
+    .buttons {
+      padding-top: 0;
+    }
+  }
+  &.rounded {
+    .field {
+      input, select {
+        border: 0;
+        border-radius: 1.5em;
+      }
+    }
+  }
+  &.small {
+    grid-template-columns: 6em 2em !important;
+
+    .field {
+      margin-bottom: 0 !important;
+
+      &:before {
+        height: 1.75rem;
+      }
+      input, select {
+        padding-top: 0 !important;
+        height: 1.75rem;
+        line-height: 1.75rem;
+        font-size: .875em;
+      }
+    }
+    .buttons {
+      button {
+        font-size: .8rem;
+        padding: 0 !important;
+      }
+    }
+  }
+  &.framed {
+    background: $colorGray100;
+    padding: 2em;
+    margin: 2em 0;
+
+    .field {
+      input, select {
+        background-color: $white;
+      }
+      &.upload {
+        label {
+          background: $white;
+        }
+      }
+    }
+  }
+  &.columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 1em;
+
+    .result, .buttons, .columnSpanFull {
+      grid-column: #{1}/#{-1};
+    }
+    @include minScreen( $layoutBreakpoint4 ) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @include minScreen( $layoutBreakpoint2 ) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    @include minScreen( $layoutBreakpoint1 ) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+  &.hideOldErrorList {
+    > .result {
+      &.error {
+        display: none;
+      }
+    }
+  }
+  &.searchForm {
+    max-width: 32em;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 5em;
+
+    .field {
+      margin-right: 0;
+      float: none;
+
+      &.afterButtons {
+        grid-row: 2;
+        padding-left: 2em;
+
+        label {
+          left: 4.5em;
+        }
+      }
+    }
+    .hidden {
+      display: none;
+    }
+    .buttons {
+      button {
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
+    }
+  }
+}
+
+.formInfo {
+  &.framed {
+    background: $colorGray100;
+    padding: 2em;
+    margin: 2em 0;
+  }
+  &.columns {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(22em, 1fr) );
+    grid-gap: 1em;
+  }
+}

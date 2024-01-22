@@ -1,0 +1,151 @@
+// Selectors should be assigned in the following order (general to specific, then alphabetical):
+// *	Tags
+// []	Attributes
+//:	Psuedo classes
+//::	Psuedo elements
+// >	Children
+// ~	Siblings
+// +	Adjacent siblings
+// .	Classes
+// #	Ids
+
+// Dependencies
+@import 'fontawesome';
+@import "library/functions";
+@import "library/mixins/general";
+@import "library/mixins/responsive";
+@import "library/extends";
+
+// Effects
+$transitionSpeed: .3s;
+
+// Constants
+$goldenRatio: 1.618em;
+$reverseGoldenRatio: 0.618em;
+
+// Fonts
+$fontFamily: 'Open Sans', Arial, sans-serif;
+$fontWeight: 400;
+$headingFontFamily: 'Lora', "Times New Roman", Georgia, Serif;
+
+// Sizes
+$sizeDivider: 1px;
+$sizeIndicatorLine: .2em;
+$sizeFont: .9em;
+$sizeLineHeight: 1.5;
+$sizeSiteWidth: 1000px;
+$sizeSpace: $goldenRatio;
+$sizeH1: 2em;
+$sizeH2: 1.5em;
+$sizeH3: 1.17em;
+$sizeH4: 1em;
+$sizeH5: 0.83em;
+$sizeH6: 0.75em;
+$headerHeight: 4rem;
+
+// Palette named by http://chir.ag/projects/name-that-color/
+$colorAlabaster: #fafafa;
+$colorAlto: #e0e0e0;
+$colorBlack: #000;
+$colorBrightSun: #ffd740;
+$colorCinnabar: #ed413d;
+$colorCerulean: #1e88e5;
+$colorGallery: #f5f5f5;
+$colorGalleryDark: #eee;
+$colorGreenHaze: #00B233;
+$colorMineShaft: #212121;
+$colorPomegranate: #F44336;
+$colorSilver: #bdbdbd;
+$colorTundora: #424242;
+$colorWhiteRock: #eff0e2;
+$colorWhite: #fff;
+$colorGray: #c8c8c8;
+
+// Define main palette colors
+$palette1Background: $colorWhite;
+$palette1TextMode: dark;
+$palette1Color1: $colorCinnabar;
+$palette1Color1TextMode: light;
+$palette1Color2: $colorGreenHaze;
+$palette1Color2TextMode: light;
+
+$palette2Background: $colorGallery;
+$palette2TextMode: dark;
+$palette2Color1: $colorCinnabar;
+$palette2Color1TextMode: light;
+$palette2Color2: $colorGreenHaze;
+$palette2Color2TextMode: light;
+
+$palette3Background: $colorMineShaft;
+$palette3TextMode: light;
+$palette3Color1: $colorCinnabar;
+$palette3Color1TextMode: light;
+$palette3Color2: $colorGreenHaze;
+$palette3Color2TextMode: light;
+
+// Auto set up additional palette variables based on palette values
+$palette1Color1Highlight: contrastColor( $palette1Color1, tint( $palette1Color1, 30% ), shade( $palette1Color1, 40% ) );
+$palette1Color2Highlight: contrastColor( $palette1Color2, tint( $palette1Color2, 30% ), shade( $palette1Color2, 40% ) );
+
+$palette2Color1Highlight: contrastColor( $palette2Color1, tint( $palette2Color1, 30% ), shade( $palette2Color1, 40% ) );
+$palette2Color2Highlight: contrastColor( $palette2Color2, tint( $palette2Color2, 30% ), shade( $palette2Color2, 40% ) );
+
+$palette3Color1Highlight: contrastColor( $palette3Color1, tint( $palette3Color1, 30% ), shade( $palette3Color1, 40% ) );
+$palette3Color2Highlight: contrastColor( $palette3Color2, tint( $palette3Color2, 30% ), shade( $palette3Color2, 40% ) );
+
+// Apply palette colors
+$asideBackgroundColor: $colorTundora;
+$asideTextMode: $colorGallery;
+$asideLinkColor: $colorSilver;
+$asideLinkHighlight: $colorWhite;
+
+$blockBackgroundColor: $colorAlabaster;
+$blockTextMode: $palette1TextMode;
+
+$bodyBackgroundColor: $colorGalleryDark;
+$bodyTextMode: $palette2TextMode;
+$bodyLinkColor: $colorCerulean;
+$bodyLinkHighlight: shade( $colorCerulean, 40% );
+
+$formButtonBackground: none;
+$formButtonTextColor: $colorCerulean;
+$formButtonTextColorHighlight: shade( $colorCerulean, 40% );
+$formDividerColor: textColor( divider, dark );
+$formIndicatorSize: $sizeIndicatorLine;
+$formIndicatorColor: textColor( divider, dark );
+$formIndicatorFocus: $colorCerulean;
+$formInputBackground: $colorWhite;
+$formPlaceholderColor: textColor( hint, dark );
+
+$footerBackgroundColor: $palette3Background;
+$footerTextMode: $palette3TextMode;
+$footerTextColor: textColor( secondary, $mode: $footerTextMode );
+$footerLinkColor: inherit;
+$footerLinkHighlight: textColor( primary, $mode: $footerTextMode );
+
+$headerBackgroundColor: $palette3Background;
+$headerTextMode: $palette3TextMode;
+$headerLinkColor: textColor( $type: secondary, $mode: $palette3Color1 );
+$headerLinkHighlight: textColor( $mode: $palette3Color1 );
+$headerHelpBackgroundColor: $palette3Color1;
+$headerHelpTextMode: $palette3Color1TextMode;
+
+$headerHelpTextMode: $palette3TextMode;
+$headerHelpLinkColor: $palette3Color1;
+$headerHelpLinkHighlight: $palette3Color1Highlight;
+
+$helpBackgroundColor: $colorAlabaster;
+$helpTextMode: $palette1TextMode;
+$helpLinkColor: $palette1Color1;
+$helpLinkHighlight: $palette1Color1Highlight;
+
+$logoBackground: $palette2Background;
+
+$selectBackgroundColor: $palette1Color1;
+$selectTextMode: $palette1Color1TextMode;
+
+// More general colors
+$negativeColor: $colorCinnabar; // Inactive, errors, delete etc.
+$positiveColor: $colorGreenHaze; // Active, success, add etc.
+$emptyColor: $colorGray; // Empty data etc.
+$colorFailure: #dd3333;

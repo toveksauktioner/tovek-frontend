@@ -1,0 +1,61 @@
+.view.productCampaign {
+	&.formAdd {
+		border-bottom: 1px solid #ccc;		
+		padding-bottom: 2em;
+		margin-bottom: 2em;
+		
+		form {
+			.fieldRoutePath {
+				.labelSuffixContent {
+					margin-bottom: .3em;
+				}
+			}
+			input#routePath {
+				padding: 0 0 0 1px;
+				box-sizing: border-box;
+				&.autoFill {
+					border: none;
+					background: none;
+				}
+			}
+			.fieldGroup.layout {
+				.field.boolean {
+					margin-top: 0;
+					margin-left: .7em;
+					input {
+						width: auto;
+						min-width: inherit;
+					}
+				}
+			}
+		}
+		
+		.imageList {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			
+			li {
+				border: 1px solid #C0C0C0;
+				float: left;
+				height: 175px;
+				list-style-image: none;
+				list-style-position: outside;
+				list-style-type: none;
+				margin: 5px;
+				overflow: hidden;
+				padding: 5px;
+				text-align: center;
+			}
+		}
+		
+		.campaignProducts {
+			
+		}
+	}
+	
+	&.productFormAdd {
+		
+	}
+}
+

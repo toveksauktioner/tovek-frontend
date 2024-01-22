@@ -1,0 +1,94 @@
+<?php
+
+require_once PATH_CORE . '/clModuleBase.php';
+
+class clUnifaunPartner extends clModuleBase {
+
+	public function __construct() {
+		$this->sModuleName = 'UnifaunPartner';
+		$this->sModulePrefix = 'unifaunPartner';
+
+		$this->oDao = clRegistry::get( 'clUnifaunPartnerDao' . DAO_TYPE_DEFAULT_ENGINE, PATH_MODULE . '/unifaun/models' );
+
+		$this->initBase();
+	}
+
+    public function syncFromCsv( $sFile = null ) {
+        if( $sFile === null ) {
+            // Default file
+            $sFile = PATH_MODULE . '/unifaun/files/partnerServices.csv';
+        }
+
+        if( file_exists($sFile) === true ) {
+            // Existing data
+            $aExistingData = $this->readByPartnerCode();
+
+            // File data
+            $aPartnerData = groupByValue( 'Partner Code', csvToArray( $sFile ) );
+
+            foreach( $aPartnerData as $sPartnerCode => $aPartner ) {
+			    if( !array_key_exists($sPartnerCode, $aExistingData) ) {
+                    // Create partner
+                    $aData = array(
+                        'partnerCode' => $sPartnerCode,
+                        'partnerName' => $aPartner[0]['Partner'],
+                    );
+                    $iPartnerId = $this->create( $aData );
+					$aExistingService = array();
+
+                } else {
+                    $iPartnerId = $aExistingData[ $sPartnerCode ][0]['partnerId'];
+					$aExistingService = valueToKey( 'serviceCode', $aExistingData[ $sPartnerCode ] );
+                }
+
+                if( ctype_digit($iPartnerId) ) {
+                    foreach( $aPartner as $aService ) {
+                        if( !array_key_exists($aService['Service Code'], $aExistingService) ) {
+                            // Add service
+                            $aData = array(
+                                'servicePartnerId' => $iPartnerId,
+                                'serviceCode' => $aService['Service Code'],
+                                'serviceName' => $aService['Service'],
+                                'serviceFrom' => $aService['From'],
+                                'serviceTo' => $aService['To']
+                            );
+                            $this->addService( $aData );
+                        }
+                    }
+                }
+            }
+
+			return true;
+        }
+        return false;
+    }
+
+    public function addService( $aData ) {
+        $this->oAcl->hasAccess( 'write' . $this->sModuleName );
+        $aParams['entities'] = 'entUnifaunPartnerService';
+        $aParams['groupKey'] = 'addUnifaunPartnerService';
+        $aData['serviceCreated'] = date( 'Y-m-d H:i:s' );
+        return $this->oDao->createData( $aData, $aParams );
+    }
+
+    public function read( $aFields = array(), $mPrimaryId = null ) {
+		$this->oAcl->hasAccess( 'read' . $this->sModuleName );
+		return $this->oDao->read( $aFields, $mPrimaryId );
+	}
+
+    public function readByPartnerId( $aFields = array(), $mPrimaryId = null ) {
+		$this->oAcl->hasAccess( 'read' . $this->sModuleName );
+		return $this->oDao->read( $aFields, $mPrimaryId, 'partnerId' );
+	}
+
+    public function readByPartnerCode( $aFields = array(), $mPrimaryId = null ) {
+		$this->oAcl->hasAccess( 'read' . $this->sModuleName );
+		return $this->oDao->read( $aFields, $mPrimaryId, 'partnerCode' );
+	}
+
+    public function readServiceByPartner( $iPartnerId, $aFromCountries = null, $aToCountries = null ) {
+        $this->oAcl->hasAccess( 'read' . $this->sModuleName );
+        return $this->oDao->readServiceByPartner( $iPartnerId, $aFromCountries, $aToCountries );
+    }
+
+}

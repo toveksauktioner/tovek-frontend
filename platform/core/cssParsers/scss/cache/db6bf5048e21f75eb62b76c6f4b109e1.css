@@ -1,0 +1,78 @@
+/* compiled by scssphp v0.7.5 on Wed, 11 Sep 2019 15:34:29 +0200 (0.1401s) */
+
+@font-face { font-family: 'FontAwesome'; src: url('/css/templates/aroma/library/fontAwesome/fontawesome-webfont.eot?v=4.5.0'); src: url('/css/templates/aroma/library/fontAwesome/fontawesome-webfont.eot?#iefix&v=4.5.0') format('embedded-opentype'), url('/css/templates/aroma/library/fontAwesome/fontawesome-webfont.woff2?v=4.5.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.5.0') format('woff'), url('/css/templates/aroma/library/fontAwesome/fontawesome-webfont.ttf?v=4.5.0') format('truetype'), url('/css/templates/aroma/library/fontAwesome/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular') format('svg'); font-weight: normal; font-style: normal; }
+
+a.moxieImageUpload::before, 
+a.moxieFileUpload::before { font: normal normal normal 1em/1 'FontAwesome'; speak: none; text-rendering: auto; text-transform: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale }
+
+b, 
+strong { font-weight: 600 }
+
+a { color: #1e88e5; transition: color 0.3s; text-decoration: none }
+a:hover { color: #125289 }
+a.moxieImageUpload::before { content: "\f093" }
+a.moxieFileUpload::before { content: "\f093" }
+
+body { line-height: 1.5; letter-spacing: 0.02em }
+
+dt { font-weight: bold }
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 { font-family: 'Lora', "Times New Roman", Georgia, Serif; font-weight: bold; line-height: 1em; margin-bottom: 0.618em }
+
+h1 { font-size: 2em }
+
+h2 { font-size: 1.5em }
+
+h3 { font-size: 1.17em }
+
+h4 { font-size: 1em }
+
+h5 { font-size: 0.83em }
+
+h6 { font-size: 0.75em }
+
+html { background: #eee; color: rgba(0, 0, 0, .87); font-size: 0.9em; font-family: 'Open Sans', Arial, sans-serif; font-weight: 400 }
+
+hr { background: rgba(0, 0, 0, .12); border: 0 none; height: 1px; margin: 1.618em auto }
+
+img { max-width: 100%; height: auto }
+
+sub { vertical-align: sub !important }
+
+sup { vertical-align: super !important }
+
+table { overflow: auto; width: 100%; margin-bottom: 1.618em; font-size: 0.95em }
+table:last-child { margin-bottom: 0 }
+table.dataTable { font-size: 0.9em }
+table.dataTable tbody tr td img { display: block }
+table td, 
+table th { padding: 0.25em; border-bottom: 1px solid rgba(0, 0, 0, .12) }
+table td { vertical-align: middle }
+table th { text-align: left; font-weight: 400; color: rgba(0, 0, 0, .54); font-size: 0.9em }
+table th a { color: inherit }
+table th span { float: left }
+table tbody tr:hover { background: rgba(0, 0, 0, .05) }
+table tfoot tr:last-child td { border-bottom: 0 none }
+
+.defaultLang:not(tr) { opacity: 0.6; color: #ccc }
+.defaultLang:not(tr) a { color: #ccc }
+
+tr.defaultLang td:first-child { opacity: 0.6; color: #ccc }
+tr.defaultLang td:first-child a { color: #ccc }
+ /**
+ * Loader
+ */
+#loaderWrapper { display: none; position: fixed; z-index: 999; top: 0; left: 0; width: 100%; height: 100% }
+#loaderWrapper .container { display: flex; align-items: center; justify-content: center; position: absolute; z-index: 999; top: 0; left: 0; width: 100%; height: 100% }
+#loaderWrapper .container .loader { border: 0.7em solid #f3f3f3; /* Light grey */ border-top: 0.7em solid #1b458c; /* Blue */ border-radius: 50%; width: 3em; height: 3em; animation: spin 2s linear infinite; box-shadow: 0 0 0.2em #727272, inset 0 0 0.2em #727272; opacity: 0.7 }
+#loaderWrapper .container p { position: relative; top: 0em; margin-left: 1em; font-size: 1.8em; font-weight: 700; text-shadow: 0 0 0.2em #727272; color: #fff }
+#loaderWrapper .background { position: absolute; z-index: 995; top: 0; left: 0; width: 100%; height: 100%; background: #b6b6b6; opacity: 0.6 }
+
+@keyframes spin {0% { transform: rotate(0deg) }
+
+100% { transform: rotate(360deg) } }

@@ -1,0 +1,23 @@
+/**
+ * Mixins
+ */
+
+@mixin has-nth($expression, $element: '*') {
+  &:nth-last-child(#{$expression}):first-child,
+  &:nth-last-child(#{$expression}):first-child ~ #{$element} {
+    @content;
+  }
+}
+
+@mixin at-least($quantity, $element: '*') {
+  @include has-nth('n + #{$quantity}', $element) {
+    @content;
+  }
+}
+
+@mixin border-radius( $value ) {
+  @include border-top-radius( $value );
+  @include border-right-radius( $value );
+  @include border-bottom-radius( $value );
+  @include border-left-radius( $value );
+}

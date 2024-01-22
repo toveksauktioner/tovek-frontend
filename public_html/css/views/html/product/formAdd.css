@@ -1,0 +1,7 @@
+.productFormAdd .variantFormAdd{
+	overflow:hidden;
+	margin-bottom:20px;
+}
+.productFormAdd label{
+	width:20em;
+}

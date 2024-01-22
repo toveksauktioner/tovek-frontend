@@ -1,0 +1,264 @@
+<?php
+
+require_once PATH_CORE . '/clCurl.php';
+require_once PATH_MODULE . '/unifaun/config/cfUnifaun.php';
+
+class clUnifaun {
+
+    protected $oCurl;
+
+    public function __construct() {
+		// Debug
+		$GLOBALS['debug'] = UNIFAUN_DEBUG;
+
+        /**
+		 * cUrl handler
+		 */
+		$this->oCurl = clRegistry::get( 'clCurl', null, array(
+			'header' => false,
+            'userpwd' => UNIFAUN_ID . ':' . UNIFAUN_SECRET_ID
+		) );
+		$this->oCurl->setEndpoint( UNIFAUN_API_ENDPOINT );
+        $this->oCurl->addSendHeaders( array(
+            'Content-Type' => 'application/json'
+        ) );
+    }
+
+    /**
+	 * Main api call function
+	 */
+	protected function apiCall( $sRequestMethod, $sResource, $aBody = null ) {
+		try {
+			// Complement endpoint
+			$this->oCurl->setEndpoint( UNIFAUN_API_ENDPOINT . $sResource );
+
+			$mReturn = null;
+			switch( $sRequestMethod ) {
+				case 'GET': 	$mReturn = $this->oCurl->get(); break;
+				case 'POST': 	$mReturn = $this->oCurl->post( $aBody ); break;
+				case 'PUT': 	$mReturn = $this->oCurl->put( $aBody ); break;
+				case 'DELETE': 	$mReturn = $this->oCurl->delete(); break;
+			}
+
+			if( UNIFAUN_LOGGING === true ) {
+				$oLogger = clRegistry::get( 'clLogger' );
+				$oLogger->log( $mReturn, 'unifaunCallback.log' );
+				$oLogger->logRotate( 'unifaunCallback.log', '8M' );
+			}
+
+			/**
+			 * Check if the content-type is PDF, and we have data.
+			 * If so, assign the raw-data into a variable, and save it to the local filesystem.
+			 * Then set the header to download the file, the file will recieve a name of the unifaun-shipping ID.
+			 * The PDF's are stored in /platform/modules/unifaun/files/
+			 * If none of the statements in the if-clause is fulfilled, move on with checking the data for json and errors.
+			 */
+			if( !empty($mReturn['data']['raw']) && !empty($mReturn['info']['content_type']) && $mReturn['info']['content_type'] == 'application/pdf;charset=UTF-8') {
+				//foreach( explode( '/', $mReturn['info']['url'] ) as $sValue ) $iPdfId = $sValue;
+				$iPdfId = substr( $mReturn['info']['url'], strrpos($mReturn['info']['url'], '/') + 1 );
+				// Todo: Save file in it's own function
+				$this->savePdf( $mReturn['data']['raw'], $iPdfId );
+			}
+
+			if( !empty($mReturn['data']['content']) ) {
+				$oContent = json_decode( $mReturn['data']['content'] );
+			}
+
+			$oNotification = clRegistry::get( 'clNotificationHandler' );
+
+			switch( $mReturn['info']['http_code'] ) {
+				case 400:
+					if( !empty($oContent) ) {
+						$oNotification->set( array(
+							'dataError' => '<strong>400 Bad Request:</strong> ' . sprintf( _( '%s (%s)' ), ucfirst($oContent->message), $oContent->code )
+						) );
+						return false;
+					}
+					break;
+
+				case 401:
+					if( !empty($oContent) ) {
+						$oNotification->set( array(
+							'dataError' => '<strong>401 Unauthorized:</strong> Invalid or expired token.'
+						) );
+						return false;
+					}
+					break;
+
+				case 403:
+					if( !empty($oContent) ) {
+						$oNotification->set( array(
+							'dataError' => '<strong>403 Forbidden:</strong> Unauthorized, the token is valid but it doesn\'t grant access to the operation attempted'
+						) );
+						return false;
+					}
+					break;
+
+				case 404:
+					return $mReturn;
+					break;
+
+				case 422:
+					if( is_array($oContent) && !empty($oContent[0]->type) && $oContent[0]->type == 'error' ) {
+						foreach( $oContent as $oError ) {
+							$oNotification->set( array(
+								'dataError' => '<strong>422 Unprocessable Entity:</strong> ' . sprintf( _( '%s (%s)' ), ucfirst($oError->message), $oError->field )
+							) );
+						}
+					}
+					return false;
+					break;
+
+				case 204:
+					$oNotification->set( array(
+						'dataError' => '<strong>204 No content</strong>'
+					) );
+					return false;
+					break;
+
+				case 201:
+				case 200:
+					return $oContent;
+					break;
+
+				default:
+					echo '<pre>';
+					var_dump( $mReturn );
+					die;
+			}
+		} catch( Exception $oException ) {
+			$this->exceptionHandling( $oException );
+		}
+	}
+
+	/**
+	 * Create shipment
+	 *
+	 * Doc: https://www.unifaunonline.se/rs-docs/##request_shipments
+	 */
+    public function createShipment( $aData ) {
+        // Send data to Unifaun
+		$oResult = $this->apiCall( 'POST', '/shipments', $aData );
+
+		if( !empty($oResult) ) {
+			$oResult = current( $oResult );
+			if( ctype_digit($oResult->id) ) {
+				/**
+				 * Create Unifaun entry
+				 */
+				$oUnifaunShipment = clRegistry::get( 'clUnifaunShipment', PATH_MODULE . '/unifaun/models' );
+				$iShipmentId = $oUnifaunShipment->create( array(
+					'shipmentOrderId' => $oResult->orderNo,
+					'shipmentUrl' => $oResult->href,
+					'shipmentPdfUrl' => $oResult->pdfs[0]->href,
+					'shipmentUnifaunId' => $oResult->id,
+					'shipmentStatus' => $oResult->status,
+					'shipmentNumber' => $oResult->shipmentNo,
+					'shipmentReference' => $oResult->reference,
+					'shipmentServiceId' => $oResult->serviceId,
+					'shipmentParcelCount' => $oResult->parcelCount,
+					'shipmentSndName' => $oResult->sndName,
+					'shipmentSndZipcode' => $oResult->sndZipcode,
+					'shipmentSndCity' => $oResult->sndCity,
+					'shipmentSndCountry' => $oResult->sndCountry,
+					'shipmentRcvName' => $oResult->rcvName,
+					'shipmentRcvZipcode' => $oResult->rcvZipcode,
+					'shipmentRcvCity' => $oResult->rcvCity,
+					'shipmentRcvCountry' => $oResult->rcvCountry,
+					'shipmentShipDate' => $oResult->shipDate,
+					'shipmentReturnShipment' => $oResult->returnShipment,
+					'shipmentNormalShipment' => $oResult->normalShipment,
+					'shipmentConsolidated' => $oResult->consolidated,
+					'shipmentCreated' => date( 'Y-m-d H:i:s', strtotime($oResult->created) ),
+					'shipmentChanged' => date( 'Y-m-d H:i:s', strtotime($oResult->changed) )
+				) );
+				$aErr = clErrorHandler::getValidationError( 'createUnifaunShipment' );
+
+				if( ctype_digit($iShipmentId) ) {
+					$oNotification = clRegistry::get( 'clNotificationHandler' );
+					$oNotification->set( array(
+						'dataSaved' => sprintf( _( 'Data was successfully sent to Unifaun, new shipment id is (%s)' ), $oResult->id )
+					) );
+					return $iShipmentId;
+				}
+			}
+		}
+		return false;
+    }
+
+	/**
+	 * Read shipments
+	 *
+	 * Doc: https://www.unifaunonline.se/rs-docs/##request_shipments
+	 */
+    public function readShipment( $iShipmentId = null ) {
+		if( $iShipmentId != null ) return current( $this->apiCall( 'GET', '/shipments/' . $iShipmentId ) );
+		else $this->apiCall( 'GET', '/shipments' );
+	}
+
+	/**
+	 * Read 'stored' shipments
+	 *
+	 * Doc: https://www.unifaunonline.se/rs-docs/##request_shipments
+	 */
+    public function readStoredShipment( $iShipmentId = null ) {
+		if( $iShipmentId != null ) return current( $this->apiCall( 'GET', '/stored-shipments/' . $iShipmentId ) );
+		else $this->apiCall( 'GET', '/stored-shipments' );
+	}
+
+	/**
+	 * Fetch PDF file from shipment
+	 *
+	 * Doc: https://www.unifaunonline.se/rs-docs/##shipments_shipmentId_pdfs_pdfId
+	 */
+	public function fetchShipmentPdf( $iShipmentId, $iPdfId ) {
+		$aData = $this->apiCall( 'GET', sprintf('/shipments/%s/pdfs/%s', $iShipmentId, $iPdfId) );
+		if( !empty($aData['info']['http_code']) && $aData['info']['http_code'] == 404 ) {
+			$oNotification = clRegistry::get( 'clNotificationHandler' );
+			$oNotification->set( array(
+				'dataError' => _( 'No PDF could be found for this order' )
+			) );
+			return true;
+		}
+
+		if( !empty($aData['data']['raw']) ) {
+			header( 'Content-Type: application/pdf');
+			header( 'Content-Length: ' . strlen($aData['data']['raw']) );
+			header( 'Content-Disposition: inline; filename="' . $iShipmentId . '_' . $iPdfId . '.pdf"' );
+			header( 'Cache-Control: private, max-age=0, must-revalidate' );
+			header( 'Pragma: public' );
+			ini_set( 'zlib.output_compression', '0' );
+			die( $aData['data']['raw'] );
+		}
+
+		return false;
+	}
+
+	public function savePdf( $sData, $iPdfId ) {
+		$sDestination = PATH_MODULE . '/unifaun/files/' . $iPdfId . '.pdf';
+		$oFile = fopen( $sDestination, "w+" );
+		fputs( $oFile, $sData );
+		fclose( $oFile );
+
+		header( "Cache-Control: public" );
+		header( "Content-Description: File Transfer" );
+		header( "Content-Disposition: attachment; filename=" . $iPdfId . ".pdf" );
+		header( "Content-Type: application/pdf" );
+		header( "Content-Transfer-Encoding: binary" );
+		readfile( $sDestination );
+		die;
+	}
+
+	/**
+	 * Fetch PDF file from shipment by order
+	 */
+	public function fetchShipmentPdfByOrder( $iOrderId ) {
+		$oUnifaunShipment = clRegistry::get( 'clUnifaunShipment', PATH_MODULE . '/unifaun/models' );
+		$aShipment = current( $oUnifaunShipment->readByOrder( $iOrderId ) );
+		if( empty($aShipment) ) return false;
+		$aPdfUrlPart = explode( '/', $aShipment['shipmentPdfUrl'] );
+		foreach( explode( '/', $aShipment['shipmentPdfUrl'] ) as $sValue ) $iPdfId = $sValue;
+		return $this->fetchShipmentPdf( $aShipment['shipmentUnifaunId'], $iPdfId );
+	}
+
+}

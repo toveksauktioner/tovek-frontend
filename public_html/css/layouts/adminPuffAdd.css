@@ -1,0 +1,52 @@
+.view.puffFormAdd { margin-bottom: 40px; }	
+	/**
+	 * Form
+	 */
+	.puffFormAdd form {}
+		.puffFormAdd form input { width: 770px; }
+		.puffFormAdd form input.datetimepicker { width: 122px; }
+		.puffFormAdd form #puffShortContentTextId { width: 766px; height: 90px; }
+	
+	/**
+	 * Image list
+	 */
+	span.suffixContent h3 {
+		padding: 0 0 0 0;
+	}
+	span.suffixContent ul.puffImages  {
+		list-style-type:none;
+		margin:0;
+		padding:0;
+	}
+	span.suffixContent ul.puffImages li {
+		border: 1px solid #C0C0C0;
+		background: #f7f7f7;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		float: left;
+		list-style-image: none;
+		list-style-position: outside;
+		list-style-type: none;
+		margin: 5px;
+		overflow: hidden;
+		padding: 5px 5px 5px 5px;
+		text-align: center;
+	}
+	span.suffixContent ul.puffImages li img {
+		border: 1px solid #f7f7f7;
+	}
+	span.suffixContent ul.puffImages li.first {
+		background: #cecece;
+		border-color: #919191;
+	}
+	span.suffixContent ul.puffImages li.first img {
+		border: 1px solid #fff;
+	}
+	span.suffixContent ul.puffImages li .ui-icon { margin: 0 auto; }	
+	#ajaxNotification { clear: both; }
+
+/**
+ * Route table
+ */
+.view.puffRouteTable { border:1px solid #cccccc; background-color: #ffffff; padding: 10px 12px 20px 12px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; margin-bottom:20px; }

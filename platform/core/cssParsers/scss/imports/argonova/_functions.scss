@@ -1,0 +1,94 @@
+@function brightness($color) {
+  @if type-of($color) == color {
+    @return (red($color) * 0.299 + green($color) * 0.587 + blue($color) * 0.114) / 255 * 100%;
+  }
+  @else {
+    @return unquote("brightness(#{$color})");
+  }
+}
+
+// Return black or white depending on the percieved base color
+@function contrastColor($color, $dark: #000, $light: #fff, $threshold: null) {
+  @if $threshold {
+    // Deprecated in Compass 0.13
+    @warn "The $threshold argment to contrast-color is no longer needed and will be removed in the next release.";
+  }
+  @if $color == null {
+    @return null;
+  }
+  @else {
+    $color-brightness: brightness($color);
+    $dark-text-brightness: brightness($dark);
+    $light-text-brightness: brightness($light);
+    @return if(abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness), $light, $dark);
+  }
+}
+
+@function modularScale($value, $increment, $ratio) {
+	$v1: nth($value, 1);
+	$v2: nth($value, length($value));
+	$value: $v1;
+
+	// scale $v2 to just above $v1
+	@while $v2 > $v1 {
+		$v2: ($v2 / $ratio); // will be off-by-1
+	}
+	@while $v2 < $v1 {
+		$v2: ($v2 * $ratio); // will fix off-by-1
+	}
+
+	// check AFTER scaling $v2 to prevent double-counting corner-case
+	$double-stranded: $v2 > $v1;
+
+	@if $increment > 0 {
+		@for $i from 1 through $increment {
+			@if $double-stranded and ($v1 * $ratio) > $v2 {
+				$value: $v2;
+				$v2: ($v2 * $ratio);
+			} @else {
+				$v1: ($v1 * $ratio);
+				$value: $v1;
+			}
+		}
+	}
+
+	@if $increment < 0 {
+		// adjust $v2 to just below $v1
+		@if $double-stranded {
+			$v2: ($v2 / $ratio);
+		}
+
+		@for $i from $increment through -1 {
+			@if $double-stranded and ($v1 / $ratio) < $v2 {
+				$value: $v2;
+				$v2: ($v2 / $ratio);
+			} @else {
+				$v1: ($v1 / $ratio);
+				$value: $v1;
+			}
+		}
+	}
+
+	@return $value;
+}
+
+@function goldenRatio($value, $increment) {
+	@return modularScale($value, $increment, 1.618)
+}
+
+@function compact($var-1,        $var-2: false,
+                  $var-3: false, $var-4: false,
+                  $var-5: false, $var-6: false,
+                  $var-7: false, $var-8: false,
+                  $var-9: false, $var-10: false) {
+  $full: $var-1;
+  $vars: $var-2, $var-3, $var-4, $var-5,
+         $var-6, $var-7, $var-8, $var-9, $var-10;
+
+  @each $var in $vars {
+    @if $var {
+      $full: $full, $var;
+    }
+  }
+  @return $full;
+}

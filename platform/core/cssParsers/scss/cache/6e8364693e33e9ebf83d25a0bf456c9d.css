@@ -1,0 +1,20 @@
+/* compiled by scssphp v0.7.5 on Wed, 26 Aug 2020 10:16:02 +0200 (0.0049s) */
+
+.view.user.signup .information { padding: 20px 50px; background: #fd0 }
+
+.view.user.signup img.arrow { display: block; margin: 0 auto 20px auto; text-align: center }
+
+.view.user.signup p.arrow { text-align: center }
+
+.view.userAgreement.show { padding: 1em 2%; width: 96%; margin: 4em 0 }
+
+.view.userAgreement.show #agreementLangSelect { position: fixed; top: 0; left: 0; width: 100%; text-align: center; background: #dedede }
+
+.view.userAgreement.show #agreementLangSelect a { line-height: 4em; border-radius: 1em; color: #000; font-weight: bold }
+
+.view.userAgreement.show #agreementLangSelect a.selected { text-decoration: underline }
+
+.agreementAcceptButton { position: fixed; bottom: 0; width: 100%; text-align: center; background: #dedede }
+
+.agreementAcceptButton a { line-height: 4em; color: #000; font-weight: bold }
+ /* Form */

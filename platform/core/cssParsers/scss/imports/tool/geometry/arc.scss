@@ -1,0 +1,19 @@
+@mixin tool\geometry\arc( $borderWidth: 1em, $color: #000, $spacing: .5em, $top: true, $bottom: false, $right: false, $left: false ) {
+	display: inline-block;
+	border: $borderWidth solid $color; // the 'strokes' of the arc
+	padding: $spacing; // the spacing between each arc
+	border-radius: 50%; // for making the elements 'round'
+
+	@if ( $top == false ) {
+		border-top-color: transparent; // hiding the top border
+	}
+	@if ( $bottom == false )  {
+		border-bottom-color: transparent; // hiding the top border
+	}
+	@if ( $left == false )  {
+		border-left-color: transparent; // hiding the top border
+	}
+	@if ( $right == false )  {
+		border-right-color: transparent; // hiding the top border
+	}
+}

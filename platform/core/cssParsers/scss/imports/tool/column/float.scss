@@ -1,0 +1,15 @@
+@mixin tool\column\float( $width, $spacing: 1em, $floatLeft: true ) {
+	margin-bottom: $spacing;
+
+	@if $floatLeft {
+		padding-left: $spacing;
+		float: left;
+	} @else {
+		padding-right: $spacing;
+		float: right;
+	}
+
+	min-height: 1px; // Make sure the column take up space even if it has no content
+	width: percentage( $width );
+	@include box-sizing(border-box);
+}

@@ -1,0 +1,80 @@
+.view.product.show { background-color: #fff; position: relative; padding: 0 10px; }
+	.view.product.show h1.breadcrumb { font-size: 1em; }
+		.view.product.show h1.breadcrumb a { }
+	
+	.view.product.show .templateImages { float: right; width: 302px; overflow: hidden; padding-bottom: 20px; }
+		.view.product.show .templateImages ul#templatePicList { width: 302px; list-style: none; text-align: right; float: right; }
+		
+		.view.product.show .templateImages ul#templatePicList li.first { display: block; padding: 0; margin: 0; width: 302px; height: 302px; line-height: 300px; vertical-align: middle; text-align: center; overflow: hidden; border: 1px solid #ccc; }
+			.view.product.show .templateImages ul#templatePicList li.first a { display: block; }
+				.view.product.show .templateImages ul#templatePicList li.first img { display: inline; vertical-align: middle; }
+		
+		.view.product.show .templateImages ul#templatePicList li.mini { display: block; float: right; padding: 0; margin: 0; width: 52px; height: 52px; line-height: 50px; vertical-align: middle; text-align: center; overflow: hidden; border: 1px solid #ccc; }
+			.view.product.show .templateImages ul#templatePicList li.mini a { display: block; }
+				.view.product.show .templateImages ul#templatePicList li.mini img { display: inline; vertical-align: middle; }
+	
+	.view.product.show #templateInfo { float: left; width: 320px; height: 100%; }
+		.view.product.show #templateInfo h2 { padding-bottom: 0.5em; }
+		
+		.view.product.show #templateInfo form { font-size: 12px; }
+			.view.product.show #templateInfo form p.buttons button {  }
+
+/* Form --------------------------------------------------------------------- */			
+.view.product.show label { display: block; font: normal 12px Arial; color: #4d4d4d; }
+.view.product.show form .field { line-height: normal; }
+
+/* Variants form */
+form.productVariants { clear: left; float: left; margin-right: 12px; width: auto; }
+	form.productVariants p.buttons { }
+		form.productVariants p.buttons button { }
+	form.productVariants select { padding: 0.25em 0.21em 0.25em 0; }
+
+/* Quantity form */
+form.frmAddProduct { width: 100%; display: block; float: left; clear: left; padding: 1em 0; }
+	form.frmAddProduct table#variantDataTable { width: 100%; margin-bottom: .5em; }
+		form.frmAddProduct table#variantDataTable tr { border-bottom: 1px solid #dedede; }
+			form.frmAddProduct table#variantDataTable tr td { line-height: 25px; }
+			form.frmAddProduct table#variantDataTable td.title { }
+			form.frmAddProduct table#variantDataTable td.value { }
+		
+	form.frmAddProduct .field { float: left; padding-top: 0.5em; }
+		form.frmAddProduct label { display: block; float: left; line-height: 22px; padding-right: 3px; }
+		form.frmAddProduct input.quantity { float: left; width: 29px; padding: 0.25em 0.21em 0.25em 0; margin-right: 12px; text-align: center; }
+		form.frmAddProduct div.hidden { display: none; }
+	form.frmAddProduct p.buttons { float: left; }
+		form.frmAddProduct p.buttons button { float: left; margin-top: 4px; }
+
+/* Product files ------------------------------------------------------------ */
+div.productInfoContainer span { float: left; font: bold 12px Arial; color: #4D4D4D; }
+ul.productFileList { list-style: disc inside; float: left; padding: 0 0 1em 1em; }
+	ul.productFileList a { font: 12px Arial; }
+
+/* Product relations -------------------------------------------------------- */
+div.relationList { padding-bottom: 1em; background: #fff; }
+	div.relationList h2 { }
+
+		div.relationList ul#productList li { float: left; width: 170px; height: 253px; margin: 20px 7px 0 0; background: #ffffff url("/images/templates/default/bg-product-li.png") no-repeat; overflow: hidden; }
+			div.relationList ul#productList li p.image { padding: 0; width: 170px; height: 170px; overflow: hidden; }
+			div.relationList ul#productList li p.image img { width: 170px; height: 170px; display: block; }
+			div.relationList ul#productList li p.image.noPic { text-align: center; padding-top: 80px; height: 90px; }
+			div.relationList ul#productList li h2 { font-size: 1em; padding: 0 12px; }
+				div.relationList ul#productList li h2 a { }
+			div.relationList ul#productList li .productShortDescription { margin: 0 12px; font-size: 0.917em; max-height: 2.70em; overflow: hidden; }
+			div.relationList ul#productList li .productPrice { font-weight: bold; margin: 0 12px; }
+				div.relationList ul#productList li .productPrice span { }
+				div.relationList ul#productList li .productPrice em.productPriceRecommended { display:block; font-weight: normal; font-size: 0.917em; white-space: nowrap; }
+
+/* Product also bought ------------------------------------------------------ */
+div.productAlsoBoughtList { padding-bottom: 1em; background: #fff; }
+	div.productAlsoBoughtList h2 { }
+
+		div.productAlsoBoughtList ul#alsoBoughtList li { float: left; width: 170px; height: 253px; margin: 20px 7px 0 0; background: #ffffff url("/images/templates/default/bg-product-li.png") no-repeat; overflow: hidden; }
+			div.productAlsoBoughtList ul#alsoBoughtList li p.image { padding: 0; width: 170px; height: 170px; overflow: hidden; }
+			div.productAlsoBoughtList ul#alsoBoughtList li p.image img { width: 170px; height: 170px; display: block; }
+			div.productAlsoBoughtList ul#alsoBoughtList li p.image.noPic { text-align: center; padding-top: 80px; height: 90px; }
+			div.productAlsoBoughtList ul#alsoBoughtList li h2 { font-size: 1em; padding: 0 12px; }
+				div.productAlsoBoughtList ul#alsoBoughtList li h2 a { }
+			div.productAlsoBoughtList ul#alsoBoughtList li .productShortDescription { margin: 0 12px; font-size: 0.917em; max-height: 2.70em; overflow: hidden; }
+			div.productAlsoBoughtList ul#alsoBoughtList li .productPrice { font-weight: bold; margin: 0 12px; }
+				div.productAlsoBoughtList ul#alsoBoughtList li .productPrice span { }
+				div.productAlsoBoughtList ul#alsoBoughtList li .productPrice em.productPriceRecommended { display:block; font-weight: normal; font-size: 0.917em; white-space: nowrap; }

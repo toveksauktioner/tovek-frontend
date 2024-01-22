@@ -1,0 +1,446 @@
+@import "bootstrap";
+
+::-webkit-input-placeholder { // WebKit, Blink, Edge
+	color: $formPlaceholderColor;
+}
+:-moz-placeholder { // Mozilla Firefox 4 to 18
+	color: $formPlaceholderColor;
+	opacity: 1;
+}
+::-moz-placeholder { // Mozilla Firefox 19+
+	color: $formPlaceholderColor;
+	opacity: 1;
+}
+:-ms-input-placeholder { // Internet Explorer 10-11
+	color: $formPlaceholderColor;
+}
+
+/**
+ * Route path
+ */
+.fieldRoutePath .labelSuffixContent { margin-bottom: .3em; }
+input#routePath { padding: 0 0 0 1px; box-sizing: border-box; }
+input#routePath.autoFill { border: none; background: none; }
+
+button,
+input,
+textarea,
+select,
+.input {
+	font: inherit;
+	max-width: 100%;
+	letter-spacing: .05em;
+	font-weight: $fontWeight;
+}
+
+button,
+input:not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+textarea {
+	border: 0 none;
+	letter-spacing: .05em;
+}
+
+input:not([type="radio"]):not([type="checkbox"]):not([type="file"]),
+textarea {
+	padding: .1em .25em;
+	box-shadow: none;
+	background: none;
+	border-bottom: $formIndicatorSize solid $formIndicatorColor;
+	border-radius: 0;
+	background: $formInputBackground;
+
+	&:focus {
+		border-color: $formIndicatorFocus;
+	}
+}
+
+button {
+	display: inline-block;
+	background: $formButtonBackground;
+	color: $formButtonTextColor;
+	padding: 0;
+	vertical-align: sub;
+	cursor: pointer;
+	text-transform: uppercase;
+
+	&[type="submit"] {
+		@include fontIcon( $fa-var-check-circle ' ', before );
+	}
+
+	&:hover {
+		color: $formButtonTextColorHighlight;
+	}
+}
+
+form,
+.form {
+	margin: $sizeSpace 0;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	&.floatingLabels {
+
+	}
+
+	&.inline,
+	&.searchForm {
+		.buttons,
+		.field {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		label {
+			display: none;
+		}
+
+		.field {
+			margin-right: 1em;
+
+			+.field {
+				margin-top: 0;
+			}
+		}
+	}
+
+	&.inTable {
+		td {
+			button {
+				padding: 0;
+			}
+			label {
+				display: none;
+			}
+			button + a {
+				position: relative;
+				top: .15em;
+			}
+		}
+	}
+
+	&.marginal {
+		.buttons {
+			@include clearfix;
+			margin-top: $sizeSpace;
+
+			button {
+				+ button:last-child {
+					float: right;
+				}
+			}
+		}
+
+		.field {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+
+			label {
+				float: left;
+				width: 11em;
+				display: block;
+			}
+
+			input,
+			select,
+			textarea,
+			.input,
+			.mce-tinymce {
+				width: 100%;
+				flex: 1;
+				min-width: 150px;
+			}
+		}
+	}
+
+	&.vertical {
+		label {
+			display: block;
+		}
+
+		input,
+		select,
+		textarea,
+		.input {
+			width: 100%;
+			min-width: 150px;
+		}
+	}
+
+	.hidden {
+		display: none;
+	}
+}
+
+fieldset {
+	border-top: $sizeDivider dashed textColor( divider, dark );
+	margin: $sizeSpace 0;
+	padding: 1em 0;
+
+	&:first-child {
+		margin-top: 0;
+	}
+
+	> legend {
+		padding-right: $sizeSpace;
+		margin: .25em 0;
+		font-size: .8em;
+		font-weight: bold;
+		text-transform: uppercase;
+		color: textColor( hint, dark );
+
+		~ * {
+			margin-left: 1em;
+		}
+	}
+
+	&.multiple {
+		.field {
+			position: relative;
+			label {
+				margin: 0;
+				padding-left: 25px;
+				width: auto;
+			}
+			input {
+				min-width: inherit;
+				position: absolute;
+				left: 0;
+				top: 0;
+				margin: 0 0 0 5px;
+				height: 100%;
+			}
+			+ .field {
+				margin-top: 0.2em;
+			}
+		}
+	}
+	&.foldable {
+		> legend {
+			@include fontIcon( $fa-var-caret-down ' ', before );
+			display: block !important;
+			cursor: pointer;
+		}
+		&.folded {
+			> * {
+				display: none;
+			}
+			> legend {
+				@include fontIcon( $fa-var-caret-right ' ', before );
+			}
+		}
+	}
+}
+
+input {
+	&[type="checkbox"],
+	&[type="radio"] {
+		max-width: 1em;
+	}
+}
+
+label {
+	font-weight: inherit;
+
+	&[for] {
+		cursor: pointer;
+	}
+}
+
+select {
+	option {
+		padding: .1em .25em;
+	}
+}
+
+textarea {
+	padding: $reverseGoldenRatio;
+	resize: none;
+	height: 10em;
+	min-height: 3em;
+	border-left: 1px solid $formIndicatorColor;
+
+	&:hover {
+		resize: vertical;
+	}
+}
+
+.field {
+	position: relative;
+	max-width: 100%;
+
+	+ .field {
+		margin-top: $sizeSpace;
+		@include minScreen( 450px ) {
+			margin-top: 2em;
+		}
+	}
+
+	label {
+		margin-right: 1em;
+		margin-bottom: .1em;
+		margin-top: .1em;
+		display: inline-block;
+		color: textColor(secondary, dark);
+		font-size: .9em;
+		word-break: break-word; // Non standard for webkit
+		word-wrap: break-word;
+
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		hyphens: auto;
+	}
+
+	.suffixContent {
+		width: 100%; // Clear to new row
+		display: block;
+		clear: both;
+		margin: .5em 0;
+		font-style: italic;
+		font-size: .9em;
+		color: textColor( hint, dark );
+	}
+	&.selectSuffix {
+		input {
+			flex: 1;
+			margin-right: 1em;
+		}
+		.suffixContent {
+			flex: 1;
+			margin: 0;
+		}
+	}
+
+	&.boolean {
+		position: relative;
+		label {
+			padding-left: 1.9em;
+		}
+		input {
+			position: absolute;
+			left: 0;
+			top: .18em;
+		}
+	}
+}
+
+.select.input {
+	position: relative;
+	border-right: $formIndicatorSize solid $formIndicatorColor;
+	background: $formInputBackground;
+	transition: border $transitionSpeed;
+
+	> select {
+		background: none;
+		border: none;
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+		cursor: pointer;
+		padding-right: 2.5em;
+		width: 100%;
+
+		&:focus,
+		&:-moz-focusring {
+			//outline: 0;
+			color: transparent;
+			text-shadow: 0 0 0 #000;
+		}
+	}
+
+	&::after {
+		transition: all $transitionSpeed;
+		position: absolute;
+		height: 100%;
+		width: 2em;
+		top: 50%;
+		margin-top: -.75em;
+		right: 0;
+		pointer-events: none;
+	}
+
+	@include fontIcon( $fa-var-caret-down '', after ) {
+		width: 2em;
+		text-align: center;
+		line-height: 1.5em;
+		color: textColor( hint, dark );;
+	}
+
+	.field.focus & {
+		border-color: $colorCerulean;
+
+		&::after {
+			color: $colorCerulean;
+		}
+	}
+}
+
+/**
+ * Tree list
+ */
+div#treecontrol,
+div.treecontrol {
+	border-bottom: 1px dotted #808080;
+	color: #808080;
+	float: left;
+	width: auto;
+	font-size: 0.9em;
+	padding-bottom: 0.2em;
+	margin-bottom: 0.4em;
+}
+ul.treeList.treeview {
+	clear: both;
+	li {
+		padding: 0 0 0 16px;
+		line-height: 1.1em;
+		.field {
+			position: relative;
+			display: inline-block;
+			vertical-align: bottom;
+			label {
+				padding-left: 23px;
+				width: auto;
+				font-size: 0.85em;
+				margin-top: 1px;
+			}
+			input {
+				min-width: inherit;
+				position: absolute;
+				left: 0;
+				top: 0;
+				margin: 0 0 0 5px;
+			}
+		}
+		> a {
+			font-size: 0.85em;
+			display: inline-block;
+			padding-left: 5px;
+		}
+		ul {
+			margin: 0;
+		}
+	}
+}
+
+/**
+ * Char counter
+ */
+.charCounterWrapper {
+	position: relative;
+	.charCounter {}
+	.charCounterShow {
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: .1em .4em;
+		font-size: .7em;
+		background: rgba(0, 0, 0, .12);
+	}
+}

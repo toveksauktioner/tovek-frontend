@@ -1,0 +1,139 @@
+
+// Tool for responsive columnization
+// Apply to a container
+// The targets will be split into columns when reaching the assigned screen width
+// Usage: responsiveColumnFloat( $two: 350px, $four: 600px ) ) { other-rules-for-targets: ... }
+@mixin tool\column\responsiveFloat( $target: '> *', $spacing: 1em, $two: false, $three: false, $four: false, $five: false, $six: false, $seven: false, $eight: false, $nine: false, $ten: false ) {
+	@include tool\column\floatContainer( $spacing );
+
+	#{$target} {
+		@include tool\column\float( 100%, $spacing );
+
+		@if $two {
+			@include minScreen( $two ) {
+				width: percentage( 1 / 2 );
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(2n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		@if $three {
+			@include minScreen( $three ) {
+				width: percentage( 1 / 3 );
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(3n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		@if $four {
+			@include minScreen( $four ) {
+				width: percentage( 1 / 4 );
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(4n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		@if $five {
+			@include minScreen( $five ) {
+				width: percentage( 1 / 5 );
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(5n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		@if $six {
+			@include minScreen( $six ) {
+				width: percentage( 1 / 6 );
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(6n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		@if $seven {
+			@include minScreen( $seven ) {
+				width: percentage( 1 / 7 );
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(7n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		@if $eight {
+			@include minScreen( $eight ) {
+				width: percentage( 1 / 8 );
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(8n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		@if $nine {
+			@include minScreen( $nine ) {
+				width: percentage( 1 / 9 );
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(9n+1) {
+					clear: left;
+				}
+			}
+		}
+
+		@if $ten {
+			@include minScreen( $ten ) {
+				width: percentage( 1 / 10 );
+
+				&:nth-child(1n) {
+					clear: none;
+				}
+
+				&:nth-child(10n+1) {
+					clear: left;
+				}
+			}
+		}
+		@content;
+	}
+}

@@ -1,0 +1,22 @@
+
+.view.auctionTransfer.tableEdit {
+    section {
+        .pagination {
+            margin: .5em 0;
+        }
+        .dataTable {
+            thead {
+                tr {
+                    th {
+                        &.auctionId { width: 4em; }
+                        &.auctionType { width: 5em; }
+                        //&.auctionInternalName { width: 1.5em; }
+                        //&.auctionTitle { width: 1.5em; }
+                        &.auctionStatus { width: 9em; }
+                        &.controls { width: 10em; }
+                    }
+                }
+            }
+        }
+    }
+}

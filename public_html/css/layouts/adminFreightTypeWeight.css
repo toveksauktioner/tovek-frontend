@@ -1,0 +1,9 @@
+.view.typeWeightTable { }
+	.view.typeWeightTable .inTable .field input,
+	.view.typeWeightTable .inTable .field select { width: 45%; float: left; padding: 1px; }
+	.view.typeWeightTable .inTable .field select#freightWeightStatus { width: 100%; float: left; padding: 1px; }
+	.view.typeWeightTable .inTable .field select#freightWeightAdditionVat { width: 65%; } 
+	
+	.view.typeWeightTable .inTable .buttons { display: inline; }
+	
+	td.tableRowControls { text-align: right; }

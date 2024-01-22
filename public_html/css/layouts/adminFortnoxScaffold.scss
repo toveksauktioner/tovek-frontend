@@ -1,0 +1,13 @@
+.view
+  &.fortnox
+    &.scaffold {
+      .dataOutput {
+        overflow: hidden !important;
+
+        form {
+          overflow-x: auto;
+        }
+      }
+    }
+  }
+}

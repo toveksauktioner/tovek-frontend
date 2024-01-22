@@ -1,0 +1,229 @@
+@import "bootstrap";
+@import "extensions";
+
+/* Red 2 minute clock */
+// span.itemTimeWrapper.clock span.red { font-size: 1.125em; font-weight: 700; color: $colorFailure; }
+
+.pagination {
+	@extend %pagination;
+}
+
+// Inline searchform
+form.searchForm {
+	margin-bottom: 10px;
+
+	.field {
+		float: left;
+		margin-right: 10px;
+		label {
+			display: inline;
+			vertical-align: middle;
+		}
+	}
+
+	fieldset.multiple {
+		float: left;
+		margin-right: 10px;
+		padding: 0;
+		width: 400px;
+		position: relative;
+
+		.field {
+			clear: none !important;
+			float: left !important;
+			margin-top: 5px;
+			label {
+				vertical-align: top;
+			}
+		}
+	}
+
+	p.buttons {
+		width: auto;
+		clear: none;
+		float: left;
+		margin: 0;
+	}
+}
+
+// Form in table
+.inTable .field {
+	position: relative;
+
+	label {
+		position: absolute;
+		top: -1.5em;
+		left: 0;
+		width: 100%;
+		text-indent: -999em;
+	}
+
+	input, select {
+		width: 95%;
+	}
+}
+
+// Notifications
+ul.notification {
+	padding: 5px;
+	list-style: none;
+}
+
+li.notification {
+	color: #000;
+	background: #dedede;
+	border: 1px solid #000;
+	background-image: url('/images/icons/bullet_black.png');
+	background-position: 10px center;
+	background-repeat: no-repeat;
+	margin: 10px 0;
+	padding: 15px 10px 15px 50px;
+
+	&.dataSaved, &.dataDeleted {
+		color: #4F8A10;
+		background-color: #DFF2BF;
+		background-image: url('/images/icons/ok.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #4F8A10;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+	&.dataError {
+		color: #8a0f0f;
+		background-color: #fccac3;
+		background-image: url('/images/icons/exclamation.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #e02727;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+	&.dataInformation {
+		color: #00529B;
+		background-color: #BDE5F8;
+		background-image: url('/images/icons/information.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #00529B;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+	&.dataWarning {
+		color: #9F6000;
+		background-color: #FEEFB3;
+		background-image: url('/images/icons/error.png');
+		background-position: 10px center;
+		background-repeat: no-repeat;
+		border: 1px solid #9F6000;
+		margin: 10px 0;
+		padding: 15px 10px 15px 50px;
+	}
+}
+
+.dataTable {
+	//@include tool\layout\responsivTable( $layoutBreakpoint4 );
+}
+
+#localeList {
+	@include tool\module\localeList;
+}
+
+/**
+ * Loader
+ */
+#loaderWrapper {
+	display: none;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: absolute;
+		z-index: 999;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		.loader {
+			border: .7em solid #f3f3f3; /* Light grey */
+			border-top: .7em solid #1b458c; /* Blue */
+			border-radius: 50%;
+			width: 3em;
+			height: 3em;
+			animation: spin 2s linear infinite;
+			box-shadow: 0 0 .2em #727272, inset 0 0 .2em #727272;
+			opacity: .7;
+		}
+		p {
+			position: relative;
+			top: 0em;
+			margin-left: 1em;
+			font-size: 1.8em;
+			font-weight: 700;
+			text-shadow: 0 0 .2em #727272;
+			color: #fff;
+		}
+	}
+
+	.background {
+		position: absolute;
+		z-index: 995;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: #fff;
+		opacity: .6;
+	}
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.columns {
+	display: grid;
+	grid-gap: $baseSpaceSmall;
+
+	&.col2 {
+		grid-template-columns: 1fr 1fr;
+	}
+	&.col3 {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	&.col4 {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	.column {
+		&.double {
+			grid-column: span 2;
+		}
+		&.full {
+			grid-column: #{1} / #{-1};
+		}
+	}
+
+	@include maxScreen( $layoutBreakpoint5 ) {
+		&.col2, &.col3 {
+			grid-template-columns: 1fr;
+		}
+		&.col4 {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+	@include maxScreen( $layoutBreakpoint6 ) {
+		&.col4 {
+			grid-template-columns: 1fr;
+		}
+	}
+}

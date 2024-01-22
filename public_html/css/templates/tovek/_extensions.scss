@@ -1,0 +1,225 @@
+/**
+ *
+ * Scss file for all extensions
+ *
+ */
+
+%siteContainer {
+  position: relative;
+	max-width: $siteWidth;
+	margin: auto;
+	// Use border instead of padding to make absolute positioned element respect the space ( http://stackoverflow.com/questions/17115344/absolute-positioning-ignoring-padding-of-parent )
+	border-left: $baseSpace solid transparent;
+	border-right: $baseSpace solid transparent;
+
+  @include maxScreen( $layoutBreakpoint2 ) {
+    border-left: $baseSpaceSmall solid transparent;
+  	border-right: $baseSpaceSmall solid transparent;
+  }
+  @include maxScreen( $layoutBreakpoint4 ) {
+    border-left: $baseSpaceMini solid transparent;
+  	border-right: $baseSpaceMini solid transparent;
+  }
+}
+
+%defaultHover {
+  // opacity: .7;
+  // &:hover { opacity: 1; }
+  // @include transition( opacity 0.3s ease-in-out );
+  // -webkit-backface-visibility: hidden;
+}
+
+%fullScreenWidth {
+  width: 100%;
+  transform: translateX(-$baseSpace);
+  padding: 0 $baseSpace;
+
+  @include maxScreen( $layoutBreakpoint2 ) {
+  transform: translateX(-$baseSpaceSmall);
+  padding: 0 $baseSpaceSmall;
+  }
+  @include maxScreen( $layoutBreakpoint4 ) {
+  transform: translateX(-$baseSpaceMini);
+  padding: 0 $baseSpaceMini;
+  }
+}
+
+%commonButton {
+  display: inline-block;
+  font-size: .875em;
+  font-weight: bold;
+  color: $white;
+  cursor: pointer;
+  border: 0;
+  background: $colorPrimary;
+  border-radius: $borderRadius;
+  // padding: 0 2em;
+  // line-height: 3em;
+  padding: .75em 2em;
+  margin: 0 .25em;
+  line-height: 1.5em;
+  text-transform: uppercase;
+  text-align: center;
+	overflow: visible;
+	font-family: $baseFontFamily;
+
+  -webkit-transition-property: padding margin;
+  -webkit-transition-duration: $transitionFast;
+  transition-property: padding margin;
+  transition-duration: $transitionFast;
+
+  &:not(.fas,.far) {
+    font-family: $baseFontFamily;
+  }
+  &:hover,
+  &:focus,
+  &.selected {
+    background: $colorLighter;
+    padding-left: 2.25em;
+    padding-right: 2.25em;
+    margin-left: 0;
+    margin-right: 0;
+    color: $white;
+  }
+  &.submit {
+    background: $colorSuccess;
+
+    &:hover,
+    &:focus,
+    &.selected {
+      background: $colorSuccessLighter;
+    }
+  }
+  &.cancel,
+  &[type="reset"] {
+    background: $colorFailure;
+
+    &:hover,
+    &:focus,
+    &.selected {
+      background: $colorFailureLighter;
+    }
+  }
+  &.help {
+    background: $colorAccentDarker;
+  }
+  &.rounded {
+    border-radius: 1.5em;
+    padding: 0;
+    width: 3em;
+  }
+  &.small {
+    padding-top: .25em;
+    padding-bottom: .25em;
+  }
+  &.narrow {
+    padding-left: 1em;
+    padding-right: 1em;
+
+    &:hover,
+    &:focus,
+    &.selected {
+      padding-left: 1.25em;
+      padding-right: 1.25em;
+    }
+  }
+  &.white {
+    background: $white;
+    color: $colorPrimary;
+  }
+  &.gray, &.disabled {
+    background: $colorGray500;
+  }
+  &.attention {
+    background: $colorAccent;
+    color: $black;
+
+    &:hover {
+      background: $colorAccentDarker;
+    }
+  }
+  &.transparent {
+    color: $colorPrimary;
+    background: transparent;
+
+    &.disabled {
+      color: $colorGray500;
+    }
+    &.cancel,
+    &[type="reset"] {
+      color: $colorFailure;
+    }
+    &.submit {
+      color: $colorSuccess;
+    }
+    &:hover,
+    &:focus,
+    &.selected {
+      color: $white;
+    }
+  }
+
+  &.bordered {
+    margin: 2px;
+  }
+  &.fullWidth {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+  }
+
+  .short {
+    display: none;
+  }
+
+  @include maxScreen( $layoutBreakpoint4 ) {
+    .short {
+      display: inline;
+    }
+    .long {
+      display: none;
+    }
+  }
+}
+
+%roundIcon {
+  background: $colorGrayNormal;
+  color: #fff;
+  text-align: center;
+  width: 2.25em;
+  line-height: 2.25em;
+  border-radius: 1.5em;
+
+  &:hover {
+    background: $colorLighter;
+  }
+}
+
+%pagination {
+  text-align: right;
+
+  .entriesTotal {
+    display: inline-block;
+    padding-right: 1em;
+  }
+  .paginationList {
+    list-style: none;
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      background: $colorGray100;
+      color: $colorGray400;
+      padding: .25em .5em;;
+      border-radius: $borderRadius;
+      margin: .25em;
+
+      a {
+        &.disabled {
+          color: $colorGray200;
+        }
+      }
+    }
+  }
+}

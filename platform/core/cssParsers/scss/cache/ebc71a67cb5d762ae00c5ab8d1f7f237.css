@@ -1,0 +1,764 @@
+/* compiled by scssphp v0.7.5 on Fri, 18 Oct 2019 11:23:16 +0200 (1.1767s) */
+
+ @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i|Roboto:300,300i,400,400i,700,700i');
+ /**
+ * Imports
+ */
+ /*!
+ * ArgoLib
+ */
+ /**
+ * Mixins
+ */
+.button--antiman { background: none; border: none; height: 60px }
+
+.button--antiman.button--inverted, 
+.button--antiman.button--inverted-alt { -webkit-transition: color 0.3s; transition: color 0.3s; -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1) }
+
+.button--antiman > span { padding-left: 0.35em }
+
+.button--antiman::before, 
+.button--antiman::after { content: ''; z-index: -1; border-radius: inherit; pointer-events: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; -webkit-backface-visibility: hidden; -webkit-transition: -webkit-transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s; -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1) }
+
+.button--antiman::before { border: 2px solid #37474f; opacity: 0; -webkit-transform: scale3d(1.2, 1.2, 1); transform: scale3d(1.2, 1.2, 1) }
+
+.button--antiman.button--border-thin::before { border-width: 1px }
+
+.button--antiman.button--inverted::before { border-color: #7986cb }
+
+.button--antiman.button--inverted-alt::before { border-color: #3f51b5 }
+
+.button--antiman::after { background: #fff }
+
+.button--antiman.button--inverted::after { background: #7986cb }
+
+.button--antiman.button--inverted-alt::after { background: #3f51b5 }
+
+.button--antiman.button--inverted:hover { color: #7986cb }
+
+.button--antiman.button--inverted-alt:hover { color: #3f51b5 }
+
+.button--antiman:hover::before { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1) }
+
+.button--antiman:hover::after { opacity: 0; -webkit-transform: scale3d(0.8, 0.8, 1); transform: scale3d(0.8, 0.8, 1) }
+
+@font-face { font-family: 'FontAwesome'; src: url("/css/templates/default/library/fontAwesome/fontawesome-webfont.eot?v=4.5.0"); src: url("/css/templates/default/library/fontAwesome/fontawesome-webfont.eot?#iefix&v=4.5.0") format('embedded-opentype'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.woff2?v=4.5.0") format('woff2'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.woff2?v=4.5.0") format('woff'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.ttf?v=4.5.0") format('truetype'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular") format('svg'); font-weight: normal; font-style: normal; }
+
+.view.auction .toolbar .tool .sorting .selector .label::after { font: normal normal normal 1em/1 'FontAwesome'; speak: none; text-rendering: auto; text-transform: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale }
+ /**
+ * Scss palette file
+ */
+ /**
+ * Palette colors
+ */
+ /**
+ * Default colors
+ */
+ /**
+ * Christmas colors
+ */
+ /**
+ * Color variables
+ */
+ /**
+ * Import extensions
+ */
+ /**
+ *
+ * Scss file for all extensions
+ *
+ */
+.view.auction.itemShow.display .topbar .itemNav span, 
+.view.auction.itemShow.display .topbar .closeLink a.close { opacity: 0.7; -webkit-transition: opacity 0.3s ease-in-out; -moz-transition: opacity 0.3s ease-in-out; -ms-transition: opacity 0.3s ease-in-out; -o-transition: opacity 0.3s ease-in-out; transition: opacity 0.3s ease-in-out; -webkit-backface-visibility: hidden }
+.view.auction.itemShow.display .topbar .itemNav span:hover, 
+.view.auction.itemShow.display .topbar .closeLink a.close:hover { opacity: 1 }
+
+.view.auction { /**
+ * Generic
+ */ }
+.view.auction .toolbar { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5em }
+.view.auction .toolbar .tool:nth-child(1) { width: 25% }
+.view.auction .toolbar .tool:nth-child(2) { width: 50%; text-align: center }
+.view.auction .toolbar .tool:nth-child(3) { width: 25%; text-align: right }
+.view.auction .toolbar .tool > h1 { position: relative; top: -0.15em }
+.view.auction .toolbar .tool > h2 { text-transform: uppercase; position: relative; top: -0.05em }
+.view.auction .toolbar .tool .sorting .selector { position: relative; cursor: pointer }
+.view.auction .toolbar .tool .sorting .selector .label { padding: 0 0.485em; color: #0a5599 }
+.view.auction .toolbar .tool .sorting .selector .label::after { content: "\f078"; display: inline-block; margin-left: 0.5em }
+.view.auction .toolbar .tool .sorting .selector .optionsContainer { opacity: 0; position: absolute; z-index: 888; top: 0; overflow: hidden; background: rgba(255, 255, 255, .7); padding: 0 0.5em; -webkit-transition: all 0.2s ease-in-out; -moz-transition: all 0.2s ease-in-out; -ms-transition: all 0.2s ease-in-out; -o-transition: all 0.2s ease-in-out; transition: all 0.2s ease-in-out; -webkit-backface-visibility: hidden }
+.view.auction .toolbar .tool .sorting .selector .optionsContainer ul.options { list-style: none }
+.view.auction .toolbar .tool .sorting .selector .optionsContainer ul.options li { padding-bottom: 0.3em }
+.view.auction .toolbar .tool .sorting .selector .optionsContainer ul.options li a { color: #0a5599; opacity: 0.7 }
+.view.auction .toolbar .tool .sorting .selector .optionsContainer ul.options li a:hover { opacity: 1 }
+.view.auction .toolbar .tool .sorting .selector:hover .optionsContainer { opacity: 1; -webkit-touch-callout: none; -webkit-user-select: none }
+.view.auction.searchForm { max-width: 30em; margin: 0 auto; padding: 1.5em 0 1em 0 }
+.view.auction.searchForm .searchForm { width: 100% }
+.view.auction.searchForm .searchForm .field { width: 100% }
+.view.auction.searchForm .searchForm .field label { display: none }
+.view.auction.searchForm .searchForm .field input { width: 100%; border: 1px solid #707070; border-top-left-radius: 15px; border-top-right-radius: 15px; border-bottom-right-radius: 15px; border-top-right-radius: 15px; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; border-bottom-left-radius: 15px; border-top-left-radius: 15px; padding: 0.25em 1em; box-sizing: border-box; background: url('/images/templates/tovek/icon-search.png') no-repeat 96% center }
+.view.auction.searchForm .searchForm .buttons { display: none }
+.view.auction.list { padding: 1em 0 3em 0 }
+.view.auction.list .toolbar .tool .auctionType { max-width: 11em }
+.view.auction.list .toolbar .tool .auctionType ul { list-style: none }
+.view.auction.list .toolbar .tool .auctionType ul li { display: block }
+.view.auction.list .toolbar .tool .auctionType ul li:first-child { border-bottom: 1px solid #c5c5c5; padding-bottom: 0.2em }
+.view.auction.list .toolbar .tool .auctionType ul li:last-child { padding-top: 0.15em }
+.view.auction.list .container { position: relative; padding-top: 0.5em }
+.view.auction.list .container > h2 { width: 100%; text-align: center; padding: 1em 0 1em }
+.view.auction.list .container .innerContainer { display: grid; grid-template-columns: 25% 25% 25% 25% }
+.view.auction.list .container .innerContainer .auction { width: 22em; margin-bottom: 1em; position: relative; z-index: 777 }
+.view.auction.list .container .innerContainer .auction::after { clear: both; content: ""; display: table }
+.view.auction.list .container .innerContainer .auction .image { float: left; width: auto }
+.view.auction.list .container .innerContainer .auction .image a img { max-width: 130px }
+.view.auction.list .container .innerContainer .auction .information { float: left; width: auto; max-width: 53%; box-sizing: border-box; padding-left: 1em }
+.view.auction.list .container .innerContainer .auction .information h2 { font-size: 0.8em }
+.view.auction.list .container .innerContainer .auction .information h3 { margin: 0.5em 0; font-size: 0.7em }
+.view.auction.list .container .innerContainer .auction .information .meta { font-size: 0.7em }
+.view.auction.list .container .more { width: 100%; height: 7.5em; background: rgba(255, 255, 255, 0.92); position: absolute; bottom: 0; left: 0; z-index: 888; text-align: center; padding: 3em 0; box-sizing: border-box }
+.view.auction.list .container .more a { position: relative; bottom: 0.8em }
+.view.auction.list .container .less { display: none; width: 100%; text-align: center; padding: 1.5em 0 3em 0; box-sizing: border-box; border-top: 1px solid #d9d9d9 }
+.view.auction.list.listAll .container .less { display: block }
+.view.auction.itemList > h1 { margin-bottom: 1.8em; text-transform: uppercase; letter-spacing: 0.1em; text-align: center }
+.view.auction.itemList > h1 span { font-weight: 400 }
+.view.auction.searchList h1 { margin-bottom: 0.5em }
+.view.auction.searchList > .archiveSearch label { position: relative; top: 0.15em }
+.view.auction.userItemFavList, 
+.view.auction.userItemBidList, 
+.view.auction.userWonItemList, 
+.view.auction.itemList, 
+.view.auction.searchList, 
+.view.auction.hotItemList { padding: 1em 0 }
+.view.auction.userItemFavList .listWrapper > ul.items, 
+.view.auction.userItemBidList .listWrapper > ul.items, 
+.view.auction.userWonItemList .listWrapper > ul.items, 
+.view.auction.itemList .listWrapper > ul.items, 
+.view.auction.searchList .listWrapper > ul.items, 
+.view.auction.hotItemList .listWrapper > ul.items { list-style: none }
+.view.auction.userItemFavList .listWrapper > ul.items > li, 
+.view.auction.userItemBidList .listWrapper > ul.items > li, 
+.view.auction.userWonItemList .listWrapper > ul.items > li, 
+.view.auction.itemList .listWrapper > ul.items > li, 
+.view.auction.searchList .listWrapper > ul.items > li, 
+.view.auction.hotItemList .listWrapper > ul.items > li { position: relative; padding: 1.8em 0; border-bottom: 1px solid #707070; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; justify-content: flex-start; align-items: stretch; -webkit-transition: box-shadow 0.3s ease-in-out; -moz-transition: box-shadow 0.3s ease-in-out; -ms-transition: box-shadow 0.3s ease-in-out; -o-transition: box-shadow 0.3s ease-in-out; transition: box-shadow 0.3s ease-in-out; -webkit-backface-visibility: hidden }
+.view.auction.userItemFavList .listWrapper > ul.items > li:first-child, 
+.view.auction.userItemBidList .listWrapper > ul.items > li:first-child, 
+.view.auction.userWonItemList .listWrapper > ul.items > li:first-child, 
+.view.auction.itemList .listWrapper > ul.items > li:first-child, 
+.view.auction.searchList .listWrapper > ul.items > li:first-child, 
+.view.auction.hotItemList .listWrapper > ul.items > li:first-child { padding-top: 1em }
+.view.auction.userItemFavList .listWrapper > ul.items > li > .closeLink, 
+.view.auction.userItemBidList .listWrapper > ul.items > li > .closeLink, 
+.view.auction.userWonItemList .listWrapper > ul.items > li > .closeLink, 
+.view.auction.itemList .listWrapper > ul.items > li > .closeLink, 
+.view.auction.searchList .listWrapper > ul.items > li > .closeLink, 
+.view.auction.hotItemList .listWrapper > ul.items > li > .closeLink { display: none; position: absolute; top: -1.4em; right: 6em; width: 2.5em; height: 2.5em }
+.view.auction.userItemFavList .listWrapper > ul.items > li > .closeLink a, 
+.view.auction.userItemBidList .listWrapper > ul.items > li > .closeLink a, 
+.view.auction.userWonItemList .listWrapper > ul.items > li > .closeLink a, 
+.view.auction.itemList .listWrapper > ul.items > li > .closeLink a, 
+.view.auction.searchList .listWrapper > ul.items > li > .closeLink a, 
+.view.auction.hotItemList .listWrapper > ul.items > li > .closeLink a { display: block; height: 100%; width: 100%; background: #000; border: 1px solid #000; border-radius: 2.5em; text-align: center; color: #fff; font-size: 2em; font-family: 'Comic Sans MS' }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup { opacity: 0; display: none; position: absolute; z-index: 9999; top: -50%; left: 0; width: 100%; background: rgba(255, 255, 255, .99); box-shadow: 0 0 3em #4b4b4b }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup.show, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup.show, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup.show, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup.show, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup.show, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup.show { display: grid !important; grid-template-rows: 2.5em auto }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup > .topbar, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup > .topbar, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup > .topbar, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup > .topbar, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup > .topbar, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup > .topbar { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; align-items: center; justify-content: space-between; background: #f4f3f3; line-height: 2.5em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav { font-size: 1.8em; padding-left: 0.25em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span { display: block; float: left; padding: 0 0.2em; color: #0a5599; position: relative; top: -0.15em; cursor: pointer; opacity: 0.6 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span:hover, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span:hover, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span:hover, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span:hover, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span:hover, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup > .topbar .itemNav span:hover { opacity: 1 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink { font-weight: 700 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink a:after, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink a:after, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink a:after, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink a:after, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink a:after, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup > .topbar .moreLink a:after { display: inline-block; content: '\1f855'; border: 1px solid #0a5599; line-height: 0.7em; text-indent: 0; padding: 0 0.1em 0 0; margin-left: 0.5em; color: #333 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup > .topbar .closeLink a.close, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup > .topbar .closeLink a.close, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup > .topbar .closeLink a.close, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup > .topbar .closeLink a.close, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup > .topbar .closeLink a.close, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup > .topbar .closeLink a.close { position: absolute; top: 0; right: 0; background: #000; color: #fff; display: block; padding: 0 0.66em; font-size: 1.4em; box-sizing: border-box }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm { margin-bottom: 2em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin { padding-top: 1em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin .links, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin .links, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin .links, 
+.view.auction.itemList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin .links, 
+.view.auction.searchList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin .links, 
+.view.auction.hotItemList .listWrapper > ul.items > li .infoPopup > .container .bidSpeedForm > .popupLogin .links { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; justify-content: space-between; align-items: stretch; padding-top: 0.05em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .imageContainer, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .imageContainer, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .imageContainer, 
+.view.auction.itemList .listWrapper > ul.items > li .imageContainer, 
+.view.auction.searchList .listWrapper > ul.items > li .imageContainer, 
+.view.auction.hotItemList .listWrapper > ul.items > li .imageContainer { min-width: 15em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .imageContainer .mobileTitle, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .imageContainer .mobileTitle, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .imageContainer .mobileTitle, 
+.view.auction.itemList .listWrapper > ul.items > li .imageContainer .mobileTitle, 
+.view.auction.searchList .listWrapper > ul.items > li .imageContainer .mobileTitle, 
+.view.auction.hotItemList .listWrapper > ul.items > li .imageContainer .mobileTitle { display: none }
+.view.auction.userItemFavList .listWrapper > ul.items > li .imageContainer .image, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .imageContainer .image, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .imageContainer .image, 
+.view.auction.itemList .listWrapper > ul.items > li .imageContainer .image, 
+.view.auction.searchList .listWrapper > ul.items > li .imageContainer .image, 
+.view.auction.hotItemList .listWrapper > ul.items > li .imageContainer .image { text-align: center }
+.view.auction.userItemFavList .listWrapper > ul.items > li .imageContainer .image img, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .imageContainer .image img, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .imageContainer .image img, 
+.view.auction.itemList .listWrapper > ul.items > li .imageContainer .image img, 
+.view.auction.searchList .listWrapper > ul.items > li .imageContainer .image img, 
+.view.auction.hotItemList .listWrapper > ul.items > li .imageContainer .image img { max-height: 10.9em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information, 
+.view.auction.itemList .listWrapper > ul.items > li .information, 
+.view.auction.searchList .listWrapper > ul.items > li .information, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information { width: 100%; font-size: 100%; padding: 0 0 0 2em; box-sizing: border-box }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information h3, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information h3, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information h3, 
+.view.auction.itemList .listWrapper > ul.items > li .information h3, 
+.view.auction.searchList .listWrapper > ul.items > li .information h3, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information h3 { padding-bottom: 0.1em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information h3 .bidNo, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information h3 .bidNo, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information h3 .bidNo, 
+.view.auction.itemList .listWrapper > ul.items > li .information h3 .bidNo, 
+.view.auction.searchList .listWrapper > ul.items > li .information h3 .bidNo, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information h3 .bidNo { font-weight: 400 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information h3 .title, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information h3 .title, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information h3 .title, 
+.view.auction.itemList .listWrapper > ul.items > li .information h3 .title, 
+.view.auction.searchList .listWrapper > ul.items > li .information h3 .title, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information h3 .title { font-weight: 700 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information h3 .title a, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information h3 .title a, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information h3 .title a, 
+.view.auction.itemList .listWrapper > ul.items > li .information h3 .title a, 
+.view.auction.searchList .listWrapper > ul.items > li .information h3 .title a, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information h3 .title a { color: #707070 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information h3 .title a:hover, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information h3 .title a:hover, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information h3 .title a:hover, 
+.view.auction.itemList .listWrapper > ul.items > li .information h3 .title a:hover, 
+.view.auction.searchList .listWrapper > ul.items > li .information h3 .title a:hover, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information h3 .title a:hover { color: #0a5599 }
+@media screen and (max-width: 640px) {.view.auction.userItemFavList .listWrapper > ul.items > li .information h3, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information h3, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information h3, 
+.view.auction.itemList .listWrapper > ul.items > li .information h3, 
+.view.auction.searchList .listWrapper > ul.items > li .information h3, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information h3 { display: none } }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information p.location, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information p.location, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information p.location, 
+.view.auction.itemList .listWrapper > ul.items > li .information p.location, 
+.view.auction.searchList .listWrapper > ul.items > li .information p.location, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information p.location { font-size: 0.85em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information ul.data, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information ul.data, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information ul.data, 
+.view.auction.itemList .listWrapper > ul.items > li .information ul.data, 
+.view.auction.searchList .listWrapper > ul.items > li .information ul.data, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information ul.data { margin: 0.73em 0 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information ul.data li, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information ul.data li, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information ul.data li, 
+.view.auction.itemList .listWrapper > ul.items > li .information ul.data li, 
+.view.auction.searchList .listWrapper > ul.items > li .information ul.data li, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information ul.data li { padding: 0.1em 0; font-size: 0.85em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information ul.data li strong, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information ul.data li strong, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information ul.data li strong, 
+.view.auction.itemList .listWrapper > ul.items > li .information ul.data li strong, 
+.view.auction.searchList .listWrapper > ul.items > li .information ul.data li strong, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information ul.data li strong { display: inline-block; width: 7em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information ul.data li .bidder, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information ul.data li .bidder, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information ul.data li .bidder, 
+.view.auction.itemList .listWrapper > ul.items > li .information ul.data li .bidder, 
+.view.auction.searchList .listWrapper > ul.items > li .information ul.data li .bidder, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information ul.data li .bidder { color: #fe1d1d; font-size: 0.9em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; justify-content: space-between; align-items: stretch; padding-top: 0.05em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .moreLink, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .moreLink, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .moreLink, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .moreLink, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .moreLink, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .moreLink { display: inline-block }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink { display: inline-block; position: relative }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink > a, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink > a, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink > a, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink > a, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink > a, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink > a { position: relative; z-index: 1 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup { display: none; position: absolute; z-index: 2; top: -10em; right: 11.5em; width: 22.8em; box-shadow: 0 0 3em #4b4b4b }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container { width: 100%; padding: 2.5em 2.5em; box-sizing: border-box; background: #fff; position: relative; z-index: 2; text-align: center }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .endedMessage, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .endedMessage, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .endedMessage, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .endedMessage, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .endedMessage, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .endedMessage { padding: 2.5em 0 1.5em 0 !important; font-style: italic }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container a.close, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container a.close, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container a.close, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container a.close, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container a.close, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container a.close { position: absolute; top: 0; right: 0; background: #000; color: #fff; display: block; padding: 0.15em 0.5em 0.2em 0.5em; font-size: 1.4em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item { font-size: 0.8em; font-weight: 700; margin-bottom: 0.5em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item span, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item span, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item span, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item span, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item span, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.item span { font-weight: 400 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.bid, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.bid, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.bid, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.bid, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.bid, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.bid { font-size: 1em; font-weight: 700 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.time, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.time, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.time, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.time, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.time, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.time { font-size: 0.8em; font-weight: 400 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.message, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.message, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.message, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.message, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.message, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container p.message { padding-top: 1em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .bidFormAdd form, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .bidFormAdd form, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .bidFormAdd form, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .bidFormAdd form, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .bidFormAdd form, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup .container .bidFormAdd form { text-align: left; margin-bottom: 0; padding-bottom: 0 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup:after, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup:after, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup:after, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup:after, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup:after, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup:after { content: " "; display: block; width: 3em; height: 3em; background: #fff; position: absolute; right: -1.4em; top: 9.7em; z-index: 1; box-shadow: 0 0 3em #4b4b4b; -webkit-transform: scale(0.9) rotate(-45deg); -moz-transform: scale(0.9) rotate(-45deg); -ms-transform: scale(0.9) rotate(-45deg); -o-transform: scale(0.9) rotate(-45deg); transform: scale(0.9) rotate(-45deg) }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest { top: -5em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest:after, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest:after, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest:after, 
+.view.auction.itemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest:after, 
+.view.auction.searchList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest:after, 
+.view.auction.hotItemList .listWrapper > ul.items > li .information .links .bidLink .bidPopup.guest:after { top: 4.8em }
+.view.auction.userItemFavList .listWrapper > ul.items > li > .itemFavorite, 
+.view.auction.userItemBidList .listWrapper > ul.items > li > .itemFavorite, 
+.view.auction.userWonItemList .listWrapper > ul.items > li > .itemFavorite, 
+.view.auction.itemList .listWrapper > ul.items > li > .itemFavorite, 
+.view.auction.searchList .listWrapper > ul.items > li > .itemFavorite, 
+.view.auction.hotItemList .listWrapper > ul.items > li > .itemFavorite { position: absolute; top: 1.2em; right: 0.2em }
+.view.auction.userItemFavList .listWrapper > ul.items > li > .itemFavorite .favMessage, 
+.view.auction.userItemBidList .listWrapper > ul.items > li > .itemFavorite .favMessage, 
+.view.auction.userWonItemList .listWrapper > ul.items > li > .itemFavorite .favMessage, 
+.view.auction.itemList .listWrapper > ul.items > li > .itemFavorite .favMessage, 
+.view.auction.searchList .listWrapper > ul.items > li > .itemFavorite .favMessage, 
+.view.auction.hotItemList .listWrapper > ul.items > li > .itemFavorite .favMessage { opacity: 0; position: absolute; top: 2.1em; right: 0; width: 11em; text-align: center; background: #fff; padding: 1em; border: 1px solid #000 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .bottomBar, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .bottomBar, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .bottomBar, 
+.view.auction.itemList .listWrapper > ul.items > li .bottomBar, 
+.view.auction.searchList .listWrapper > ul.items > li .bottomBar, 
+.view.auction.hotItemList .listWrapper > ul.items > li .bottomBar { display: none !important; padding: 1.5em 0 0 0; position: relative }
+.view.auction.userItemFavList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup, 
+.view.auction.itemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup, 
+.view.auction.searchList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup, 
+.view.auction.hotItemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup { display: none; position: absolute; left: 0; bottom: 0; z-index: 999; width: 100%; min-height: 16em; background: #fff; padding: 0.5em 1.5em; box-shadow: 0 0 2em #747474; box-sizing: border-box }
+.view.auction.userItemFavList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container, 
+.view.auction.itemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container, 
+.view.auction.searchList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container, 
+.view.auction.hotItemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container { padding-top: 1em }
+.view.auction.userItemFavList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container .bidForm, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container .bidForm, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container .bidForm, 
+.view.auction.itemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container .bidForm, 
+.view.auction.searchList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container .bidForm, 
+.view.auction.hotItemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container .bidForm { margin-bottom: 0 }
+.view.auction.userItemFavList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container a.close, 
+.view.auction.userItemBidList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container a.close, 
+.view.auction.userWonItemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container a.close, 
+.view.auction.itemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container a.close, 
+.view.auction.searchList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container a.close, 
+.view.auction.hotItemList .listWrapper > ul.items > li .bottomBar .bidLink .bidPopup .container a.close { position: absolute; top: -0.9em; right: 0.2em; width: 1.5em; height: 1.5em; line-height: 1.5em; display: block; background: #000; border: 1px solid #000; border-radius: 2.5em; text-align: center; color: #fff; font-size: 2em; font-family: 'Comic Sans MS' }
+.view.auction.userItemFavList .listWrapper > ul.items > li.popup.open, 
+.view.auction.userItemBidList .listWrapper > ul.items > li.popup.open, 
+.view.auction.userWonItemList .listWrapper > ul.items > li.popup.open, 
+.view.auction.itemList .listWrapper > ul.items > li.popup.open, 
+.view.auction.searchList .listWrapper > ul.items > li.popup.open, 
+.view.auction.hotItemList .listWrapper > ul.items > li.popup.open { width: 150%; margin-left: -25%; padding: 1.8em 25%; box-sizing: border-box; box-shadow: 0 0 2em #747474; border: none }
+.view.auction.userItemFavList .listWrapper > ul.items > li.popup.open > .closeLink, 
+.view.auction.userItemBidList .listWrapper > ul.items > li.popup.open > .closeLink, 
+.view.auction.userWonItemList .listWrapper > ul.items > li.popup.open > .closeLink, 
+.view.auction.itemList .listWrapper > ul.items > li.popup.open > .closeLink, 
+.view.auction.searchList .listWrapper > ul.items > li.popup.open > .closeLink, 
+.view.auction.hotItemList .listWrapper > ul.items > li.popup.open > .closeLink { display: block }
+.view.auction.userItemFavList .listWrapper > ul.items > li.popup.open .bottomBar, 
+.view.auction.userItemBidList .listWrapper > ul.items > li.popup.open .bottomBar, 
+.view.auction.userWonItemList .listWrapper > ul.items > li.popup.open .bottomBar, 
+.view.auction.itemList .listWrapper > ul.items > li.popup.open .bottomBar, 
+.view.auction.searchList .listWrapper > ul.items > li.popup.open .bottomBar, 
+.view.auction.hotItemList .listWrapper > ul.items > li.popup.open .bottomBar { flex: 1 100%; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex !important; align-items: center; justify-content: space-between }
+.view.auction.userItemFavList .listWrapper .paginationBar, 
+.view.auction.userItemBidList .listWrapper .paginationBar, 
+.view.auction.userWonItemList .listWrapper .paginationBar, 
+.view.auction.itemList .listWrapper .paginationBar, 
+.view.auction.searchList .listWrapper .paginationBar, 
+.view.auction.hotItemList .listWrapper .paginationBar { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5em }
+.view.auction.userItemFavList .listWrapper .paginationBar .counter, 
+.view.auction.userItemBidList .listWrapper .paginationBar .counter, 
+.view.auction.userWonItemList .listWrapper .paginationBar .counter, 
+.view.auction.itemList .listWrapper .paginationBar .counter, 
+.view.auction.searchList .listWrapper .paginationBar .counter, 
+.view.auction.hotItemList .listWrapper .paginationBar .counter { padding: 1em 0 }
+.view.auction.userItemFavList .listWrapper .paginationBar .moreButton a, 
+.view.auction.userItemBidList .listWrapper .paginationBar .moreButton a, 
+.view.auction.userWonItemList .listWrapper .paginationBar .moreButton a, 
+.view.auction.itemList .listWrapper .paginationBar .moreButton a, 
+.view.auction.searchList .listWrapper .paginationBar .moreButton a, 
+.view.auction.hotItemList .listWrapper .paginationBar .moreButton a { display: inline-block; margin: 0 1em }
+.view.auction.userItemFavList .listWrapper .paginationBar .moreButton a img, 
+.view.auction.userItemBidList .listWrapper .paginationBar .moreButton a img, 
+.view.auction.userWonItemList .listWrapper .paginationBar .moreButton a img, 
+.view.auction.itemList .listWrapper .paginationBar .moreButton a img, 
+.view.auction.searchList .listWrapper .paginationBar .moreButton a img, 
+.view.auction.hotItemList .listWrapper .paginationBar .moreButton a img { max-height: 1em; width: auto; margin-left: 0.3em; position: relative; top: 0.15em }
+.view.auction.ajax.itemShow { display: grid !important; grid-template-columns: 18em auto 22em 4em }
+.view.auction.ajax.itemShow .imageContainer { padding: 1em }
+.view.auction.ajax.itemShow .imageContainer .first { margin-bottom: 0.2em }
+.view.auction.ajax.itemShow .imageContainer ul.imageList { list-style: none }
+.view.auction.ajax.itemShow .imageContainer ul.imageList li { display: inline-block; margin-bottom: 0.2em; max-width: 7.77em }
+.view.auction.ajax.itemShow .imageContainer ul.imageList li:nth-child(odd) { margin-right: 0.2em }
+.view.auction.ajax.itemShow .infoContainer { padding: 2em 2em }
+.view.auction.ajax.itemShow .infoContainer h2 { margin-bottom: 1.5em }
+.view.auction.ajax.itemShow .infoContainer h2 .bidNo { font-weight: 400 }
+.view.auction.ajax.itemShow .infoContainer a.more { display: block; font-weight: 700; margin-bottom: 0.5em }
+.view.auction.ajax.itemShow .infoContainer a.financingShow { display: block; font-weight: 700 }
+.view.auction.ajax.itemShow .infoContainer .vehicleInfo { margin: 2em 0 }
+.view.auction.ajax.itemShow .infoContainer .vehicleInfo table.data { width: 100% }
+.view.auction.ajax.itemShow .infoContainer .vehicleInfo table.data tbody tr { line-height: 1.9em; border-bottom: 1px solid #f4f3f3 }
+.view.auction.ajax.itemShow .infoContainer .vehicleInfo table.data tbody tr .title { font-weight: 700 }
+.view.auction.ajax.itemShow .infoContainer .vehicleInfo table.data tbody tr:last-child { border-bottom: none }
+.view.auction.ajax.itemShow .infoContainer .tags { padding: 5em 0 2em 0; margin-bottom: 2em }
+.view.auction.ajax.itemShow .infoContainer .tags strong { display: block; margin-bottom: 5px }
+.view.auction.ajax.itemShow .infoContainer .tags ul { list-style: none }
+.view.auction.ajax.itemShow .infoContainer .tags ul li { height: 36px; display: inline-block; float: left; margin: 0 0.313em 0.313em 0; border: 1px solid #c8e1f9; border-left: none; border-radius: 0 13px 13px 0; -webkit-border-radius: 0 13px 13px 0; -moz-border-radius: 0 13px 13px 0; background: #c8e1f9 }
+.view.auction.ajax.itemShow .infoContainer .tags ul li a { display: block; line-height: 36px; font-weight: 700; color: #0b569a; padding: 0 15px 0 44px; background: url('/images/templates/tovek/icon-white-check-circle.png') no-repeat 7px 6px }
+.view.auction.ajax.itemShow .infoContainer .tags ul li.empty { background-color: #e0e0e0 }
+.view.auction.ajax.itemShow .infoContainer .tags ul li.empty span { display: block; line-height: 36px; font-weight: 700; color: #fff; padding: 0 15px 0 44px; background: url('/images/templates/tovek/icon-white-check-circle.png') no-repeat 7px 6px }
+.view.auction.ajax.itemShow .infoContainer .printMap a { display: block; line-height: 25px; padding-left: 30px; font-weight: 700; background: url('/images/templates/tovek/icon-print-paper.png') left center no-repeat; color: #0b569a }
+.view.auction.ajax.itemShow .bidContainer { background: #f4f3f3; padding: 0 1.5em 1.5em 1.5em }
+.view.auction.ajax.itemShow .bidContainer .view.bidFormAdd .message { padding: 1em 0 1.5em 0 }
+.view.auction.ajax.itemShow .relationContainer { position: relative; position: relative; overflow-y: scroll }
+.view.auction.bidListAll h3, 
+.view.auction.bidList h3 { font-size: 1em; margin-bottom: 1em; color: #000 }
+.view.auction.bidListAll span.empty, 
+.view.auction.bidList span.empty { display: block; margin-bottom: 10px; padding-left: 33px; font-style: italic; color: #999 }
+.view.auction.bidListAll ul, 
+.view.auction.bidList ul { list-style: none; margin-bottom: 20px }
+.view.auction.bidListAll ul li, 
+.view.auction.bidList ul li { padding-left: 33px; line-height: 19px; margin-bottom: 10px; background: url('/images/templates/tovek/icon-bid-list.png') no-repeat 0 7.9px }
+.view.auction.bidListAll ul li:first-child, 
+.view.auction.bidList ul li:first-child { background: url('/images/templates/tovek/icon-bid-list-active.png') no-repeat 0 7.9px }
+.view.auction.bidListAll ul li:first-child p span, 
+.view.auction.bidList ul li:first-child p span { color: #f00 }
+.view.auction.bidListAll ul li p time, 
+.view.auction.bidList ul li p time { color: #5d5d5d }
+.view.auction.bidListAll ul li p span, 
+.view.auction.bidList ul li p span { color: #000 }
+.view.auction.bidListAll ul li p .user, 
+.view.auction.bidList ul li p .user { font-weight: 700 }
+.view.auction.bidListAll ul li p .value, 
+.view.auction.bidList ul li p .value { font-weight: 700 }
+.view.auction.bidListAll ul li span.date, 
+.view.auction.bidList ul li span.date { font-size: 0.938em; color: #5d5d5d }
+.view.auction.bidListAll ul li a, 
+.view.auction.bidList ul li a { display: block; padding-left: 33px; margin-bottom: 10px; font-weight: 700; color: #0b569a }
+.view.auction.bidListAll ul li.first, 
+.view.auction.bidList ul li.first { background: url('/images/templates/tovek/icon-bid-list-active.png') no-repeat 0 7.5px }
+.view.auction.bidListAll ul li.first strong, 
+.view.auction.bidList ul li.first strong { color: #f00 }
+.view.auction.bidListAll ul li.first.auto, 
+.view.auction.bidList ul li.first.auto { background: url('/images/templates/tovek/icon-bid-list-active-auto.png') no-repeat 0 7.5px }
+.view.auction.bidListAll ul li.noBids, 
+.view.auction.bidList ul li.noBids { opacity: 0.8; background: url('/images/templates/tovek/icon-bid-list.png') no-repeat 0 -3.5px }
+.view.auction.bidListAll > p, 
+.view.auction.bidList > p { text-align: center; font-weight: 700; margin-bottom: 1.1em }
+.view.auction.bidListAll > dl, 
+.view.auction.bidList > dl { font-size: 90%; line-height: 1.4em; color: #000 }
+.view.auction.bidListAll > dl::after, 
+.view.auction.bidList > dl::after { clear: both; content: ""; display: table }
+.view.auction.bidListAll > dl dt, 
+.view.auction.bidList > dl dt { clear: left; float: left; width: 10em; font-weight: 700 }
+.view.auction.bidListAll > dl dd, 
+.view.auction.bidList > dl dd { float: left; width: auto }
+.view.auction.bidSpeedForm > p.message { text-align: center }
+.view.auction.bidSpeedForm > p.message.endedMessage { padding-top: 2em; font-size: 1.3em; letter-spacing: 0.1em }
+.view.auction.bidSpeedForm .notification { border: 1px solid; font-size: 90%; padding: 0.5em 0; text-align: center; margin-bottom: 0.5em; border-bottom-left-radius: 1em; border-top-left-radius: 1em; border-bottom-right-radius: 1em; border-top-right-radius: 1em }
+.view.auction.bidSpeedForm .notification.error { border-color: #ed413d; background: #f59e9c; color: #f00 }
+.view.auction.bidSpeedForm .notification.success { border-color: #42ec3e; background: #a6f49d; color: #3f0 }
+.view.auction.bidSpeedForm .bidForm { padding-top: 1em }
+.view.auction.bidSpeedForm .bidForm .field.intervalBid .buttons { margin-bottom: 1em }
+.view.auction.bidSpeedForm .bidForm .field.intervalBid .buttons button { font-weight: 700; font-size: 1.3em; width: 100%; line-height: 1.5em }
+.view.auction.bidSpeedForm .bidForm .field.intervalBid label { display: block; line-height: 2em; margin-bottom: 2.2em; text-align: center }
+.view.auction.bidSpeedForm .bidForm .field.intervalBid .slider { margin: 0.5em 0.5em; height: 11px; border: 1px solid #f2f2f2; background: #e4e4e4 }
+.view.auction.bidSpeedForm .bidForm .field.intervalBid .slider .ui-slider-range { background: #095398 }
+.view.auction.bidSpeedForm .bidForm .field.intervalBid .slider .custom-handle { position: relative; top: -6.5px; cursor: pointer; background: #095398; border: 1px solid #abb2b8; -webkit-border-radius: 1em; -moz-border-radius: 1em; border-radius: 1em; /**
+ * Bid slider below
+ */ }
+.view.auction.bidSpeedForm .bidForm .field.intervalBid .slider .custom-handle .tooltip { position: absolute; z-index: 1020; display: block; min-width: 5.5em; padding: 5px; font-size: 11px; visibility: visible; bottom: 120%; margin-left: -2.2em }
+.view.auction.bidSpeedForm .bidForm .field.intervalBid .slider .custom-handle .tooltip .tooltip-inner { max-width: 200px; padding: 3px 8px; color: #000; text-align: center; text-decoration: none; background-color: #fff; border: 1px solid #ccc }
+.view.auction.bidSpeedForm .bidForm .field.intervalBid .slider .custom-handle .tooltip .tooltip-arrow { bottom: 0; left: 50%; margin-left: -5px; border-top: 5px solid #ccc; border-right: 5px solid transparent; border-left: 5px solid transparent; position: absolute; width: 0; height: 0 }
+.view.auction.bidSpeedForm .bidForm .field.freeBid .container.top { position: relative; max-width: 14.2em; margin: 1em auto 0 auto }
+.view.auction.bidSpeedForm .bidForm .field.freeBid .container.top > label { padding-left: 1.5em }
+.view.auction.bidSpeedForm .bidForm .field.freeBid .container.top > input { position: absolute; top: 0; left: 0 }
+.view.auction.bidSpeedForm .bidForm .field.freeBid .container.top .container.bottom { display: none; padding-top: 0.7em }
+.view.auction.bidSpeedForm .bidForm .field.freeBid .container.top .container.bottom > label { display: inline-block; margin-bottom: 0.3em; position: relative; top: 0.1em }
+.view.auction.bidSpeedForm .bidForm .field.freeBid .container.top .container.bottom > input { display: inline-block; max-width: 9.4em; text-align: center; border: 1px solid #ccc; -webkit-border-radius: 1em; -moz-border-radius: 1em; border-radius: 1em }
+.view.auction.bidSpeedForm .bidForm .field.freeBid #freeBidSelect:checked ~ .container { display: block }
+.view.auction.bidFormAdd { position: relative }
+.view.auction.bidFormAdd .bidHelp { display: none; position: absolute; bottom: 50px; left: 0; width: 100%; min-height: 150px; padding: 20px; border: 2px solid #c8e1f9; background: #fff; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px; box-sizing: border-box }
+.view.auction.bidFormAdd .currentBid { font-weight: 700; font-size: 1.3em; color: #000; padding-top: 0.5em }
+.view.auction.bidFormAdd .currentBid span { font-size: 1.2em }
+.view.auction.bidFormAdd .currentBid span.label { display: block; font-size: 0.7em }
+.view.auction.bidFormAdd .currentBidUser { color: #fe1d1d; font-weight: 700; font-size: 90%; padding-bottom: 0.5em }
+.view.auction.bidFormAdd > p.message.endedMessage { padding: 1em 0; font-size: 1.3em; letter-spacing: 0.1em }
+.view.auction.bidFormAdd .notification { border: 1px solid; font-size: 90%; padding: 0.5em 0; text-align: center; margin-bottom: 0.5em; border-bottom-left-radius: 1em; border-top-left-radius: 1em; border-bottom-right-radius: 1em; border-top-right-radius: 1em }
+.view.auction.bidFormAdd .notification.error { border-color: #ed413d; background: #f59e9c; color: #f00 }
+.view.auction.bidFormAdd .notification.success { border-color: #42ec3e; background: #a6f49d; color: #3f0 }
+.view.auction.bidFormAdd .currentAutoBid { padding: 0.75em 0 0 0 }
+.view.auction.bidFormAdd .currentAutoBid a { font-size: 0.75em }
+.view.auction.bidFormAdd .bidForm { padding: 1em 0; margin-bottom: 1.5em }
+.view.auction.bidFormAdd .bidForm .field { margin-bottom: 0.75em }
+.view.auction.bidFormAdd .bidForm .field label { display: block; margin-bottom: 0.4em; color: #000 }
+.view.auction.bidFormAdd .bidForm .field input { border-radius: 5px; box-shadow: inset 1px 1px 5px #a6a6a6; padding: 0.25em 0.5em; box-sizing: border-box; width: 14.5em }
+.view.auction.bidFormAdd .bidForm .buttons button { background: #c8e1f9; color: #000; font-weight: 700; border: 1px solid #c8e1f9; padding: 0.3em 2.5em 0.3em 2.5em; margin-right: 0.5em }
+.view.auction.bidFormAdd .bidForm .buttons button[name="submitPost"] { background: #00539b; color: #fff; border-color: #00539b }
+.view.auction.bidFormAdd .bidForm .buttons button[name="submitHelp"] { padding: 0.3em 1em 0.3em 1em }
+.view.auction.relatedItemList { position: absolute; top: 0; left: 0; width: 100%; height: 100% }
+.view.auction.relatedItemList .container { padding: 1em 1.5em }
+.view.auction.relatedItemList .container > h2 { margin-bottom: 1em }
+.view.auction.relatedItemList .container > ul > li { margin-bottom: 2em }
+.view.auction.relatedItemList .container > ul > li .imageContainer { padding: 0 0 0.4em 0 !important }
+.view.auction.relatedItemList .container > ul > li .infoContainer { font-size: 90%; padding: 0 !important }
+.view.auction.relatedItemList .container > ul > li .infoContainer h3 .bidNo { font-weight: 400; display: block; margin-bottom: 0.3em }
+.view.auction.relatedItemList .container > ul > li .infoContainer h3 .title { display: block; margin-bottom: 0.3em }
+.view.auction.relatedItemList .container > ul > li .infoContainer h3 .title a { color: #707070 }
+.view.auction.relatedItemList .container > ul > li .infoContainer .location { margin-bottom: 0.5em }
+.view.auction.itemShow.display { position: relative; margin: 2em 0; box-shadow: 0 0 3em #4b4b4b }
+.view.auction.itemShow.display .topbar .itemNav span { background: #707070; color: #fff; display: block; padding: 0 0.66em; font-size: 1.4em; line-height: 2em; box-sizing: border-box; cursor: pointer }
+.view.auction.itemShow.display .topbar .itemNav span.up { position: absolute; top: 45%; left: 0; -webkit-transform: scale(1) rotate(90deg); -moz-transform: scale(1) rotate(90deg); -ms-transform: scale(1) rotate(90deg); -o-transform: scale(1) rotate(90deg); transform: scale(1) rotate(90deg) }
+.view.auction.itemShow.display .topbar .itemNav span.down { position: absolute; top: 45%; right: 0; -webkit-transform: scale(1) rotate(-90deg); -moz-transform: scale(1) rotate(-90deg); -ms-transform: scale(1) rotate(-90deg); -o-transform: scale(1) rotate(-90deg); transform: scale(1) rotate(-90deg) }
+.view.auction.itemShow.display .topbar .closeLink a.close { position: absolute; top: 0; right: 0; background: #707070; color: #fff; display: block; padding: 0 0.66em; font-size: 1.4em; box-sizing: border-box }
+.view.auction.itemShow.display .grid { display: grid; grid-template-columns: 50% 50%; grid-template-rows: auto auto; max-width: 90%; margin: 1em auto; padding: 3em 0 }
+.view.auction.itemShow.display .grid .col.first .row { padding-right: 1.5em }
+.view.auction.itemShow.display .grid .col.first .row.first .labelImage { margin-bottom: 0.2em }
+.view.auction.itemShow.display .grid .col.first .row.first .labelImage * { width: 100%; height: auto }
+.view.auction.itemShow.display .grid .col.first .row.first .imageList { list-style: none; padding-top: 0.3em; display: grid; grid-template-columns: 20% 20% 20% 20% 20% }
+.view.auction.itemShow.display .grid .col.first .row.first .imageList li { display: inline-block; margin-bottom: 0.4em; padding: 0 0.2em; max-width: 7.77em }
+.view.auction.itemShow.display .grid .col.first .row.last { padding-top: 1.5em; padding-bottom: 1.5em }
+.view.auction.itemShow.display .grid .col.first .row.last .links .financingShow { display: inline-block; padding: 0 0 0 2em; font-weight: 700; background: url('/images/templates/tovekClassic/icon-blue-dollarsign.png') no-repeat left center }
+.view.auction.itemShow.display .grid .col.first .row.last .links .tellFriend { display: inline-block; padding: 0 0 0 2em; font-weight: 700; background: url('/images/templates/tovekClassic/icon-blue-letter.png') no-repeat left center }
+.view.auction.itemShow.display .grid .col.first .row.last .links .tellFriendContainer { margin-top: 0.4em; background: #ddd; color: #0a5599; padding: 1em; box-shadow: 0 0 0.1em #707070; border: 1px solid #fff; max-width: 15.7em }
+.view.auction.itemShow.display .grid .col.first .row.last .links .tellFriendContainer input, 
+.view.auction.itemShow.display .grid .col.first .row.last .links .tellFriendContainer textarea { border-radius: 5px; box-shadow: inset 1px 1px 5px #a6a6a6; padding: 0.25em 0.5em; box-sizing: border-box; width: 19em }
+.view.auction.itemShow.display .grid .col.first .row.last .links .tellFriendContainer textarea { width: 15.75em !important }
+.view.auction.itemShow.display .grid .col.first .row.last .links .tellFriendContainer button { padding: 0.2em 1em }
+.view.auction.itemShow.display .grid .col.first .row.last .vehicleInfo { margin-bottom: 2em }
+.view.auction.itemShow.display .grid .col.first .row.last .vehicleInfo table.data { width: 100% }
+.view.auction.itemShow.display .grid .col.first .row.last .vehicleInfo table.data tbody tr { line-height: 1.9em; border-bottom: 1px solid #f4f3f3 }
+.view.auction.itemShow.display .grid .col.first .row.last .vehicleInfo table.data tbody tr .title { font-weight: 700 }
+.view.auction.itemShow.display .grid .col.first .row.last .vehicleInfo table.data tbody tr:last-child { border-bottom: none }
+.view.auction.itemShow.display .grid .col.last .row { padding-left: 1.5em }
+.view.auction.itemShow.display .grid .col.last .row.first .container { background: #f4f3f3; padding: 3.5em 3em }
+.view.auction.itemShow.display .grid .col.last .row.first .container .mobileFirstImage { display: none; margin-bottom: 1em }
+.view.auction.itemShow.display .grid .col.last .row.first .container .mobileFirstImage .labelImage a img { width: 100%; height: auto }
+.view.auction.itemShow.display .grid .col.last .row.first .container h2 { max-width: 22em; margin-bottom: 0.15em }
+.view.auction.itemShow.display .grid .col.last .row.first .container h2 .bidNo { font-weight: 400 }
+.view.auction.itemShow.display .grid .col.last .row.first .container .location { margin: 0.5em 0 1.3em 0 }
+.view.auction.itemShow.display .grid .col.last .row.first .container .bidFormAdd { margin-bottom: 1.5em }
+.view.auction.itemShow.display .grid .col.last .row.first .container .bidFormAdd .currentBid { font-weight: 700 }
+.view.auction.itemShow.display .grid .col.last .row.first .container .bidFormAdd .currentBidUser { margin-bottom: 1em }
+.view.auction.itemShow.display .grid .col.last .row.first .container .bidFormAdd > p.message { text-align: left; margin-bottom: 2em }
+.view.auction.itemShow.display .grid .col.last .row.first .container .bidFormAdd .popupLogin { margin-bottom: 3em }
+.view.auction.itemShow.display .grid .col.last .row.first .container .bidFormAdd .popupLogin .links a:first-child { margin-right: 4em }
+.view.auction.itemShow.display .grid .col.last .row.first .container .bidFormAdd p.endedMessage { padding-top: 0.3em; margin-bottom: 1em; padding-bottom: 0.1em }
+.view.auction.itemShow.display .grid .col.last .row.first .container .bidList > p { text-align: left }
+.view.auction.itemShow.display .grid .col.last .row.last { padding-top: 1.5em; padding-bottom: 1.5em }
+.view.auction.itemShow.display .grid .col.last .row.last h3 { margin-top: 1em }
+.view.auction.itemShow.display .grid .col.last .row.last h3:first { margin-top: 0 }
+.view.auction.userHomepage { padding-top: 1em; padding-bottom: 2em }
+.view.auction.userHomepage > h1 { margin-bottom: 0.2em }
+.view.auction.userItemFavList { margin: 30px 0 0 0; padding: 15px 0 5px 0; border-top: 6px double #f1efef }
+.view.auction.userItemBidList { margin: 0 0 0 0; padding: 2em 0 2em 0; border-top: 6px double #f1efef }
+.view.auction.userWonItemList { margin: 0; padding: 2em 0 2em 0; border-top: 6px double #f1efef }
+.view.auction.userWonItemList .wonBid.message { margin: 0 0 50px 0; padding: 15px 0; text-align: center; border-bottom: 6px double #f1efef }
+.view.auction.userWonItemList .wonBid.message p { font-style: italic; color: #b0b0b0 }
+.view.auction.userItemFavList .listWrapper > em, 
+.view.auction.userItemBidList .listWrapper > em, 
+.view.auction.userWonItemList .listWrapper > em { display: inline-block; margin-bottom: 1.6em }
+.view.auction.userItemFavList .listWrapper > .paginationBar .toTop, 
+.view.auction.userItemBidList .listWrapper > .paginationBar .toTop, 
+.view.auction.userWonItemList .listWrapper > .paginationBar .toTop { padding-top: 1em }
+.view.auction.listArchivedAuctions { padding: 30px 0; /* Table head */ /* Table body */ }
+.view.auction.listArchivedAuctions .dateSelector { text-align: center; padding-bottom: 10px; font-size: 0.875em }
+.view.auction.listArchivedAuctions .dateSelector a { width: 7.5%; display: inline-block; background: #dedede; padding: 0 0.25; line-height: 2em; color: #000; text-align: center }
+.view.auction.listArchivedAuctions .dateSelector a.selected { background: #0a5599; color: #fff }
+.view.auction.listArchivedAuctions .dateSelector span { width: 7.5%; display: inline-block; background: #dedede; padding: 0 0.25; line-height: 2em; color: #999; text-align: center }
+.view.auction.listArchivedAuctions table.auctionList { width: 100%; border-collapse: separate; border-spacing: 0 4px }
+.view.auction.listArchivedAuctions table.auctionList thead tr th { text-align: left; height: 36px; vertical-align: middle; text-transform: uppercase; font-size: 1.125em }
+.view.auction.listArchivedAuctions table.auctionList thead tr th a { color: #999 }
+.view.auction.listArchivedAuctions table.auctionList thead tr th a:hover { color: #00539b }
+.view.auction.listArchivedAuctions table.auctionList thead tr th img { float: left; margin-right: 4px }
+.view.auction.listArchivedAuctions table.auctionList thead tr th.auctionTitle { width: 47%; padding-left: 1% }
+.view.auction.listArchivedAuctions table.auctionList thead tr th.partTitle { width: 25% }
+.view.auction.listArchivedAuctions table.auctionList thead tr th.auctionLocation { width: 16% }
+.view.auction.listArchivedAuctions table.auctionList thead tr th.partAuctionStart { width: 12% }
+.view.auction.listArchivedAuctions table.auctionList tbody tr { cursor: pointer; position: relative; background: #f4f3f3 }
+.view.auction.listArchivedAuctions table.auctionList tbody tr.odd { background: #f8f8f8 }
+.view.auction.listArchivedAuctions table.auctionList tbody tr td { padding: 0.5em 0; vertical-align: middle; border-bottom: 1px solid #fff }
+.view.auction.listArchivedAuctions table.auctionList tbody tr td img { display: block; float: left; margin-right: 4px }
+.view.auction.listArchivedAuctions table.auctionList tbody tr td.auctionTitle { padding: 0 3% 0 1% }
+.view.auction.listArchivedAuctions table.auctionList tbody tr td.auctionTitle a { font-weight: 600; color: #000 }
+.view.auction.listArchivedAuctions table.auctionList tbody tr td.auctionTitle a:hover { color: #00539b }
+.view.auction.listArchivedAuctions table.auctionList tbody tr { transition: all 0.5s linear; -webkit-transition: all 0.5s linear; -o-transition: all 0.5s linear; -ms-transition: all 0.5s linear; -kthtml-transition: all 0.5s linear }
+.view.auction.listArchivedAuctions .pagination { /* Pagination */ }
+.view.auction.listArchivedAuctions .pagination ul.paginationList { border: 0; margin: 10px 0; padding: 0; display: block; clear: both; padding-top: 25px }
+.view.auction.listArchivedAuctions .pagination ul.paginationList li { border: 0; margin: 0; padding: 0; font-size: 11px; list-style: none; float: left }
+.view.auction.listArchivedAuctions .pagination ul.paginationList a { border: solid 1px #d2d1d0; margin-right: 2px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px }
+.view.auction.listArchivedAuctions .pagination ul.paginationList .previous-off, 
+.view.auction.listArchivedAuctions .pagination ul.paginationList .next-off { color: #666; display: block; float: left; font-weight: bold; padding: 3px 4px }
+.view.auction.listArchivedAuctions .pagination ul.paginationList .next a, 
+.view.auction.listArchivedAuctions .pagination ul.paginationList .previous a { font-weight: bold }
+.view.auction.listArchivedAuctions .pagination ul.paginationList li.first a, 
+.view.auction.listArchivedAuctions .pagination ul.paginationList li.last a { padding: 2px 4px 3px 4px }
+.view.auction.listArchivedAuctions .pagination ul.paginationList li.active a { color: #333; font-weight: bold; display: block; float: left; padding: 3px 6px }
+.view.auction.listArchivedAuctions .pagination ul.paginationList a:link, 
+.view.auction.listArchivedAuctions .pagination ul.paginationList a:visited { color: #999; display: block; float: left; padding: 3px 6px; text-decoration: none }
+.view.auction.listArchivedAuctions .pagination ul.paginationList a:hover { border: solid 1px #d2d1d0; color: #000 }
+.view.auction.listArchivedAuctions .pagination .entriesTotal { clear: both; color: #808080 }
+
+.financingContainer { display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(255, 255, 255, 0.5); z-index: 999; color: #fff; overflow: auto }
+
+.financingContainer .view.itemFinancing { position: relative; width: 470px; padding: 15px 60px; max-width: 100%; margin: 200px auto 0 auto; background: #3693d4 url('/images/templates/tovekClassic/finance-form-arrow.png') no-repeat 215px 200px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.25) }
+
+.financingContainer .view.itemFinancing .closePopup { position: absolute; right: 0px; top: -16px; padding: 8px; font-weight: bold; cursor: pointer }
+
+.financingContainer .view.itemFinancing h1 { font-size: 1.5em; line-height: 1em }
+
+.financingContainer .view.itemFinancing h2 { font-size: 0.875em; line-height: 1em; margin: 1em 0 }
+
+.financingContainer .view.itemFinancing p { font-size: 0.875em; line-height: 1.25em; max-width: 180px }
+
+.financingContainer .view.itemFinancing .form { width: 185px; padding: 0 10px 15px 10px; background: #23638e }
+
+.financingContainer .view.itemFinancing .form .result { padding: 5px; background-image: none }
+
+.financingContainer .view.itemFinancing .form .result ol li { line-height: 1.25em; font-size: 0.75em }
+
+.financingContainer .view.itemFinancing .form .result ol li label { font-size: 1em }
+
+.financingContainer .view.itemFinancing .form h2 { font-weight: normal }
+
+.financingContainer .view.itemFinancing .form p { font-size: 0.625em }
+
+.financingContainer .view.itemFinancing .form form { padding-top: 15px }
+
+.financingContainer .view.itemFinancing .form form label { font-size: 0.625em }
+
+.financingContainer .view.itemFinancing .form form input.text { width: 183px; height: 20px; border: 1px solid #81adc3; line-height: 20px; padding: 0 5px }
+
+.financingContainer .view.itemFinancing .form form .buttons { max-width: 100%; padding-top: 15px }
+
+.financingContainer .view.itemFinancing .form form button { background: #f09233; color: #fff; border: 1px solid #cc8829; text-transform: uppercase; font-weight: bold; font-family: 'Open sans', sans-serif; font-size: 1.125em; text-align: center; width: 195px; padding: 5px 0 }
+
+.financingContainer .view.itemFinancing .foot { font-size: 0.625em; line-height: 1em; padding-top: 15px }

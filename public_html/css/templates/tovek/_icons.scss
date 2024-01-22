@@ -1,0 +1,207 @@
+/**
+ * Icons
+ *
+ * Font Awsome
+ * - Icon ref: http://fontawesome.io/icons/
+ */
+
+.icon {
+	@include hide-text;
+	display: inline-block;
+	vertical-align: text-top;
+}
+
+.iconText {
+	text-indent: 18px;
+	width: auto;
+
+	&.iconText:hover {
+		text-decoration: underline;
+	}
+}
+
+/**
+ * A
+ */
+.iconAdd {
+	@include fontIcon( $fa-var-plus-circle, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+.iconAccept {
+	@include fontIcon( $fa-var-check-circle, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+
+/**
+ * B
+ */
+
+/**
+ * C
+ */
+.iconChevronDown {
+    @include fontIcon( $fa-var-chevron-down, after ) {
+        display: inline-block;
+        margin-left: .5em;
+    }
+}
+.iconChevronLeft {
+	 @include fontIcon( $fa-var-chevron-left, after ) {
+			 display: inline-block;
+			 margin-right: .5em;
+	 }
+}
+.iconChevronRight {
+	 @include fontIcon( $fa-var-chevron-right, after ) {
+			 display: inline-block;
+			 margin-left: .5em;
+	 }
+}
+.iconChevronUp {
+	 @include fontIcon( $fa-var-chevron-up, after ) {
+			 display: inline-block;
+			 margin-left: .5em;
+	 }
+}
+.iconCss {
+	@include fontIcon( $fa-var-css3, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+.iconCopy {
+    @include fontIcon( $fa-var-clone, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+.iconClose {
+    @include fontIcon( $fa-var-times-circle, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+
+/**
+ * D
+ */
+.iconDelete {
+	@include fontIcon( $fa-var-minus-circle, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+
+/**
+ * E
+ */
+.iconEdit {
+	@include fontIcon( $fa-var-edit, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+.iconEnvelope {
+ @include fontIcon( $fa-var-envelope, before ) {
+			 display: inline-block;
+			 margin-right: .5em;
+	 }
+}
+.iconExternal {
+//	@include fontIcon( $fa-var-external-link-alt, after ) {
+//        display: inline-block;
+//        margin-left: .5em;
+//    }
+	//position: relative;
+	//&:after {
+	//	display: inline-block;
+	//	content: '\1f855';
+	//	border: 1px solid #0a5599;
+	//	line-height: .7em;
+	//	text-indent: 0;
+	//	padding: 0 .1em 0 0;
+	//	margin-left: .5em;
+	//}
+}
+
+/**
+ * G
+ */
+
+/**
+ * H
+ */
+
+/**
+ * I
+ */
+.iconImage {
+	@include fontIcon( $fa-var-image, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+.iconInfo {
+	@include fontIcon( $fa-var-info, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+
+/**
+ * L
+ */
+
+/**
+ * M
+ */
+
+/**
+ * N
+ */
+
+/**
+ * O
+ */
+
+/**
+ * P
+ */
+.iconPrinter {
+	@include fontIcon( $fa-var-print, before ) {
+		display: inline-block;
+		margin-right: .5em;
+	}
+}
+.iconPdf {
+	@include fontIcon( $fa-var-file-pdf, before ) {
+		display: inline-block;
+		margin-right: .5em;
+	}
+}
+
+/**
+ * R
+ */
+
+/**
+ * S
+ */
+.iconStar {
+	@include fontIcon( $fa-var-star, before ) {
+      display: inline-block;
+      margin-right: .4em;
+  }
+}
+
+/**
+ * T
+ */
+
+/**
+ * U
+ */

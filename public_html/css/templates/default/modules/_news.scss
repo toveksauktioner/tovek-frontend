@@ -1,0 +1,65 @@
+// .news
+
+	&.list, &.listAll {
+		ul {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			flex-flow: $newsListFlow wrap;
+			justify-content: space-between;
+
+			li {
+				list-style: none;
+				flex: 1 1 calc(100% / #{$newsPerRow});
+				padding: 1em;
+				box-sizing: border-box;
+
+				article {
+					display: -webkit-box;
+					display: -ms-flexbox;
+					display: -webkit-flex;
+					display: flex;
+					flex-flow: row wrap;
+
+					header {
+						flex: 0 1 100%;
+		
+						time {
+							font-size: .8em;
+							margin-top: -(goldenRatio(1em, -1));
+						}
+					}
+
+					.image {
+						flex: 1 1 50%;
+						margin-right: 2em;
+					}
+
+					.content {
+						flex: 1 1 50%;
+						align-self: center;
+					}
+				}
+			}
+		}
+
+		.meta {
+			a {
+				@include primary-color;
+				padding: .5em 1em;
+			}
+		}
+	}
+
+	&.show {
+		margin-bottom: 4em;
+
+		.image {
+			img {
+				width: 100%;
+				max-height: 400px;
+				object-fit: cover;
+			}
+		}
+	}

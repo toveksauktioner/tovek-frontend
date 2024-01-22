@@ -1,0 +1,23 @@
+.categoryFormAdd {
+	float: left;
+	margin-right: 45px;
+}
+.categoryListEdit {
+	float: left;
+	padding: 10px 10px 15px 0;
+	margin: 55px 0 0 0;
+}
+
+.categoryFormAdd form {
+	margin-bottom: 10px;
+}
+
+input.text {
+	width: 346px;
+}
+
+.fieldRoutePath label { float: left; width: auto; }
+.fieldRoutePath .labelSuffixContent { float: left; width: auto; margin-bottom: .3em; }
+.fieldRoutePath #routePath { float: left; width: auto; padding: 0 0 0 1px; box-sizing: border-box; }
+	.fieldRoutePath #routePath.autoFill { border: none; background: none; }
+.fieldRoutePath .suffixContent { display: block; }

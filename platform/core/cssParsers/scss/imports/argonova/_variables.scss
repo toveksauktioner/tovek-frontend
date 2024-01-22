@@ -1,0 +1,48 @@
+// Typography
+$baseFontFamily: sans-serif !default;
+
+// Sizes
+$baseFontSize: 1em !default;
+$baseLineHeight: 1.2 !default;
+$baseSpace: goldenRatio(1em, 1) !default;
+$baseSpaceSmall: 1em !default;
+$baseSpaceMini: goldenRatio( 1em, -1 ) !default;
+$borderRadius: $baseSpaceMini !default;
+$baseZIndex: 0 !default;
+$siteWidth: 63em !default;
+
+
+// Headings
+$h1FontSize: 2em !default;
+$h2FontSize: 1.5em !default;
+$h3FontSize: 1.17em !default;
+$h4FontSize: 1em !default;
+$h5FontSize: 0.83em !default;
+$h6FontSize: 0.75em !default;
+$headingFontFamily: inherit !default;
+$headingLineHeight: inherit !default;
+$headingMargin: 0 !default;
+
+// Base colors
+$baseBackgroundColor: #fff !default;
+$baseActionColor: #0090d5 !default;
+$baseActionHoverColor: contrastColor( $baseBackgroundColor, tint( $baseActionColor, 50% ), shade( $baseActionColor, 50% ) ) !default; // Darken or lighten based on the brightness of the background color
+$baseBlockColor: #aaa !default;
+$baseErrorColor: #b30015 !default;
+$baseTextColor: #000 !default;
+
+// Specified colors
+$linkColor: $baseActionColor !default;
+$linkHoverColor: $baseActionHoverColor !default; // Darken or lighten based on the brightness of the background color
+
+// Contents
+$menuTitle: '☰ ' attr( data-title ) !default; // Translated menu title. Use with data-title="<?php echo _('Menu') !default; ?>
+
+// Animations
+$transitionLength: .2s !default;
+
+// Shadows
+$baseBoxShadow: 0 $baseSpaceMini $baseSpaceMini rgba( 0, 0, 0, .25 ) !default;
+
+// Root mixin triggers
+$includeAtRoot_ToolAnimationRoot: false !default;

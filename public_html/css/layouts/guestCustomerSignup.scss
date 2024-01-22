@@ -1,0 +1,207 @@
+@import "argonova";
+@import "../templates/vexhlp/bootstrap";
+
+@mixin orderPaymentSame() {
+	fieldset.payment.field {
+		display: block !important;
+	}
+}
+
+.view.customer.signup {
+	@include clearfix;
+	position: relative;
+	margin-bottom: 3em;
+	
+	.information {
+		padding: 1em 0;
+	}
+	
+	form {
+		@include clearfix;
+		
+		label {
+			display: none;
+		}
+		
+		fieldset {
+			margin: 0;
+			padding: .8em .4em .8em 0;
+			box-sizing: border-box;
+			border: 1px solid #c0c0c0;
+			border-left: none;
+			border-right: none;
+			border-bottom: none;
+			
+			legend {
+				padding: 0 15px 0 0;
+				position: relative;
+				top: -1px;
+				font-weight: 600;
+			}
+			
+			input {
+				width: 100%;
+				box-sizing: border-box;
+			}
+			
+			select {
+				width: 100%;
+				box-sizing: border-box;
+				padding: .38em 0;
+			}
+			
+			.field {
+				margin-bottom: 5px;
+			}
+			
+			&.generic {
+				float: left;
+				width: 31%;
+				margin-right: 3%;
+				margin-bottom: .7em;
+				vertical-align: top;
+				
+				.suffixContent {
+					display: block;
+					padding: .5em 0 0 .3em;
+					font-weight: 700;
+				}
+			}
+			
+			&.payment {
+				float: left;
+				width: 31%;
+				margin-right: 3%;
+				vertical-align: top;
+				padding-top: 1.15em;
+				
+				.field {
+					display: none;
+					
+					&.orderPaymentSame {
+						display: block !important;
+						position: relative;
+						margin-bottom: .7em;
+						label {
+							display: block;
+							padding-left: 23px;
+						}
+						input {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: auto;
+							height: 100%;
+							margin: 0;
+							padding: 0;
+							
+							//&:not(:checked) {
+							//	@at-root .view.customer.signup form fieldset.payment .field {
+							//		display: block;
+							//	}
+							//}
+							//
+							//&:checked {
+							//	@at-root .view.customer.signup form fieldset.payment .field {
+							//		display: none;
+							//	}
+							//}
+						}
+					}
+				}
+			}
+			
+			&.delivery {
+				float: left;
+				width: 31%;
+				vertical-align: top;
+				padding-top: 1.15em;
+				
+				.field {
+					display: none;
+					
+					&.orderDeliverySame {
+						display: block !important;
+						position: relative;
+						margin-bottom: .7em;
+						label {
+							display: block;
+							padding-left: 23px;
+						}
+						input {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: auto;
+							height: 100%;
+							margin: 0;
+							padding: 0;
+							
+							//&:not(:checked) {
+							//	@at-root .view.customer.signup form fieldset.delivery .field {
+							//		display: block;
+							//	}
+							//}
+							//
+							//&:checked {
+							//	@at-root .view.customer.signup form fieldset.delivery .field {
+							//		display: none;
+							//	}
+							//}
+						}
+					}
+				}
+			}
+			
+			&.account {
+				clear: both;
+				float: left;
+				width: 31%;
+				vertical-align: top;
+				margin-bottom: .7em;
+			}
+			
+			&.userAgreement {
+				clear: both;
+				width: 100%;
+				
+				.boolean.field {
+					position: relative;
+					label {
+						display: inline-block;
+						padding-left: 2em;
+					}
+					div {
+						position: absolute;
+						top: -.05em;
+						left: 0;
+						width: 1em;
+					}
+				}
+			}
+			
+			@include maxScreen( $layoutBreakpoint2 ) {
+				margin-bottom: 1em;
+			}
+		}
+		
+		.buttons {
+			clear: both;
+			display: block;
+			padding-top: 1.5em;
+			margin-top: 1em;
+			border-top: 1px solid #ccc;
+
+			button {
+				&:first-child {
+					float: left;
+					width: 40%;
+				}
+				&:last-child {
+					float: right;
+					width: 40%;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,928 @@
+@import "bootstrap";
+@import "extensions";
+
+.view {
+	&.user.panelLinks {
+		margin-bottom: 1.5em;
+	}
+	&.user.storedData {
+		position: relative;
+		// margin: 30px 50px;
+		padding: 1em;
+		background: #dedede;
+
+		#downloadData { position: absolute; top: 1em; right: 1em; font-size: 0.75em; }
+
+		h2 { margin-bottom: .5em; }
+
+		table.userData { font-size: .9em; }
+			table.userData tbody {}
+				table.userData tbody tr { border-bottom: 1px dotted #999; }
+				table.userData tbody tr:last-child { border: none; }
+					table.userData tbody tr td { height: 1.8em; vertical-align: middle; }
+					table.userData tbody tr td.title { font-weight: bold; width: 30%; }
+					table.userData tbody tr td.data { width: 70%; }
+
+
+		table.bidData { font-size: .9em; }
+			table.bidData tbody {}
+				table.bidData tbody tr {}
+					table.bidData tbody tr td.auction { padding-top: 1em; }
+					table.bidData tbody tr td.item { padding-top: 0.5em; font-weight: bold; }
+					table.bidData tbody tr td.itemSortNo { white-space: nowrap; padding-right: 1em; }
+
+		div.userNote { margin: 0.5em; padding: 0.5em; background: #ccc; }
+
+		hr { color: #999; background: #999; margin: 1em 0; }
+
+		.requestDeletion { text-align: center; font-size: 1.5em; }
+			.requestDeletion label { font-size: .75em; }
+			.requestDeletion button { padding: 0.25em 1em; margin-top: 1em; font-size: 0.75em; font-weight: bold; }
+	}
+	&.invoiceList {
+		.gridTable {
+			padding-bottom: 4em;
+
+			.dataRow {
+				grid-template-columns: 5em 6em 1fr 9em;
+
+				&.first {
+					line-height: 1.75em;
+					font-weight: bold;
+					grid-gap: 0;
+					background: $colorGrayLight;
+
+					.dataCell {
+						padding: .25em;
+					}
+				}
+				&.second {
+					grid-template-columns: auto 4em;
+					padding: 0 1em 2em 1em;
+
+					.dataCell {
+						&.invoiceId {
+							display: grid;
+							grid-template-columns: repeat( auto-fit, minmax(12em, 1fr) );
+							grid-gap: .5em;
+
+							div {
+								i.fas, i.far {
+									padding: 0 .125em;
+									color: $colorGrayLight;
+								}
+							}
+						}
+						&.invoicePay {
+							text-transform: none;
+
+							a {
+								display: block;
+							}
+						}
+					}
+				}
+
+				.dataCell {
+					&.invoiceRemainingAmount,
+					&.invoiceTotalAmount {
+						text-align: right;
+					}
+					&.invoicePay,
+					&.invoiceStatus {
+						text-align: center;
+						text-transform: uppercase;
+
+						span.paymentStatus {
+							font-size: .875em;
+							background: $colorGray200;
+							color: $white;
+							width: 8em;
+							display: inline-block;
+							border-radius: $borderRadius;
+
+							&.paid {
+								background: $colorSuccessLighter;
+							}
+						}
+					}
+				}
+			}
+			footer {
+				.dataRow {
+					line-height: 1.75em;
+				}
+			}
+		}
+	}
+
+	&.invoice {
+		&.show {
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+			background: $white;
+			text-align: center;
+			overflow: auto;
+			z-index: 1;
+			font-size: 0.875em;
+
+			// The invoice css is by history in view nr 380
+			@import "../../views/html/invoice/380.css";
+
+			header.invoiceHeader .invoiceBaseInfo .invoiceDataTable .page { display: none; }
+		}
+	}
+
+	&.freightRequest {
+		&.formAdd {
+			margin-bottom: $baseSpace;
+
+			form {
+				.gridTable {
+					.dataRow {
+						.dataCell {
+							&.invoiceInformation {
+								overflow: hidden;
+								white-space: nowrap;
+								text-overflow: ellipsis;
+							}
+							&.invoiceStatus {
+								text-align: center;
+							}
+						}
+					}
+				}
+				.invoiceLineSelector {
+					color: $black;
+					padding: $baseSpace $baseSpaceSmall;
+
+					small {
+						font-size: 0.75em;
+						text-transform: uppercase;
+						font-weight: bold;
+					}
+					ul {
+						list-style: none;
+						float: left;
+						padding-right: $baseSpace;
+
+						li {
+							line-height: 1.5em;
+						}
+					}
+					br.clear {
+						clear: both;
+					}
+				}
+				> fieldset {
+					padding: 0 $baseSpaceSmall;
+				}
+			}
+		}
+		&.tableEdit {
+			.gridTable {
+				.requestCost {
+					text-align: right;
+				}
+				.body {
+					.dataRow {
+						line-height: 2em;
+					}
+				}
+			}
+		}
+		&.show {
+			.title {
+		  	text-transform: uppercase;
+		    font-size: .75em;
+		    font-weight: bold;
+				padding: .25rem;
+				background: $colorGray100;
+			}
+			.content {
+				padding: $baseSpaceMini;
+			}
+
+			.requestInfo {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-gap: $baseSpaceSmall;
+				margin-top: $baseSpaceSmall;
+
+				.message, .formStructure {
+					grid-column: span 2;
+					color: $black;
+
+					p:first-child {
+						margin-top: 0;
+					}
+				}
+				.message {
+					p:last-child {
+						margin-bottom: 0;
+					}
+				}
+				.cost {
+					.content {
+
+						font-size: 2em;
+						font-weight: bold;
+					}	
+				}
+			}
+		}
+	}
+
+	&.invoice {
+		&.userList {
+			.gridTable {
+				display: grid;
+				margin-bottom: 4rem;
+
+				.dataRow {
+					grid-template-columns: 6em 1fr 1fr 10em;
+				}
+				header {
+					display: none;
+				}
+				.body, footer {
+					article {
+						margin: .5em 0 1.5em 0;
+					}
+					.dataRow {
+						.dataCell {
+							&.invoiceId {
+								font-size: 1.25em;
+								line-height: 2.5rem;
+								text-align: center;
+							}
+						}
+
+						&.first {
+							background: $colorGray100;
+							border-top-left-radius: $borderRadius;
+							border-top-right-radius: $borderRadius;
+						}
+						&.second {
+							border: 1px solid $colorGray100;
+							border-bottom-left-radius: $borderRadius;
+							border-bottom-right-radius: $borderRadius;
+
+							.dataCell {
+								&.invoiceControls,
+								&.invoiceDate {
+									padding-left: 1em;
+										font-size: .875em;
+										line-height: 1.5em;
+								}
+								&.invoiceControls {
+									a {
+										display: block;
+									}
+								}
+								&.invoiceAmount {
+									font-size: 1.25em;
+									line-height: 2.5rem;
+									font-weight: bold;
+									text-align: center;
+								}
+							}
+						}
+					}
+				}
+				footer {
+					position: sticky;
+					top: $userBarHeight;
+					background: $backgroundColor;
+					grid-row: 1;
+					border: none;
+
+					.dataRow {
+						padding: .5em 0;
+						grid-template-columns: auto 0 fit-content(100%) 20em;
+
+						.dataCell {
+							&.invoiceId {
+								font-size: initial;
+								text-align: left;
+							}
+							&.invoiceDate {
+								font-size: 1.25em;
+								line-height: 2.5rem;
+								text-align: right;
+							}
+							&.invoiceAmount {
+								border-radius: $borderRadius;
+								padding: $borderRadius;
+								background: $colorGray100;
+								display: grid;
+								grid-template-columns: 1fr 1fr;
+
+								.invoiceRemainingAmount {
+									font-size: 1.25em;
+									line-height: 2.5rem;
+									text-align: center;
+								}
+							}
+						}
+					}
+				}
+			}
+
+		  @include maxScreen( $layoutBreakpoint4 ) {
+				.gridTable {
+					.body {
+						article {
+							.dataRow {
+								&.first {
+									grid-template-columns:  1fr 1fr;
+									padding: .5em;
+
+									.invoiceId {
+										grid-row: 2;
+										grid-column: 1;
+									}
+									.invoiceAmount {
+										grid-row: 2;
+										grid-column: 2;
+									}
+									.invoiceControls {
+										grid-row: 1;
+										grid-column: 1;
+									}
+									.invoiceDate {
+										grid-row: 1;
+										grid-column: 2;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		  @include maxScreen( $layoutBreakpoint5 ) {
+				.gridTable {
+					.body {
+						article {
+							padding: 1em 0;
+
+							.dataRow {
+								&.second {
+									grid-template-columns: 1fr 1fr;
+
+									.dataCell {
+										&.invoiceAmount {
+											grid-row: 1;
+											grid-column: 2;
+										}
+									}
+								}
+							}
+						}
+					}
+					footer {
+						.dataRow {
+							grid-template-columns: auto auto;
+
+							.dataCell {
+								&.invoiceId {
+									grid-column: span 2;
+								}
+								&.invoiceControls {
+									display: none;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	&.financing {
+		&.userTableEdit {
+			.financingItem {
+				display: grid;
+				grid-template-columns: 10em repeat( 4, 1fr );
+				background: $white;
+		    border-radius: .25em;
+		    padding: .5em;
+
+				div {
+					&.title {
+						grid-column: #{1} / #{-1};
+				    padding-bottom: .5em;
+				    font-size: 1.25rem;
+					}
+					&.financingControls {
+						text-align: right;
+					}
+					h3 {
+						font-size: .75em;
+						text-transform: uppercase;
+						font-weight: normal;
+						text-decoration: none;
+					}
+				}
+			}
+
+		  @include maxScreen( $layoutBreakpoint6 ) {
+				.financingItem {
+					grid-template-columns: repeat( 2, 1fr );
+					grid-gap: .5em;
+
+					div {
+						&.financingControls {
+							grid-column: #{1} / #{-1};
+							text-align: center;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.freightRequest {
+		&.customerFormAdd {
+			.auctionPartInfo {
+				ul {
+					list-style: none;
+					padding-top: 1em;
+				}
+			}
+			.freightCostDetails {
+				display: grid;
+				grid-template-columns: auto 8em;
+
+				.freightRequestMessage {
+					grid-column: span 2;
+				}
+				.freightRequestTotalLabel, .freightRequestCostTotal {
+					font-weight: bold;
+					border-top: 1px solid $colorGray500;
+				}
+				div:nth-child( odd ) {
+					&:not( :first-child ) {
+						text-align: right;
+					}
+				}
+				div:first-child {
+					font-weight: normal;
+				}
+			}
+			ul.invoiceList {
+				list-style: none;
+				color: black;
+				padding-bottom: 1em;
+
+				> li {
+					display: grid;
+					grid-template-columns: 1.5em auto;
+					grid-gap: .5em;
+
+					.checkbox {
+						input.checkbox {
+							width: 1.5em;
+							height: 1.5em;
+						}
+					}
+					> i {
+						line-height: 1.5em;
+					}
+				}
+			}
+			.buttons {
+				text-align: center;
+				padding-bottom: 1em;
+			}
+		}
+	}
+	&.unifaun {
+		&.customerFormAdd {
+			display: none;
+
+			h1 {
+				display: none;
+			}
+		}
+	}
+	&.payment {
+    &.wasakreditCheckoutInit {
+      .cancelButton {
+        text-align: center;
+        display: none;
+
+        a {
+          @extend %commonButton;
+        }
+      }
+    }
+		&.cartEcsterPay,
+		&.cartSvea {
+			display: grid;
+			grid-template-columns: 18em auto;
+			grid-gap: $baseSpace;
+
+			.gridTable {
+				.dataRow {
+					grid-template-columns: auto 8em;
+
+					.dataCell {
+						&.invoiceRemainingAmount {
+							text-align: right;
+						}
+					}
+				}
+				footer {
+					.dataRow {
+						.dataCell {
+							text-align: right;
+							font-weight: bold;
+						}
+					}
+				}
+			}
+			#ecster-pay-ctr,
+			#sveaCart {
+				background: $colorGray100;
+	    	padding: 2em;
+			}
+			.message {
+				color: white;
+				padding: 1rem;
+				margin-top: 1rem;
+
+				&.cancelled {
+					background: $colorFailure;
+				}
+				&.completed {
+					background: $colorSuccess;
+				}
+			}
+
+	    @include maxScreen( $layoutBreakpoint3 ) {
+	      grid-template-columns: 1fr;
+	    }
+		}
+	}
+	&.customer {
+
+	}
+	&.infoContent {
+		@include clearfix;
+
+		&.infoContent322 {
+			h1 {
+				margin-bottom: .4em;
+			}
+		}
+	  &.infoContent414 {
+	    display: grid;
+	    grid-template-columns: 70% 30%;
+	    grid-gap: 1em;
+
+	    .infoText {}
+	    .wkInfo {
+	      background: $colorGray100;
+	      border-radius: $borderRadius;
+
+	      img {
+	        width: 100%;
+	        max-width: 20em;
+	        height: auto;
+	      }
+	      p {
+	        text-align: center;
+
+	        &:last-child {
+	          padding: 0 1em 1em 1em;
+	          font-size: .875em;
+	          font-style: italic;
+	        }
+	      }
+	    }
+
+	    @include maxScreen( $layoutBreakpoint4 ) {
+	      grid-template-columns: auto;
+	    }
+	  }
+	}
+	&.user {
+		// &.signup {
+		// 	.information {
+		// 		background: #ffdd00;
+		// 		padding: 2em 3em;
+		// 		box-sizing: border-box;
+		// 	}
+		// 	> .arrow {
+		// 		text-align: center;
+		// 	}
+		// 	form {
+		// 		max-width: 30em;
+		// 		margin: 0 auto;
+		// 		.fieldGroup {
+		// 			border-bottom: 1px solid #999;
+		// 			padding-bottom: 1.5em;
+		// 			.field {
+		// 				padding: .17em 0;
+		// 				label {
+		// 					text-align: right;
+		// 					padding-right: 1em;
+		// 					line-height: 1.9em;
+		// 					position: relative;
+		// 					top: .25em;
+		// 				}
+		// 				input {
+		// 					border-radius: 10px;
+		// 					box-shadow: inset 1px 3px 10px #c6c6c6;
+		// 					border: 1px solid #ccc;
+		// 					padding: 0 8px;
+		// 					box-sizing: border-box;
+		// 					line-height: 2.3em;
+		// 					width: 14em;
+		// 				}
+		// 				select {
+		// 					border-radius: 10px;
+		// 					box-shadow: inset 1px 3px 10px #c6c6c6;
+		// 					border: 1px solid #ccc;
+		// 					padding: 0 8px;
+		// 					box-sizing: border-box;
+		// 					height: 2.3em;
+		// 					width: 17em;
+		// 				}
+		//
+		// 				&.userNewsletterSignup {
+		// 					padding: .9em 0;
+		// 					label {
+		// 						line-height: 1.4em;
+		// 						top: 0;
+		// 					}
+		// 					input {
+		// 						width: 1em;
+		// 					}
+		// 				}
+		// 			}
+		//
+		// 			&.one {
+		// 				.field {
+		// 					label {
+		// 						top: 0;
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		//
+		// 		#registrationAgreement {
+		// 			padding-top: 2.2em;
+		// 			.field {
+		// 				.field {
+		// 					position: relative;
+		// 					label {
+		// 						width: 100%;
+		// 						height: 2.5em;
+		// 						padding-left: 2em;
+		// 					}
+		// 					input {
+		// 						position: absolute;
+		// 						left: 0;
+		// 						top: 0;
+		// 						width: 1.2em;
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		//
+		// 		.formBottom {
+		// 			text-align: center;
+		// 		}
+		//
+		// 		.buttons {
+		// 			padding-top: 2em;
+		// 			text-align: center;
+		// 			button {
+		// 				border: 1px solid;
+		// 				@include border-left-radius( 2em );
+		// 				@include border-right-radius( 2em );
+		// 				padding: .5em 2em;
+		// 				background: #00b943;
+		// 				border-color: #00b943;
+		// 				color: #fff;
+		// 			}
+		// 		}
+		// 	}
+		// }
+		&.popupLogin {
+			.links {
+				text-align: center;
+				padding-top: 2em;
+			}
+		}
+		&.accountRetrieval {
+			max-width: 42em;
+			margin: 0 auto;
+			padding: 5em 0;
+			text-align: center;
+
+			h1 {
+				margin-bottom: 1em;
+			}
+
+			form {
+				.field {
+					margin-bottom: 1em;
+					label {
+						display: none;
+					}
+					input {
+						padding: .6em;
+						width: 17.3em;
+						box-sizing: border-box;
+						color: #9b9b9b;
+						background: url('/images/templates/tovekClassic/bg-input.png') no-repeat;
+						border: none;
+					}
+				}
+				#googleRecaptchaField {}
+				.buttons {
+					clear: both;
+					padding-top: 1em;
+					button {
+						padding: .4em 2em;
+						border-radius: 10px;
+						border: 1px solid #cfcfcf;
+						background: #ffffff; /* Old browsers */
+						background: -moz-linear-gradient(top,  #ffffff 0%, #ededed 100%, #ededed 102%); /* FF3.6-15 */
+						background: -webkit-linear-gradient(top,  #ffffff 0%,#ededed 100%,#ededed 102%); /* Chrome10-25,Safari5.1-6 */
+						background: linear-gradient(to bottom,  #ffffff 0%,#ededed 100%,#ededed 102%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+
+						-webkit-transition: all .3s ease;
+						-moz-transition: all .3s ease;
+						-o-transition: all .3s ease;
+						-ms-transition: all .3s ease;
+						transition: all .3s ease;
+
+						&:hover {
+							background: #ededed; /* Old browsers */
+							background: -moz-linear-gradient(top,  #ededed 0%, #ffffff 99%); /* FF3.6-15 */
+							background: -webkit-linear-gradient(top,  #ededed 0%,#ffffff 99%); /* Chrome10-25,Safari5.1-6 */
+							background: linear-gradient(to bottom,  #ededed 0%,#ffffff 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+							filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+						}
+					}
+				}
+			}
+		}
+		&.userFormDelivery {
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			grid-gap: $baseSpace;
+
+			.addressPlain {
+				padding: $baseSpace;
+				background: $colorGray100;
+				color: $black;
+
+				.addressInfo {
+					display: grid;
+					grid-template-columns: 10em auto;
+					grid-gap: 0 $baseSpaceSmall;
+	    		grid-auto-rows: min-content;
+					padding: $baseSpaceSmall;
+				}
+	}
+			.addressForm {
+				display: none;
+			}
+
+			@include maxScreen( $layoutBreakpoint4 ) {
+				grid-template-columns: 1fr;
+
+				.addressPlain {
+					h2, .addressInfo {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+	&.guestFormLogin {
+		.links {
+			text-align: center;
+			font-size: .875em;
+			padding-top: 2em;
+		}
+	}
+
+	&.newsletterSubscriptionGuestForm {
+		margin: 25px auto 50px;
+		max-width: 800px;
+
+		form {
+			.field {
+				float: left;
+				width: 80%;
+
+				label { display: none; }
+				input{ width: 98%; }
+			}
+
+			.buttons {
+				float: left;
+				width: 20%;
+
+				button {
+					width: 100%;
+					height: 34px;
+					position: relative;
+					top: -1px;
+				}
+			}
+		}
+	}
+
+	&.userAddress {
+		&.tableEdit {
+			.gridTable {
+				.dataRow {
+					grid-template-columns: 12rem 10rem auto 8rem 7rem;
+
+					.dataCell {
+						line-height: 1.75em;
+					}
+				}
+				.body {
+					.dataRow {
+						.dataCell {
+							&.addressType {
+								span {
+									background: $colorGray100;
+									font-size: .75em;
+									text-transform: uppercase;
+									padding: 0 $baseSpaceMini;
+							    font-weight: bold;
+							    border-radius: $borderRadius;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			@include maxScreen( $layoutBreakpoint4 ) {
+				.gridTable {
+					header {
+						display: none;
+					}
+					.dataRow {
+						grid-template-columns: auto 7rem;
+						grid-template-rows: 1.25em auto;
+						margin: $baseSpaceSmall 0;
+
+						.dataCell {
+							line-height: 1em;
+
+							&.addressName {
+								grid-row: 1;
+							}
+							&.addressContactPerson {
+								display: none;
+							}
+							&.addressAddress {
+								grid-column: span 2;
+							}
+							&.controls {
+								grid-row: 1;
+							}
+						}
+					}
+				}
+			}
+		}
+		&.formAdd {
+			margin-bottom: $baseSpace;
+		}
+	}
+
+  &.stock {
+    &.formAdd {
+      form {
+        .images {
+          padding: 1em 0;
+          color: black;
+
+          ul.stockImages {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat( 8, 1fr );
+            grid-gap: .25em;
+          }
+        }
+      }
+    }
+    &.tableEdit {
+
+    }
+  }
+}

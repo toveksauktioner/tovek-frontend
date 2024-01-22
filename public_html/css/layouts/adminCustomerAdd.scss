@@ -1,0 +1,66 @@
+.view {
+	&.customerAdd {
+		form.marginal {			
+			.fieldGroup {
+				margin: 0;
+				&.userData {
+					float: left;
+					width: 35%;
+					min-width: 410px;
+					margin-right: 1%;					
+				}
+				&.information {
+					float: left;
+					width: 49%;
+					margin-left: 1%;
+					position: relative;
+					&:after {
+						display: block;
+						content: '';						
+						position: absolute;
+						left: -2%;
+						top: -16px;
+						width: 1px;
+						height: 100%;
+						background: rgba(0, 0, 0, 0.12);
+						box-shadow: 0 0 2px #333;
+					}
+				}
+				&.paymentAddress {
+					float: left;
+					width: 48%;
+					margin: 10px 1% 10px 0;
+				}
+				&.deliveryAddress {
+					float: right;
+					width: 49%;
+					margin: 10px 0 10px 1%;
+					position: relative;
+					&:after {
+						display: block;
+						content: '';						
+						position: absolute;
+						left: -2.5%;
+						top: -16px;
+						width: 1px;
+						height: 100%;
+						background: rgba(0, 0, 0, 0.12);
+						box-shadow: 0 0 2px #333;
+					}
+				}
+				.field {
+					label {
+						width: 130px;
+					}
+				}
+			}
+			.buttons {
+				clear: both;
+				display: block;
+				padding: 1px 0;
+				border-top: 1px solid rgba(0, 0, 0, 0.12);
+				border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+			}
+		}
+	}
+}

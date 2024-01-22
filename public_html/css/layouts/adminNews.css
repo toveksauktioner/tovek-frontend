@@ -1,0 +1,4 @@
+table.dataTable {}
+	table.dataTable tbody {}
+		table.dataTable tbody tr.notTranslated { color: #999; background: #f9f9f9; }
+		table.dataTable tbody tr.notTranslated a { color: #999; }

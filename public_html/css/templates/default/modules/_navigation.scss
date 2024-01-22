@@ -1,0 +1,553 @@
+// Main naviation
+// General settings
+#mobileMenu {
+	display: none;
+}
+
+.label-toggle {
+	display: none;
+}
+
+#localeList {
+	display: none;
+	
+	@if $displayLocaleList == true{
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+	    justify-content: center;
+	    align-items: center;
+	}
+}
+
+.menuWrapper {
+	min-height: inherit;
+	position: relative;
+
+	/*
+	 * Menu below logo
+	 */
+	@if $menuFullWidth == true {
+		ul.navMain{
+			max-width: $siteWidth;
+			min-height: inherit;
+			padding: 0 1em;
+			box-sizing: border-box;
+			margin: auto;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			justify-content: flex-start;
+			align-items: center;
+			list-style: none;
+
+			// Generic styles
+			li.active {
+				a{
+					color: $accent-color;
+				}
+			}
+
+			li.open > ul {
+				display: block;
+			}
+
+			li {
+				line-height: $menuHeight;
+				position: relative;
+
+				a {
+					display: block;
+					@include primary-color;
+					padding: 0 1em;
+					transition: all ease .3s;
+
+					@if $menuBackgroundColor == false { 
+						background: transparent; 
+
+						@if( lightness($baseBackgroundColor) < 50 ) {
+					        color: lighten( $baseBackgroundColor, 100% )
+					    } @else{
+					        color: darken( $baseBackgroundColor, 100% )
+					    }
+					}
+
+					&:hover, &:active, &:focus {
+						color: $accent-color;
+					}
+
+					> .dropdown {
+						transition: all ease $transitionLength;
+						padding: .5em;
+						margin-left: 5px;
+						position: relative;
+						
+						&:hover {
+							@if( lightness($primary-color) < 50 ) {
+						        background: lighten( $primary-color, 10% )
+						    } @else{
+						        background: darken( $primary-color, 10% )
+						    }
+						}
+
+						&::after {
+							content: '';
+							border-style: solid;
+							border-width: 0 1px 1px 0;
+							display: inline-block;
+							padding: 3px;
+							margin-bottom: 4px;
+							transition: all ease $transitionLength;
+							transform: rotate(45deg);
+		    				-webkit-transform: rotate(45deg);
+
+		    				@if $menuBackgroundColor == true {
+			    				@if( lightness($primary-color) < 50 ) {
+							        border-color: lighten( $primary-color, 100% )
+							    } @else{
+							        border-color: darken( $primary-color, 100% )
+							    }
+							}
+						}
+
+						&.open::after {
+							transform: rotate(225deg);
+		    				-webkit-transform: rotate(225deg);
+						}
+					}
+				}
+
+				&.open > ul {
+					display: block;
+				}
+
+				ul {
+					display: none;
+					position: absolute;
+					top: 100%;
+					min-width: 100%;
+					z-index: 109;
+					@include secondary-color;
+
+					li.subTree {
+
+						a{
+							@include secondary-color;
+
+							&:hover {
+								color: $accent-color;
+							}
+						
+							.dropdown {
+								position: absolute;
+								right: 0;
+								top: 0;
+								padding: 0 .5em;
+							}
+						}
+					}
+				}
+			}
+			// First level
+			> li {
+				> a {
+				}
+				// Second level
+				> ul {
+					> li {
+						> a {
+						}
+					}
+				}
+			}
+		}
+
+		@include maxScreen ( $tablet ) {
+			.label-toggle {
+				position: absolute;
+				right: 1em;
+				top: calc(#{$menuHeight} * 0.3);
+				cursor: pointer;
+				padding: 10px 35px 16px 0px;
+				display: block;
+
+				span,
+				span:before,
+				span:after {
+					height: 4px; // Thickness of lines
+					width: 35px; // Width of lines
+					background: #fff; // Color of hamburger and X
+					cursor: pointer;
+					border-radius: 1px;
+					position: absolute;
+					display: block;
+					content: '';
+					transition: all $transitionLength ease-in-out;
+				}
+
+				span:before {
+					top: -10px; // Distance between lines
+				}
+
+				span:after {
+					bottom: -10px; // Distance between lines
+				}
+			}
+
+			#mobileMenu:checked ~ .label-toggle span {
+				background-color: transparent;
+
+				&:before,
+				&:after {
+					top: 0;
+				}
+
+				&:before {
+					transform: rotate(45deg);
+				}
+
+				&:after {
+					transform: rotate(-45deg);
+				}
+			}
+
+			ul.navMain {
+				height: 0;
+				padding: $menuHeight 0 0;
+				opacity: 0;
+				visibility: hidden;
+				align-items: center;
+				text-align: center;
+				flex-flow: column wrap;
+				transition-property: all;
+				transition-duration: $transitionLength + .3;
+				transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+				li{
+					min-height: $menuHeight;
+					height: auto;
+					display: block;
+					width: 100%;
+					margin: 0 auto;
+
+					&:hover, &.open a {
+						@include secondary-color;
+					}
+
+					a {
+						display: block;
+
+						&:hover {
+							@include secondary-color;
+						}
+					}
+				}
+
+				li.subTree {
+					a {
+						position: relative;
+
+						.dropdown {
+							position: absolute;
+							right: 0;
+							top: 0;
+							padding: 0 1.5em;
+							height: 100%;
+
+							&::after {
+								position: absolute;
+								top: 40%;
+								bottom: 0px;
+								height: 0px;
+								right: 50%;
+							}
+						}
+					}
+
+					ul {
+						position: relative;
+						margin-bottom: 1px;
+
+						li {
+							a {
+								.dropdown {
+									position: absolute;
+									right: 0;
+									top: 0;
+									padding: 0 1.5em;
+									height: 100%;
+
+									&::after {
+										position: absolute;
+										top: 40%;
+										bottom: 0px;
+										height: 0px;
+										right: 50%;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			#mobileMenu:checked ~ ul.navMain {
+				// display: block;
+				opacity: 1;
+				height: 100vh;
+				visibility: visible;
+			}
+		}
+
+		/*
+		 * Menu next to logo
+		 */
+
+		} @else {
+		.navMain {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+			min-height: inherit;
+
+			// Generic styles
+			li.active {
+				> a{
+					color: $accent-color;
+				}
+			}
+
+			li.open > ul {
+				display: block;
+			}
+
+			> li {
+				position: relative;
+				height: $menuHeight;
+				line-height: $menuHeight;
+				white-space: nowrap;
+
+				a {
+					display: block;
+					padding: 0 1em;
+					color: #000;
+
+					&:hover, &:active, &:focus {
+						color: $accent-color;
+					}
+
+					> .dropdown {
+						transition: all ease $transitionLength;
+						padding: .5em;
+						margin-left: 5px;
+						position: relative;
+						
+						&:hover {
+							background: #efefef;
+						}
+
+						&::after {
+							content: '';
+							border: solid #2d2d2d;
+							border-width: 0 1px 1px 0;
+							display: inline-block;
+							padding: 3px;
+							margin-bottom: 4px;
+							transition: all ease $transitionLength;
+							transform: rotate(45deg);
+		    				-webkit-transform: rotate(45deg);
+						}
+
+						&.open::after {
+							transform: rotate(225deg);
+		    				-webkit-transform: rotate(225deg);
+						}
+					}
+				}
+
+				ul {
+					display: none;
+					position: absolute;
+					min-width: 100%;
+					background: white;
+					z-index: 109;
+					@include aside-color;
+
+					li.subTree {
+						margin-right: 1em;
+
+						.dropdown {
+							position: absolute;
+							right: 0;
+							top: 0;
+							padding: 0 .5em;
+						}
+					}
+				}
+			}
+			// First level
+			> li {
+				> a {
+				}
+				// Second level
+				> ul {
+					> li {
+						> a {
+						}
+					}
+				}
+			}
+		}
+
+		@include maxScreen ( $tablet ) {
+			.label-toggle {
+				position: absolute;
+				right: 1em;
+				top: calc(#{$menuHeight} * 0.3);
+				cursor: pointer;
+				padding: 10px 35px 16px 0px;
+				display: block;
+				z-index: 200;
+
+				span,
+				span:before,
+				span:after {
+					height: 4px; // Thickness of lines
+					width: 35px; // Width of lines
+					background: #000; // Color of hamburger and X
+					cursor: pointer;
+					border-radius: 1px;
+					position: absolute;
+					display: block;
+					content: '';
+					transition: all $transitionLength ease-in-out;
+				}
+
+				span:before {
+					top: -10px; // Distance between lines
+				}
+
+				span:after {
+					bottom: -10px; // Distance between lines
+				}
+			}
+
+			#mobileMenu:checked ~ .label-toggle span {
+				background-color: transparent;
+
+				&:before,
+				&:after {
+					top: 0;
+				}
+
+				&:before {
+					transform: rotate(45deg);
+				}
+
+				&:after {
+					transform: rotate(-45deg);
+				}
+			}
+
+			ul.navMain {
+				height: 0;
+				opacity: 0;
+				visibility: hidden;
+				align-items: center;
+				text-align: center;
+				flex-flow: column wrap;
+				justify-content: flex-start;
+				transition-property: all;
+				transition-duration: $transitionLength + .3;
+				transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+				li {
+					min-height: $menuHeight;
+					height: auto;
+					display: block;
+					width: 100%;
+					margin: 0 auto;
+
+					&:hover, &.open a {
+						@include aside-color;
+					}
+
+					a {
+						display: block;
+
+						&:hover {
+							@include aside-color;
+						}
+					}
+
+					&.open > ul {
+						display: block;
+					}
+				}
+
+				li.subTree {
+					a {
+						position: relative;
+
+						.dropdown {
+							position: absolute;
+							right: 0;
+							top: 0;
+							padding: 0 1.5em;
+							height: 100%;
+
+							&::after {
+								position: absolute;
+								top: 40%;
+								bottom: 0px;
+								height: 0px;
+								right: 50%;
+							}
+						}
+					}
+
+					ul {
+						position: relative;
+						margin-bottom: 1px;
+
+						li {
+							a {
+								.dropdown {
+									position: absolute;
+									right: 0;
+									top: 0;
+									padding: 0 1.5em;
+									height: 100%;
+
+									&::after {
+										position: absolute;
+										top: 40%;
+										bottom: 0px;
+										height: 0px;
+										right: 50%;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			#mobileMenu:checked ~ ul.navMain {
+				padding-top: $menuHeight;
+				opacity: 1;
+				height: 100vh;
+				visibility: visible;
+			}
+		}
+	}
+
+	@include minScreen ( $tablet ) {
+		@if $megamenu == true { @import "modules/megamenu"; }
+	}
+}

@@ -1,0 +1,4 @@
+.tools .tool a.active { text-decoration: underline; }
+
+.localeForm { padding-bottom: 4px; }
+	.localeForm form label { margin-right: 11px; color: #000; }

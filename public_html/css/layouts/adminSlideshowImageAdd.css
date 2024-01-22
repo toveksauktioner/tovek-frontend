@@ -1,0 +1,12 @@
+#main .view.slideshowImage.formAdd {}
+	#main .view.slideshowImage.formAdd form {}
+		#main .view.slideshowImage.formAdd form .buttons { padding-top: .8em; border-top: 1px solid #ccc; } 
+	#main .view.slideshowImage.formAdd aside.preview { margin-top: 2.84em; }
+
+#main .view.layoutRelationTableEdit {
+	clear: both;
+}
+
+@media screen and (min-width: 650px) {
+	#main .view.slideshowImage.formAdd form { float: left; width: 50%; margin-right: 1.618em; }
+}

@@ -1,0 +1,34 @@
+
+// Apply to #wrapper
+@mixin tool\layout\footerBottom($content: '#content', $footer : '#footer') {
+
+	//
+	//	Bottom footer wrapper
+	//	Makes the entire document 100% of window width. Gives the targeted wrapper a min-height and positioning it's footer at the bottom. The content is padded with the footer height
+	//
+
+	// Make the sure the document is always 100% of the window
+	min-height: 100%;
+	position: relative;
+
+	body &,
+	html & {
+		// Make the sure the document is always 100% of the window
+		height: 100%;
+	}
+
+	// The footer
+	& #{$footer} {
+		position: absolute;
+		bottom: 0;
+		height: $footer-height;
+		width: 100%;
+	}
+
+	// The content
+	& #{$content} {
+		padding-bottom: $footer-height;
+	}
+
+	// End of bottom footer wrapper
+}

@@ -1,0 +1,10 @@
+// Make an element a site container
+@mixin tool\layout\siteContainer( $maxWidth: $siteWidth, $padding: $baseSpace ) {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: $maxWidth;
+	// Use border instead of padding to make absolute positioned element respect the space ( http://stackoverflow.com/questions/17115344/absolute-positioning-ignoring-padding-of-parent )
+	border-left: $padding solid transparent;
+	border-right: $padding solid transparent;
+}

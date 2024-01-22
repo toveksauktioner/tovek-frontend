@@ -1,0 +1,93 @@
+// Theme
+$current_theme: olympia; // Choose theme
+
+// Logo
+$logoPath: '/images/custom/Appearance/42.png'; // Logo
+
+// Base typography
+$baseCustomFontFamily: false; // Custom Google font name
+$baseFontFamily: Open Sans; // Choose base font
+$baseFontSize: 1em; // Base font size
+$baseTextColor: #000; // Base font color
+
+// Base layout
+$siteWidth: 1600px; // Site width
+$siteContent: 960px; // Content width
+
+// Sizes
+$borderRadius: 5px; // Border radius
+
+// Headings
+$h1FontSize: 2.441em; // H1 size
+$h2FontSize: 1.953em; // H2 size
+$h3FontSize: 1.563em; // H3 size
+$h4FontSize: 1.25em; // H4 size
+$h5FontSize: 0.75em; // H5 size
+$h6FontSize: 0.563em; // H6 size
+$headingFontFamily: inherit; // Choose heading font
+
+// Colors
+$baseErrorColor: #b30015; // Error color
+
+// Slideshow
+$slideshowFullWidth: true; // Full width slideshow?
+$slideshowFullHeight: false; // Full height slideshow? Only with fullWidth
+$slideshowDescriptionBackground: rgba(0, 0, 0, 0.2); // Slideshow text background
+$slideshowDescriptionTextColor: #ffffff; // Slideshow text color
+$slideshowPager: true; // Show cycle pager?
+
+// Menu
+$menuFullWidth: true; // Full width menu?
+$menuHeight: 80px; // Height of menu
+$userMeta: true; // Show user login and order history
+$megamenu: false; // Use Megamenu?
+
+// Animations
+$transitionLength: .2s; // Animation speed
+
+// Footer
+$footerBackgroundColor: true; // Background color on footer?
+
+// Language
+$displayLocaleList: true; // Show language switcher?
+
+// Products
+$productsPerRowDesktop: 4; // Products per row Desktop
+$productsPerRowTablet: 3; // Products per row Tablet
+$productsPerRowMobileLarge: 2; // Products per row Large mobile
+$productsPerRowMobileSmall: 1; // Products per row Small mobile
+$productsFillAvailableSpace: false; // Fill available space if needed
+$productImagePlacement: left; // Place product image left or right
+
+// Cart
+$cartLayout: fullscreen; // Set cart as fullscreen or to the side?
+$cartIcon: '/images/custom/Appearance/44.png'; // Cart icon
+$cartCloseIcon: '/images/icons/shopping-cart-close.png'; // Cart close icon
+
+// News
+$newsListFlow: row; // Show news list like:
+$newsPerRow: 3; // News entries per row
+
+// Puffs
+$puffsPerRowDesktop: 4; // Puffs per row Desktop
+$puffsPerRowTablet: 3; // Puffs per row Tablet
+$puffsPerRowMobileLarge: 2; // Puffs per row Large mobile
+$puffsPerRowMobileSmall: 1; // Puffs per row Small mobile
+$puffsFillAvailableSpace: true; // Fill available space if needed
+$puffsListFlow: column; // Show puff list like:
+
+// References
+$referencesPerRowDesktop: 4; // References per row Desktop
+$referencesPerRowTablet: 3; // References per row Tablet
+$referencesPerRowMobileLarge: 2; // References per row Large mobile
+$referencesPerRowMobileSmall: 1; // References per row Small mobile
+$referencesFillAvailableSpace: false; // Fill available space if needed
+$referencesListFlow: column; // Show reference list like:
+
+// Call to action
+$CTA: true; // Show CTA?
+
+// Layout
+$asideShow: false; // Show aside on sub pages?
+$asidePosition: right; // Place aside left or right?
+

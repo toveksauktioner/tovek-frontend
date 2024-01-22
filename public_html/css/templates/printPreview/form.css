@@ -1,0 +1,79 @@
+/* Form styles -------------------------------------------------------------- */
+/* Inline */
+.inline fieldset,
+.inline .field 					{ display:inline; float:left; }
+.inline .field label,
+.inline .field input,
+.inline .field select
+{ margin-right: 10px; }
+
+/* Vertical form */
+.vertical .field                { margin-bottom:.25em; }
+.vertical label                 { display:block; }
+
+.vertical .multiple             { margin-bottom:.25em; }
+.vertical .multiple .field      { margin-bottom:0; }
+.vertical .multiple label,
+.vertical .result label         { display:inline; }
+
+/* Marginal form */
+.marginal .field                { margin-bottom:.25em; height:100%; overflow:hidden; }
+.marginal label                 { width:11.5em; float:left; }
+
+.marginal .multiple             { margin-bottom:-2em; }
+.marginal .multiple .field      { margin-bottom:0; position:relative; top:-2em; left:11.5em; }
+.marginal .multiple label,
+.marginal .result label			{ width:auto; float:none; }
+
+/* Top label form */
+.topLabel .field                { margin-bottom:.5em; height:100%; overflow:hidden; }
+.topLabel label                 { width:auto; display: block; line-height: 1.25em;}
+.topLabel div.result label		{ display: inline; }
+
+form.labelRight label			{ text-align: right; margin-right: 5px; }
+
+/* Two col forms */
+.twoCol .field 					{ width:49%; margin-right:.25em; float: left; }
+.twoCol .field input,
+.twoCol .field select,
+.twoCol .field textarea			{ width: 80%; }
+.twoCol fieldset				{ clear: left; }
+
+/* Form --------------------------------------------------------------------- */
+form            { width:100%; overflow:hidden; }
+form .field     { line-height:2; }
+fieldset        { border:0; margin-bottom:1.25em; padding:0; padding-top:.5em; }
+legend          { font-size:18px; font-weight:bold; line-height:1; }
+label           { font-weight:bold; cursor:pointer; }
+.result label	{ font-weight:normal; }
+
+/* Input */
+/*
+input.text,
+input.secret,
+select,
+textarea        { border:1px solid #455560; }
+*/
+input.text,
+input.secret	{ text-indent:0px; padding:.25em 0; }
+textarea        { /*padding:5px;*/ width:250px; overflow:auto; }
+input.radio		{ border:0; background:none; }
+
+/* Multiple */
+fieldset.multiple           { border:0; margin:0; padding:0; }
+/*fieldset.multiple legend    { text-transform:none; font-size:1em; line-height:2; color:#000; }*/
+fieldset.multiple .field    { float:left; clear:left; position:relative; }
+fieldset.multiple label		{ padding-left:1.25em; font-weight:normal; }
+fieldset.multiple input     { position:absolute; top:.5em; left:0; }
+
+/* Control & Output */
+button              { padding:0; overflow:visible; cursor:pointer; }
+form .buttons       { overflow:hidden; margin-bottom:0; }
+
+form .error         { color:#FFBABA; }
+form .error input   { border-color:#FFBABA; }
+form .notice        {  }
+form .success       {  }
+form .errorField input,
+form .errorField select,
+form .errorField textarea{ background:#FFBABA; }

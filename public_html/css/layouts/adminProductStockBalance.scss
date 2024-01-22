@@ -1,0 +1,98 @@
+@import "argonova";
+@import "../templates/aroma/bootstrap";
+
+.view.product.tableStockBalance {
+    hr, .searchForm {
+        margin: 1em 0;
+    }
+    
+    h2 {
+        margin-bottom: 1em;
+    }
+    
+    section {
+        &.overview {
+            dl {
+                dt {
+                    clear: left;
+                    float: left;
+                    width: 14em;
+                }
+                dd {
+                    float: left;
+                    width: auto;
+                }
+            }
+        }
+        
+        &.stockBalance {
+            p.info {
+                font-size: .875em;
+                opacity: .6;
+                font-style: italic;
+            }
+                
+            > form {
+                margin-top: 1em;
+            }
+            
+            .dataTable {
+                border: 1px solid rgba(0, 0, 0, 0.12);
+                th:first-child,
+                td:first-child {
+                    padding-left: 1em;
+                }
+                thead {
+                    tr {
+                        background: #ffffff;
+                        th {
+                            line-height: 2em;
+                        }
+                    }
+                }
+                tbody {
+                    tr {
+                        td {
+                            input {
+                                max-width: 6em;   
+                            }                            
+                        }
+                    }
+                }
+                tfoot {
+                    tr {
+                        background: #eeeeee;
+                    }
+                }
+            }
+            
+            .pagination {
+                .selectEntries {
+                    float: left;
+                    width: auto;
+                    height: 6em;
+                    padding-right: 2em;
+                    margin-right: 2em;
+                    border-right: 1px solid rgba(0, 0, 0, 0.12);
+                    
+                    .select.input {
+                        margin: .5em 0;
+                    }
+                }
+                
+                .paginationList {
+                    float: left;
+                    width: auto;
+                    margin-top: 1.7em;
+                }
+                
+                .entriesTotal {
+                    display: block;
+                    float: left;
+                    width: auto;
+                }
+            }
+        }
+    }
+    
+}

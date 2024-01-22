@@ -1,0 +1,179 @@
+&.list {
+	ul.productList {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		flex-flow: row wrap;
+
+		li {
+			$productsSpacing: 1%;
+
+			list-style: none;
+			justify-content: space-between;
+			flex-basis: calc((100% / #{$productsPerRowDesktop}) - #{$productsSpacing});
+			padding: $productsSpacing;
+			box-sizing: border-box;
+
+			@if $productsFillAvailableSpace == true {
+				flex-grow: 1; // Fill available space
+			}
+
+			@include maxScreen ( $tablet ) {
+				flex-basis: calc(100% / #{$productsPerRowTablet});
+			}
+
+			@include maxScreen ( $mobileLarge ) {
+				flex-basis: calc(100% / #{$productsPerRowMobileLarge});
+			}
+
+			@include maxScreen ( $mobileSmall ) {
+				flex-basis: calc(100% / #{$productsPerRowMobileSmall});
+			}
+
+			.image {
+				width: 100%;
+				height: auto;
+				overflow: hidden;
+
+				img {
+					width: 100%;
+					height: calc(#{$siteWidth / 6});
+					object-fit: cover;
+					transition: all ease $transitionLength;
+
+					&:hover {
+						transform: scale(1.005);
+					}
+				}
+			}
+
+			h2 {
+				font-size: 1.5em;
+			}
+		}
+	}
+
+	.loader {
+		ul.loaderList {
+			li {
+				list-style: none;
+			}
+		}
+	}
+} // List End
+
+// Show
+&.show {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+
+	@include maxScreen ( $tablet ) {
+		flex-flow: column;
+	}
+
+	.information {
+		flex: 0 1 50%;
+
+		@if $productImagePlacement == left {
+			order: 2;
+		}
+
+		.description {
+			margin-bottom: 2em;
+		}
+
+		#variantDataTable {
+			margin: 2em 0;
+
+			tr {
+				border-bottom: 1px solid shade($baseBackgroundColor, 20%);
+
+				td {
+					min-width: 100px;
+					padding: 6px;
+				}
+			}
+		}
+	}
+
+	.templateImages {
+		list-style: none;
+		flex: 0 1 50%;
+		padding: 0 2em;
+		box-sizing: border-box;
+
+
+		@if $productImagePlacement == left {
+			order: 1;
+		}
+
+		@include maxScreen ( $tablet ) {
+			padding: 0;
+		}
+
+		#templatePicList {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			flex-flow: row wrap;
+
+			.first {
+				flex: 0 0 100%;
+
+				img {
+					width: 100%;
+				}
+			}
+
+			.mini {
+				flex: 0 1 25%; // Width of thumbnails
+
+				img {
+					object-fit: cover;
+					height: 100%;
+					max-height: 150px;
+				}
+			}
+		}
+	}
+
+	.buttons {
+		margin-top: 2em;
+
+		button {
+			padding: 1em 2em;
+		}
+	}
+
+} // Show End
+
+.breadcrumb {
+	font-size: .8em;
+	margin: 1em 0;
+	flex: 0 0 100%;
+
+	ul {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+
+		li {
+			padding-right: .5em;
+
+			&::after {
+				content: '/';
+				margin-left: .5em;
+			}
+		}
+	}
+}
+
+.information {
+	@include clearfix;
+}

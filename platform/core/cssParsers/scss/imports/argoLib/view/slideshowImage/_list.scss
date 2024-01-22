@@ -1,0 +1,11 @@
+/**
+ * ArgoLib - views
+ * slideshowImage/list
+ */
+
+/**
+ * Main mixin
+ */
+@mixin argoLib\view\slideshowImage( $sSuitName ) {
+	@include ${$sSuitName}();
+}

@@ -1,0 +1,159 @@
+@import "../tovek/bootstrap";
+
+#popupLinkBox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0);
+  -webkit-transition-property: background-color;
+  -webkit-transition-duration: $transitionFast;
+  transition-property: background-color;
+  transition-duration: $transitionFast;
+
+  .wrapper {
+    @include tool\layout\totalCenter();
+    width: 70%;
+    max-width: $layoutBreakpoint5;
+    max-height: 95vh;
+    overflow: auto;
+
+    nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(2em, 1fr) );
+      box-shadow: 0 0 1em $colorGray100;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      height: 3em;
+      background: $white;
+      border-top-left-radius: 0.325em;
+      border-top-right-radius: 0.325em;
+      padding: 0 1em;
+
+    a.popupClose,
+    .navigation {
+      display: block;
+      height: 3em;
+      color: $colorGrayNormal;
+      -webkit-transition-property: color;
+      -webkit-transition-duration: $transitionFast;
+      transition-property: color;
+      transition-duration: $transitionFast;
+
+      i {
+        @include tool\layout\verticalAlign();
+        font-size: 1.25em;
+        -webkit-transition-property: font-size;
+        -webkit-transition-duration: $transitionFast;
+        transition-property: font-size;
+        transition-duration: $transitionFast;
+      }
+      &:hover {
+          i {
+            font-size: 1.5em;
+          }
+        }
+        &.inactive {
+          color: $colorGrayLight;
+        }
+      }
+      a.popupClose {
+        text-align: right;
+
+        &.backLink {
+          text-align: left;
+          color: $colorPrimary;
+          line-height: 3em;
+          padding-left: 2.5em;
+
+          i {
+            position: absolute;
+            left: .75em;
+          }
+        }
+      }
+    }
+    .navigation {
+      &.prev {
+        left: 0;
+      }
+      &.next {
+        left: 2em;
+      }
+      &:hover {
+        &:not(.inactive) {
+          color: $colorAccent;
+        }
+      }
+      span {
+        position: absolute;
+        top: 50%;
+        transform: translateY( -50% );
+        white-space: nowrap;
+      }
+    }
+    a.popupClose {
+      right: 0;
+
+      &:hover {
+        color: $colorFailure;
+      }
+    }
+    > .content {
+      background: #fff;
+      padding: $baseSpace;
+      box-shadow: 10px 10px 30px rgba(0,0,0,0.25);
+      border-bottom-left-radius: 0.325em;
+      border-bottom-right-radius: 0.325em;
+
+      .notification {
+        display: none;
+      }
+    }
+
+    &.relPosVertical {
+      transform: translate(-50%, 0);
+
+      &.relPosHorizontal {
+        transform: translate(0, 0);
+      }
+    }
+    &.relPosHorizontal {
+      &:not(.relPosVertical) {
+        transform: translate(0, -50%);
+      }
+    }
+
+    &.full {
+      width: 95%;
+      max-width: $layoutBreakpoint1;
+      height: 95%;
+
+      // > .content {
+      //   padding: 5%;
+      // }
+    }
+
+    @include maxScreen( $layoutBreakpoint1 ) {
+      width: 95%;
+    }
+    @include maxScreen( $layoutBreakpoint2 ) {
+      > .content {
+        padding: $baseSpaceSmall;
+      }
+    }
+    @include maxScreen( $layoutBreakpoint4 ) {
+      > .content {
+        padding: $baseSpaceMini;
+      }
+    }
+  }
+
+  &.active {
+    background: rgba(0,0,0,0.125);
+  }
+}

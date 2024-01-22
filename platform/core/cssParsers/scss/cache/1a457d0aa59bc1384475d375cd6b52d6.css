@@ -1,0 +1,9 @@
+/* compiled by scssphp v0.7.5 on Wed, 23 Oct 2019 07:31:35 +0200 (0.0013s) */
+
+.paymentFormAdd form .field { width: 500px }
+.paymentFormAdd form .field input#paymentTitleTextId { width: 362px; box-sizing: border-box }
+.paymentFormAdd form .field textarea#paymentDescriptionTextId { width: 362px; box-sizing: border-box; height: 100px }
+.paymentFormAdd form .field .suffixContent { display: block }
+.paymentFormAdd form .field.imageField .suffixContent { float: right; width: auto; padding: 10px; border: 1px solid #ccc; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px }
+.paymentFormAdd form .field.imageField .suffixContent div { text-align: center }
+.paymentFormAdd form .field.imageField .suffixContent div p { margin-bottom: 0; display: block; border-top: 1px solid #ccc; padding-top: 5px }

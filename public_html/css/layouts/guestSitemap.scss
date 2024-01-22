@@ -1,0 +1,35 @@
+.view {
+	&.sitemap {
+		h1 {
+			
+		}
+		.navigation {
+			float: left;
+			width: auto;
+			margin-right: 10%;
+			margin-bottom: 30px;
+		}
+		.infoContent {
+			float: left;
+			width: auto;
+			margin-right: 10%;
+			margin-bottom: 30px;
+		}
+		.products {
+			float: left;
+			width: auto;
+			margin-bottom: 30px;
+		}
+		.description {
+			clear: both;
+			padding-top: 30px;
+			border-top: 1px solid #dadada;
+			font-size: 0.7em;
+			line-height: 1.2em;
+			.argonova {
+				padding-top: 10px;
+				font-size: 0.9em;
+			}
+		}
+	}
+}

@@ -1,0 +1,32 @@
+/* compiled by scssphp v0.7.5 on Sun, 01 Sep 2019 19:00:13 +0200 (0.0016s) */
+
+#page { min-width: 100% }
+
+#branding, 
+#nav, 
+#foot, 
+form button, 
+.noPrint { display: none }
+
+label { line-height: 1.5 }
+
+input.text, 
+input.secret { border: 0 }
+
+select, 
+textarea { border: 0 }
+
+#container, 
+#middle, 
+#col2, 
+.col2_content { width: auto; overflow: visible }
+
+#top, 
+#col1, 
+#col3 { display: none }
+
+#middle #col1, 
+#middle #col3 { display: none }
+
+#bordertop_black_col2_content, 
+#borderbottom_col2_content { display: none }

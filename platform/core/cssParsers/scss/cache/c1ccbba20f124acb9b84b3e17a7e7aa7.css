@@ -1,0 +1,330 @@
+/* compiled by scssphp v0.7.5 on Mon, 27 May 2019 13:48:59 +0200 (0.5745s) */
+
+@font-face { font-family: 'FontAwesome'; src: url("/css/templates/default/library/fontAwesome/fontawesome-webfont.eot?v=4.5.0"); src: url("/css/templates/default/library/fontAwesome/fontawesome-webfont.eot?#iefix&v=4.5.0") format('embedded-opentype'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.woff2?v=4.5.0") format('woff2'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.woff2?v=4.5.0") format('woff'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.ttf?v=4.5.0") format('truetype'), url("/css/templates/default/library/fontAwesome/fontawesome-webfont.svg?v=4.5.0#fontawesomeregular") format('svg'); font-weight: normal; font-style: normal; }
+ /**
+ * Fallback colors
+ * - tiptool: http://colorhunt.co/
+ */
+ /*!
+ * ArgoLib
+ */
+ /**
+ * Mixins
+ */
+.button--antiman { background: none; border: none; height: 60px }
+
+.button--antiman.button--inverted, 
+.button--antiman.button--inverted-alt { -webkit-transition: color 0.3s; transition: color 0.3s; -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1) }
+
+.button--antiman > span { padding-left: 0.35em }
+
+.button--antiman::before, 
+.button--antiman::after { content: ''; z-index: -1; border-radius: inherit; pointer-events: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; -webkit-backface-visibility: hidden; -webkit-transition: -webkit-transform 0.3s, opacity 0.3s; transition: transform 0.3s, opacity 0.3s; -webkit-transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1); transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1) }
+
+.button--antiman::before { border: 2px solid #37474f; opacity: 0; -webkit-transform: scale3d(1.2, 1.2, 1); transform: scale3d(1.2, 1.2, 1) }
+
+.button--antiman.button--border-thin::before { border-width: 1px }
+
+.button--antiman.button--inverted::before { border-color: #7986cb }
+
+.button--antiman.button--inverted-alt::before { border-color: #3f51b5 }
+
+.button--antiman::after { background: #fff }
+
+.button--antiman.button--inverted::after { background: #7986cb }
+
+.button--antiman.button--inverted-alt::after { background: #3f51b5 }
+
+.button--antiman.button--inverted:hover { color: #7986cb }
+
+.button--antiman.button--inverted-alt:hover { color: #3f51b5 }
+
+.button--antiman:hover::before { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1) }
+
+.button--antiman:hover::after { opacity: 0; -webkit-transform: scale3d(0.8, 0.8, 1); transform: scale3d(0.8, 0.8, 1) }
+
+.view.swiper-container { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw) }
+.view.swiper-container .swiper-wrapper > li { width: 85%; overflow: hidden; list-style: none; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; text-align: center; flex-flow: row wrap }
+.view.swiper-container .swiper-wrapper > li::before { background: white; content: ''; height: 100%; width: 100%; position: absolute; z-index: 3; opacity: 0; visibility: hidden; transition: opacity ease 0.8s, visibility 0.8s }
+.view.swiper-container .swiper-wrapper > li:not(.swiper-slide-active) { opacity: 0.3; transition: opacity ease 0.8s }
+.view.swiper-container .swiper-wrapper > li .title { background: rgba(0, 0, 0, 0.2); width: auto; position: absolute; bottom: 300px; left: 0; padding: 1em 2em; color: #fff; z-index: 150 }
+.view.swiper-container .swiper-wrapper > li .title h1, 
+.view.swiper-container .swiper-wrapper > li .title h2, 
+.view.swiper-container .swiper-wrapper > li .title h3, 
+.view.swiper-container .swiper-wrapper > li .title h4, 
+.view.swiper-container .swiper-wrapper > li .title h5, 
+.view.swiper-container .swiper-wrapper > li .title h6, 
+.view.swiper-container .swiper-wrapper > li .title p, 
+.view.swiper-container .swiper-wrapper > li .title span { color: #fff }
+.view.swiper-container .swiper-wrapper > li .title p:last-child { margin-bottom: 0 }
+@media screen and (max-width: 768px) {.view.swiper-container .swiper-wrapper > li .title { clear: both; position: relative; background: transparent; background: #fff; color: #000 !important } }
+.view.swiper-container .swiper-wrapper > li .image { position: relative; width: 100% }
+.view.swiper-container .swiper-wrapper > li .image img { max-height: 600px; display: block; position: relative; width: 100%; object-fit: cover }
+@media screen and (max-width: 768px) {.view.swiper-container .swiper-wrapper > li .image img { height: auto !important } }
+.view.swiper-container .swiper-pagination { text-align: center; font-size: 3em; color: #808080 }
+.view.swiper-container .swiper-pagination .swiper-pagination-bullet-active { background: #fff }
+.view.swiper-container .swiper-button-next, 
+.view.swiper-container .swiper-button-prev { position: absolute; top: 0; margin-top: 0; width: 6%; height: 100%; z-index: 10; cursor: pointer; background-size: 27px 44px; background-position: center; background-repeat: no-repeat; opacity: 0 }
+.view.contact { @import "modules/contact" }
+.view.news.list ul, 
+.view.news.listAll ul { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: column wrap; justify-content: space-between }
+.view.news.list ul li, 
+.view.news.listAll ul li { list-style: none; flex: 1 1 calc(100% / 3); padding: 1em; box-sizing: border-box }
+.view.news.list ul li article, 
+.view.news.listAll ul li article { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.news.list ul li article header, 
+.view.news.listAll ul li article header { flex: 0 1 100% }
+.view.news.list ul li article header time, 
+.view.news.listAll ul li article header time { font-size: 0.8em; margin-top: -0.6180469716em }
+.view.news.list ul li article .image, 
+.view.news.listAll ul li article .image { flex: 1 1 50%; margin-right: 2em }
+.view.news.list ul li article .content, 
+.view.news.listAll ul li article .content { flex: 1 1 50%; align-self: center }
+.view.news.list .meta a, 
+.view.news.listAll .meta a { background: #fff; color: #000; padding: 0.5em 1em }
+.view.news.show { margin-bottom: 4em }
+.view.news.show .image img { width: 100%; max-height: 400px; object-fit: cover }
+.view.puffList { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: column wrap }
+.view.puffList article { position: relative; justify-content: space-between; flex-basis: calc((100% / 4) - 2%); margin: 1%; box-sizing: border-box; overflow: hidden }
+@media screen and (max-width: 768px) {.view.puffList article { flex-basis: calc(100% / 3 - 2%) } }
+@media screen and (max-width: 640px) {.view.puffList article { flex-basis: calc(100% / 2 - 2%) } }
+@media screen and (max-width: 480px) {.view.puffList article { flex-basis: calc(100% / 1 - 2%); text-align: center } }
+.view.puffList article.titleBackground .blockLink { position: absolute; width: 100%; height: 100%; display: block; z-index: 2 }
+.view.puffList article.titleBackground .image { width: 100%; height: 200px; object-fit: cover; vertical-align: bottom }
+.view.puffList article.titleBackground .content { background: #ccc; color: #000; background-color: rgba(204, 204, 204, 0.7); position: absolute; width: 100%; height: 50%; left: 0; bottom: 0; padding: 1em; box-sizing: border-box; transition: all ease 0.3s; text-align: center }
+.view.puffList article.titleBackground .content p:before { content: ''; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: linear-gradient(transparent 70px, rgba(0, 0, 0, 0.6)) }
+.view.puffList article.titleBackground .content a { color: #fff }
+.view.puffList article.titleBackground .content.show { height: 100%; transition: all ease 0.3s }
+.view.puffList article.titleBackground .content.show p:before { content: ''; width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: linear-gradient(transparent 70px, rgba(0, 0, 0, 0)) }
+.view.puffList article.standard a img { width: 100%; max-height: 180px; object-fit: cover }
+.view.product.list ul.productList { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.product.list ul.productList li { list-style: none; justify-content: space-between; flex-basis: calc((100% / 4) - 1%); padding: 1%; box-sizing: border-box }
+@media screen and (max-width: 768px) {.view.product.list ul.productList li { flex-basis: calc(100% / 3) } }
+@media screen and (max-width: 640px) {.view.product.list ul.productList li { flex-basis: calc(100% / 2) } }
+@media screen and (max-width: 480px) {.view.product.list ul.productList li { flex-basis: calc(100% / 1) } }
+.view.product.list ul.productList li .image { width: 100%; height: auto; overflow: hidden }
+.view.product.list ul.productList li .image img { width: 100%; height: calc(246.6666666667px); object-fit: cover; transition: all ease 0.3s }
+.view.product.list ul.productList li .image img:hover { transform: scale(1.005) }
+.view.product.list ul.productList li h2 { font-size: 1.5em }
+.view.product.list .loader ul.loaderList li { list-style: none }
+.view.product.show { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+@media screen and (max-width: 768px) {.view.product.show { flex-flow: column } }
+.view.product.show .information { flex: 0 1 50%; order: 2 }
+.view.product.show .information .description { margin-bottom: 2em }
+.view.product.show .information #variantDataTable { margin: 2em 0 }
+.view.product.show .information #variantDataTable tr { border-bottom: 1px solid #ccc }
+.view.product.show .information #variantDataTable tr td { min-width: 100px; padding: 6px }
+.view.product.show .templateImages { list-style: none; flex: 0 1 50%; padding: 0 2em; box-sizing: border-box; order: 1 }
+@media screen and (max-width: 768px) {.view.product.show .templateImages { padding: 0 } }
+.view.product.show .templateImages #templatePicList { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.product.show .templateImages #templatePicList .first { flex: 0 0 100% }
+.view.product.show .templateImages #templatePicList .first img { width: 100% }
+.view.product.show .templateImages #templatePicList .mini { flex: 0 1 25% }
+.view.product.show .templateImages #templatePicList .mini img { object-fit: cover; height: 100%; max-height: 150px }
+.view.product.show .buttons { margin-top: 2em }
+.view.product.show .buttons button { padding: 1em 2em }
+.view.product .breadcrumb { font-size: 0.8em; margin: 1em 0; flex: 0 0 100% }
+.view.product .breadcrumb ul { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex }
+.view.product .breadcrumb ul li { padding-right: 0.5em }
+.view.product .breadcrumb ul li::after { content: '/'; margin-left: 0.5em }
+.view.product .information::after { clear: both; content: ""; display: table }
+.view.product.toplist { background: #ccc; color: #000; padding: 3em 2em; background-image: url(data:image/png;base64,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) }
+.view.product.toplist h2 { font-size: 2rem; text-transform: uppercase; text-align: center; margin-bottom: 2em }
+.view.product.toplist .productList.toplist { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap; justify-content: space-around }
+.view.product.toplist .productList.toplist li { background: #fff; color: #000; list-style: none; justify-content: space-between; flex-basis: calc((100% / 4) - 2%); margin-bottom: 2%; box-sizing: border-box }
+@media screen and (max-width: 768px) {.view.product.toplist .productList.toplist li { flex-basis: calc(100% / 2 - 2%) } }
+@media screen and (max-width: 640px) {.view.product.toplist .productList.toplist li { flex-basis: calc(100% / 2 - 2%) } }
+@media screen and (max-width: 480px) {.view.product.toplist .productList.toplist li { flex-basis: calc(100% / 1) } }
+.view.product.toplist .productList.toplist li .image { width: 100%; height: auto; box-sizing: border-box; border: 20px solid #fff }
+.view.product.toplist .productList.toplist li .image img { width: 100%; height: calc(246.6666666667px); object-fit: cover; transition: all ease 0.3s; margin-bottom: -6px }
+.view.product.toplist .productList.toplist li .description { padding: 2em; box-sizing: border-box }
+.view.product.toplist .productList.toplist li .description .shortDescription { display: none }
+.view.product.toplist .productList.toplist li .description h3 a { font-size: 1.2rem; text-transform: uppercase; color: #000 }
+.view.product.toplist .productList.toplist li .description .discountPrice { display: inline-block; color: #37939b }
+.view.product.toplist .productList.toplist li .description .productPriceRecommended { font-weight: 100; opacity: 0.3; text-decoration: line-through; margin-left: 0.5em }
+.view.product.toplist .productList.toplist li .description .price { font-weight: 600 }
+.view.product.toplist .productList.toplist li .description .productShopNow .buttons button { background: #fff; color: #000; text-transform: uppercase; padding: 0.7em 2.5em; border: 2px solid #fff; background: #e6e6e6 }
+.view.referenceListAll .references { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: column wrap }
+.view.referenceListAll .references li { margin: 1em; list-style: none; position: relative; justify-content: space-between; flex-basis: calc((100% / 4) - 2%); margin: 1%; box-sizing: border-box; overflow: hidden }
+@media screen and (max-width: 768px) {.view.referenceListAll .references li { flex-basis: calc(100% / 3 - 2%) } }
+@media screen and (max-width: 640px) {.view.referenceListAll .references li { flex-basis: calc(100% / 2 - 2%) } }
+@media screen and (max-width: 480px) {.view.referenceListAll .references li { flex-basis: calc(100% / 1 - 2%); text-align: center } }
+.view.referenceListAll .references li .referenceImage a img { width: 100%; height: calc(246.6666666667px); object-fit: cover; transition: all ease 0.3s }
+.view.referenceListAll .references #ajaxReferenceShow { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex }
+.view.referenceListAll .references #ajaxReferenceShow .close { order: 2 }
+.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex }
+@media screen and (max-width: 768px) {.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax { flex-direction: column-reverse } }
+.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax .referenceImages { flex: 0 1 50%; margin-right: 2em }
+.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax .referenceImages::after { clear: both; content: ""; display: table }
+@media screen and (max-width: 768px) {.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax .referenceImages { margin: 2em 0 } }
+.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax .referenceImages .slideshow { padding-top: 362px !important }
+.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax .referenceImages .slideshow li img { width: 100%; height: 342px; object-fit: cover }
+.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax .referenceImages .slideshowPager { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax .referenceImages .slideshowPager a { flex: 0 1 20% }
+@media screen and (max-width: 768px) {.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax .referenceImages .slideshowPager a { flex-basis: calc(33% - 5px); margin-right: 5px } }
+.view.referenceListAll .references #ajaxReferenceShow .referenceShowAjax .referenceText { flex: 0 1 50% }
+.view.referenceListAll .pagination ul { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex }
+.view.referenceListAll .pagination ul li { list-style: none; margin-right: 0.6em }
+.view.referenceList .references { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: column wrap }
+.view.referenceList .references li { margin: 1em; list-style: none; position: relative; justify-content: space-between; flex-basis: calc((100% / 2) - 2%); margin: 1%; box-sizing: border-box; overflow: hidden }
+@media screen and (max-width: 768px) {.view.referenceList .references li { flex-basis: calc(100% / 2 - 2%) } }
+@media screen and (max-width: 640px) {.view.referenceList .references li { flex-basis: calc(100% / 1 - 2%) } }
+@media screen and (max-width: 480px) {.view.referenceList .references li { flex-basis: calc(100% / 1 - 2%); text-align: center } }
+.view.referenceList .references li .blockLink { position: absolute; height: calc(100% - 2%); width: 100%; display: block; z-index: 10 }
+.view.referenceList .references li .referenceImage img { width: 100%; height: calc(246.6666666667px); object-fit: cover; transition: all ease 0.3s }
+.view.referenceList .references li .referenceText { position: absolute; width: 100%; height: calc(100% - 2%); left: -100%; top: 0; background: rgba(0, 65, 106, .8); color: #fff; padding: 1em; box-sizing: border-box; transition: all ease 0.3s; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; justify-content: center; align-items: center; flex-flow: column; text-align: center }
+.view.referenceList .references li .referenceText a { color: #fff }
+@media screen and (max-width: 768px) {.view.referenceList .references li .referenceText { left: 0; height: 70%; bottom: 3%; top: unset } }
+.view.referenceList .references li .referenceText.show { left: 0 }
+.view.referenceShow { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-direction: column-reverse }
+.view.referenceShow .referenceImages li { list-style: none }
+.view.referenceShow .referenceImages .slideshowPager { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.referenceShow .referenceImages .slideshowPager a { flex: 0 1 20% }
+@media screen and (max-width: 768px) {.view.referenceShow .referenceImages .slideshowPager a { flex-basis: calc(33% - 5px); margin-right: 5px } }
+.view.checkoutShow { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: column wrap }
+.view.checkoutShow a { color: inherit }
+.view.checkoutShow a:hover { color: #37939b }
+.view.checkoutShow .checkoutTopbar { display: none; flex-flow: row wrap; flex: 1 1 100% }
+.view.checkoutShow .misc .checkoutProducts table.dataTable { width: 100% }
+.view.checkoutShow .misc .checkoutProducts table.dataTable thead { font-size: 0.8em; font-weight: 300 }
+.view.checkoutShow .misc .checkoutProducts table.dataTable tr { border-top: 1px solid #e6e6e6 }
+.view.checkoutShow .misc .checkoutProducts table.dataTable tr.toPayCharge td.productPriceTotal { font-weight: bold }
+.view.checkoutShow .misc .checkoutProducts table.dataTable th, 
+.view.checkoutShow .misc .checkoutProducts table.dataTable td { text-align: left; padding: 1em; width: 14% }
+.view.checkoutShow .misc .checkoutProducts table.dataTable .icon { text-indent: unset }
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay ul li { list-style: none; margin: 1em 0; padding: 1em; box-sizing: border-box }
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay ul li:nth-child(even) { background: #f2f2f2 }
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay ul li dl { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay ul li dl dt { flex: 0 0 40%; font-weight: bolder }
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay ul li dl dd { flex: 0 0 60% }
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay dl.summation { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay dl.summation dt { flex: 0 0 40%; font-weight: bolder }
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay dl.summation dd { flex: 0 0 60% }
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay dl.summation dt.toPay, 
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay dl.summation dd.toPay { font-weight: bold }
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay dl.summation dt.vat, 
+.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay dl.summation dd.vat { font-size: 0.8em }
+@media screen and (max-width: 768px) {.view.checkoutShow .misc .checkoutProducts .dataTable { display: none } }
+@media screen and (min-width: 768px) {.view.checkoutShow .misc .checkoutProducts .alternativeCartDisplay { display: none } }
+.view.checkoutShow .misc .checkoutProducts .editCart { display: none }
+.view.checkoutShow .checkoutMoreSales { margin: 2em 0; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); background: #fafafa; padding: 2em }
+.view.checkoutShow .checkoutMoreSales fieldset { max-width: 1480px; margin: auto }
+.view.checkoutShow .checkoutMoreSales .moreSales { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap; justify-content: space-around }
+@media screen and (max-width: 640px) {.view.checkoutShow .checkoutMoreSales .moreSales { flex-flow: column wrap } }
+.view.checkoutShow .checkoutMoreSales .moreSales li { list-style: none; flex: 0 0 33%; text-align: center; padding: 1em; box-sizing: border-box }
+.view.checkoutShow .checkoutMoreSales .moreSales li .image img { width: 100%; height: 185px; object-fit: cover }
+.view.checkoutShow .checkoutMoreSales .moreSales li .text .info { display: none }
+.view.checkoutShow .checkoutMoreSales .moreSales li .frmAddProduct .field { display: none }
+.view.checkoutShow .checkoutMoreSales .moreSales li .frmAddProduct .buttons { margin: 1em }
+.view.checkoutShow .checkoutForm .countryForm { display: none }
+.view.checkoutShow .checkoutForm .paymentForm, 
+.view.checkoutShow .checkoutForm .freightForm { margin-bottom: 2em }
+.view.checkoutShow .checkoutForm .paymentForm .orderPayment, 
+.view.checkoutShow .checkoutForm .freightForm .orderPayment, 
+.view.checkoutShow .checkoutForm .paymentForm .orderFreight, 
+.view.checkoutShow .checkoutForm .freightForm .orderFreight { text-align: center }
+.view.checkoutShow .checkoutForm .paymentForm .orderPayment .field, 
+.view.checkoutShow .checkoutForm .freightForm .orderPayment .field, 
+.view.checkoutShow .checkoutForm .paymentForm .orderFreight .field, 
+.view.checkoutShow .checkoutForm .freightForm .orderFreight .field { display: inline-block; clear: none; float: none; text-align: center; background: #f2f2f2; border: 1px solid #e6e6e6; border-radius: 5px; margin: 1em; font-size: 0.8em }
+.view.checkoutShow .checkoutForm .paymentForm .orderPayment .field:hover, 
+.view.checkoutShow .checkoutForm .freightForm .orderPayment .field:hover, 
+.view.checkoutShow .checkoutForm .paymentForm .orderFreight .field:hover, 
+.view.checkoutShow .checkoutForm .freightForm .orderFreight .field:hover { background: #e6e6e6 }
+.view.checkoutShow .checkoutForm .paymentForm .orderPayment .field label, 
+.view.checkoutShow .checkoutForm .freightForm .orderPayment .field label, 
+.view.checkoutShow .checkoutForm .paymentForm .orderFreight .field label, 
+.view.checkoutShow .checkoutForm .freightForm .orderFreight .field label { padding: 0.5em 2em; display: block }
+.view.checkoutShow .checkoutForm .paymentForm .orderPayment .field input, 
+.view.checkoutShow .checkoutForm .freightForm .orderPayment .field input, 
+.view.checkoutShow .checkoutForm .paymentForm .orderFreight .field input, 
+.view.checkoutShow .checkoutForm .freightForm .orderFreight .field input { display: none }
+.view.checkoutShow .checkoutForm .paymentForm .orderPayment .field input:checked ~ label, 
+.view.checkoutShow .checkoutForm .freightForm .orderPayment .field input:checked ~ label, 
+.view.checkoutShow .checkoutForm .paymentForm .orderFreight .field input:checked ~ label, 
+.view.checkoutShow .checkoutForm .freightForm .orderFreight .field input:checked ~ label { border: 2px solid #5dc204; position: relative }
+.view.checkoutShow .checkoutForm .paymentForm .orderPayment .field input:checked ~ label::after, 
+.view.checkoutShow .checkoutForm .freightForm .orderPayment .field input:checked ~ label::after, 
+.view.checkoutShow .checkoutForm .paymentForm .orderFreight .field input:checked ~ label::after, 
+.view.checkoutShow .checkoutForm .freightForm .orderFreight .field input:checked ~ label::after { content: "\f058"; font: normal normal normal 1.5em/1 'FontAwesome'; color: #5dc204; position: absolute; top: 0; right: 0 }
+.view.checkoutShow .checkoutForm .customerAccount .links { text-align: center }
+.view.checkoutShow .checkoutForm .customerAccount .links a { background: #fff; color: #000; padding: 1em }
+.view.checkoutShow .checkoutForm .customerAccount .links a:hover { background: #fff }
+.view.checkoutShow .discountForm .field { display: inline-block }
+.view.checkoutShow .discountForm .field label { display: none }
+.view.checkoutShow .discountForm .buttons { display: inline-block; vertical-align: middle }
+.view.checkoutShow .discountForm .buttons button { padding: 0.6em 1em }
+.view.checkoutShow .customerAccount { margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); background: #fafafa; padding: 2em; margin-bottom: 2em }
+.view.checkoutShow .customerAccount fieldset { max-width: 1480px; margin: auto }
+.view.checkoutShow .customerAccount fieldset > * { margin: 1em 0 }
+.view.checkoutShow .orderForm { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.checkoutShow .orderForm fieldset { flex: 0 1 50% }
+.view.checkoutShow .orderForm fieldset:nth-of-type(odd) { padding-right: 2em; box-sizing: border-box }
+@media screen and (max-width: 640px) {.view.checkoutShow .orderForm fieldset { flex: 0 1 100% } }
+.view.checkoutShow .orderForm fieldset .field { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; justify-content: space-between; margin-top: 0.5em }
+@media screen and (max-width: 640px) {.view.checkoutShow .orderForm fieldset .field { flex-flow: column wrap } }
+.view.checkoutShow .orderForm fieldset .field label { flex: 0 1 30% }
+.view.checkoutShow .orderForm fieldset .field input, 
+.view.checkoutShow .orderForm fieldset .field select, 
+.view.checkoutShow .orderForm fieldset .field textarea { flex: 0 1 60% }
+.view.checkoutShow .orderForm fieldset .field.orderDeliverySame label { flex: 0 1 100% }
+.view.checkoutShow .orderSummary { display: none }
+.view.receiptTable .logo { display: none }
+.view.receiptTable .orderSummary dl { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.receiptTable .orderSummary dl dt { flex: 0 1 30%; font-weight: bolder }
+.view.receiptTable .orderSummary dl dd { flex: 0 1 50% }
+@media screen and (max-width: 640px) {.view.receiptTable .orderSummary dl { flex-flow: column wrap }
+.view.receiptTable .orderSummary dl dt { flex: 0 1 100%; font-weight: bolder }
+.view.receiptTable .orderSummary dl dd { flex: 0 1 100% } }
+.view.receiptTable .orderItems table th, 
+.view.receiptTable .orderItems table td { text-align: left }
+.view.receiptTable .additionalInformation { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.receiptTable .additionalInformation table dl { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.receiptTable .additionalInformation table dl dt { flex: 0 1 30%; font-weight: bolder }
+.view.receiptTable .additionalInformation table dl dd { flex: 0 1 50% }
+.view.userCustomerAccount { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: column wrap }
+.view.userCustomerAccount form { display: flex; flex-flow: row wrap }
+.view.userCustomerAccount form fieldset { background: #fafafa; color: #000; padding: 2em; box-sizing: border-box; flex: 1 1 49% }
+.view.userCustomerAccount form fieldset .field { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap; margin: 0.5em 0 }
+.view.userCustomerAccount form fieldset .field label { flex: 0 1 30% }
+.view.userCustomerAccount form fieldset .field input, 
+.view.userCustomerAccount form fieldset .field textarea, 
+.view.userCustomerAccount form fieldset .field select { flex: 1 1 67% }
+.view.userCustomerAccount form fieldset .field input.checkbox, 
+.view.userCustomerAccount form fieldset .field textarea.checkbox, 
+.view.userCustomerAccount form fieldset .field select.checkbox { flex: 1 1 10% }
+.view.userCustomerAccount form .buttons { flex: 0 0 100% }
+.view.customerOrderList table th, 
+.view.customerOrderList table tr, 
+.view.customerOrderList table td { padding: 1em }
+.view.customerOrderList table tr:nth-child(even) { background: #fafafa }
+.view.customerOrderShow .orderConfirmation { display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-flow: row wrap }
+.view.customerOrderShow .orderConfirmation .marginal { display: flex; flex-flow: row wrap; max-width: 450px }
+.view.customerOrderShow .orderConfirmation .marginal dt, 
+.view.customerOrderShow .orderConfirmation .marginal dd { flex: 0 1 44%; padding: 0.5em }
+.view.customerOrderShow .orderConfirmation .marginal dt:nth-of-type(even) { background: #fafafa }
+.view.customerOrderShow .orderConfirmation .marginal dd:nth-of-type(even) { background: #fafafa }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable { width: 100%; /* Force table to not be like tables anymore */ }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable thead { font-size: 0.8em; font-weight: 300 }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tr { border-top: 1px solid #e6e6e6 }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tr.toPayCharge td.productPriceTotal { font-weight: bold }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable th, 
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable td { text-align: left; padding: 1em; width: 14% }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable .icon { text-indent: unset }
+@media screen and (max-width: 640px) {.view.customerOrderShow .orderConfirmation .orderItems table.dataTable { display: block; /* Hide table headers (but not display: none;, for accessibility) */ }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable thead, 
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tbody, 
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable th, 
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable td, 
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tr { display: block }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable thead tr { position: absolute; top: -9999px; left: -9999px }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tr { border: 1px solid #ccc }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable td { /* Behave  like a "row" */ border: none; border-bottom: 1px solid #eee; position: relative; padding-left: 50% !important }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable td:before { /* Now like a table header */ position: absolute; /* Top/left values mimic padding */ top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap } }
+@media screen and (max-width: 640px) {.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tbody td { width: 45% }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tbody td.productQuantity:before { content: 'Antal:'; padding: 0.5em }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tbody td.productTitle:before { content: 'Titel:'; padding: 0.5em }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tbody td.productCustomId:before { content: 'Variant:'; padding: 0.5em }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tbody td.productPrice:before { content: 'Pris:'; padding: 0.5em }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tbody td.productPriceTotal:before { content: 'Pris total:'; padding: 0.5em }
+.view.customerOrderShow .orderConfirmation .orderItems table.dataTable tfoot { display: none } }

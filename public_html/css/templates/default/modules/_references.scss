@@ -1,0 +1,255 @@
+&.referenceListAll {
+	.references {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		flex-flow: $referencesListFlow wrap;
+
+		li {
+			margin: 1em;
+			list-style: none;
+
+			$puffsSpacing: 2%;
+
+			position: relative;
+			justify-content: space-between;
+			flex-basis: calc((100% / #{$puffsPerRowDesktop}) - #{$puffsSpacing});
+			margin: $puffsSpacing / 2;
+			box-sizing: border-box;
+			overflow: hidden;
+
+			@if $puffsFillAvailableSpace == true {
+				flex-grow: 1; // Fill available space
+			}
+
+			@include maxScreen ( $tablet ) {
+				flex-basis: calc(100% / #{$puffsPerRowTablet} - #{$puffsSpacing});
+			}
+
+			@include maxScreen ( $mobileLarge ) {
+				flex-basis: calc(100% / #{$puffsPerRowMobileLarge} - #{$puffsSpacing});
+			}
+
+			@include maxScreen ( $mobileSmall ) {
+				flex-basis: calc(100% / #{$puffsPerRowMobileSmall} - #{$puffsSpacing});
+				text-align: center;
+			}
+
+			.referenceImage {
+				a {
+					img {
+						width: 100%;
+						height: calc(#{$siteWidth / 6});
+						object-fit: cover;
+						transition: all ease $transitionLength;
+					}
+				}
+			}
+		}
+
+		#ajaxReferenceShow {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+
+			.close {
+				order: 2;
+			}
+
+			.referenceShowAjax {
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+
+				@include maxScreen ( $tablet ) {
+					flex-direction: column-reverse;
+				}
+
+				.referenceImages {
+					@include clearfix;
+					flex: 0 1 50%;
+					margin-right: 2em;
+
+					@include maxScreen ( $tablet ) {
+						margin: 2em 0;
+					}
+
+					.slideshow {
+						padding-top: 362px!important;
+
+						li {
+							img {
+								width: 100%;
+								height: 342px;
+								object-fit: cover;
+							}
+						}
+					}
+
+					.slideshowPager {
+						display: -webkit-box;
+						display: -ms-flexbox;
+						display: -webkit-flex;
+						display: flex;
+						flex-flow: row wrap;
+
+						a {
+							flex: 0 1 20%;
+
+							@include maxScreen ( $tablet ) {
+								flex-basis: calc(33% - 5px);
+								margin-right: 5px;
+							}
+						}
+					}
+				}
+
+				.referenceText {
+					flex: 0 1 50%;
+				}
+			}
+		}
+	}
+
+	.pagination {
+		ul {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+
+			li {
+				list-style: none;
+				margin-right: .6em;
+			}
+		}
+	}
+}
+
+&.referenceList {
+	.references {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		flex-flow: $referencesListFlow wrap;
+
+		li {
+			margin: 1em;
+			list-style: none;
+
+			$puffsSpacing: 2%;
+
+			position: relative;
+			justify-content: space-between;
+			flex-basis: calc((100% / 2) - #{$puffsSpacing});
+			margin: $puffsSpacing / 2;
+			box-sizing: border-box;
+			overflow: hidden;
+
+			@if $puffsFillAvailableSpace == true {
+				flex-grow: 1; // Fill available space
+			}
+
+			@include maxScreen ( $tablet ) {
+				flex-basis: calc(100% / 2 - #{$puffsSpacing});
+			}
+
+			@include maxScreen ( $mobileLarge ) {
+				flex-basis: calc(100% / 1 - #{$puffsSpacing});
+			}
+
+			@include maxScreen ( $mobileSmall ) {
+				flex-basis: calc(100% / 1 - #{$puffsSpacing});
+				text-align: center;
+			}
+
+			.blockLink {
+				position: absolute;
+				height: calc(100% - #{$puffsSpacing});
+				width: 100%;
+				display: block;
+				z-index: 10;
+			}
+
+			.referenceImage {
+				img {
+					width: 100%;
+					height: calc(#{$siteWidth / 6});
+					object-fit: cover;
+					transition: all ease $transitionLength;
+				}
+			}
+
+			.referenceText {
+				position: absolute;
+				width: 100%;
+				height: calc(100% - #{$puffsSpacing});
+				left: -100%;
+				top: 0;
+				background: rgba(0, 65, 106, .8);
+				color: #fff;
+				padding: 1em;
+				box-sizing: border-box;
+				transition: all ease $transitionLength;
+				display: -webkit-box;
+				display: -ms-flexbox;
+				display: -webkit-flex;
+				display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    flex-flow: column;
+			    text-align: center;
+
+				a {
+					color: #fff;
+				}
+
+				@include maxScreen ( $tablet ) {
+					left: 0;
+					height: 70%;
+					bottom: $puffsSpacing + 1;
+					top: unset;
+				}
+
+				&.show {
+					left: 0;
+				}
+			}
+		}
+	}
+}
+
+&.referenceShow {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-direction: column-reverse;
+
+	.referenceImages {
+		li {
+			list-style: none;
+		}
+
+		.slideshowPager {
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			flex-flow: row wrap;
+
+			a {
+				flex: 0 1 20%;
+
+				@include maxScreen ( $tablet ) {
+					flex-basis: calc(33% - 5px);
+					margin-right: 5px;
+				}
+			}
+		}
+	}
+}

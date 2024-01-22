@@ -1,0 +1,19 @@
+// .infoContent 
+	
+	.CTA {
+		@include primary-color;
+		@include fullWidth;
+		padding: 1em;
+
+		.CTAcontent {
+			max-width: $siteWidth;
+			margin: auto;
+			text-align: center;
+			text-transform: uppercase;
+			font-weight: 600;
+
+			p {
+				margin: 0;
+			}
+		}
+	}

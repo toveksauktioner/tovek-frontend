@@ -1,0 +1,118 @@
+/* compiled by scssphp v0.7.5 on Fri, 18 Oct 2019 08:22:30 +0200 (0.0768s) */
+
+@media (max-width: 1024px) { /*section#headbar { padding-top: 35px; }*/ /*** Page footer ***/ /** Bottombar **/ /** Footer content **/ /** Argonova **/ /** Items **/ /* Clear desktop styles */
+section#topbar { font-size: 0.75em; height: 35px; line-height: 35px }
+section#topbar div#cookiesInfo { top: 35px }
+section#topbar nav ul li a { height: auto; line-height: 33px; font-size: 0.75em }
+section#topbar nav ul li span.text { font-size: 0.75em }
+section#topbar nav ul li span.amount { display: inline-block; width: 20px; height: 20px; /* margin-left: 3px; */ line-height: 20px; text-align: center; color: #1a3359; /* background: url(/images/templates/tovekClassic/bg-yellow-circle.png) no-repeat 0px 2px; */ background-color: #fd0; border-radius: 50%; font-size: 10px; font-weight: 600; color: #25544a }
+header { background-position: left -18px; /*height: 162px;*/ }
+section#sectionWrapper .desktop ul li.second form#searchForm { top: 14px }
+section#sectionWrapper .desktop ul li.second form#searchForm .field input { width: 180px; height: 41px; padding: 0 8px; color: #9b9b9b; font-size: 1.125em; background: url('/images/templates/tovekClassic/bg-search-input-surfpad.png') no-repeat; border: none }
+main[role="main"] .wrapper .itemShow { padding: 0 1em }
+.view.itemShow .itemInfo .link { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .text { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .tags { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .auctionInfo { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .socialLinks { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .itemInformation { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .printMap { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .images { padding-left: 0 !important; width: 100% !important }
+.view.itemShow .itemInfo .images ul { margin: 0 !important; width: 100% !important }
+.view.itemShow .itemInfo .images ul li a img { width: 100% }
+.view.itemShow .itemInfo .vehicle .regNo { text-align: center } }
+
+@media (max-width: 640px) { /** Headbar **/ /*** Page main ***/ /* Item */ /* Clear desktop styles */ /* Auctions */ /*.view.auctionList .content { height: auto; }
+ .view.auctionList a.previousAuctionPage { display: none; }
+ .view.auctionList .container { float: none; margin: 0 auto; }
+ .view.auctionList a.nextAuctionPage { display: none; }
+ .view.auctionList .scrollWrapper { height: auto; overflow-x: hidden; }*/ /*** Responsive table ***/ /* Force table to not be like tables anymore */ /* Hide table headers (but not display: none;, for accessibility) */ /*
+ Label the data
+ */ /*** Page footer ***/ /* 4x3 Aspect Ratio */
+section#topbar { display: none }
+header { overflow: visible; background-position: left -53px; height: 127px; width: 100% }
+header .wrapper { width: 100%; overflow: visible }
+section#headbar { background: none; padding-top: 0; position: relative }
+div#logoarea { padding-left: 3.95% }
+div#spotlight { display: none }
+div#mobileMenu { display: block; position: absolute; top: 0; left: 0; width: 100%; height: 127px; float: none; margin: 0; z-index: 995 }
+div#mobileMenu label { display: block; float: right; margin: 44px 20px 0 0; position: relative }
+div#mobileMenu label img { margin-left: 5px }
+div#mobileMenu label span { font-size: 2em; font-weight: 400; color: #fff; text-shadow: 1px 1px #d8d8d8; position: relative; top: -15px }
+div#mobileMenu ul { display: none; list-style: none; width: 100%; margin-top: 127px; padding: 16px 0; background: #1b3359 }
+div#mobileMenu ul li { text-align: center; display: block; border: none }
+div#mobileMenu ul li a { display: block; padding: 20px 0; font-size: 1.875em; color: #fff }
+div#mobileMenu ul li a span.amount { display: inline-block; width: 24px; height: 24px; /* margin-left: 3px; */ line-height: 23px; text-align: center; color: #1a3359; /* background: url(/images/templates/tovekClassic/bg-yellow-circle.png) no-repeat 0px 2px; */ background-color: #fd0; border-radius: 50%; font-size: 14px; font-weight: 600; color: #1b3359; vertical-align: text-top }
+div#mobileMenu ul li ul { margin: 0; padding: 0; position: relative; background: #224071 }
+div#mobileMenu ul li ul li a { padding: 15px 0 }
+div#mobileMenu ul li.text { display: none }
+div#mobileMenu ul li.last.new { background: #fddb46 }
+div#mobileMenu ul li.last.new a { color: #000 }
+div#mobileMenu label > span { display: none }
+div#mobileMenu input#navToggle:checked ~ ul { display: block !important }
+div#mobileMenu input#navToggle:checked ~ ul li ul { display: block !important }
+div#mobileMenu .wrapper .right { display: none }
+main[role="main"] .wrapper { overflow: hidden }
+section#sectionWrapper { height: 64px !important }
+section#sectionWrapper .desktop { display: none }
+section#sectionWrapper .mobile { display: block; height: 63px; max-width: 92.1%; margin: 0 auto }
+section#sectionWrapper .mobile ul { display: flex; justify-content: space-between; list-style: none; height: 65px; max-width: 640px; margin: 0 auto; clear: both }
+section#sectionWrapper .mobile ul li { display: inline-block; /*float: left;*/ /*width: 27%;*/ padding: 0 1em; height: 63px; text-align: center }
+section#sectionWrapper .mobile ul li img { padding: 10px }
+section#sectionWrapper .mobile ul li.first { height: 63px; /*margin-right: 7%;*/ border: 1px solid #0a5599; border-bottom: none; border-radius: 18px 18px 0 0; -webkit-border-radius: 18px 18px 0 0; -moz-border-radius: 18px 18px 0 0; background: #0a5599 }
+section#sectionWrapper .mobile ul li.second { height: 63px; /*margin-right: 7%;*/ border: 1px solid #fff; border-bottom: none; border-radius: 18px 18px 0 0; -webkit-border-radius: 18px 18px 0 0; -moz-border-radius: 18px 18px 0 0; background: #fff }
+section#sectionWrapper .mobile ul li.third { height: 63px; border: 1px solid #fedc32; border-bottom: none; border-radius: 18px 18px 0 0; -webkit-border-radius: 18px 18px 0 0; -moz-border-radius: 18px 18px 0 0; background: #fedc32 }
+main[role="main"] .wrapper .itemShow { padding: 0 1em }
+.view.itemShow { background: #fff !important }
+.view.itemShow .itemInfo { width: 100% !important }
+.view.itemShow .itemInfo .link { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .text { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .tags { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .auctionInfo { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .socialLinks { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .itemInformation { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .printMap { width: 100% !important; padding: 0 !important; margin: 0 !important }
+.view.itemShow .itemInfo .images { padding-left: 0 !important; width: 100% !important }
+.view.itemShow .itemInfo .images ul { margin: 0 !important; width: 100% !important }
+.view.itemShow .itemInfo .images ul li a img { width: 100% }
+.view.itemShow .itemInfo .vehicle .regNo { text-align: center }
+.view.itemShow .toggleBidding { display: block; cursor: pointer; position: absolute; top: 0.6em; right: 2em; z-index: 11 }
+.view.itemShow .itemBidding { position: absolute !important; right: -100%; width: 70%; background: #eaeaea; transition: all ease 0.3s }
+.view.itemShow .itemBidding.show { position: absolute; z-index: 10; right: 0; width: 70%; background: #eaeaea }
+.view.invoiceList table thead { /*display: none;*/ }
+.view.invoiceList table, 
+.view.invoiceList thead, 
+.view.invoiceList tbody, 
+.view.invoiceList th, 
+.view.invoiceList td, 
+.view.invoiceList tr { display: block }
+.view.invoiceList thead tr { position: absolute; top: -9999px; left: -9999px }
+.view.invoiceList tr { border: 1px solid #ccc }
+.view.invoiceList td { /* Behave  like a "row" */ border: none; border-bottom: 1px solid #d4d4d4; position: relative; padding-left: 50%; text-align: left !important }
+.view.invoiceList td:before { /* Now like a table header */ position: absolute; /* Top/left values mimic padding */ top: 6px; left: 6px; width: 45%; padding-right: 10px; white-space: nowrap }
+.view.invoiceList td:nth-of-type(1):before { content: "ID"; font-weight: bold }
+.view.invoiceList td:nth-of-type(2):before { content: "Typ"; font-weight: bold }
+.view.invoiceList td:nth-of-type(3):before { content: "Datum"; font-weight: bold }
+.view.invoiceList td:nth-of-type(4):before { content: "Status"; font-weight: bold }
+.view.invoiceList td:nth-of-type(5):before { content: "Belopp"; font-weight: bold }
+.view.invoiceList td:nth-of-type(6):before { content: "Kvarvarande"; font-weight: bold }
+.view.invoiceList td:nth-of-type(7):before { content: "Fraktkostnad"; font-weight: bold }
+footer { min-height: unset; margin-top: 2em }
+div#bottombar { width: auto; padding: 0 35px }
+div#bottombar ul.navBottom { clear: both; float: left; text-align: center; margin-top: 1em }
+div#bottombar ul.navBottom li { width: 100%; line-height: 2em }
+div#bottombar ul.navBottom li a { border-left: none }
+div#bottombar ul.navBottom li.first a { padding-left: 0 }
+div#bottombar ul.navBottom:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+div#bottominfo table { min-width: 100%; margin-bottom: 10px }
+div#bottominfo .wrapper #google_translate_block { clear: both }
+.goog-te-gadget span { white-space: normal !important }
+div#bottominfo .bottominfoWrapper { display: flex; justify-content: space-between; flex-direction: column }
+div#bottominfo .bottominfoWrapper .bottominfoText { flex-grow: 0; margin-right: 0 }
+div#bottominfo .bottominfoWrapper .bottominfoFacebook { margin-top: 2em }
+.bottominfoFacebook { position: relative; height: 0; overflow: hidden }
+.bottominfoFacebook-4x3 { padding-bottom: 75% }
+.bottominfoFacebook iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100% }
+div#argonova { text-align: center } }
+
+@media (max-width: 380px) {#overlay > .container { padding: 1em; width: 100%; box-sizing: border-box } }

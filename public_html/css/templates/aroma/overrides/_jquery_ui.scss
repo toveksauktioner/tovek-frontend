@@ -1,0 +1,213 @@
+@import "bootstrap";
+
+.ui-autocomplete {
+	position: absolute;
+	top: 0;
+	left: 0;
+	cursor: default;
+}
+
+.ui-datepicker {
+	background: #fff;
+	box-shadow: 0 .5em 1em rgba(0,0,0,.25);
+	padding: 1em;
+	text-align: center;
+	position: absolute;
+	left: -99999px;
+	top: -99999px;
+	z-index: 3 !important;
+
+
+	.ui-datepicker-next,
+	.ui-datepicker-prev {
+		@include fontIcon( $fa-var-chevron-circle-left, before );
+		cursor: pointer;
+		float: left;
+		> span {
+			display: none;
+		}
+	}
+
+	.ui-datepicker-next {
+		float: right;
+		&::before {
+			content: $fa-var-chevron-circle-right;
+		}
+	}
+
+	.ui-timepicker-div {
+		.ui_tpicker_hour_label,
+		.ui_tpicker_time_label,
+		.ui_tpicker_minute_label {
+			font-weight: bold;
+			&:after {
+				content: ':';
+			}
+		}
+
+		.ui_tpicker_time_label {
+			clear: left;
+			display: inline-block;
+			margin-right: .5em;
+		}
+	}
+
+	button {
+		&.ui-datepicker-current {
+			float: left;
+		}
+
+		&.ui-datepicker-close {
+			float: right;
+		}
+	}
+
+	tbody {
+
+		a {
+			color: inherit;
+			font-weight: normal;
+			padding: .1em;
+		}
+
+		td {
+			cursor: pointer;
+			&:hover {
+				background: rgba(0,0,0,.1);
+			}
+		}
+
+		.ui-datepicker-current-day {
+			background: $colorCerulean;
+		}
+
+		.ui-datepicker-today {
+			background: $colorBrightSun;
+		}
+
+		.ui-datepicker-week-end {
+			background: rgba(0,0,0,.05);
+		}
+	}
+}
+
+.ui-front {
+	z-index: 100;
+}
+
+.ui-helper-hidden-accessible {
+	position: absolute;
+	top: -999999px;
+	left: -999999px;
+}
+
+.ui-menu {
+	background: #fff;
+	box-shadow: 0 .5em 1em rgba(0,0,0,.25);
+
+	.ui-menu-item {
+		padding: .25em;
+		cursor: pointer;
+
+		&.ui-state-focus {
+			background: $colorCerulean;
+			color: #fff;
+		}
+	}
+}
+
+.ui-slider {
+	background: $formIndicatorColor;
+	height: $sizeIndicatorLine;
+	margin: 1em 0;
+	border-radius: 1em;
+	position: relative;
+
+	.ui-slider-handle {
+		position: absolute;
+		z-index: 2;
+		width: 1em;
+		height: 1em;
+		border-radius: 1em;
+		background: $formIndicatorFocus;
+		margin-top: -.5em;
+		top: 50%;
+		//box-shadow: 0 0em .05em rgba(0,0,0,.8);
+		outline: none;
+		cursor: grab;
+	}
+}
+
+.ui-state-active a {
+	color: $bodyLinkColor;
+}
+
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+	opacity: .5;
+}
+
+.ui-tabs {
+	.ui-tabs-nav {
+		li {
+			margin: 0;
+			text-align: center;
+			display: inline-block;
+			font-size: .9em;
+
+			a {
+				display: block;
+				border-bottom: $sizeIndicatorLine solid transparent;
+				color: textColor( $mode: dark );
+				padding: .25em;
+				transition: border $transitionSpeed;
+			}
+
+			&.ui-state-active,
+			&:hover {
+				a {
+					border-bottom: $sizeIndicatorLine solid $bodyLinkColor;
+				}
+			}
+		}
+	}
+
+	.ui-tabs-panel {
+		@include block;
+		margin: 0;
+	}
+}
+
+@include minScreen( 400px ) {
+	.ui-tabs {
+		.ui-tabs-nav {
+			li {
+				font-size: 1em;
+			}
+		}
+	}
+}
+
+@include minScreen( 700px ) {
+	.ui-tabs {
+		.ui-tabs-nav {
+			display: table;
+			table-layout: fixed;
+			width: 100%;
+
+			li {
+				display: table-cell;
+				vertical-align: bottom;
+				padding: 0 .1em;
+
+				a {
+					word-break: break-word; // Non standard for webkit
+					word-wrap: break-word;
+
+					-webkit-hyphens: auto;
+					-moz-hyphens: auto;
+					hyphens: auto;
+				}
+			}
+		}
+	}
+}

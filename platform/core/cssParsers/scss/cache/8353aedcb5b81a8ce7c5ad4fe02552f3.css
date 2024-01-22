@@ -1,0 +1,6 @@
+/* compiled by scssphp v0.7.5 on Tue, 03 Sep 2019 10:46:06 +0200 (0.0008s) */
+
+.view.listStatusCheck dl dt { clear: left; float: left; width: 16em }
+.view.listStatusCheck dl dd { float: left; width: 11em }
+.view.listStatusCheck dl dd span.online { color: #00b233 }
+.view.listStatusCheck dl dd span.error { font-weight: 700; color: #e80000 }

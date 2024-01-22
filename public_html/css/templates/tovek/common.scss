@@ -1,0 +1,23 @@
+@import '../tovek/bootstrap';
+
+// Date - uniform display of date and time combinations
+datetime {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(6em, 1fr) );
+  grid-column-gap: .5em;
+
+  date {
+    white-space: nowrap;
+
+    @include fontIconRegular( $fa-var-calendar, 'before' ) {
+      padding-right: .25em;
+    }
+  }
+  time {
+    white-space: nowrap;
+
+    @include fontIconRegular( $fa-var-clock, 'before' ) {
+      padding-right: .25em;
+    }
+  }
+}

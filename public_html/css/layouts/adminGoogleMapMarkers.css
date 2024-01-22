@@ -1,0 +1,4 @@
+div.gMap { width: auto; float: left; }
+div.gMap h3 { margin-bottom: 0; }
+div.gMapHeader { padding: 1px 0 4px 8px; background: #eaeaea; border: 1px solid #DEDEDE; border-bottom: none; -webkit-border-radius: 4px 4px 0px 0px; -moz-border-radius: 4px 4px 0px 0px; border-radius: 4px 4px 0px 0px; }
+div.gMapContent { padding: 6px; background: #ffffff; border: 1px solid #DEDEDE; -webkit-border-radius: 0px 0px 4px 4px; -moz-border-radius: 0px 0px 4px 4px; border-radius: 0px 0px 4px 4px; }

@@ -1,0 +1,136 @@
+@import "custom"; // Import user defined variables (!default props will only be used if not already defined)
+@import "library/fontAwesome/fontAwesome";
+
+// Theme
+$current_theme: "default" !default; // Choose theme
+
+// Import theme settings
+@import "palette";
+@include themes();
+
+@import "argonova";
+
+// Logo
+$logoPath: "/images/templates/default/logo.png" !default; // Logo (image)
+
+// Base typography
+$baseCustomFontFamily: false !default; // Custom Google font name
+$baseFontFamily: Open Sans, sans-serif !default; // Choose base font ("Open Sans", "Lato", "Roboto", "Roboto Slab", "Merriweather")
+$baseFontSize: 1em !default; // Base font size
+$baseFontWeight: 300; 
+$baseLineHeight: goldenRatio($baseFontSize, 1);
+$baseTextColor: #000 !default; // Base font color (color)
+
+// Base layout
+$siteWidth: 1480px !default; // Site width
+$siteContent: 800px !default; // Content width
+
+// Responsive breakpoints
+$desktop: 980px;
+$tablet: 768px;
+$mobileLarge: 640px;
+$mobileSmall: 480px;
+
+// Sizes
+$baseSpace: goldenRatio(1em, 1);
+$baseSpaceMini: goldenRatio( 1em, -1 );
+$borderRadius: 5px !default; // Border radius
+$baseSpaceSmall: 0px !default; // Base space small
+
+// Headings
+$h1FontSize: 2.441em !default; // H1 size
+$h2FontSize: 1.953em !default; // H2 size
+$h3FontSize: 1.563em !default; // H3 size
+$h4FontSize: 1.25em !default; // H4 size
+$h5FontSize: 0.75em !default; // H5 size
+$h6FontSize: 0.563em !default; // H6 size
+$h1Uppercase: false !default; // H1 uppercase (bool)
+$h2Uppercase: false !default; // H2 uppercase (bool)
+$h3Uppercase: false !default; // H3 uppercase (bool)
+$h4Uppercase: false !default; // H4 uppercase (bool)
+$h5Uppercase: false !default; // H5 uppercase (bool)
+$h6Uppercase: false !default; // H6 uppercase (bool)
+$headingFontFamily: inherit !default; // Choose heading font ("inherit", "Open Sans", "Lato", "Roboto", "Roboto Slab", "Merriweather")
+$headingLineHeight: goldenRatio(1em, 0);
+$headingMargin: goldenRatio(1em, -1) 0;
+$headingColor: #000 !default; // Heading color (color)
+
+// Colors
+$baseBackgroundColor: #fff;
+$baseActionColor: $accent-color;
+$baseActionHoverColor: contrastColor( $baseBackgroundColor, tint( $baseActionColor, 50% ), shade( $baseActionColor, 50% ) ); // Darken or lighten based on the brightness of the background color
+$baseBlockColor: #aaa;
+$baseErrorColor: #b30015 !default; // Error color (color)
+
+// Specified colors
+$linkColor: $baseActionColor;
+$linkHoverColor: tint($accent-color, 20%); // Darken or lighten based on the brightness of the background color
+
+// Slideshow
+$slideshowFullWidth: true !default; // Full width slideshow? (bool)
+$slideshowFullHeight: false !default; // Full height slideshow? Only with fullWidth (bool)
+$slideshowDescriptionBackground: rgba(0, 0, 0, 0.2)!default; // Slideshow text background (color)
+$slideshowDescriptionTextColor: #fff!default; // Slideshow text color (color)
+$slideshowPager: true !default; // Show cycle pager? (bool)
+
+// Menu
+$menuFullWidth: true !default; // Full width menu? (bool)
+$menuTitle: '☰ ' attr( data-title ); // Translated menu title.
+$menuHeight: 80px !default; // Height of menu
+$menuBackgroundColor: false !default; // Background color? If "true" then primary color (bool)
+$userMeta: true !default; // Show user login and order history (bool)
+$megamenu: false !default; // Use Megamenu? (bool)
+
+// Animations
+$transitionLength: .3s !default; // Animation speed
+
+// Shadows
+$baseBoxShadow: 0 $baseSpaceMini $baseSpaceMini rgba( 0, 0, 0, .25 );
+
+// Footer
+$footerBackgroundColor: true !default; // Background color on footer? (bool)
+$footerContactFormShow: true !default; // Show contact form in footer? (bool)
+$footerContactFormBackground: "/images/" !default; // Footer contact form background (image)
+
+// Language
+$displayLocaleList: true !default; // Show language switcher? (bool)
+
+// Products
+$productsPerRowDesktop: 	4 !default; // Products per row Desktop
+$productsPerRowTablet: 		3 !default; // Products per row Tablet
+$productsPerRowMobileLarge:	2 !default; // Products per row Large mobile
+$productsPerRowMobileSmall:	1 !default; // Products per row Small mobile
+$productsFillAvailableSpace: false !default; // Fill available space if needed (bool)
+$productImagePlacement: left !default; // Place product image left or right ("left" ,"right")
+
+// Cart
+$cartLayout: aside !default; // Set cart as fullscreen or to the side? ("fullscreen", "aside")
+$cartIcon: '/images/icons/shopping-cart.png' !default; // Cart icon (image)
+$cartCloseIcon: '/images/icons/shopping-cart-close.png' !default; // Cart close icon (image)
+
+// News
+$newsListFlow: column !default; // Show news list like: ("row", "column")
+$newsPerRow: 3 !default; // News entries per row (integer)
+
+// Puffs
+$puffsPerRowDesktop: 	 4 !default; // Puffs per row Desktop
+$puffsPerRowTablet: 	 3 !default; // Puffs per row Tablet
+$puffsPerRowMobileLarge: 2 !default; // Puffs per row Large mobile
+$puffsPerRowMobileSmall: 1 !default; // Puffs per row Small mobile
+$puffsFillAvailableSpace: false !default; // Fill available space if needed (bool)
+$puffsListFlow: column !default; // Show puff list like: ("row", "column")
+
+// References
+$referencesPerRowDesktop: 	 	4 !default; // References per row Desktop
+$referencesPerRowTablet: 	 	3 !default; // References per row Tablet
+$referencesPerRowMobileLarge: 	2 !default; // References per row Large mobile
+$referencesPerRowMobileSmall: 	1 !default; // References per row Small mobile
+$referencesFillAvailableSpace: 	false !default; // Fill available space if needed (bool)
+$referencesListFlow: column !default; // Show reference list like: ("row", "column")
+
+// Call to action
+$CTA: true !default; // Show CTA? (bool)
+
+// Layout
+$asideShow: true !default; // Show aside on sub pages? (bool)
+$asidePosition: left !default; // Place aside left or right? ("right", "left")

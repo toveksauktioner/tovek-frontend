@@ -1,0 +1,121 @@
+<?php
+
+require_once PATH_CORE . '/clDaoBaseSql.php';
+
+class clUnifaunPartnerDaoMysql extends clDaoBaseSql {
+
+	public function __construct() {
+		$this->aDataDict = array(
+			'entUnifaunPartner' => array(
+                'partnerId' => array(
+					'type' => 'integer',
+					'primary' => true,
+					'autoincrement' => true,
+					'title' => _( 'ID' )
+				),
+                'partnerCode' => array(
+					'type' => 'string',
+					'title' => _( 'Partner Code' ),
+                    'index' => true
+				),
+                'partnerName' => array(
+					'type' => 'string',
+					'title' => _( 'Partner name' )
+				),
+                'serviceCreated' => array(
+					'type' => 'datetime',
+					'title' => _( 'Created' )
+				)
+            ),
+            'entUnifaunPartnerService' => array(
+				'serviceId' => array(
+					'type' => 'integer',
+					'primary' => true,
+					'autoincrement' => true,
+					'title' => _( 'ID' )
+				),
+                'servicePartnerId' => array(
+					'type' => 'integer',
+                    'index' => true
+				),
+                'serviceCode' => array(
+					'type' => 'string',
+					'title' => _( 'Partner Code' ),
+                    'index' => true
+				),
+                'serviceName' => array(
+					'type' => 'string',
+					'title' => _( 'Partner name' )
+				),
+                'serviceFrom' => array(
+					'type' => 'string',
+					'title' => _( 'Service from' )
+				),
+                'serviceTo' => array(
+					'type' => 'string',
+					'title' => _( 'Service to' )
+				),
+                'serviceCreated' => array(
+					'type' => 'datetime',
+					'title' => _( 'Created' )
+				)
+			)
+		);
+
+		$this->sPrimaryField = 'partnerId';
+		$this->sPrimaryEntity = 'entUnifaunPartner';
+		$this->sChildEntity = 'entUnifaunPartnerService';
+		$this->aFieldsDefault = '*';
+
+		$this->init();
+	}
+
+	public function read( $aFields, $mPrimaryId, $sGroupBy = null ) {
+		$aData = $this->readData( array(
+			'entitiesExtended' => $this->sPrimaryEntity . ' LEFT JOIN ' . $this->sChildEntity . ' ON partnerId = servicePartnerId'
+		) );
+		switch( $sGroupBy ) {
+			case 'partnerId': return groupByValue( 'partnerId', $aData ); break;
+			case 'partnerCode': return groupByValue( 'partnerCode', $aData ); break;
+			default: return $aData; break;
+		}
+	}
+
+	public function readServiceByPartner( $iPartnerId, $aFromCountries = null, $aToCountries = null ) {
+		$aCriterias = array(
+			'servicePartnerId = ' . $this->oDb->escapeStr( $iPartnerId )
+		);
+
+		// From country selection
+		if( !empty($aFromCountries) ) {
+			$sSubCriterias = array();
+			$aFromCountries = (array) $aFromCountries;
+
+			foreach( $aFromCountries as $aFromCountry ) {
+				$sSubCriterias[] = 'serviceFrom LIKE ' . $this->oDb->escapeStr( '%' . $aFromCountry . '%' );
+			}
+
+			$sSubCriterias[] = 'serviceFrom LIKE ' . $this->oDb->escapeStr( '*' );
+			$aCriterias[] = '(' . implode( ' OR ', $sSubCriterias ) . ')';
+		}
+
+		// To country selection
+		if( !empty($aToCountries) ) {
+			$sSubCriterias = array();
+			$aToCountries = (array) $aToCountries;
+
+			foreach( $aToCountries as $aToCountry ) {
+				$sSubCriterias[] = 'serviceTo LIKE ' . $this->oDb->escapeStr( '%' . $aToCountry . '%' );
+			}
+
+			$sSubCriterias[] = 'serviceTo LIKE ' . $this->oDb->escapeStr( '*' );
+			$aCriterias[] = '(' . implode( ' OR ', $sSubCriterias ) . ')';
+		}
+
+    return $this->readData( array(
+			'entities' => $this->sChildEntity,
+			'criterias' => implode( ' AND ', $aCriterias )
+		) );
+	}
+
+}

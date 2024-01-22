@@ -1,0 +1,8 @@
+.frmTranslate textarea { width: 350px; height: 150px; background: #ffffff; }
+.frmTranslate h2 { font: italic 1.675em Cambria,Georgia,"Times New Roman",serif; margin: 15px 0 5px 0; }
+
+div.translateFrom,
+div.translateTo
+{ float: left; margin-right: 50px; }
+
+div.textContent { clear: left; padding-top: 5px; }

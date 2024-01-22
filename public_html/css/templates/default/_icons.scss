@@ -1,0 +1,304 @@
+/**
+ * Icons
+ *
+ * Font Awsome
+ * - Icon ref: http://fontawesome.io/icons/
+ */
+
+.icon {
+	@include hide-text;
+	display: inline-block;
+	vertical-align: text-top;
+}
+
+.iconText {
+	text-indent: 18px;
+	width: auto;
+
+	&.iconText:hover {
+		text-decoration: underline;
+	}
+}
+
+/**
+ * A
+ */
+.iconAdd {
+	@include fontIcon( $icon-plus-circle, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+//.iconAccept {
+//	background-image: url('/images/icons/accept.png');
+//}
+//.iconAcrobat {
+//	background-image: url('/images/icons/page_white_acrobat.png');
+//}
+
+/**
+ * B
+ */
+//.iconBullet {
+//	background-image: url('/images/icons/bullet_black.png');
+//}
+
+/**
+ * C
+ */
+//.iconCancel {
+//	background-image: url('/images/icons/cancel.png');
+//}
+//.iconCalendar {
+//	background-image: url('/images/icons/calendar.png');
+//}
+//.iconCalendarAdd {
+//	background-image: url('/images/icons/calendar_add.png');
+//}
+//.iconCalendarDelete {
+//	background-image: url('/images/icons/calendar_delete.png');
+//}
+//.iconCalendarEdit {
+//	background-image: url('/images/icons/calendar_edit.png');
+//}
+//.iconCalendarLink {
+//	background-image: url('/images/icons/calendar_link.png');
+//}
+//.iconCalendarViewDay {
+//	background-image: url('/images/icons/calendar_view_day.png');
+//}
+//.iconCalendarViewMonth {
+//	background-image: url('/images/icons/calendar_view_month.png');
+//}
+//.iconCalendarViewWeek {
+//	background-image: url('/images/icons/calendar_view_week.png');
+//}
+.iconCss {
+	@include fontIcon( $icon-css3, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+
+.iconCopy {
+    @include fontIcon( $icon-clone, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+
+.iconClose {
+    @include fontIcon( $icon-times-circle, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+
+/**
+ * D
+ */
+.iconDelete {
+	@include fontIcon( $icon-minus-circle, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+//.iconDbImport {
+//	background-image: url('/images/icons/dbImport.gif');
+//}
+//.iconDown {
+//	background-image: url('/images/icons/arrowDown.gif');
+//}
+
+/**
+ * E
+ */
+.iconEdit {
+	@include fontIcon( $icon-pencil-square, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+//.iconEmail {
+//	background-image: url('/images/icons/email.png');
+//}
+//.iconEmailAdd {
+//	background-image: url('/images/icons/email_add.png');
+//}
+//.iconEmailAttach {
+//	background-image: url('/images/icons/email_attach.png');
+//}
+//.iconEmailDelete {
+//	background-image: url('/images/icons/email_delete.png');
+//}
+//.iconEmailEdit {
+//	background-image: url('/images/icons/email_edit.png');
+//}
+//.iconEmailError {
+//	background-image: url('/images/icons/email_error.png');
+//}
+//.iconEmailGo {
+//	background-image: url('/images/icons/email_go.png');
+//}
+//.iconEmailLink {
+//	background-image: url('/images/icons/email_link.png');
+//}
+//.iconEmailOpen {
+//	background-image: url('/images/icons/email_open.png');
+//}
+//.iconEmailOpenImage {
+//	background-image: url('/images/icons/email_open_image.png');
+//}
+//.iconError {
+//	background-image: url('/images/icons/error.png');
+//}
+//.iconExit {
+//	background-image: url('/images/icons/exit.png');
+//}
+//.iconExclamation {
+//	background-image: url('/images/icons/exclamation.png');
+//}
+
+/**
+ * G
+ */
+//.iconGoBack {
+//	background-image: url('/images/icons/arrow_turn_left.png');
+//}
+
+/**
+ * H
+ */
+//.iconHtml {
+//	background-image: url('/images/icons/html.png');
+//}
+
+/**
+ * I
+ */
+.iconImage {
+	@include fontIcon( $icon-picture-o, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+.iconInfo {
+	@include fontIcon( $icon-info, before ) {
+        display: inline-block;
+        margin-right: .5em;
+    }
+}
+
+/**
+ * L
+ */
+//.iconLink {
+//	background-image: url('/images/icons/link.png');
+//}
+//.iconLinkAdd {
+//	background-image: url('/images/icons/link_add.png');
+//}
+//.iconLinkBreak {
+//	background-image: url('/images/icons/link_break.png');
+//}
+//.iconLock {
+//	background-image: url('/images/icons/lock.png');
+//}
+
+/**
+ * M
+ */
+//.iconMap {
+//	background-image: url('/images/icons/map.png');
+//}
+//.iconMapAdd {
+//	background-image: url('/images/icons/map_add.png');
+//}
+//.iconMapDelete {
+//	background-image: url('/images/icons/map_delete.png');
+//}
+//.iconMapEdit {
+//	background-image: url('/images/icons/map_edit.png');
+//}
+//.iconMapGo {
+//	background-image: url('/images/icons/map_go.png');
+//}
+//.iconMapMagnify {
+//	background-image: url('/images/icons/map_magnify.png');
+//}
+
+/**
+ * N
+ */
+//.iconNext {
+//	background-image: url('/images/icons/next.png');
+//}
+
+/**
+ * O
+ */
+//.iconOk {
+//	background-image: url('/images/icons/ok.png');
+//}
+//.iconOverlays {
+//	background-image: url('/images/icons/overlays.png');
+//}
+
+/**
+ * P
+ */
+//.iconPackageLink {
+//	background-image: url('/images/icons/package_link.png');
+//}
+//.iconPrint {
+//	background-image: url('/images/icons/printer.png');
+//}
+.iconPrinter {
+	background: url('/images/icons/printer.png') no-repeat left;
+}
+//.iconPrevious {
+//	background-image: url('/images/icons/previous.png');
+//}
+
+/**
+ * R
+ */
+//.iconRelation {
+//	background-image: url('/images/icons/relation.png');
+//}
+
+/**
+ * S
+ */
+//.iconStar {
+//	background-image: url('/images/icons/star.png');
+//}
+
+/**
+ * T
+ */
+//.iconTable {
+//	background-image: url('/images/icons/table.png');
+//}
+//.iconTableLink {
+//	background-image: url('/images/icons/tableLink.png');
+//}
+//.iconThumbnail {
+//	background-image: url('/images/icons/thumbnail.png');
+//}
+
+/**
+ * U
+ */
+//.iconUser {
+//	background-image: url('/images/icons/user.png');
+//}
+//.iconUserAdd {
+//	background-image: url('/images/icons/user_add.png');
+//}
+//.iconUserComment {
+//	background-image: url('/images/icons/user_comment.png');
+//}
+//.iconUp {
+//	background-image: url('/images/icons/arrowUp.gif');
+//}

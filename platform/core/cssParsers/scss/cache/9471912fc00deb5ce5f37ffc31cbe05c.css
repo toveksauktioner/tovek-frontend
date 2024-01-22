@@ -1,0 +1,1529 @@
+/* compiled by scssphp v0.7.5 on Sun, 01 Sep 2019 19:00:14 +0200 (2.0149s) */
+
+ /* Reset -------------------------------------------------------------------- */
+body, 
+legend { color: #000 }
+
+body, 
+div, 
+dl, 
+dt, 
+dd, 
+ul, 
+ol, 
+li, 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+pre, 
+code, 
+form, 
+fieldset, 
+legend, 
+input, 
+textarea, 
+p, 
+blockquote, 
+hr, 
+th, 
+td { margin: 0; padding: 0 }
+
+table { border-collapse: collapse; border-spacing: 0 }
+
+table, 
+td { vertical-align: top }
+
+fieldset, 
+img, 
+hr { border: 0 }
+
+caption, 
+th { text-align: left }
+
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 { font-size: 100%; font-weight: normal }
+
+a, 
+address { font-style: normal; text-decoration: none }
+
+input, 
+textarea, 
+select { font-family: inherit; font-size: 100%; font-weight: inherit }
+ /* HTML5 -------------------------------------------------------------------- */
+article, 
+aside, 
+details, 
+figcaption, 
+figure, 
+footer, 
+header, 
+hgroup, 
+menu, 
+nav, 
+section { display: block }
+ /* Tools -------------------------------------------------------------------- */
+.hide { display: none }
+
+.replace { text-indent: -999em; background-repeat: no-repeat }
+
+.accessibility { position: absolute; top: -999em; left: -999em }
+
+.noindent { margin: 0 }
+
+.nomargin { margin-top: 0; margin-bottom: 0 }
+
+.noborder { border: 0 !important }
+
+.clear { clear: both }
+
+span.clear { clear: both; display: block; height: 0; min-height: 0; max-height: 0; font-size: 0; line-height: 0; margin: 0; padding: 0 }
+
+.clearfix { display: inline-block }
+
+.clearfix:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+
+html[xmlns] .clearfix { display: block }
+
+* html .clearfix { height: 1% }
+
+img.block { display: block }
+ /* Typography --------------------------------------------------------------- */
+body { font: 16px 'Open sans', 'sans-serif', Arial, Helvetica, sans-serif }
+ /* Headings */
+h1 { font-size: 2em; font-weight: bold; line-height: 38px; margin-bottom: 15px }
+
+h2 { font-size: 1.75em; font-weight: bold }
+
+h3 { font-size: 1.5em; font-weight: bold }
+
+h4 { font-size: 1.25em; font-weight: bold }
+
+h5 { text-transform: uppercase; font-weight: bold }
+
+h6 { font-weight: bold }
+ /* Text */
+.important { font-size: 1.25em }
+ /* Lists */
+dt { font-weight: bold }
+
+ol { list-style-position: inside }
+
+li.plain, 
+.plain { list-style: none }
+ /* Tables */
+ /* Links */
+
+a, 
+a.inline { text-decoration: none; color: #00539b }
+
+a.anchor { display: none }
+ /* Other */
+hr { color: #444; background: #444; height: 1px; clear: both }
+ /* dataTables */
+table.dataTable { width: 100%; line-height: 1.85em; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; background: #fff; border-color: #dedede; border-spacing: 0; border-style: solid; border-width: 1px; border-collapse: separate }
+
+table.dataTable th { font-weight: bold; background: #eaeaea; padding: 0.5em }
+
+table.dataTable td { text-align: left; padding: 0.5em }
+
+table.dataTable tr:hover td { background: #f0f0f0 }
+
+table.dataTable tr.odd td { background: #f9f9f9 }
+
+table.dataTable tr.warning td { background: #ff8080 }
+
+table.dataTable th a, 
+table.dataTable td a { color: #000 }
+
+table.dataTable img { display: block; padding: 3px 0 }
+
+table.dataTable tfoot td { background: #f0f0f0; font-weight: bold }
+ /**
+ * Auction item list toolbar
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+.listToolbar { height: auto }
+
+.listToolbar h2 { float: left; width: 38.2203389831%; line-height: 92px; font-size: 1.875em }
+
+.listToolbar .sorting { float: left; width: 278px; height: 40px; margin-top: 28px; position: relative; z-index: 888 }
+
+.listToolbar .sorting .selector { position: absolute; z-index: 999; width: 248px; height: 26px; padding: 7px 15px; font-size: 1.125em; font-weight: 700; color: #6f6f6f; background: url('/images/templates/tovekClassic/bg-auction-item-sorting.png') no-repeat; overflow: hidden }
+
+.listToolbar .sorting .selector:hover { cursor: pointer }
+
+.listToolbar .sorting .optionsContainer { position: absolute; z-index: 888; top: 5px; width: 246px; height: 3px; overflow: hidden; padding: 15px; border: 1px solid #cfcfcf; border-top: none; border-radius: 0 0 8px 8px; -webkit-border-radius: 0 0 8px 8px; -moz-border-radius: 0 0 8px 8px; background: #e5e5e5 }
+
+.listToolbar .sorting ul.options { list-style: none }
+
+.listToolbar .sorting ul.options li { padding: 0 }
+
+.listToolbar .sorting ul.options li a { font-size: 1.25em; font-weight: 700; color: #6f6f6f }
+
+.listToolbar .sorting ul.options li a:hover { color: #fff }
+
+.listToolbar .sorting ul.options li.active a { font-style: italic; color: #00539b }
+
+.listToolbar .sorting:hover > .optionsContainer, 
+.listToolbar .sorting:active > .optionsContainer { top: 36px; height: 110px; -webkit-touch-callout: none; -webkit-user-select: none }
+
+.listToolbar .viewmodes { float: left; width: 393px; padding-top: 28px }
+
+.listToolbar ul.viewmodes { float: right; list-style: none; width: 158px; height: 47px; overflow: hidden }
+
+.listToolbar ul.viewmodes li { display: inline-block; float: left; margin-right: 20px; width: 23px; height: 23px; padding: 8px }
+
+.listToolbar ul.viewmodes li:nth-child(3n) { margin-right: 0 }
+
+.listToolbar ul.viewmodes li a { display: block; width: 23px; height: 23px; background: url('/images/templates/tovekClassic/bg-viewmode-icons-small.png') no-repeat }
+
+.listToolbar ul.viewmodes li:nth-child(1n) a { background-position: 1px 0 }
+
+.listToolbar ul.viewmodes li:nth-child(2n) a { background-position: -24px 0 }
+
+.listToolbar ul.viewmodes li:nth-child(3n) a { background-position: -47px 0 }
+
+.listToolbar ul.viewmodes li.active { background: #e6e6e6 }
+ /* Transition */
+.listToolbar ul.viewmodes li.selectable:nth-child(1n):hover { background-color: #000 }
+
+.listToolbar ul.viewmodes li.selectable:nth-child(2n):hover { background-color: #000 }
+
+.listToolbar ul.viewmodes li.selectable:nth-child(3n):hover { background-color: #000 }
+
+.listToolbar ul.viewmodes li.selectable:nth-child(1n):hover a { background-position: 0 -23px }
+
+.listToolbar ul.viewmodes li.selectable:nth-child(2n):hover a { background-position: -24px -24px }
+
+.listToolbar ul.viewmodes li.selectable:nth-child(3n):hover a { background-position: -47px -24px }
+
+.listToolbar:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+ /* List itmes */
+.view.itemList { max-width: 92.1875%; margin: 0 auto 40px auto }
+
+.view.itemList > h1 { margin-bottom: 0; padding: 2px 15px 4px 15px; border: 1px solid #e6e6e6; border-left: none; border-right: none; background: #f8f8f8 }
+
+.view.itemList > h1 > span { font-size: 28px; color: #0a5599 }
+
+.items span.ended { color: #999 }
+
+.items span.ended strong { color: #000 }
+ /* Red 2 minute clock */
+span.itemTimeWrapper.clock span.red { font-size: 1.125em; font-weight: 700; color: #f00 }
+ /**
+ * Auction item square list
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+ul.items.square > li { position: relative; display: block; float: left; width: 24%; height: 410px; padding: 0.25%; margin: 0 0.25% 30px; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; overflow: hidden }
+
+ul.items.square > li a { display: block; color: #000 }
+
+ul.items.square > li .imageContainer { width: 100%; height: 211px; line-height: 211px; margin-bottom: 10px; display: block; text-align: center; vertical-align: middle }
+
+ul.items.square > li .imageContainer p.image { display: block; position: relative }
+
+ul.items.square > li .imageContainer p.image img.liveicon { display: block; position: absolute; top: -4px; left: -4px; /*border-top: 1px solid #cacaca; border-left: 1px solid #cacaca; border-top-left-radius: 4px;*/ }
+
+ul.items.square > li .imageContainer p.image img { display: inline; vertical-align: middle; max-width: 100%; max-height: 175px }
+
+ul.items.square > li .information { height: 187px; padding: 0 5px; overflow: hidden; position: relative; text-align: left }
+
+ul.items.square > li .information .bidNo { float: left; font-size: 1.25em; margin: 0 8px 0 27px }
+
+ul.items.square > li .information h4 { margin-bottom: 5px }
+
+ul.items.square > li .information .description { max-height: 69px; overflow: hidden }
+
+ul.items.square > li .information .metadata { position: absolute; bottom: 5px; font-size: 0.875em }
+
+ul.items.square > li .information .metadata strong { margin-right: 10px }
+
+ul.items.square > li .information .metadata img { position: relative; top: 1px; margin-right: 3px }
+
+ul.items.square > li .information .itemFavorite { position: absolute; left: 0px; top: 2px }
+
+ul.items.square > li.halted { opacity: 0.35; filter: alpha(opacity=35); -moz-opacity: 0.35; -khtml-opacity: 0.35; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)" }
+
+ul.items.square > li.ended { opacity: 0.65; filter: alpha(opacity=65); -moz-opacity: 0.65; -khtml-opacity: 0.65; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)" }
+
+ul.items.square > li.ended.selected, 
+ul.items.square > li.ended:hover { opacity: 1; filter: alpha(opacity=100); -moz-opacity: 0.1 0; -khtml-opacity: 0.1 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)" }
+
+ul.items.square > li:hover { background: #f5f5f5; box-shadow: 0px 0px 4px #cfcfcf }
+
+ul.items.square > li.selected { background: #f5f5f5; padding: 3px 0.25% 33px 0.25%; margin-bottom: 0 }
+
+ul.items.square > li { transition: all 0.5s linear; -webkit-transition: all 0.5s linear; -o-transition: all 0.5s linear; -ms-transition: all 0.5s linear; -kthtml-transition: all 0.5s linear }
+ /*ul.items.square > li.ajaxItemShow:hover { border: 1px solid #fff; }*/
+ul.items.square:after { content: ""; display: inline-block; width: 100% }
+ /**
+ * Auction item mixed list
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+ul.items.mixed { list-style: none }
+
+ul.items.mixed > li { position: relative; display: table; width: 100%; height: 211px; margin-bottom: 10px; padding: 5px }
+
+ul.items.mixed > li .image { float: left; width: 281px; height: 211px; margin-right: 30px; position: relative; text-align: center }
+
+ul.items.mixed > li .image img { max-width: 100%; max-height: 100% }
+
+ul.items.mixed > li .image img.liveicon { display: block; position: absolute; top: 0; left: 0; /*border-top: 1px solid #cacaca; border-left: 1px solid #cacaca; border-top-left-radius: 4px;*/ }
+
+ul.items.mixed > li .info { display: table-cell; width: 857px; height: 211px; vertical-align: middle }
+
+ul.items.mixed > li .info a { color: #000 }
+
+ul.items.mixed > li .info .bidNo { float: left; font-size: 1.25em; margin-right: 8px }
+
+ul.items.mixed > li .info .metadata { font-size: 0.875em; line-height: 33px; margin-top: 22px }
+
+ul.items.mixed > li .information .metadata img { position: relative; top: 1px; margin-right: 3px }
+
+ul.items.mixed > li .itemFavorite { width: 100px; position: absolute; top: 45%; right: 0; z-index: 999 }
+
+ul.items.mixed > li.halted { opacity: 0.35; filter: alpha(opacity=35); -moz-opacity: 0.35; -khtml-opacity: 0.35; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)" }
+
+ul.items.mixed > li.ended.selected, 
+ul.items.mixed > li.halted:hover { opacity: 1; filter: alpha(opacity=100); -moz-opacity: 0.1 0; -khtml-opacity: 0.1 0; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)" }
+
+ul.items.mixed > li.ended { opacity: 0.65; filter: alpha(opacity=65); -moz-opacity: 0.65; -khtml-opacity: 0.65; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)" }
+
+ul.items.mixed > li:hover { background: #f5f5f5; box-shadow: 0px 0px 4px #cfcfcf }
+
+ul.items.mixed > li { transition: all 0.5s linear; -webkit-transition: all 0.5s linear; -o-transition: all 0.5s linear; -ms-transition: all 0.5s linear; -kthtml-transition: all 0.5s linear }
+ /**
+ * Auction item table/detailed list
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+table.items.detailed.detailed { width: 100%; border-collapse: separate; border-spacing: 0 4px }
+ /* Table head */
+table.items.detailed thead tr th { height: 36px; vertical-align: top; text-transform: uppercase; font-size: 1.125em; color: #999 }
+
+table.items.detailed thead tr th img { float: left; margin-right: 4px }
+ /* Table body */
+table.items.detailed tbody tr { cursor: pointer; position: relative; background: #f4f3f3 }
+
+table.items.detailed tbody tr.odd { background: #fff }
+
+table.items.detailed tbody td { height: 39px; vertical-align: middle; border-bottom: 1px solid #fff }
+
+table.items.detailed tbody td img { display: block; float: left; margin-right: 4px }
+
+table.items.detailed tbody td.itemShow:hover { cursor: auto }
+
+table.items.detailed tbody td.auctionTitle { padding-left: 5px }
+
+table.items.detailed tbody tr.halted { opacity: 0.35; filter: alpha(opacity=35); -moz-opacity: 0.35; -khtml-opacity: 0.35; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)" }
+
+table.items.detailed tbody tr.ended.selected, 
+table.items.detailed tbody tr.halted.selected, 
+table.items.detailed tbody tr.halted:hover { opacity: 1; filter: alpha(opacity=100); -moz-opacity: 1; -khtml-opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)" }
+
+table.items.detailed tbody tr.ended { opacity: 0.65; filter: alpha(opacity=65); -moz-opacity: 0.65; -khtml-opacity: 0.65; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)" }
+
+table.items.detailed tbody tr:hover { box-shadow: 0px 0px 4px #cfcfcf }
+
+table.items.detailed tbody tr { transition: all 0.5s linear; -webkit-transition: all 0.5s linear; -o-transition: all 0.5s linear; -ms-transition: all 0.5s linear; -kthtml-transition: all 0.5s linear }
+ /**
+ * Auction item pagination bar
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+.paginationBar { margin: 30px 0; height: 32px }
+
+.paginationBar .counter { float: left; width: 20% }
+
+.paginationBar .moreButton { float: left; width: 60%; text-align: center }
+
+.paginationBar .moreButton a { display: inline-block; max-width: 278px; height: 50px; margin-top: -12px; /*margin: -12px auto 0 auto;*/ line-height: 49px; /*background: url('/images/templates/tovekClassic/bg-load-button.png') no-repeat 0 0;*/ padding: 0 2em; border-radius: 10px; border: 1px solid #cfcfcf; background: #fff; /* Old browsers */ background: -moz-linear-gradient(top, #fff 0%, #ededed 100%, #ededed 102%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, #fff 0%, #ededed 100%, #ededed 102%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to bottom, #fff 0%, #ededed 100%, #ededed 102%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#ededed',GradientType=0); /* IE6-9 */ -webkit-transition: all 0.3s ease; -moz-transition: all 0.3s ease; -o-transition: all 0.3s ease; -ms-transition: all 0.3s ease; transition: all 0.3s ease }
+
+.paginationBar .moreButton a:hover { background: #ededed; /* Old browsers */ background: -moz-linear-gradient(top, #ededed 0%, #fff 99%); /* FF3.6-15 */ background: -webkit-linear-gradient(top, #ededed 0%, #fff 99%); /* Chrome10-25,Safari5.1-6 */ background: linear-gradient(to bottom, #ededed 0%, #fff 99%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff',GradientType=0); /* IE6-9 */ }
+
+.paginationBar .moreButton a.nextButton img { height: 1em; width: auto; position: relative; top: 3px; left: 10px }
+
+.paginationBar .toTop { float: right; width: 20%; text-align: right }
+ /**
+ * Auction item square & mixed list ajax show
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+ul.items.square #spinner { margin-top: -55px }
+
+ul.items.mixed #spinner { margin-top: -15px }
+
+table.items.detailed #spinner { margin-top: -55px }
+
+#ajaxItemShow { min-height: 0 !important; padding: 0; float: none; clear: both; position: relative; height: auto; width: 100%; margin: 0 auto 20px auto; background: #fff; /* Old browsers */ /* IE9 SVG, needs conditional override of 'filter' to 'none' */ background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI2NSUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2NSUiIHN0b3AtY29sb3I9IiNmNGYzZjMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+); background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 64.7%, rgba(244, 243, 243, 1) 65.624%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, right top, color-stop(64.7%, rgba(255, 255, 255, 1)), color-stop(65.624%, rgba(244, 243, 243, 1))); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 64.7%, rgba(244, 243, 243, 1) 65.624%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 64.7%, rgba(244, 243, 243, 1) 65.624%); /* Opera 11.10+ */ background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 64.7%, rgba(244, 243, 243, 1) 65.624%); /* IE10+ */ background: linear-gradient(to right, rgba(255, 255, 255, 1) 64.7%, rgba(244, 243, 243, 1) 65.624%); /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f4f3f3',GradientType=1); /* IE6-8 */ }
+
+@font-face { font-family: 'din_alternatebold'; src: url('/css/font/din_alternate_bold-webfont.woff2') format('woff2'), url('/css/font/din_alternate_bold-webfont.woff') format('woff'); font-weight: normal; font-style: normal; }
+ /**
+ * Auction ajax item show view
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+.view.itemShowAjax { position: relative; border-top: 7px solid #848484; border-bottom: 7px solid #848484 }
+
+.view.itemShowAjax .topClose { position: absolute; right: 0; top: 0; width: 43px; height: 41px; text-align: center; z-index: 1 }
+
+.view.itemShowAjax .topClose a { display: inline-block; font-size: 1.5em; line-height: 41px; font-weight: 400; color: #666; width: 43px; height: 41px }
+
+.view.itemShowAjax .itemInfo { width: 65.625%; float: left }
+
+.view.itemShowAjax .itemInfo .link { height: 42px; line-height: 42px; padding-left: 3%; background: #f4f3f3 }
+
+.view.itemShowAjax .itemInfo .link a { display: block; padding-left: 25px; background: url('/images/templates/tovekClassic/icon-blue-link.png') no-repeat left center; color: #0b569a; font-weight: 700 }
+
+.view.itemShowAjax .itemInfo .link a.directLink { display: none }
+
+.directLinkContainer { display: none; position: absolute; z-index: 900; top: 42px; left: 32px; width: 740px; padding: 0px 20px; line-height: 35px; font-size: 12px; background: #eae8e8; box-shadow: 0 2px 3px #a7a7a7 }
+
+.directLinkContainer.show { display: block }
+
+.view.itemShowAjax .itemInfo .link a.financing { display: block; background: url('/images/templates/tovekClassic/icon-blue-dollarsign.png') no-repeat left center }
+
+.financingContainer { display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background: rgba(255, 255, 255, 0.5); z-index: 999; color: #fff; overflow: auto }
+
+.financingContainer .view.itemFinancing { position: relative; width: 470px; padding: 15px 60px; max-width: 100%; margin: 200px auto 0 auto; background: #3693d4 url('/images/templates/tovekClassic/finance-form-arrow.png') no-repeat 215px 200px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.25) }
+
+.financingContainer .view.itemFinancing .closePopup { position: absolute; right: 0px; top: -16px; padding: 8px; font-weight: bold; cursor: pointer }
+
+.financingContainer .view.itemFinancing h1 { font-size: 1.5em; line-height: 1em }
+
+.financingContainer .view.itemFinancing h2 { font-size: 0.875em; line-height: 1em; margin: 1em 0 }
+
+.financingContainer .view.itemFinancing p { font-size: 0.875em; line-height: 1.25em; max-width: 180px }
+
+.financingContainer .view.itemFinancing .form { width: 185px; padding: 0 10px 15px 10px; background: #23638e }
+
+.financingContainer .view.itemFinancing .form .result { padding: 5px; background-image: none }
+
+.financingContainer .view.itemFinancing .form .result ol li { line-height: 1.25em; font-size: 0.75em }
+
+.financingContainer .view.itemFinancing .form .result ol li label { font-size: 1em }
+
+.financingContainer .view.itemFinancing .form h2 { font-weight: normal }
+
+.financingContainer .view.itemFinancing .form p { font-size: 0.625em }
+
+.financingContainer .view.itemFinancing .form form { padding-top: 15px }
+
+.financingContainer .view.itemFinancing .form form label { font-size: 0.625em }
+
+.financingContainer .view.itemFinancing .form form input.text { width: 183px; height: 20px; border: 1px solid #81adc3; line-height: 20px; padding: 0 5px }
+
+.financingContainer .view.itemFinancing .form form .buttons { max-width: 100%; padding-top: 15px }
+
+.financingContainer .view.itemFinancing .form form button { background: #f09233; color: #fff; border: 1px solid #cc8829; text-transform: uppercase; font-weight: bold; font-family: 'Open sans', sans-serif; font-size: 1.125em; text-align: center; width: 195px; padding: 5px 0 }
+
+.financingContainer .view.itemFinancing .foot { font-size: 0.625em; line-height: 1em; padding-top: 15px }
+
+.view.itemShowAjax .itemInfo .images { width: 44%; margin: 25px 3%; float: left }
+
+.view.itemShowAjax .itemInfo .images ul { list-style: none }
+
+.view.itemShowAjax .itemInfo .images ul li { display: inline-block; float: left; margin-right: 0.004%; margin-bottom: 4px; width: 19.996%; text-align: center }
+
+.view.itemShowAjax .itemInfo .images ul li a img { display: block; max-width: 100% }
+
+.view.itemShowAjax .itemInfo .images ul li.first { margin-right: 0; width: 100%; position: relative }
+
+.view.itemShowAjax .itemInfo .images ul li.first img.liveicon { position: absolute; top: 0; left: 0; z-index: 888 }
+
+.view.itemShowAjax .itemInfo .images ul li.fifth { margin-right: 0 }
+
+.view.itemShowAjax .itemInfo .images ul:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+
+.view.itemShowAjax .itemInfo .text { width: 47%; float: right; margin: 16px 3% 0 0 }
+
+.view.itemShowAjax .itemInfo .text .bidNo { float: left; font-size: 1.375em; margin-right: 10px }
+
+.view.itemShowAjax .itemInfo .text h1 { text-align: left; font-size: 1.375em; line-height: normal }
+
+.view.itemShowAjax .itemInfo .text .itemDescription { margin: 15px 0 }
+
+.view.itemShowAjax .itemInfo .text a { font-size: 1.125em; font-weight: 700; color: #0b569a }
+
+.view.itemShowAjax .itemInfo .vehicle { clear: both; margin-top: 15px }
+
+.view.itemShowAjax .itemInfo .vehicle .regNo span { display: inline-block; padding: 0.5em 1.25em 0.5em 0; border: 3px solid black; border-radius: 10px; text-transform: uppercase; font-weight: 700; font-size: 1.75em; font-family: 'din_alternatebold'; line-height: 0.5em; overflow: hidden }
+
+.view.itemShowAjax .itemInfo .vehicle .regNo span:before { font-size: 0.75em; width: 1em; background: blue; color: white; content: 'S'; padding: 0.5em; margin-right: 1em }
+
+.view.itemShowAjax .itemInfo .tags { clear: left; float: left; max-width: 576px; padding-left: 3%; margin-bottom: 15px; font-size: 1.125em }
+
+.view.itemShowAjax .itemInfo .tags strong { display: block; margin-bottom: 5px }
+
+.view.itemShowAjax .itemInfo .tags ul { list-style: none }
+
+.view.itemShowAjax .itemInfo .tags ul li { height: 36px; display: inline-block; float: left; margin: 0 0.313em 0.313em 0; border: 1px solid #c8e1f9; border-left: none; border-radius: 0 13px 13px 0; -webkit-border-radius: 0 13px 13px 0; -moz-border-radius: 0 13px 13px 0; background: #c8e1f9 }
+
+.view.itemShowAjax .itemInfo .tags ul li a { display: block; line-height: 36px; font-weight: 700; color: #0b569a; padding: 0 15px 0 44px; background: url('/images/templates/tovekClassic/icon-white-check-circle.png') no-repeat 7px 6px }
+
+.view.itemShowAjax .itemInfo .tags ul li.empty { background-color: #e0e0e0 }
+
+.view.itemShowAjax .itemInfo .tags ul li.empty span { display: block; line-height: 36px; font-weight: 700; color: #fff; padding: 0 15px 0 44px; background: url('/images/templates/tovekClassic/icon-white-check-circle.png') no-repeat 7px 6px }
+
+.view.itemShowAjax .itemInfo .tags ul:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+
+.view.itemShowAjax .itemInfo .socialLinks { float: right; padding: 55px 3% 0 0 }
+
+.view.itemShowAjax .itemInfo .printMap { clear: both; margin-bottom: 25px; padding-left: 3% }
+
+.view.itemShowAjax .itemInfo .printMap a { display: block; line-height: 25px; padding-left: 30px; font-weight: 700; background: url('/images/templates/tovekClassic/icon-print-paper.png') left center no-repeat; color: #0b569a }
+
+.view.itemShowAjax .itemBidding { width: 33.875%; float: right; padding-right: 0.5%; position: relative }
+
+.view.itemShowAjax .bottomClose { position: absolute; right: 0; bottom: 0; width: 43px; height: 41px; text-align: center; z-index: 1 }
+
+.view.itemShowAjax .bottomClose a { display: inline-block; font-size: 1.5em; line-height: 41px; font-weight: 400; color: #666; width: 43px; height: 41px }
+
+.view.itemShow .toggleBidding { display: none }
+
+.view.bidFormAdd { min-height: 130px }
+
+.view.bidFormAdd .currentBid { font-weight: 700; font-size: 1.3em; color: #000; padding: 0.5em 1.2em 0 1.2em; box-sizing: border-box }
+
+.view.bidFormAdd .currentBid span { font-size: 1.2em }
+
+.currentBidUser { color: #fe1d1d; font-weight: 700; font-size: 90%; padding: 0 1.7em 0.5em 1.7em; box-sizing: border-box }
+
+.view.bidFormAdd .currentAutoBid { margin: 1em 0 0 1.45em }
+
+.view.bidFormAdd ul.userAutoBid { list-style: none; margin: 36px 0 0 30px; width: 367px }
+
+.view.bidFormAdd ul.userAutoBid li { padding-left: 33px; line-height: 18px; margin-bottom: 10px; background: url('/images/templates/tovekClassic/icon-bid-list-autobid.png') no-repeat left center }
+
+.view.bidFormAdd ul.userAutoBid li a { width: 155px; margin: 3px 0 0 8px; font-size: 0.813em }
+
+.view.bidFormAdd form { width: 88%; margin: 17px 6% 0 6% }
+
+.view.bidFormAdd form label span { color: #fc0d1b }
+
+.view.bidFormAdd form input { width: 77%; height: 28px; padding: 0 8px; text-indent: 0; border: none; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; box-shadow: inset 1px 1px 5px #a6a6a6; -webkit-box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.35); -moz-box-shadow: inset 1px 1px 5px #a6a6a6 }
+
+.view.bidFormAdd form p.buttons { text-align: center }
+
+.view.bidFormAdd form button[name="submitPost"] { width: 40%; height: 42px; padding-top: 9px; font: 700 16px 'Open sans'; color: #fff; border: none; background: url('/images/templates/tovekClassic/bg-bid-button-inactive.png') no-repeat center top }
+
+.view.bidFormAdd form button[name="submitPost"]:hover { background: url('/images/templates/tovekClassic/bg-bid-button-active.png') no-repeat center top }
+
+.view.bidFormAdd form button[name="submitMaxBid"] { width: 40%; height: 42px; padding-top: 9px; font: 700 16px 'Open sans'; border: none; background: url('/images/templates/tovekClassic/bg-maxbid-button-inactive.png') no-repeat center top }
+
+.view.bidFormAdd form button[name="submitMaxBid"]:hover { background: url('/images/templates/tovekClassic/bg-maxbid-button-active.png') no-repeat center top }
+
+.view.bidFormAdd form button[name="submitHelp"] { width: 15%; height: 33px; position: relative; padding-left: 9px; top: 3px; font: 700 20px 'Open sans'; border: none; background: url('/images/templates/tovekClassic/bg-bid-question-inactive.png') no-repeat left center }
+
+.view.bidFormAdd form button[name="submitHelp"]:hover { background: url('/images/templates/tovekClassic/bg-bid-question-active.png') no-repeat left center }
+
+.view.bidFormAdd ul.notification { padding: 0 5px 0 7px }
+
+.view.bidFormAdd ul.notification li { font-size: 0.813em; padding: 8px 10px 8px 36px }
+
+.view.bidFormAdd .bidHelp { display: none; position: absolute; top: 208px; left: 8px; width: 341px; min-height: 150px; padding: 20px; border: 2px solid #c8e1f9; background: #fff; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px }
+
+.view.preBidForm { min-height: 130px }
+
+.view.preBidForm form { width: 88%; margin: 17px 6% 0 6% }
+
+.view.preBidForm form label span { color: #fc0d1b }
+
+.view.preBidForm form input { width: 77%; height: 28px; padding: 0 8px; text-indent: 0; border: none; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; box-shadow: inset 1px 1px 5px #a6a6a6; -webkit-box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.35); -moz-box-shadow: inset 1px 1px 5px #a6a6a6 }
+
+.view.preBidForm form p.buttons { text-align: center }
+
+.view.preBidForm form button[name="submitPreBid"] { width: 40%; height: 42px; padding-top: 9px; font: 700 16px 'Open sans'; color: #fff; border: none; background: url('/images/templates/tovekClassic/bg-bid-button-inactive.png') no-repeat center top }
+
+.view.preBidForm form button[name="submitPreBid"]:hover { background: url('/images/templates/tovekClassic/bg-bid-button-active.png') no-repeat center top }
+
+.view.preBidForm form button[name="submitHelp"] { width: 15%; height: 33px; position: relative; padding-left: 9px; top: 3px; font: 700 20px 'Open sans'; border: none; background: url('/images/templates/tovekClassic/bg-bid-question-inactive.png') no-repeat left center }
+
+.view.preBidForm form button[name="submitHelp"]:hover { background: url('/images/templates/tovekClassic/bg-bid-question-active.png') no-repeat left center }
+
+.view.preBidForm .preBidInfo { margin: 30px 6% }
+
+.view.preBidForm .preBidInfo a { margin-left: 15px }
+
+.view.preBidForm ul.notification { padding: 0 5px 0 7px }
+
+.view.preBidForm ul.notification li { font-size: 0.813em; padding: 8px 10px 8px 36px }
+
+.view.preBidForm .bidHelp { display: none; position: absolute; top: 142px; left: 8px; width: 341px; min-height: 150px; padding: 20px; border: 2px solid #c8e1f9; background: #fff; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px }
+
+.view.bidList { padding: 15px 29px }
+
+.view.bidList h3 { font-size: 1em; margin-bottom: 10px }
+
+.view.bidList span.empty { display: block; margin-bottom: 10px; padding-left: 33px; font-style: italic; color: #999 }
+
+.view.bidList ul { list-style: none; margin-bottom: 20px }
+
+.view.bidList ul li { padding-left: 33px; line-height: 19px; margin-bottom: 10px; background: url('/images/templates/tovekClassic/icon-bid-list.png') no-repeat 0 11.5px }
+
+.view.bidList ul li span.date { font-size: 0.938em; color: #5d5d5d }
+
+.view.bidList ul li.first { background: url('/images/templates/tovekClassic/icon-bid-list-active.png') no-repeat 0 11.5px }
+
+.view.bidList ul li.first strong { color: #f00 }
+
+.view.bidList a { display: block; padding-left: 33px; margin-bottom: 15px; font-weight: 700; color: #0b569a }
+
+.view.bidList dl { margin-bottom: 2em }
+
+.view.bidList p { padding-left: 33px }
+
+.view.bidListAll { padding: 15px 29px }
+
+.view.bidListAll h4 { font-size: 1em; margin-bottom: 10px }
+
+.view.bidListAll span.empty { display: block; margin-bottom: 10px; padding-left: 33px; font-style: italic; color: #999 }
+
+.view.bidListAll ul { list-style: none; margin-bottom: 20px }
+
+.view.bidListAll ul li { padding-left: 33px; line-height: 19px; margin-bottom: 10px; background: url('/images/templates/tovekClassic/icon-bid-list.png') no-repeat 0 11.5px }
+
+.view.bidListAll ul li span.date { font-size: 0.938em; color: #5d5d5d }
+
+.view.bidListAll ul li.first { background: url('/images/templates/tovekClassic/icon-bid-list-active.png') no-repeat 0 11.5px }
+
+.view.bidListAll ul li.first strong { color: #f00 }
+
+.view.bidListAll dl { margin-bottom: 2em }
+
+.view.bidListAll a { display: block; padding-left: 33px; margin-bottom: 15px; font-weight: 700; color: #0b569a }
+ /**
+ * Mobile rules followed below
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ */
+@media (min-width: 641px) and (max-width: 1024px) { /* Change the gradient on the item show block to 50% width */ /* Change the content of the item show block to 50%-50% */
+#ajaxItemShow { background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 49.9%, rgba(244, 243, 243, 1) 49.9%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, right top, color-stop(49.9%, rgba(255, 255, 255, 1)), color-stop(49.9%, rgba(244, 243, 243, 1))); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 49.9%, rgba(244, 243, 243, 1) 49.9%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 49.9%, rgba(244, 243, 243, 1) 49.9%); /* Opera 11.10+ */ background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 49.9%, rgba(244, 243, 243, 1) 49.9%); /* IE10+ */ background: linear-gradient(to right, rgba(255, 255, 255, 1) 49.9%, rgba(244, 243, 243, 1) 49.9%); /* W3C */ }
+ul.items.square > li { width: 49% }
+.view.itemShowAjax .itemInfo { width: 50%; float: left }
+.view.itemShowAjax .itemInfo .images { width: 94%; margin: 25px 3%; float: none }
+.view.itemShowAjax .itemInfo .text { width: 94%; float: none; margin: 16px 3% 0 3% }
+.view.itemShowAjax .itemBidding { width: 49.5%; float: right; padding-right: 0.5%; position: relative } }
+
+@media screen and (max-width: 641px) { /* Auction item list */
+.listToolbar { height: auto; padding: 0 }
+.listToolbar h2 { width: 100%; line-height: 50px; float: none }
+.listToolbar .sorting { margin-top: 21px }
+.listToolbar .viewmodes { float: left; width: 393px; padding-top: 22px }
+table.items.detailed thead tr th.auctionType, 
+table.items.detailed thead tr th.itemFavorite, 
+table.items.detailed thead tr th.itemLocation, 
+table.items.detailed thead tr th.auctionTitle { display: none }
+table.items.detailed tbody tr td.auctionType, 
+table.items.detailed tbody tr td.itemFavorite, 
+table.items.detailed tbody tr td.itemLocation, 
+table.items.detailed tbody tr td.auctionTitle { display: none }
+table.items.detailed tbody tr td.itemSortNo img, 
+table.items.detailed tbody tr td.itemBid img { display: none }
+table.items.detailed tbody tr td.itemSortNo { text-align: center }
+ul.items.square > li { width: 32.333% }
+ul.items.mixed > li { display: block; position: relative; min-height: 211px; height: auto }
+ul.items.mixed > li .itemFavorite { top: 1%; text-align: right; padding-right: 2px }
+ul.items.mixed > li .info { width: 258px; vertical-align: top }
+ul.items.mixed > li .info h4 { font-size: 1.05em }
+ul.items.mixed > li .info .bidNo { float: none }
+ul.items.mixed > li .info .metadata { margin-top: 3px; line-height: 19px; font-size: 12px }
+ul.items.mixed > li .favorite { position: absolute; top: 3px; right: 3px; padding-top: 0; width: auto }
+.paginationBar .counter { font-size: 0.875em }
+.paginationBar .moreButton a { margin-bottom: 15px }
+.paginationBar .moreButton a:last-child { margin-top: 0; margin-bottom: 20px } }
+
+@media screen and (max-width: 640px) { /* Auction item list */ /* Remove the gradient from the item show block */ /* Change the content of the item show block to 50%-50% */
+.listToolbar { height: auto; padding: 0 }
+.listToolbar h2 { width: 100%; line-height: 50px; float: none }
+.listToolbar .viewmodes { float: left; width: 393px; padding-top: 22px }
+table.items.detailed thead tr th.auctionType, 
+table.items.detailed thead tr th.itemFavorite, 
+table.items.detailed thead tr th.itemLocation, 
+table.items.detailed thead tr th.auctionTitle { display: none }
+table.items.detailed tbody tr td.auctionType, 
+table.items.detailed tbody tr td.itemFavorite, 
+table.items.detailed tbody tr td.itemLocation, 
+table.items.detailed tbody tr td.auctionTitle { display: none }
+table.items.detailed tbody tr td.itemSortNo img, 
+table.items.detailed tbody tr td.itemBid img { display: none }
+table.items.detailed tbody tr td.itemSortNo { text-align: center }
+ul.items.square > li { width: 49%; height: auto }
+ul.items.square > li .imageContainer { height: auto }
+ul.items.square > li .imageContainer p.image { display: block }
+ul.items.mixed > li { display: block; position: relative }
+ul.items.mixed > li .image { width: 100%; float: none }
+ul.items.mixed > li .info { width: 100% }
+ul.items.mixed > li .info h4 { font-size: 1.05em }
+ul.items.mixed > li .info .bidNo { float: none }
+ul.items.mixed > li .favorite { position: absolute; top: 3px; right: 3px; padding-top: 0; width: auto }
+#ajaxItemShow { background: none }
+.view.itemShowAjax .itemInfo { width: 100%; float: none }
+.view.itemShowAjax .itemInfo .images { width: 94%; margin: 25px 3%; float: none }
+.view.itemShowAjax .itemInfo .text { width: 94%; float: none; margin: 16px 3% 0 3% }
+.view.itemShowAjax .itemBidding { width: 94%; float: right; padding-left: 3%; padding-right: 3%; position: static; float: none; background: #f4f3f3 }
+.paginationBar .counter { font-size: 0.875em } }
+ /**
+ * Item show
+ */
+.returnLink { padding: 10px 50px }
+
+.returnLink a { font-weight: 700 }
+
+hr { color: #d4d4d4; background: #d4d4d4; height: 1px; clear: both }
+
+.view.itemShow { position: relative; max-width: 1280px; width: 100%; padding: 0 1em; box-sizing: border-box }
+
+.view.itemShow .itemInfo { width: 63.625%; float: left }
+
+.view.itemShow .itemInfo .link { position: relative; height: 42px; line-height: 42px; padding-left: 30px; background: #f4f3f3 }
+
+.view.itemShow .itemInfo .link a { float: left }
+
+.view.itemShow .itemInfo .link a.directLink { display: block; padding-left: 25px; margin-right: 40px; background: url('/images/templates/tovekClassic/icon-blue-link.png') no-repeat left center; display: none }
+
+.directLinkContainer { display: none; position: absolute; z-index: 900; top: 42px; left: 32px; width: 740px; padding: 0px 20px; line-height: 35px; font-size: 12px; background: #eae8e8; box-shadow: 0 2px 3px #a7a7a7 }
+
+.directLinkContainer.show { display: block }
+
+.view.itemShow .itemInfo .link a.tellFriend { display: block; padding-left: 31px; background: url('/images/templates/tovekClassic/icon-blue-letter.png') no-repeat left center; margin-right: 40px }
+
+.tellFriendContainer { display: none; position: absolute; z-index: 888; top: 42px; left: 0; padding: 25px 20px 15px 20px; background: #f4f3f3 }
+
+.tellFriendContainer form .field label { width: 115px }
+
+.tellFriendContainer form .field input { width: 263px; height: 41px; padding: 0 7px; border: none; background: url('/images/templates/tovekClassic/bg-register-field.png') no-repeat }
+
+.tellFriendContainer form .field textarea { width: 263px; height: 126px; padding: 7px; border: none; background: url('/images/templates/tovekClassic/bg-register-textarea.png') no-repeat }
+
+.tellFriendContainer form button { width: 152px; height: 43px; font: 700 16px 'Open sans'; color: #fff; border: 0; background: #00539b }
+
+.tellFriendContainer.show { display: block }
+
+.view.itemShow .itemInfo .link a.financing { padding-left: 31px; background: url('/images/templates/tovekClassic/icon-blue-dollarsign.png') no-repeat left center }
+
+.view.itemShow .itemInfo .images { max-width: 385px; float: left; /*padding-left: 50px;*/ }
+
+.view.itemShow .itemInfo .images ul { list-style: none; max-width: 335px; margin: 25px 0 }
+
+.view.itemShow .itemInfo .images ul li { display: inline-block; float: left; margin-right: 1.49%; margin-bottom: 4px }
+
+.view.itemShow .itemInfo .images ul li a img { display: block; width: 100% }
+
+.view.itemShow .itemInfo .images ul li.first { margin-right: 0; position: relative }
+
+.view.itemShow .itemInfo .images ul li.first img.liveicon { position: absolute; top: 0; left: 0; z-index: 888 }
+
+.view.itemShow .itemInfo .images ul li.fifth { margin-right: 0 }
+
+.view.itemShow .itemInfo .images ul:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+
+.view.itemShow .itemInfo .text { width: 44%; float: left; padding: 16px 10px 0 0; margin-left: 1em }
+
+.view.itemShow .itemInfo .text .bidNo { float: left; font-size: 1.375em; margin-right: 10px }
+
+.view.itemShow .itemInfo .text h1 { text-align: left; font-size: 1.375em; line-height: normal }
+
+.view.itemShow .itemInfo .text .itemDescription { margin-bottom: 15px }
+
+.view.itemShow .itemInfo .vehicle { clear: both; margin-top: 15px }
+
+.view.itemShow .itemInfo .vehicle table.data { width: 100% }
+
+.view.itemShow .itemInfo .vehicle table.data tr td { border-bottom: 1px solid #ddd; height: 1.5em; vertical-align: middle }
+
+.view.itemShow .itemInfo .vehicle table.data tr:hover td { background: #ffd }
+
+.view.itemShow .itemInfo .vehicle table.data td.title { font-size: 0.875em; font-weight: bold }
+
+.view.itemShow .itemInfo .vehicle table.data td sup { vertical-align: unset; position: relative; top: -0.25em }
+
+.view.itemShow .itemInfo .tags { clear: both; float: left; max-width: 768px; /*padding-left: 50px;*/ margin-bottom: 15px; font-size: 18px }
+
+.view.itemShow .itemInfo .tags strong { display: block; margin-bottom: 5px }
+
+.view.itemShow .itemInfo .tags ul { list-style: none }
+
+.view.itemShow .itemInfo .tags ul li { height: 36px; display: inline-block; float: left; margin: 0 0.313em 0.313em 0; border: 1px solid #c8e1f9; border-left: none; border-radius: 0 13px 13px 0; -webkit-border-radius: 0 13px 13px 0; -moz-border-radius: 0 13px 13px 0; background: #c8e1f9 }
+
+.view.itemShow .itemInfo .tags ul li a { display: block; line-height: 36px; font-weight: 700; color: #000; padding: 0 15px 0 44px; background: url('/images/templates/tovekClassic/icon-white-check-circle.png') no-repeat 7px 6px }
+
+.view.itemShow .itemInfo .tags ul li.empty { background-color: #e0e0e0 }
+
+.view.itemShow .itemInfo .tags ul li.empty span { display: block; line-height: 36px; font-weight: 700; color: #fff; padding: 0 15px 0 44px; background: url('/images/templates/tovekClassic/icon-white-check-circle.png') no-repeat 7px 6px }
+
+.view.itemShow .itemInfo .tags ul:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+
+.view.itemShow .itemInfo .moreInfo { clear: both; float: left; max-width: 768px; /*padding-left: 50px;*/ margin-bottom: 15px; font-size: 18px }
+
+.view.itemShow .itemInfo .auctionInfo { clear: both; max-width: 768px; /*padding-left: 50px;*/ margin-bottom: 15px; font-size: 18px }
+
+.view.itemShow .itemInfo .auctionInfo h3 { margin: 18px 0 9px 0 }
+
+.view.itemShow .itemInfo .auctionInfo h3 .toplistTitleLeftBorder { display: none }
+
+.view.itemShow .itemInfo .auctionInfo h3 .toplistTitleRightBorder { display: none }
+
+.view.itemShow .itemInfo .auctionInfo h4 { margin-top: 18px }
+
+.view.itemShow .itemInfo .auctionInfo p.titleInfo { margin-bottom: 9px }
+
+.view.itemShow .itemInfo .socialLinks { float: right; padding: 12px 20px 20px 0 }
+
+.view.itemShow .itemInfo .itemInformation { clear: both; padding: 0 0 25px 50px }
+
+.view.itemShow .itemInfo .printMap { clear: both; /*padding-left: 50px;*/ margin-bottom: 45px }
+
+.view.itemShow .itemInfo .printMap a { display: block; line-height: 25px; padding-left: 30px; font-weight: 700; background: url('/images/templates/tovekClassic/icon-print-paper.png') left center no-repeat }
+
+.view.itemShow .itemBidding { width: 33.875%; float: right; padding-right: 0.5%; position: relative }
+
+.view.itemShow { background: #fff; /* Old browsers */ /* IE9 SVG, needs conditional override of 'filter' to 'none' */ background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSI2NSUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2NSUiIHN0b3AtY29sb3I9IiNmNGYzZjMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+); background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 65%, rgba(244, 243, 243, 1) 65%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, right top, color-stop(65%, rgba(255, 255, 255, 1)), color-stop(65%, rgba(244, 243, 243, 1))); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 65%, rgba(244, 243, 243, 1) 65%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 65%, rgba(244, 243, 243, 1) 65%); /* Opera 11.10+ */ background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 65%, rgba(244, 243, 243, 1) 65%); /* IE10+ */ background: linear-gradient(to right, rgba(255, 255, 255, 1) 65%, rgba(244, 243, 243, 1) 65%); /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f4f3f3',GradientType=1); /* IE6-8 */ }
+
+@media (max-width: 450px) {.view.itemShow .itemInfo .link { height: 84px }
+
+.view.itemShow .itemInfo .link a { float: none !important } }
+ /* Content ------------------------------------------------------------------ */
+.section { margin-bottom: 20px }
+ /* Column */
+.col { float: left; overflow: hidden; margin: 0 }
+
+.colFirst { margin-left: 0 }
+
+.colLast { margin-right: 0 }
+
+.colTwo { width: 50% }
+
+.colThree { width: 33% }
+
+.colFour { width: 25% }
+
+.col { float: left; overflow: hidden; margin: 0 }
+
+.col-first { margin-left: 0 }
+
+.col-last { margin-right: 0 }
+
+.col-two { width: 50% }
+
+.col-three { width: 33% }
+
+.col-four { width: 25% }
+
+.mceEditor tr:hover td { background: none }
+ /* Development */
+#mysql-profiles { width: 98%; padding: 1%; background: #dabeef }
+
+#mysql-profiles table { width: 100%; border-collapse: separate }
+
+#mysql-profiles table caption { font-size: 1.75em; font-weight: 700 }
+
+#mysql-profiles table tr { padding-bottom: 5px }
+
+#mysql-profiles table td, 
+#mysql-profiles table th { padding: 0 5px }
+
+td.Query { font-family: "Courier New", Courier, monospace }
+ /* Icons */
+.icon { display: inline-block; background: no-repeat 0 50%; vertical-align: text-top; outline: none; overflow: hidden; text-indent: -999em; width: 16px; min-height: 16px; margin-right: 5px }
+
+.iconText { text-indent: 18px; width: auto }
+
+a.iconText:hover { text-decoration: underline }
+ /* A */
+.iconAdd { background-image: url('/images/templates/tovekClassic/icons/add.png') }
+
+.iconAccept { background-image: url('/images/templates/tovekClassic/icons/accept.png') }
+
+.iconAcrobat { background-image: url('/images/templates/tovekClassic/icons/page_white_acrobat.png') }
+ /* B */
+.iconBullet { background-image: url('/images/templates/tovekClassic/icons/bullet_black.png') }
+ /* C */
+.iconCancel { background-image: url('/images/templates/tovekClassic/icons/cancel.png') }
+
+.iconCalendar { background-image: url('/images/templates/tovekClassic/icons/calendar.png') }
+
+.iconCalendarAdd { background-image: url('/images/templates/tovekClassic/icons/calendar_add.png') }
+
+.iconCalendarDelete { background-image: url('/images/templates/tovekClassic/icons/calendar_delete.png') }
+
+.iconCalendarEdit { background-image: url('/images/templates/tovekClassic/icons/calendar_edit.png') }
+
+.iconCalendarLink { background-image: url('/images/templates/tovekClassic/icons/calendar_link.png') }
+
+.iconCalendarViewDay { background-image: url('/images/templates/tovekClassic/icons/calendar_view_day.png') }
+
+.iconCalendarViewMonth { background-image: url('/images/templates/tovekClassic/icons/calendar_view_month.png') }
+
+.iconCalendarViewWeek { background-image: url('/images/templates/tovekClassic/icons/calendar_view_week.png') }
+
+.iconChartBar { background-image: url('/images/templates/tovekClassic/icons/chart_bar.png') }
+
+.iconCss { background-image: url('/images/templates/tovekClassic/icons/css.png') }
+
+.iconCopy { background-image: url('/images/templates/tovekClassic/icons/copy.png') }
+ /* D */
+.iconDelete { background-image: url('/images/templates/tovekClassic/icons/delete.png') }
+
+.iconDbImport { background-image: url('/images/templates/tovekClassic/icons/dbImport.gif') }
+
+.iconDown { background-image: url('/images/templates/tovekClassic/icons/arrowDown.gif') }
+ /* E */
+.iconEdit { background-image: url('/images/templates/tovekClassic/icons/edit.png') }
+
+.iconEmail { background-image: url('/images/templates/tovekClassic/icons/email.png') }
+
+.iconEmailAdd { background-image: url('/images/templates/tovekClassic/icons/email_add.png') }
+
+.iconEmailAttach { background-image: url('/images/templates/tovekClassic/icons/email_attach.png') }
+
+.iconEmailDelete { background-image: url('/images/templates/tovekClassic/icons/email_delete.png') }
+
+.iconEmailEdit { background-image: url('/images/templates/tovekClassic/icons/email_edit.png') }
+
+.iconEmailError { background-image: url('/images/templates/tovekClassic/icons/email_error.png') }
+
+.iconEmailGo { background-image: url('/images/templates/tovekClassic/icons/email_go.png') }
+
+.iconEmailLink { background-image: url('/images/templates/tovekClassic/icons/email_link.png') }
+
+.iconEmailOpen { background-image: url('/images/templates/tovekClassic/icons/email_open.png') }
+
+.iconEmailOpenImage { background-image: url('/images/templates/tovekClassic/icons/email_open_image.png') }
+
+.iconError { background-image: url('/images/templates/tovekClassic/icons/error.png') }
+
+.iconExit { background-image: url('/images/templates/tovekClassic/icons/exit.png') }
+
+.iconExclamation { background-image: url('/images/templates/tovekClassic/icons/exclamation.png') }
+ /* G */
+.iconGoBack { background-image: url('/images/templates/tovekClassic/icons/arrow_turn_left.png') }
+ /* H */
+.iconHtml { background-image: url('/images/templates/tovekClassic/icons/html.png') }
+ /* I */
+.iconImage { background-image: url('/images/templates/tovekClassic/icons/image.png') }
+
+.iconInfo { background-image: url('/images/templates/tovekClassic/icons/information.png') }
+ /* L */
+.iconLink { background-image: url('/images/templates/tovekClassic/icons/link.png') }
+
+.iconLinkAdd { background-image: url('/images/templates/tovekClassic/icons/link_add.png') }
+
+.iconLinkBreak { background-image: url('/images/templates/tovekClassic/icons/link_break.png') }
+
+.iconLock { background-image: url('/images/templates/tovekClassic/icons/lock.png') }
+ /* M */
+.iconMap { background-image: url('/images/templates/tovekClassic/icons/map.png') }
+
+.iconMapAdd { background-image: url('/images/templates/tovekClassic/icons/map_add.png') }
+
+.iconMapDelete { background-image: url('/images/templates/tovekClassic/icons/map_delete.png') }
+
+.iconMapEdit { background-image: url('/images/templates/tovekClassic/icons/map_edit.png') }
+
+.iconMapGo { background-image: url('/images/templates/tovekClassic/icons/map_go.png') }
+
+.iconMapMagnify { background-image: url('/images/templates/tovekClassic/icons/map_magnify.png') }
+ /* N */
+.iconNext { background-image: url('/images/templates/tovekClassic/icons/next.png') }
+ /* O */
+.iconOk { background-image: url('/images/templates/tovekClassic/icons/ok.png') }
+
+.iconOverlays { background-image: url('/images/templates/tovekClassic/icons/overlays.png') }
+ /* P */
+.iconPackageLink { background-image: url('/images/templates/tovekClassic/icons/package_link.png') }
+
+.iconPdf { background-image: url('/images/templates/tovekClassic/icons/pdf.png') }
+
+.iconPrint { background-image: url('/images/templates/tovekClassic/icons/printer.png') }
+
+.iconPrinter { background-image: url('/images/templates/tovekClassic/icons/printer.png') }
+
+.iconPrevious { background-image: url('/images/templates/tovekClassic/icons/previous.png') }
+ /* R */
+.iconRelation { background-image: url('/images/templates/tovekClassic/icons/relation.png') }
+
+.iconRefresh { background-image: url('/images/templates/tovekClassic/icons/arrow_refresh.png') }
+ /* S */
+.iconStar { background-image: url('/images/templates/tovekClassic/icons/star.png') }
+ /* T */
+.iconTable { background-image: url('/images/templates/tovekClassic/icons/table.png') }
+
+.iconTableLink { background-image: url('/images/templates/tovekClassic/icons/tableLink.png') }
+
+.iconThumbnail { background-image: url('/images/templates/tovekClassic/icons/thumbnail.png') }
+ /* U */
+.iconUser { background-image: url('/images/templates/tovekClassic/icons/user.png') }
+
+.iconUserAdd { background-image: url('/images/templates/tovekClassic/icons/user_add.png') }
+
+.iconUserComment { background-image: url('/images/templates/tovekClassic/icons/user_comment.png') }
+
+.iconUp { background-image: url('/images/templates/tovekClassic/icons/arrowUp.gif') }
+
+.iconUnlock { background-image: url('/images/templates/tovekClassic/icons/unlock.png') }
+ /* Z */
+.iconZoom { background-image: url('/images/templates/tovekClassic/icons/zoom.png') }
+ /* Inline searchform */
+.searchForm { margin-bottom: 10px }
+
+.searchForm .field { float: left; margin-right: 10px }
+
+.searchForm .field label { display: inline; vertical-align: middle }
+
+.searchForm fieldset.multiple { float: left; margin-right: 10px; padding: 0; width: 400px; position: relative }
+
+.searchForm fieldset.multiple .field { clear: none !important; float: left !important; margin-top: 5px }
+
+.searchForm fieldset.multiple .field label { vertical-align: top }
+
+.searchForm p.buttons { width: auto; clear: none; float: left; margin: 0 }
+ /* Tree list */
+.treeList, 
+.treeList ul { margin: 0 }
+ /* Form in table */
+.inTable .field { position: relative }
+
+.inTable .field label { position: absolute; top: -1.5em; left: 0; width: 100%; text-indent: -999em }
+
+.inTable .field input, 
+.inTable .field select { width: 95% }
+ /* Pagination */
+ul.paginationList { border: 0; margin: 10px 0; padding: 0; display: block; clear: both; padding-top: 25px }
+
+ul.paginationList li { border: 0; margin: 0; padding: 0; font-size: 11px; list-style: none; float: left }
+
+ul.paginationList a { border: solid 1px #d2d1d0; margin-right: 2px; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px }
+
+ul.paginationList .previous-off, 
+ul.paginationList .next-off { color: #666; display: block; float: left; font-weight: bold; padding: 3px 4px }
+
+ul.paginationList .next a, 
+ul.paginationList .previous a { font-weight: bold }
+
+ul.paginationList li.first a, 
+ul.paginationList li.last a { padding: 2px 4px 3px 4px }
+
+ul.paginationList li.active a { color: #333; font-weight: bold; display: block; float: left; padding: 3px 6px }
+
+ul.paginationList a:link, 
+ul.paginationList a:visited { color: #999; display: block; float: left; padding: 3px 6px; text-decoration: none }
+
+ul.paginationList a:hover { border: solid 1px #d2d1d0; color: #000 }
+
+.entriesTotal { clear: both; color: #808080 }
+ /* Definition lists */
+dl.marginal { overflow: hidden }
+
+dl.marginal dt { width: 10em; display: block; float: left; clear: both }
+
+dl.marginal dd:after { content: "."; visibility: hidden; clear: left }
+
+textarea.editor { height: 20em }
+ /* Notifications */
+ul.notification { padding: 5px; list-style: none }
+
+li.notification { color: #000; background: #dedede; border: 1px solid #000; background-image: url('/images/templates/tovekClassic/icons/bullet_black.png'); background-position: 10px center; background-repeat: no-repeat; margin: 10px 0; padding: 15px 10px 15px 50px }
+
+li.notification.dataSaved, 
+li.notification.dataDeleted { color: #4f8a10; background-color: #dff2bf; background-image: url('/images/templates/tovekClassic/icons/ok.png'); background-position: 10px center; background-repeat: no-repeat; border: 1px solid #4f8a10; margin: 10px 0; padding: 15px 10px 15px 50px }
+
+li.notification.dataError { color: #8a0f0f; background-color: #fccac3; background-image: url('/images/templates/tovekClassic/icons/exclamation.png'); background-position: 10px center; background-repeat: no-repeat; border: 1px solid #e02727; margin: 10px 0; padding: 15px 10px 15px 50px }
+
+li.notification.dataInformation { color: #00529b; background-color: #bde5f8; background-image: url('/images/templates/tovekClassic/icons/information.png'); background-position: 10px center; background-repeat: no-repeat; border: 1px solid #00529b; margin: 10px 0; padding: 15px 10px 15px 50px }
+
+li.notification.dataWarning { color: #9f6000; background-color: #feefb3; background-image: url('/images/templates/tovekClassic/icons/error.png'); background-position: 10px center; background-repeat: no-repeat; border: 1px solid #9f6000; margin: 10px 0; padding: 15px 10px 15px 50px }
+ /* clOutputHtmlForm errors */
+div.result.error { border: 1px solid; margin: 10px 0px; padding: 15px 10px 15px 50px; background-repeat: no-repeat; background-position: 10px center; color: #d8000c; background-color: #ffbaba; background-image: url('/images/templates/tovekClassic/icons/exclamation.png') }
+
+#infoContentAdd input.text { width: 100% !important }
+
+#infoContentAdd .editor { display: block; width: 100% !important; padding: 0; height: 600px !important }
+ /* Transition */
+.transitionAll { -webkit-transition: all 0.3s ease-in-out; -moz-transition: all 0.3s ease-in-out; -o-transition: all 0.3s ease-in-out; -ms-transition: all 0.3s ease-in-out; transition: all 0.3s ease-in-out }
+ /* Form styles -------------------------------------------------------------- */
+ /* Inline */
+.inline fieldset, 
+.inline .field { display: inline; float: left }
+
+.inline .field label, 
+.inline .field input, 
+.inline .field select { margin-right: 10px }
+ /* Vertical form */
+.vertical .field { margin-bottom: 0.25em }
+
+.vertical label { display: block }
+
+.vertical .multiple { margin-bottom: 0.25em }
+
+.vertical .multiple .field { margin-bottom: 0 }
+
+.vertical .multiple label, 
+.vertical .result label { display: inline }
+ /* Marginal form */
+.marginal .field { margin-bottom: 0.25em; overflow: hidden; /*height:100%;*/ }
+
+.marginal label { width: 11.5em; float: left }
+
+.marginal .multiple { margin-bottom: -2em }
+
+.marginal .multiple .field { margin-bottom: 0; position: relative; top: -2em; left: 11.5em }
+
+.marginal .multiple label, 
+.marginal .result label { width: auto; float: none }
+ /* Top label form */
+.topLabel .field { margin-bottom: 0.5em; height: 100%; overflow: hidden }
+
+.topLabel label { width: auto; display: block; line-height: 1.25em }
+
+.topLabel div.result label { display: inline }
+
+form.labelRight label { text-align: right; margin-right: 5px }
+ /* Two col forms */
+.twoCol .field { width: 49%; margin-right: 0.25em; float: left }
+
+.twoCol .field input, 
+.twoCol .field select, 
+.twoCol .field textarea { width: 80% }
+
+.twoCol fieldset { clear: left }
+ /* Form --------------------------------------------------------------------- */
+form { width: 100%; overflow: hidden }
+
+form .field { line-height: 2 }
+
+fieldset { border: 0; margin-bottom: 1.25em; padding: 0; padding-top: 0.5em }
+
+legend { font-size: 18px; font-weight: bold; line-height: 1 }
+
+label { font-weight: bold; cursor: pointer }
+
+.result label { font-weight: normal }
+ /* Input */
+ /*
+ input.text,
+ input.secret,
+ select,
+ textarea        { border:1px solid #455560; }
+ */
+input.text, 
+input.secret { text-indent: 0px; padding: 0.25em 0 }
+
+textarea { /*padding:5px;*/ width: 250px; overflow: auto }
+
+input.radio { border: 0; background: none }
+ /* Multiple */
+fieldset.multiple { border: 0; margin: 0; padding: 0 }
+ /*fieldset.multiple legend    { text-transform:none; font-size:1em; line-height:2; color:#000; }*/
+fieldset.multiple .field { float: left; clear: left; position: relative }
+
+fieldset.multiple label { padding-left: 1.25em; font-weight: normal }
+
+fieldset.multiple input { position: absolute; top: 0.5em; left: 0 }
+ /* Control & Output */
+button { padding: 0; overflow: visible; cursor: pointer }
+
+form .buttons { overflow: hidden; margin-bottom: 0 }
+
+form .error { color: #ffbaba }
+
+form .error input { border-color: #ffbaba }
+
+form .errorField input, 
+form .errorField select, 
+form .errorField textarea { background: #ffbaba }
+
+html { height: 100% }
+
+body { height: 100% }
+ /** Overlay **/
+#overlay { display: flex; -webkit-display: flex; position: fixed; top: 0; left: 0; z-index: 997; width: 100%; height: 100%; opacity: 0 }
+
+#overlay > .container { position: relative; z-index: 999; padding: 2em 3em; margin: auto; background: #fff; box-shadow: 0 0 8px #000; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px }
+
+#overlay > .container > .close { position: absolute; z-index: 999; top: 0.8em; right: 1em; display: block; line-height: 21px; font-size: 0.8em; padding: 0 15px; color: #000; background: url('/images/templates/tovekClassic/bg-cookies-link.png') repeat-x; border: 1px solid #000; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px }
+
+#overlay > .container > .close:hover { text-decoration: underline }
+
+#overlay > .background { position: absolute; top: 0; left: 0; z-index: 998; width: 100%; height: 100%; background: #000; opacity: 0.5 }
+ /** Topbar **/
+section#topbar { width: 100%; height: 53px; line-height: 53px; position: fixed; top: 0; left: 0; z-index: 990; font-size: 1.125em; background: #19325a; border-bottom: 1px solid #234271 }
+
+section#topbar .wrapper { position: relative; width: 92.1875%; max-width: 1180px; margin: 0 auto }
+
+section#topbar .wrapper div.center { float: left; width: 80%; color: #fff }
+ /* Page navigation */
+nav ul { list-style: none; margin: 0; padding: 0; text-align: center }
+
+nav ul li { display: inline; position: relative }
+
+nav ul li a { display: inline-block; height: 51px; line-height: 50px; margin-left: -4px; padding: 0 1.88%; font-size: 1.125em; font-weight: 300; color: #fff; border-left: 2px solid #234271 }
+
+nav ul li ul { display: none; position: absolute; top: 32px; left: -2px; padding: 7px 0; background: #19325a; text-align: left }
+
+nav ul li ul li { display: block }
+
+nav ul li ul li a { display: block; height: 27px; line-height: 27px; margin-left: 0; padding: 0 35px 0 20px; font-size: 1em; border: none }
+
+nav ul li ul li.first { border-top: 1px solid #234271 }
+
+nav ul li ul li.last a { border: none }
+
+nav ul li ul li a:hover { color: #6898c1; background: #12243e }
+
+nav ul li:hover > ul { display: block }
+
+nav ul li.active a { color: #6898c1; background: #12243e }
+
+nav ul li.last a { border-right: 2px solid #234271 }
+
+nav ul li span.amount { display: none !important; /*display: inline-block;*/ width: 24px; height: 24px; /* margin-left: 3px; */ line-height: 23px; text-align: center; color: #1a3359; /* background: url(/images/templates/tovekClassic/bg-yellow-circle.png) no-repeat 0px 2px; */ background-color: #fd0; border-radius: 50%; font-size: 14px; font-weight: 600; color: #19325a }
+
+nav ul li span.text { font-size: 1.125em; font-weight: 300; padding: 0 1.88% }
+
+nav ul li span.text span.username { color: #87adcd }
+ /* Userbar */
+div.right { float: left; width: 20%; background: #fddb46 }
+
+div.right ul { list-style: none; width: 100% }
+
+div.right li { display: inline-block; width: 48.5% }
+
+div.right li:first-child { background: #1b458c }
+
+div.right li:first-child a { color: #fff }
+
+div.right a { display: block; width: 100%; height: 100%; text-align: center; color: #000 }
+ /** Topbar animations **/
+section#topbar.scroll { height: 35px; line-height: 35px; font-size: 0.75em; /* IE 8 */ -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)"; /* IE 5-7 */ filter: alpha(opacity=95); /* Netscape */ -moz-opacity: 0.95; /* Safari 1.x */ -khtml-opacity: 0.95; /* Good browsers */ opacity: 0.95 }
+
+section#topbar.scroll div#cookiesInfo { top: 35px }
+
+section#topbar.scroll nav ul li a { height: auto; line-height: 33px; font-size: 0.9em; height: 33px; letter-spacing: 0.06em }
+
+section#topbar.scroll nav ul li span.text { font-size: 0.9em; letter-spacing: 0.06em }
+
+section#topbar.scroll nav ul li span.amount { padding: 0; display: inline-block; width: 24px; height: 24px; /* margin-left: 3px; */ line-height: 23px; text-align: center; color: #1a3359; /* background: url(/images/templates/tovekClassic/bg-yellow-circle.png) no-repeat 0px 2px; */ background-color: #fd0; border-radius: 50%; font-size: 14px; font-weight: 600; color: #19325a }
+
+section#topbar.scroll:hover { height: 53px; line-height: 53px; font-size: 1.125em; letter-spacing: normal; /* IE 8 */ -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; /* IE 5-7 */ filter: alpha(opacity=100); /* Netscape */ -moz-opacity: 1; /* Safari 1.x */ -khtml-opacity: 1; /* Good browsers */ opacity: 1 }
+
+section#topbar.scroll:hover div#cookiesInfo { top: 53px }
+
+section#topbar.scroll:hover nav ul li a { height: 51px; line-height: 50px; font-size: 1.125em; letter-spacing: normal }
+
+section#topbar.scroll:hover nav ul li ul li a { height: 27px; line-height: 27px; font-size: 1em }
+
+section#topbar.scroll:hover nav ul li span.text { font-size: 1.125em; letter-spacing: normal }
+
+section#topbar.scroll:hover nav ul li span.amount { display: inline-block; width: 24px; height: 24px; /* margin-left: 3px; */ line-height: 23px; text-align: center; color: #1a3359; /* background: url(/images/templates/tovekClassic/bg-yellow-circle.png) no-repeat 0px 2px; */ background-color: #fd0; border-radius: 50%; font-size: 14px; font-weight: 600; color: #19325a }
+ /** Content pusher **/
+div#pusher { position: relative; height: auto; min-height: 100%; margin-top: 0 }
+ /*** Page head ***/
+header { width: 100%; height: 180px; overflow: hidden; /*background: url('/images/templates/tovekClassic/bg-header-repeat.png') repeat-x left top;*/ background: #0b5498 }
+
+header .wrapper { position: relative; width: 92.1875%; max-width: 1180px; margin: 0 auto; overflow: hidden }
+ /** Headbar **/
+section#headbar { height: 127px; padding-top: 53px; background: url('/images/templates/tovekClassic/bg-header.png') no-repeat right bottom }
+
+section#headbar::after { content: ''; background: linear-gradient(to right, rgba(10, 85, 153, 1) 0%, rgba(10, 85, 153, 0) 10%, rgba(10, 85, 153, 0) 35%); height: 100%; width: 100%; position: absolute }
+
+div#logoarea { height: 100%; width: 30%; float: left; position: absolute; z-index: 5 }
+
+div#logoarea img { margin: 38px 0 0 0 }
+
+div#spotlight { height: 100%; width: 30%; float: right; position: relative }
+
+div#spotlight #spotlight-image { width: 169px; height: 127px; float: right; position: relative; overflow: hidden }
+
+div#spotlight #spotlight-image img { position: absolute; top: 0; left: 0; height: inherit; width: auto }
+
+div#spotlight #spotlight-content { position: absolute; top: 0; right: -250px; height: 127px; width: 100% }
+
+div#spotlight #spotlight-content .container { height: inherit; display: table-cell; vertical-align: middle; color: #19325a; font-size: 0.875em }
+
+div#spotlight #spotlight-content .container h3 { text-transform: uppercase }
+
+div#mobileMenu { display: none }
+ /*** Page main ***/
+main[role="main"] { background: #fff }
+
+main[role="main"] #importantMessage { background: #f4f3f3 }
+
+#importantMessage div.container { width: 100%; margin: 0 auto; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px }
+
+#importantMessage div.container div { padding: 15px 0 15px 0; position: relative; top: 10px; text-align: center; color: #9f6000; background-color: #ffb3b3; border: 2px solid #fd0; -webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px }
+
+#importantMessage img { position: relative; top: 1px; margin-right: 10px }
+
+main[role="main"] section#sectionWrapper { height: 49px; padding-top: 30px; background: #f4f3f3 }
+
+section#sectionWrapper .mobile { display: none; position: relative }
+
+section#sectionWrapper .mobile ul li.second #mobileSearch { position: absolute; top: 64px; left: 0; z-index: 999; width: 100%; padding: 20px 0; background: #fff }
+
+section#sectionWrapper .mobile ul li.second #mobileSearch form#searchMobileForm .field label { display: none }
+
+section#sectionWrapper .mobile ul li.second #mobileSearch form#searchMobileForm .field input { width: 265px; height: 41px; padding: 0 8px; color: #9b9b9b; font-size: 1.125em; background: url('/images/templates/tovekClassic/bg-search-input.png') no-repeat; border: none }
+
+section#sectionWrapper .mobile ul li.second #searchByTag { position: relative; z-index: 99; top: 10px }
+
+section#sectionWrapper .mobile ul li.second input#searchToggle:checked ~ #mobileSearch { display: block !important }
+
+section#sectionWrapper .desktop { max-width: 1280px; margin: 0 auto }
+
+section#sectionWrapper .desktop ul { list-style: none; height: 65px; max-width: 92.1875%; margin: 0 3.90625% 0 3.90625% }
+
+section#sectionWrapper .desktop ul li { display: inline-block; float: left; width: 30.33898305%; height: 63px; text-align: center }
+
+section#sectionWrapper .desktop ul li img { position: relative; top: 2px }
+
+section#sectionWrapper .desktop ul li span { font-size: 1.3em; font-weight: 300; margin-left: 5px }
+ /* Auction tab */
+section#sectionWrapper .desktop ul li.first { height: 49px; line-height: 50px; margin-right: 4.44915254%; color: #fff; border-bottom: none; border-radius: 18px 18px 0 0; -webkit-border-radius: 18px 18px 0 0; -moz-border-radius: 18px 18px 0 0; background: #0a5599 }
+
+section#sectionWrapper .desktop ul li.first a { color: #fff }
+ /* Search tab */
+section#sectionWrapper .desktop ul li.second { height: 64px; padding-top: 0; margin: -15px 4.44915254% 0 0; color: #000; border-bottom: none; border-radius: 18px 18px 0 0; -webkit-border-radius: 18px 18px 0 0; -moz-border-radius: 18px 18px 0 0; background: #fff }
+
+section#sectionWrapper .desktop ul li.second form#searchForm { position: relative; top: 22px }
+
+section#sectionWrapper .desktop ul li.second form#searchForm .field label { display: none }
+
+section#sectionWrapper .desktop ul li.second form#searchForm .field input { width: 265px; height: 41px; padding: 0 8px; color: #9b9b9b; font-size: 1.125em; background: url('/images/templates/tovekClassic/bg-search-input.png') no-repeat; border: none }
+
+section#sectionWrapper .desktop ul li.second #searchByTag { display: none; background: #fff; font-weight: bold; position: relative; z-index: 99; top: 22px; border-radius: 0 0 18px 18px; -webkit-border-radius: 0 0 18px 18px; -moz-border-radius: 0 0 18px 18px; line-height: 40px }
+
+section#sectionWrapper .desktop ul li.second:hover #searchByTag { display: block }
+ /* Register tab */
+section#sectionWrapper .desktop ul li.third { height: 49px; line-height: 50px; color: #000; border-bottom: none; border-radius: 18px 18px 0 0; -webkit-border-radius: 18px 18px 0 0; -moz-border-radius: 18px 18px 0 0; background: #fedc32 }
+
+section#sectionWrapper .desktop ul li.third a { display: block; width: 211px; margin: 0 auto; color: #000 }
+
+section#sectionWrapper .desktop ul li.third div { float: left; /*font-size: 1.500em;*/ font-size: 1.3em; font-weight: 300 }
+
+section#sectionWrapper .desktop ul li.third .bidAmount { display: none !important; width: 37px; height: 33px; padding: 2px 0; text-align: center; font-size: 1.438em; font-weight: 700; line-height: normal; margin: 7px 10px 0 0; color: #fd0; background: url('/images/templates/tovekClassic/bg-blue-circle.png') no-repeat }
+
+main[role="main"] .wrapper { max-width: 1280px; margin: 0 auto; /*padding-bottom: 448px;*/ }
+ /* Auctions */
+.view.auctionList { position: relative; margin-bottom: 70px; overflow: visible }
+
+.view.auctionList.nineOrLess { margin-bottom: 5px }
+ /* View layout */
+.view.auctionList .container { width: 92.1875%; margin: 0 auto; overflow: visible }
+
+.view.auctionList .content { background: #0a5599 }
+ /* Links */
+.view.auctionList ul.links { list-style: none; height: 57px; padding: 0; margin: 0 }
+
+.view.auctionList ul.links li { display: inline-block; float: left; width: 15.17%; height: 57px; padding: 0; margin: 0; text-align: center; color: #fff; background: #19325a }
+
+.view.auctionList ul.links li.active { background: #0a5599 }
+
+.view.auctionList ul.links li a { font-size: 1em; font-weight: 700; line-height: 57px; color: #fff }
+ /* Content */
+.view.auctionList p.status { padding-left: 21px; line-height: 53px; font-size: 1.375em; color: #fff }
+
+.view.auctionList ul.listAuctions { list-style: none; padding: 0; margin: 0 }
+
+.view.auctionList ul.listAuctions li { float: left; width: 31.3333%; padding: 0 0 1.5% 1.5%; margin: 0; color: #fff }
+
+.view.auctionList ul.listAuctions li:nth-child(3n+3) { padding-right: 1.5%; clear: right }
+
+.view.auctionList ul.listAuctions li:nth-child(3n+4) { clear: left }
+
+.view.auctionList ul.listAuctions li:nth-child(n+10) { display: none }
+
+.view.auctionList ul.listAuctions li a { color: #fff }
+
+.view.auctionList ul.listAuctions > li > .entry > a { display: block; float: left; width: 38%; margin: 0 4% 0 0 }
+
+.view.auctionList ul.listAuctions > li > .entry > a img { width: 100% }
+
+.view.auctionList ul.listAuctions > li > .entry > .info { float: left; width: 54% }
+
+.view.auctionList ul.listAuctions > li > .entry > .info p.title { font-size: 0.875em }
+
+.view.auctionList ul.listAuctions > li > .entry > .info p.meta { font-size: 0.813em; font-weight: 300 }
+ /* Show more */
+.view.auctionList label.showMoreAuctions { display: block; position: absolute; width: 92.1875%; bottom: -65px; cursor: pointer; text-align: center }
+
+.view.auctionList.nineOrLess label.showMoreAuctions { display: none }
+
+.view.auctionList label.showMoreAuctions span { display: inline-block; height: 60px; padding: 5px 30px 0 30px; background-color: #084378; background-repeat: no-repeat; background-position: center 30px; color: #fff; cursor: pointer; text-align: center; color: #fff; text-align: center; border-radius: 0 0 18px 18px; -webkit-border-radius: 0 0 18px 18px; -moz-border-radius: 0 0 18px 18px }
+
+.view.auctionList label.showMoreAuctions span.showMore { background-image: url('/images/templates/tovekClassic/icon-white-arrow-down.png') }
+
+.view.auctionList label.showMoreAuctions span.showLess { display: none; background-image: url('/images/templates/tovekClassic/icon-white-arrow-up.png') }
+
+.view.auctionList input#showMoreAuctions { display: none }
+
+.view.auctionList input#showMoreAuctions:checked + label.showMoreAuctions span.showMore { display: none }
+
+.view.auctionList input#showMoreAuctions:checked + label.showMoreAuctions span.showLess { display: inline-block !important }
+
+.view.auctionList input#showMoreAuctions:checked ~ .content .scrollWrapper ul.listAuctions li:nth-child(n+10) { display: block }
+
+.infoContent { max-width: 1180px; width: 100%; margin: 0 auto; background: #fff; padding: 0 1em; box-sizing: border-box }
+
+.infoContent:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+
+main[role="main"] .wrapper:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+
+main[role="main"]:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+ /*** Page footer ***/
+footer { position: relative; width: 100%; min-height: 448px; /*margin-top: -448px;*/ background: #e9e8e8 }
+
+footer .wrapper { width: 92.1875%; max-width: 1180px; margin: 0 auto }
+ /** Bottombar **/
+div#bottombar { width: 100%; height: 56px; background: #f4f3f3 }
+
+div#bottombar div.autoscrollSelection { float: left; line-height: 56px }
+
+div#bottombar div.autoscrollSelection input[type="checkbox"] { display: none }
+
+div#bottombar div.autoscrollSelection label { font-size: 0.875em; font-weight: 300; color: #1a3358 }
+
+div#bottombar div.autoscrollSelection input[type="checkbox"] + label span { display: inline-block; width: 19px; height: 20px; position: relative; top: -2px; margin-right: 3px; vertical-align: middle; background: url('/images/templates/tovekClassic/bg-checkbox.png') left top no-repeat; cursor: pointer }
+
+div#bottombar div.autoscrollSelection input[type="checkbox"]:checked + label span { background: url('/images/templates/tovekClassic/bg-checkbox.png') -19px top no-repeat }
+
+div#bottombar ul.navBottom { float: right; list-style: none }
+
+div#bottombar ul.navBottom li { display: inline-block; line-height: 56px }
+
+div#bottombar ul.navBottom li a { padding: 0 10px; font-size: 0.875em; font-weight: 300; color: #1a3358; text-transform: uppercase; border-left: 1px solid #b1b1b1 }
+
+div#bottombar ul.navBottom li.first a { border: none }
+ /** Footer content **/
+div#bottominfo .wrapper #google_translate_block { min-height: 52px }
+
+div#bottominfo div.container { padding-top: 15px }
+
+div#bottominfo div.container:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+
+@supports (display: flex) {div#bottominfo .bottominfoWrapper { display: flex; -webkit-display: flex; justify-content: space-between; width: 100% } }
+
+@supports not (display: flex) {div#bottominfo .bottominfoWrapper .bottominfoText { float: left } }
+
+div#bottominfo .bottominfoWrapper .bottominfoText { flex-grow: 3; margin-right: 5%; display: inline-block; float: left; width: 50% }
+
+div#bottominfo .bottominfoWrapper .bottominfoFacebook { display: inline-block; float: right; width: 340px }
+
+div#bottombar ul.navBottombar:after { content: " "; display: block; height: 0; line-height: 0; clear: both; visibility: hidden }
+ /** Argonova **/
+div#argonova { clear: both; width: 92.1875%; max-width: 1180px; margin: 0 auto; padding: 25px 0 10px 0 }
+
+div#argonova a { color: #999; font-size: 0.813em }
+ /** Cookie info-bar **/
+div#cookiesInfo { width: 90%; padding: 19px 5% 10px 5%; text-align: center; position: fixed; bottom: 0px; left: 0; z-index: 990; background: url('/images/templates/tovekClassic/bg-cookies-info2.png') repeat; border-top: 1px solid #cbdeed; box-shadow: 0 0 6px #d8d8d8 }
+
+div#cookiesInfo span { display: inline-block; width: 22px; height: 27px; margin-right: 7px; position: relative; top: -4.5px; background: url('/images/templates/tovekClassic/img-cookie-info.png') no-repeat left center }
+
+div#cookiesInfo p { display: inline-block; margin: 0; padding: 0 }
+
+div#cookiesInfo p.info { margin-right: 50px; position: relative; top: -2px }
+
+div#cookiesInfo p.info a { color: #000; font-style: italic }
+
+div#cookiesInfo p.info a:hover { text-decoration: underline }
+
+div#cookiesInfo p.link { position: relative; top: -1px }
+
+div#cookiesInfo p.link a { display: block; line-height: 21px; padding: 0 15px; color: #000; background: url('/images/templates/tovekClassic/bg-cookies-link.png') repeat-x; border: 1px solid #000; border-radius: 6px; -webkit-border-radius: 6px; -moz-border-radius: 6px }
+
+div#cookiesInfo p.link a:hover { text-decoration: underline }
+
+@media (min-width: 641px) and (max-width: 1023px) {.view.auctionList ul.listAuctions > li > .entry > a { display: none }
+
+.view.auctionList ul.listAuctions > li > .entry > .info { float: none; width: 100% }
+
+.view.auctionList ul.listAuctions li { float: left; width: 29.3333%; padding: 0 0 3% 3% }
+
+.view.auctionList ul.listAuctions li:nth-child(3n+3) { padding-right: 3% }
+
+.view.focusBoxList ul li { width: 100%; margin-bottom: 15px }
+
+.view.focusBoxList ul li .boxImage { padding-left: 149px }
+
+.view.focusBoxList ul.col-50 li { width: 100% }
+
+.view.focusBoxList ul.col-50 li .boxText { height: 271px; display: table-cell; vertical-align: middle; padding: 0 30px; font-size: 1.125em }
+
+.view.focusBoxList ul.col-50 li .boxText > * { width: 90%; max-width: 700px; float: right }
+
+.view.focusBoxList ul.col-50 li .boxText h3 { font-size: 1.875em }
+
+.view.focusBoxList ul.col-50 li .boxColor:before { width: 31%; left: 0 }
+
+.view.focusBoxList ul.col-50 li .boxColor:after { width: 69%; right: 0 } }
+
+@media screen and (max-width: 640px) { /* Always show the "show more" button */ /* Single column list without images */ /* Four auctions are the normal view */
+.view.auctionList ul.links { display: none }
+.view.auctionList ul.links li { width: 27% }
+.view.auctionList.nineOrLess { margin-bottom: 70px }
+.view.auctionList.nineOrLess label.showMoreAuctions { display: block }
+.view.auctionList ul.listAuctions > li > .entry > a { display: none }
+.view.auctionList ul.listAuctions > li > .entry > .info { float: none; width: 100% }
+.view.auctionList ul.listAuctions li { float: none; width: 92%; padding: 0 4% 3% 4% }
+.view.auctionList ul.listAuctions li:nth-child(3n+3) { padding-right: 3% }
+.view.auctionList ul.listAuctions li:nth-child(n+4) { display: none }
+.view.auctionList input#showMoreAuctions:checked ~ .content .scrollWrapper ul.listAuctions li:nth-child(n+4) { display: block }
+.view.focusBoxList ul li { width: 100%; margin-bottom: 15px; margin-right: 0 }
+.view.focusBoxList ul.col-50 li { width: 100% }
+.view.focusBoxList ul.col-50 li .boxText { height: 271px; display: table-cell; vertical-align: middle; padding: 0 30px; font-size: 1.125em }
+.view.focusBoxList ul.col-50 li .boxText > * { width: 90%; max-width: 700px; float: right }
+.view.focusBoxList ul.col-50 li .boxText h3 { font-size: 1.875em }
+.view.focusBoxList ul.col-50 li .boxColor:before { width: 31%; left: 0 }
+.view.focusBoxList ul.col-50 li .boxColor:after { width: 69%; right: 0 }
+div#cookiesInfo span { margin-right: 0 }
+div#cookiesInfo p.info { margin-right: 0px; margin-bottom: 10px } }
+ /**
+ * User login
+ */
+.view.guestFormLogin { width: 277px; margin: 25px auto 25px auto }
+
+.view.guestFormLogin form { margin-bottom: 10px }
+
+.view.guestFormLogin form input { width: 261px; height: 41px; padding: 0 8px; font-size: 20px; text-indent: 0; background: url('/images/templates/tovekClassic/bg-register-field.png') no-repeat; border: none }
+
+.view.guestFormLogin form label { width: 9.7em; line-height: 41px; font-size: 20px; margin-right: 15px }
+
+.view.guestFormLogin form p.buttons { text-align: center; padding-top: 7px }
+
+.view.guestFormLogin form p.buttons button { width: 277px; height: 53px; padding: 10px 0 0 0; font-size: 20px; color: #fff; background: url('/images/templates/tovekClassic/bg-login-button.png') no-repeat; border: none }
+
+.view.guestFormLogin .links { clear: both; margin-bottom: 20px }
+
+.view.guestFormLogin .links a { display: block; width: 277px; height: 36px; padding: 17px 0 0 0; margin: 0 auto; text-align: center; font-size: 18px; color: #000; background: url('/images/templates/tovekClassic/bg-login-links.png') no-repeat center top; border: none }
+ /**
+ * Responsive iframe
+ */
+.iframe-container { position: relative; height: 0; overflow: hidden }
+ /* 16x9 Aspect Ratio */
+.iframe-container-16x9 { padding-bottom: 56.25% }
+ /* 4x3 Aspect Ratio */
+.iframe-container-4x3 { padding-bottom: 75% }
+
+.iframe-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100% }
+
+ul#localeList li { text-indent: -9999em; list-style-type: none; display: inline-block; float: left; margin-left: 5px }
+
+ul#localeList li a { display: block; width: 16px; height: 11px; outline: none }
+ /* List of locales ---------------------------------------------------------- */
+ul#localeList li.sv_SE a { background: transparent url("/images/locale/se.png") no-repeat }
+
+ul#localeList li.en_GB a { background: transparent url("/images/locale/gb.png") no-repeat }
+
+ul#localeList li.da_DK a { background: transparent url("/images/locale/dk.png") no-repeat }
+
+ul#localeList li.fr_FR a { background: transparent url("/images/locale/fr.png") no-repeat }
+
+ul#localeList li.fi_FI a { background: transparent url("/images/locale/fi.png") no-repeat }
+
+ul#localeList li.en_US a { background: transparent url("/images/locale/us.png") no-repeat }
+
+ul#localeList li.no_NO a { background: transparent url("/images/locale/no.png") no-repeat }
+
+ul#localeList li.de_DE a { background: transparent url("/images/locale/de.png") no-repeat }

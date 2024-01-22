@@ -1,0 +1,46 @@
+.view {
+	&.guestFormLogin {
+		width: 290px;
+		
+		h1 {}
+		form {
+			margin-bottom: 10px;
+			
+			.field {
+				margin-bottom: 10px;
+				
+				label {
+					display: block;
+					width: 100%;
+				}
+				input {
+					width: 100%;
+					box-sizing: border-box;
+				}
+			}
+			.buttons {
+				padding: 6px 0 0 0;
+				
+				button {
+					width: 100%;
+					box-sizing: border-box;
+				}
+			}
+		}
+		.links {			
+			text-align: justify;
+			
+			a.button {
+				display: inline-block;
+				font-size: 0.8em;
+				width: auto;
+				padding: 0.2em 1.6em;
+			}
+			&:after {
+				content: "";
+				display: inline-block;
+				width: 100%;    
+			}
+		}
+	}
+}

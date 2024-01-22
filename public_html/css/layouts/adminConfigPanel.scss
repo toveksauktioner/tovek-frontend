@@ -1,0 +1,56 @@
+#main {
+	.debug {
+		background: #fff;
+		padding: 2em;
+		box-shadow: 0 0.05em 0.1em rgba(0, 0, 0, 0.4);
+		margin-bottom: 2em;
+		font-size: 0.75em;
+		color: #333;
+		line-height: 1.8em;
+	}
+	.view {
+		&.adminConfigPanel {
+			form {
+				background: #fff;
+				
+				fieldset {
+					display: inline-block;
+					width: 45%;
+					vertical-align: top;
+					margin: 0 0 1em 0;
+					border-top: 3px double #ccc;
+					
+					legend {
+						color: #000;
+					}
+					
+					label {
+						width: 16em;
+					}
+					
+					.testMail {
+						border-top: 1px dotted #ccc;
+						padding: 2em 0;
+						
+						.suffixContent {
+							width: 9em;
+							padding-left: 2em;
+							text-align: right;
+						}
+					}
+					
+					&:nth-child(2n+1) {
+						margin-right: 5%;
+					}
+				}
+				
+				.buttons {
+					display: inline-block;
+					width: 100%;
+					border-top: 3px double #ccc;
+					padding: .4em .6em;				
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,80 @@
+@import "bootstrap";
+
+body #wrapper > header {
+	position: relative;
+	max-width: $siteWidth;
+	width: 100%;
+	margin: auto;
+	padding: 0 1em;
+	box-sizing: border-box;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+
+	@if $menuFullWidth == true{ flex-flow: row wrap; }
+
+	#logo {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex: 1 1 auto;
+		margin: .5em 0;
+
+		@include maxScreen( $tablet ) {
+			z-index: 399;
+			
+			@if $menuFullWidth == false {
+				display: block;
+				position: absolute;
+				width: calc(100% - 100px);
+				
+				a {
+					line-height: calc(#{$menuHeight} * 0.6);
+
+					img {
+						vertical-align: middle;
+					}
+				}
+			}
+		}
+
+		img {
+			max-height: calc(#{$menuHeight} - 1em);
+		}
+	}
+
+	#cart {
+		height: $menuHeight;
+		@if $menuFullWidth == false{
+			order: 3; // Place cart after menu
+		}
+		@import "modules/cart";
+	}
+
+	nav:not(#userMetaNav) {
+		@if $menuFullWidth == true{ 
+			@include fullWidth; 
+			flex: 1 1 1000%;
+
+			@if $menuBackgroundColor == true { @include primary-color; }
+		}
+		@else {
+			width: 100%; 
+			margin: auto; 
+			color: #000;
+		}
+		min-height: $menuHeight;
+
+		@import "modules/navigation";
+	}
+
+	nav#userMetaNav {
+		@import "modules/userNav";
+	}
+}

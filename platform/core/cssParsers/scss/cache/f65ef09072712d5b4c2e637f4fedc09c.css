@@ -1,0 +1,7 @@
+/* compiled by scssphp v0.7.5 on Wed, 19 Jun 2019 16:43:33 +0200 (0.0012s) */
+
+.view.news.formAdd form .fieldRoutePath .labelSuffixContent { margin-bottom: 0.3em }
+.view.news.formAdd form input#routePath { padding: 0 0 0 1px; box-sizing: border-box }
+.view.news.formAdd form input#routePath.autoFill { border: none; background: none }
+.view.news.formAdd form .fieldGroup.layout .field.boolean { margin-top: 0; margin-left: 0.7em }
+.view.news.formAdd form .fieldGroup.layout .field.boolean input { width: auto; min-width: inherit }
